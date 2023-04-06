@@ -32,7 +32,7 @@ I completed my own quest,
 
 and here comes my links array.
 
----
+<hr/>
 
 
 Most of them were on C sharp,
@@ -42,7 +42,8 @@ on some things I thought were dull.
 went deep in, like in a scarp,
 with [indexers](https://csharp-station.com/Tutorial/CSharp/Lesson11 "Indexers"), [lazy](https://www.c-sharpcorner.com/article/top-7-least-known-but-important-c-sharp-features/ "Important C# features"), [LINQ](https://blog.quadiontech.com/5-c-features-that-will-help-you-to-understand-linq-bca495cd3fb8 "LINQ") and [null](https://mikaelkoskinen.net/post/subtle-csharp-bug-null-conditional-operator-any-false "Subtle null bug").
 
----
+<hr/>
+
 
 
 You can be a [string or a String](https://blog.paranoidcoding.com/2019/04/08/string-vs-String-is-not-about-style.html "string vs String"),
@@ -53,7 +54,8 @@ it depends on your [namespace](https://medium.com/@morgankenyon/under-the-hood-o
 
 just like [swapping vars in place](https://dev.to/mortoray/terrible-interview-question-swap-variables-without-a-temporary-22jp "how to handle technical interviews").
 
----
+<hr/>
+
 
 
 To be or not to be?
@@ -64,7 +66,8 @@ Will you use [Cosmos DB](https://dev.to/petereysermans/things-i-wish-i-knew-befo
 
 Try [EF Core](https://www.thereformedprogrammer.net/an-in-depth-study-of-cosmos-db-and-ef-core-3-0-database-provider "EF Core vs Cosmos DB"), but pay attention.
 
----
+<hr/>
+
 
 
 «[Unit of work](https://gunnarpeipman.com/ef-core-repository-unit-of-work/ "Unit of work with EF Core")! I'll start from here»,
@@ -75,7 +78,7 @@ That's not obvious, I'll be sincere,
 
 you might want [EF Core](https://exceptionnotfound.net/dapper-vs-entity-framework-core-query-performance-benchmarking-2019/ "EF Core vs Dapper benchmarking").
 
----
+<hr/>
 
 
 [.NET Standard, Core and Framework](https://code-maze.com/differences-between-net-framework-net-core-and-net-standard/ ".NET versions differences"),
@@ -86,7 +89,8 @@ Want performance? Want great work?
 
 Take care of [Garbage Collection](https://docs.microsoft.com/en-us/aspnet/core/performance/memory "Garbage collection introduction").
 
----
+<hr/>
+
 
 
 «I wanna all remote! Remote [work](https://doist.com/blog/mental-health-and-remote-work "Remote working downside"), remote [calls](https://devblogs.microsoft.com/aspnet/grpc-vs-http-apis/ "gRPC vs Rest APIs")!».
@@ -97,7 +101,7 @@ If not, don't break his balls.
 
 Be a nice person, just like [Tom Hanks](https://www.nytimes.com/2019/11/13/movies/tom-hanks-mister-rogers.html).
 
----
+<hr/>
 
 
 My [source code is not a book](https://dev.to/snj/learn-from-source-code-4d1o "Source code readibility"),
@@ -108,7 +112,8 @@ My [source code is not a book](https://dev.to/snj/learn-from-source-code-4d1o "S
 
 But, [only positive effects](https://www.microsoft.com/en-us/research/blog/exploding-software-engineering-myths/ "Software engineering myths")??
 
----
+<hr/>
+
 
 
 Doesn't care if frontend or backend,
@@ -119,7 +124,7 @@ remember to test - don't leave that empty gap -
 
 and you'll create a better app.
 
----
+<hr/>
 
 
 [Will you fail?](https://jamesclear.com/3-stages-of-failure "3 stages of failure") I can't tell.
@@ -130,7 +135,8 @@ Ok, ya know [what is a shell](https://www.hanselman.com/blog/WhatsTheDifferenceB
 
 Something cool to talk [at a convention](https://dev.to/nspinazz89/12-tips-to-maximize-your-experience-at-a-tech-conference-5dkj "Tips for tech conferences").
 
----
+<hr/>
+
 
 
 For 2020 I wanna speak at [another conference](/blog/advices-from-my-first-public-speech "My first speech experience"),
@@ -142,4 +148,5 @@ this will help me gain self-confidence,
 and [increase my blog popularity](https://dev.to/brandonskerritt/how-to-go-from-3-views-to-1-000-308-30a9 "Increase blog views").
 
 </div>
+
 _This article first appeared on [Code4IT](https://www.code4it.dev/)_
