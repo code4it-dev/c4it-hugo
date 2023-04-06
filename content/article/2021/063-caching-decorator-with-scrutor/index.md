@@ -160,22 +160,22 @@ public class CachedFeedReader : IRssFeedReader
         _memoryCache = memoryCache;
     }
 
- public RssItem GetItem(string slug)
+    public RssItem GetItem(string slug)
+    {
+        var isFromCache = _memoryCache.TryGetValue(slug, out RssItem item);
+        if (!isFromCache)
         {
-            var isFromCache = _memoryCache.TryGetValue(slug, out RssItem item);
-            if (!isFromCache)
-            {
-                item = _rssFeedReader.GetItem(slug);
-            }
-            else
-            {
-                item.Source = "Cache";
-            }
-
-            _memoryCache.Set(slug, item);
-            return item;
+            item = _rssFeedReader.GetItem(slug);
         }
-}
+        else
+        {
+            item.Source = "Cache";
+        }
+
+        _memoryCache.Set(slug, item);
+        return item;
+    }
+    }
 ```
 
 There are a few points you have to notice in the previous snippet:
