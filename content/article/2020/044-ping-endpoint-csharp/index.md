@@ -163,6 +163,6 @@ In my experience, I've rarely seen this way to ping an endpoint. In most of the 
 
 If you want to know more about this class, you can directly refer to the [official .NET documentation](https://docs.microsoft.com/en-us/dotnet/api/system.net.networkinformation.ping?view=netcore-3.1 "Ping class on dotnet documentation").
 
-Also, remember that you can't run the _ping_ command on Azure App Service. If you are interested, have a look [at this article](https://www.code4it.dev/blog/blog/tcpping-azure-portal) where I explain why and how you can perform a similar operation.
+Also, remember that you can't run the _ping_ command on Azure App Service. If you are interested, have a look [at this article](https://www.code4it.dev/blog/tcpping-azure-portal) where I explain why and how you can perform a similar operation.
 
 Happy coding!

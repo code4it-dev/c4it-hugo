@@ -102,7 +102,7 @@ the whole test becomes pointless.
 
 ## Further readings
 
-This article lies in the middle of my [C# tips 🔗](https://www.code4it.dev/tag/csharp-tip) and my [Clean Code tips 🔗](https://www.code4it.dev/tag/clean-code-tip).
+This article lies in the middle of my [C# tips 🔗](https://code4it.dev/categories/csharp-tips/) and my [Clean Code tips 🔗](https://code4it.dev/categories/clean-code-tips/).
 
 _This article first appeared on [Code4IT 🐧](https://www.code4it.dev/)_
 

@@ -13,7 +13,7 @@ summary: Azure DevOps, among its capabilities, allows you to store NPM packages 
 
 I use Azure DevOps to store some npm packages for my projects. As you may know, Azure DevOps has a section called _Artifacts_ that allows you to store and distribute packages from NuGet, npm, Maven and so on.
 
-> Don't you know what npm is? [Check it out here](https://www.code4it.dev/blog/angular-vs-npm-vs-node-js#npm)!
+> Don't you know what npm is? [Check it out here](https://www.code4it.dev/blog/angular-vs-npm-vs-nodejs#npm)!
 
 You can have one or more _Feeds_ in your organization: each feed contains some packages, and you can administer each feed with granularity, for example by selecting specific users to be allowed to access those packages.
 

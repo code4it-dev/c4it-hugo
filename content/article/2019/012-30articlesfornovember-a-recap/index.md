@@ -134,7 +134,7 @@ Something cool to talk [at a convention](https://dev.to/nspinazz89/12-tips-to-ma
 <hr/>
 
 
-For 2020 I wanna speak at [another conference](/blog/advices-from-my-first-public-speech "My first speech experience"),
+For 2020 I wanna speak at [another conference](https://code4it.dev/blog/thoughts-after-my-first-public-speech/ "My first speech experience"),
 
 and maybe [write with more regularity](https://www.ilonacodes.com/blog/most-common-blogging-mistakes-of-beginner-bloggers/ "Blogging common mistakes"),
 

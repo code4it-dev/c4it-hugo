@@ -19,7 +19,7 @@ var plainDate = new DateTime(2020, 1, 1, 0, 30, 0);
 
 It makes sense. And `plainDate.ToString()` returns _2020/1/1 0:30:00_, which is correct.
 
-But, as I explained [in a previous article](https://www.code4it.dev/csharptips/5-things-datetime-timezones-and-formatting "5 things about DateTime time zones and formatting | Code4IT"), while `ToString` does not care about time zone, when you use `ToUniversalTime` and `ToLocalTime`, the results differ, according to your time zone.
+But, as I explained [in a previous article](https://www.code4it.dev/blog/5-things-datetime-timezones-and-formatting "5 things about DateTime time zones and formatting | Code4IT"), while `ToString` does not care about time zone, when you use `ToUniversalTime` and `ToLocalTime`, the results differ, according to your time zone.
 
 Let's use a real example. _Please, note that I live in UTC+1, so pay attention to what happens to the hour!_
 
