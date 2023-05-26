@@ -135,14 +135,27 @@ Unit tests, Integration tests, and E2E tests have a different proportion:
 
 ## What to choose?
 
-As we saw, Testing Pyramid is focused more on 
+As we saw, Testing Pyramid is focused more on fast and easy-to-write tests, while Testing Diamond is more about business-critical tests.
 
 Below you can see a GIF that explains why Integration tests are more business-critical than unit tests: the door alone works correctly, the lock works correctly, so unit tests for both systems pass correctly.
 
 ![Unit tests vs Integration tests](./unit_vs_integration_tests.gif)
 
+So, what to choose? As always, there is no silver bullet: it always depends on your project and your team.
+
+But, in general, I'd prefer Testing Diamond: our tests should verify that the overall system works properly, without worrying about implementation details.
+
+If you rename a class or change the internal data access (eg: you transform a static class into a service), you don't want to update the tests: as long as the final result is correct, the test is more than enough.
+
 ## How do they impact code coverage
 
+As I often say, Code Coverage is not an important metric: a system with 100% test coverage still has bugs - it's just that you haven't found them yet.
+
+Also, if you mark every class as to be ignored by code coverage (in C#, using `ExcludeFromCodeCoverage`), you can have 100% code coverage without a single test.
+
+So, **don't write tests for the sake of reaching 100% code coverage**; on the contrary, **use code coverage to see which parts of the systems have not been tested**.
+
+In my opinion, **code coverage works best with Testing Pyramid**: write integration tests, make sure that your system works correctly. Then use code coverage indicators to understand which parts have not been tested (for example, you validated an empty string but not a null value). You can use Unit Tests to cover those specific cases.
 
 ## Further readings
 
