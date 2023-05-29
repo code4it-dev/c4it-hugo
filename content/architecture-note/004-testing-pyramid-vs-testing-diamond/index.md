@@ -1,5 +1,5 @@
 ---
-title: "Davide's Code and Architecture Notes - Testing Pyramid vs Testing Diamond (and how they impact Code Coverage)"
+title: "Davide's Code and Architecture Notes - Testing Pyramid vs Testing Diamond (and how they affect Code Coverage)"
 date: 2023-05-29
 url: /architecture-notes/testing-pyramid-vs-testing-diamond
 draft: false
@@ -9,7 +9,7 @@ tags:
 - Software Architecture
 - Testing
 toc: true
-summary: "Testing Pyramid and Testing Diamond are two ways of managing automated tests. We're going to learn what they are and how they are built in relation to Unit Tests, Integration Tests, and End-to-end Tests"
+summary: "Testing Pyramid and Testing Diamond are two ways of managing automated tests. We're going to learn what they are and how they are built in relation to Unit Tests, Integration Tests, and End-to-end Tests."
 ---
 
 Every software project requires some sort of testing. You can execute them manually or put in place a whole suite of automatic tests that run timely, for example when you close a PR or daily, every day at the same time.
@@ -22,11 +22,11 @@ Therefore, we should carefully choose the right strategy to test the most critic
 
 In this article, we're gonna learn about the types of tests, their purposes, and the best testing strategies we can apply to our projects.
 
-## Different types of testing: Unit tests vs Integration tests vs End-to-end tests
+## Different types of testing: Unit Tests vs Integration Tests vs End-to-end Tests
 
 As we introduced before, there are lots of types of tests that you can write. Each test has a purpose, some pros, and some cons.
 
-### Unit tests: easy to write, fast to run, but coupled with implementation details
+### Unit Tests: easy to write, fast to run, but coupled with implementation details
 
 Usually, when we think about tests, we implicitly think about Unit Tests.
 
@@ -50,15 +50,15 @@ But they also have some **disadvantages**:
 * **they don't test the interaction between real components**: you must use fakes, stubs, and mocks to test the correctness of your tests;
 * **they don't help in discovering side effects of a change**: say that you have a fictious method `Sanitize(string text)`, exposed by the class `StringUtilities`. `Sanitize` returns an empty string if the `text` variable is invalid. Now you change the implementation to return `null` instead of an empty string if the input string is invalid. And say that an external class `TextHandler` injects, using DI, the `StringUtilities` class in order to use the `Sanitize` method. When writing tests for the `TextHandler` method, you don't create a concrete instance of `StringUtilities`, but rely on stubs or mocks. Then, if you change the implementation of `Sanitize` without updating also the tests of `TextHandler`, you won't notice the change and the related side effects, and the production code is probably going to break because you are performing operations on a `null` value instead of an empty string.
 
-### Integration tests: focus on the interaction between components, but harder to write
+### Integration Tests: focus on the interaction between components, but harder to write
 
-Integration tests are meant to validate that different parts of the system (for example, two concrete classes) work well together.
+Integration Tests are meant to validate that different parts of the system (for example, two concrete classes) work well together.
 
 One kind of Integration Test that I find particularly effective is the one that **tests API functionalities**: you spin up an *in-memory* test server that runs your APIs with all the concrete *internal* dependencies (no stubs or mocks), and then you call such endpoints and validate the final result.
 
 You can also - as I'd recommend - use an in-memory database instead of a real one. And all the *external* dependencies, such as external API systems, to ensure that your tests don't have dependencies upon systems you can't control.
 
-We can list some advantages of integration tests:
+We can list some advantages of Integration Tests:
 
 * they ensure that the system, with **real classes**, works correctly;
 * they **test upon functionalities, not implementations**. If you add a new parameter to an internal method, you don't have to worry about updating the tests: **implementation details do not matter**;
@@ -108,11 +108,11 @@ Disadvantages:
 * the slowest to run;
 * can be difficult to maintain: if your tests rely on the UI, and it slightly changes (for example, you change the class of the button that sends the Complete Checkout command), the whole E2E fails.
 
-## Testing Pyramid: focu on Unit Tests
+## Testing Pyramid: focus on Unit Tests
 
 The "Testing Pyramid" is a way to think of a testing strategy where the main focus is on Unit Tests.
 
-![Testing Pyramid: the main focus is on the Unit Tests](./testing-pyramid.png)
+![Testing Pyramid: the main focus is on Unit Tests](./testing-pyramid.png)
 
 Have a look at the proportions between testing types. Using Testing Pyramid, we have:
 
@@ -126,19 +126,19 @@ Testing Diamond is another way to think of a testing strategy, opposed as to the
 
 ![Testing Diamond: the main focus is on Integration Tests](./testing-diamond.png)
 
-Unit tests, Integration tests, and E2E tests have a different proportions:
+Unit Tests, Integration Tests, and E2E Tests have a different proportions:
 
-* a few Unit tests: write only strictly necessary Unit tests: for example, data transformation, text parsing, and complex calculations;
-* a lot of Integration tests: since they cover business-critical functionalities, here is where you should spend most of your time and effort;
+* a few Unit Tests: write only strictly necessary Unit Tests: for example, data transformation, text parsing, and complex calculations;
+* a lot of Integration Tests: since they cover business-critical functionalities, here is where you should spend most of your time and effort;
 * a bunch of E2E Tests: again, cover only the critical operations.
 
 ## What to choose?
 
 As we saw, Testing Pyramid is focused more on fast and easy-to-write tests, while Testing Diamond is more about business-critical tests.
 
-Below you can see a GIF that explains why Integration tests are more important than unit tests: the door alone works correctly, and the lock works correctly, so unit tests for both systems pass correctly. But the overall system does not work: the Integration Tests would fail.
+Below you can see a GIF that explains why Integration Tests are more important than Unit Tests: the door alone works correctly, and the lock works correctly, so Unit Tests for both systems pass correctly. But the overall system does not work: the Integration Tests would fail.
 
-![Unit tests vs Integration tests](./unit_vs_integration_tests.gif)
+![Unit Tests vs Integration Tests](./unit_vs_integration_tests.gif)
 
 So, what to choose? As always, **there is no silver bullet**: it always depends on your project and your team.
 
@@ -146,7 +146,7 @@ But, in general, **I'd prefer Testing Diamond**: our tests should verify that th
 
 If you rename a class or change the internal data access (eg: you transform a static class into a service), you don't want to update the tests: as long as the final result is correct, the test is more than enough.
 
-## How do they impact code coverage
+## Code Coverage and Testing Strategies
 
 As I often say, **reaching a high Code Coverage is not a useful goal**: a system with 100% test coverage still has bugs - it's just that you haven't found them yet.
 
@@ -154,7 +154,7 @@ Also, if you mark every class as to be ignored by code coverage (in C#, using `E
 
 So, **don't write tests for the sake of reaching 100% code coverage**; on the contrary, **use code coverage to see which parts of the systems have not been tested**.
 
-In my opinion, **code coverage works best with Testing Pyramid**: write integration tests, and make sure that your system works correctly. Then use code coverage indicators to learn which parts have not been tested (for example, you validated an empty string but not a null value). You can use Unit Tests to cover those specific cases.
+In my opinion, **code coverage works best with Testing Pyramid**: write Integration Tests, and make sure that your system works correctly. Then use code coverage indicators to learn which parts have not been tested (for example, you validated an empty string but not a null value). You can use Unit Tests to cover those specific cases.
 
 ## Further readings
 
@@ -164,7 +164,7 @@ There are lots of articles out there about Unit Tests, and they often say the sa
 
 You might be wondering: how can we run Integration Tests for .NET APIs? I wrote an article with a simple, basic approach, that can help you understand it: 
 
-🔗[How to run integration tests for .NET API | Code4IT](https://www.code4it.dev/blog/integration-tests-for-dotnet-api/)
+🔗[How to run Integration Tests for .NET API | Code4IT](https://www.code4it.dev/blog/integration-tests-for-dotnet-api/)
 
 _This article first appeared on [Code4IT 🐧](https://www.code4it.dev/)_
 
@@ -176,7 +176,7 @@ Finally, we learned how Code Coverage impacts, and is impacted by, the testing s
 
 In this article, we've learned the main differences between Unit Tests, Integration Tests, and End-to-end Tests.
 
-We've also learned two testing strategies, Testing Pyramid and Testing Diamond, what are their strengths and their weaknesses.
+We've also learned two testing strategies, Testing Pyramid and Testing Diamond, and what are their strengths and their weaknesses.
 
 I hope you enjoyed this article! Let's keep in touch on [Twitter](https://twitter.com/BelloneDavide) or [LinkedIn](https://www.linkedin.com/in/BelloneDavide/)! 🤜🤛
 
@@ -184,16 +184,6 @@ Happy coding!
 
 🐧
 
-[ ] Titoli
-
-[ ] Bold/Italics
-
-[ ] Alt Text per immagini
-
-[ ] Frontmatter
-
 [ ] Nome cartella e slug devono combaciare
 
 [ ] Immagine di copertina
-
-[ ] Controlla maiuscole in Unit Integration E2E
