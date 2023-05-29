@@ -21,4 +21,4 @@ If you want to keep in touch, you can find me on [Twitter](https://twitter.com/B
 
 Ah, and I'm also a [Microsoft MVP](https://mvp.microsoft.com/en-us/PublicProfile/5005077?fullName=Davide%20Bellone) 🏆 !
 
-[![MVP](https://code4it.dev/img/MVP_badge.png)](https://mvp.microsoft.com/en-us/PublicProfile/5005077?fullName=Davide%20Bellone)
+[![MVP](https://www.code4it.dev/img/MVP_badge.png)](https://mvp.microsoft.com/en-us/PublicProfile/5005077?fullName=Davide%20Bellone)

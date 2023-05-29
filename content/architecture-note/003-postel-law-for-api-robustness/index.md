@@ -148,7 +148,7 @@ Finally, here's another interesting content about Robustness and Postel's law, w
 
 As we said, it's important to communicate clearly what endpoints, parameters, and returned objects are available on our APIs. A good way to do that in .NET applications is by using Swagger. In particular, you might want to add different documentation based on different versions. Here's a quick tip on how to specify versions on Swagger
 
-🔗 [Understanding Swagger integration in .NET Core | Code4IT](https://code4it.dev/blog/swagger-integration/#include-swagger-in-the-project)
+🔗 [Understanding Swagger integration in .NET Core | Code4IT](https://www.code4it.dev/blog/swagger-integration/#include-swagger-in-the-project)
 
 ## Wrapping up
 

@@ -1,5 +1,5 @@
 title = "Code4IT"
-baseURL = "https://code4it.dev/"
+baseURL = "https://www.code4it.dev/"
 
 # Option 1 (recommended): adding the theme as a Hugo module
 # theme = "github.com/Lednerb/bilberry-hugo-theme/v3"

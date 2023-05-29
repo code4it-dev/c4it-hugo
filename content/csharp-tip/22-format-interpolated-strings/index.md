@@ -87,7 +87,7 @@ _This article first appeared on [Code4IT 🐧](https://www.code4it.dev/)_
 
 Finally, remember that interpolated strings are not the only way to build strings upon variables; you can (and should!) use `string.Format`:
 
-🔗 [How to use String.Format - and why you should care about it | Code4IT](https://code4it.dev/blog/how-to-use-string-format/)
+🔗 [How to use String.Format - and why you should care about it | Code4IT](https://www.code4it.dev/blog/how-to-use-string-format/)
 
 ## Wrapping up
 

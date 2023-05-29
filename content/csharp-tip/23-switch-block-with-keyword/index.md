@@ -224,7 +224,7 @@ Finally, in those examples, we used `records`. As you saw, I marked the `User` t
 
 Do you want to learn more about Records?
 
-🔗 [8 things about Records in C# you probably didn't know | Code4IT](https://code4it.dev/blog/8-things-about-records-csharp/)
+🔗 [8 things about Records in C# you probably didn't know | Code4IT](https://www.code4it.dev/blog/8-things-about-records-csharp/)
 
 ## Wrapping up
 
