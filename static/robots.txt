@@ -1,4 +1,5 @@
 User-agent: *
-Disallow: /post-schedule
+Disallow: /tags/*
+Disallow: /categories/*
 
 sitemap: https://www.code4it.dev/sitemap.xml
