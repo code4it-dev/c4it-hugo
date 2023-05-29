@@ -140,7 +140,7 @@ With `IOptionsSnapshot<T>` you have always the most updated values: **this servi
 
 Since .NET rebuilds the configurations at every HTTP call, **there is a slight performance overhead**. So, if not necessary, always use `IOptions<T>`.
 
-There is no way to test an `IOptionsSnapshot<T>` as we did with `IOptions<T>`, so you have to use stubs or mocks (maybe with [Moq or NSubstitute 🔗](https://code4it.dev/blog/moq-vs-nsubstitute-syntax/)).
+There is no way to test an `IOptionsSnapshot<T>` as we did with `IOptions<T>`, so you have to use stubs or mocks (maybe with [Moq or NSubstitute 🔗](https://www.code4it.dev/blog/moq-vs-nsubstitute-syntax/)).
 
 ### Demo: the configuration changes while the application is running
 
@@ -174,7 +174,7 @@ Note: **`OnChange` returns an object that implements `IDisposable` that you need
 
 {{< tweet user="realchrisebert" id="1403304311510208526" >}} 
 
-Again, there is no way to test an `IOptionsMonitor<T>` as we did with `IOptions<T>`. So you should rely on stubs and mocks (again, maybe with [Moq or NSubstitute 🔗](https://code4it.dev/blog/moq-vs-nsubstitute-syntax/)).
+Again, there is no way to test an `IOptionsMonitor<T>` as we did with `IOptions<T>`. So you should rely on stubs and mocks (again, maybe with [Moq or NSubstitute 🔗](https://www.code4it.dev/blog/moq-vs-nsubstitute-syntax/)).
 
 ### Demo: the configuration changes, and the callback is called
 
@@ -242,17 +242,17 @@ For sure, one of the best resources is the official documentation:
 I insisted on explaining that `IOptions` and `IOptionsMonitor` are *Singleton*, while `IOptionsSnapshot` is *Scoped*.
 If you don't know what they mean, here's a short but thorough explanation:
 
-🔗 [Dependency Injection lifetimes in .NET | Code4IT](https://code4it.dev/blog/dependency-injection-lifetimes/)
+🔗 [Dependency Injection lifetimes in .NET | Code4IT](https://www.code4it.dev/blog/dependency-injection-lifetimes/)
 
 In particular, I want you to focus on the Bonus tip, where I explain the problems of having *Transient* or *Scoped* services injected into a *Singleton* service:
 
-🔗[Bonus tip: Transient dependency inside a Singleton | Code4IT](https://code4it.dev/blog/dependency-injection-lifetimes/#bonus-tip-transient-dependency-inside-a-singleton)
+🔗[Bonus tip: Transient dependency inside a Singleton | Code4IT](https://www.code4it.dev/blog/dependency-injection-lifetimes/#bonus-tip-transient-dependency-inside-a-singleton)
 
 _This article first appeared on [Code4IT 🐧](https://www.code4it.dev/)_
 
 In this article, I stored my configurations in an appsettings.json file. There are more ways to set configuration values - for example, Environment Variables and launchSettings.json.
 
-🔗 [3 (and more) ways to set configuration values in .NET | Code4IT](https://code4it.dev/blog/how-to-set-configurations-values-dotnet/)
+🔗 [3 (and more) ways to set configuration values in .NET | Code4IT](https://www.code4it.dev/blog/how-to-set-configurations-values-dotnet/)
 
 ## Wrapping up
 

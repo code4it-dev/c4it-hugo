@@ -26,7 +26,7 @@ HttpClient httpClient = new HttpClient();
 Stream fileStream = await httpClient.GetStreamAsync(fileUrl);
 ```
 
-Using `HttpClient` can cause some trouble, especially when you have a huge computational load. As a matter of fact, using `HttpClientFactory` is preferred, as we've already explained [in a previous article](https://code4it.dev/csharptips/use-httpclientfactory-instead-of-httpclient/).
+Using `HttpClient` can cause some trouble, especially when you have a huge computational load. As a matter of fact, using `HttpClientFactory` is preferred, as we've already explained [in a previous article](https://www.code4it.dev/csharptips/use-httpclientfactory-instead-of-httpclient/).
 
 But, ok, it looks easy - way too easy! There are two more parts to consider.
 
@@ -174,7 +174,7 @@ As I said, you should not instantiate a `new HttpClient()` every time. You shoul
 
 If you want to know more details, I've got an article for you:
 
-🔗 [C# Tip: use IHttpClientFactory to generate HttpClient instances | Code4IT](https://code4it.dev/csharptips/use-httpclientfactory-instead-of-httpclient/)
+🔗 [C# Tip: use IHttpClientFactory to generate HttpClient instances | Code4IT](https://www.code4it.dev/csharptips/use-httpclientfactory-instead-of-httpclient/)
 
 _This article first appeared on [Code4IT 🐧](https://www.code4it.dev/)_
 
