@@ -1,8 +1,8 @@
 ---
 title: "Davide's Code and Architecture Notes - Testing Pyramid vs Testing Diamond (and how they impact Code Coverage)"
-date: 2023-05-24T14:38:36+02:00
+date: 2023-05-30
 url: /architecture-notes/testing-pyramid-vs-testing-diamond
-draft: true
+draft: false
 categories:
 - Code and Architecture Notes
 tags:
