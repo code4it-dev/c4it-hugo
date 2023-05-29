@@ -1,13 +1,13 @@
 ---
 title: "Davide's Code and Architecture Notes - Testing Pyramid vs Testing Diamond (and how they affect Code Coverage)"
-date: 2023-05-29
+date: 2023-05-30
 url: /architecture-notes/testing-pyramid-vs-testing-diamond
 draft: false
 categories:
 - Code and Architecture Notes
 tags:
 - Software Architecture
-- Testing
+- Tests
 toc: true
 summary: "Testing Pyramid and Testing Diamond are two ways of managing automated tests. We're going to learn what they are and how they are built in relation to Unit Tests, Integration Tests, and End-to-end Tests."
 ---
@@ -183,7 +183,3 @@ I hope you enjoyed this article! Let's keep in touch on [Twitter](https://twitte
 Happy coding!
 
 🐧
-
-[ ] Nome cartella e slug devono combaciare
-
-[ ] Immagine di copertina
