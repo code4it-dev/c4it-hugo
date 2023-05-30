@@ -112,7 +112,6 @@ private static IHost CreateHost() =>
       {
           services.AddSingleton<INumberRepository, NumberRepository>();
           services.AddSingleton<INumberService, NumberService>();
-          services.AddSingleton<NumberWorker>();
       })     
       .Build();
 }
@@ -120,7 +119,7 @@ private static IHost CreateHost() =>
 
 `Host.CreateDefaultBuilder()` creates the default `IHostBuilder` - similar to the `IWebHostBuilder`, but without any reference to web components.
 
-Then we add all the dependencies, using `services.AddSingleton<T, K>`. **Notice** that, since we are building the dependency tree and we need a root, even `NumberWorker` is added (using `services.AddSingleton<NumberWorker>()`).
+Then we add all the dependencies, using `services.AddSingleton<T, K>`. **Notice** that it's not necessary to add `services.AddSingleton<NumberWorker>`: when we will use the concrete instance,  the dependency tree will be resolved, without the need of having indication of the root itself.
 
 Finally, once we have everything in place, we call `Build()` to create a new instance of `IHost`.
 
@@ -142,7 +141,55 @@ Now you are ready to run the application, and see the message on console:
 ![Basic result on Console](./basic-result-on-console.png)
 
 
-## Add appsettings.json
+## Read configurations from appSettings
+
+Now we want to make our system configurable, and place our configurations in an *appsettings.json* file.
+
+As we saw in a recent article, we can use `IOptions<T>` to inject configurations in the constructor. For the sake of this article, I'm gonna use a new class, `NumberConfig`, that is mapped to a configuration section and injected into the classes.
+
+```cs
+public class NumberConfig
+{
+    public int DefaultNumber { get; set; }
+}
+```
+
+Now we need to **manually create an appsettings.json file** within the project folder, and add a new section that will hold the values of the configuration:
+
+```json
+{
+  "Number": {
+    "DefaultNumber": -899
+  }
+}
+```
+
+and now we can the configuration binding in our `CreateHost()` method, within the `ConfigureServices` section:
+
+```cs
+services.Configure<NumberConfig>(context.Configuration.GetSection("Number"));
+```
+
+Finally, we can update the `NumberRepository` to accept the configurations in input and use them to return the value:
+
+```cs
+public class NumberRepository : INumberRepository
+{
+    private readonly NumberConfig _config;
+
+    public NumberRepository(IOptions<NumberConfig> options) => _config = options.Value;
+
+    public int GetNumber() => _config.DefaultNumber;
+}
+```
+
+Now run the project to admire the result, and... BOOM! It will not work! You should see the message "My wonderful number is 0", even though the number we set on the config file is -899.
+
+This happens because we must include the appsettings file in the result of the compilation. Right-click on the file, select the Properties menu, and set the "Copy to Output Directory" to "Copy always": 
+
+![Coi](./appsettings-copyalways.png)
+
+Now, build and run the project, and you'll be able to see the correct message: "My wonderful number is 899".
 
 ## Add Serilog logging
 
