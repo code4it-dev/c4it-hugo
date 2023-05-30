@@ -4,10 +4,10 @@ date: 2023-05-23
 url: /blog/ioptions-ioptionsmonitor-ioptionssnapshot
 draft: false
 categories:
-- Blog
+  - Blog
 tags:
-- CSharp
-- dotNET
+  - CSharp
+  - dotNET
 toc: true
 summary: "There are several ways to handle configurations in a .NET Application. In this article, we're going to learn how to use `IOptions<T>`, `IOptionsSnapshot<T>`, and `IOptionsMonitor<T>`"
 ---
@@ -20,13 +20,13 @@ In this article, we are going to learn about `IOptions`, `IOptionsSnapshot`, and
 
 For the sake of this article, I've created a dummy .NET API that exposes only one endpoint.
 
-In my *appsettings.json* file, I added a node:
+In my _appsettings.json_ file, I added a node:
 
 ```json
 {
-    "MyConfig": {
-        "Name": "Davide"
-    }
+  "MyConfig": {
+    "Name": "Davide"
+  }
 }
 ```
 
@@ -39,7 +39,7 @@ public class GeneralConfig
 }
 ```
 
-To add it to the API project, we can add this line to the *Program.cs* file:
+To add it to the API project, we can add this line to the _Program.cs_ file:
 
 ```cs
 builder.Services.Configure<GeneralConfig>(builder.Configuration.GetSection("MyConfig"));
@@ -51,7 +51,7 @@ To test such types, I've created a set of dummy API Controllers. Each Controller
 
 We are going to inject `IOptions`, `IOptionsSnapshot`, and `IOptionsMonitor` into the constructor of the related Controllers so that we can try the different approaches.
 
-## IOptions: Simple, Singleton, doesn't support config  reloads
+## IOptions: Simple, Singleton, doesn't support config reloads
 
 `IOptions<T>` is the most simple way to inject such configurations. We can inject it into our constructors and access the actual value using the `Value` property:
 
@@ -64,12 +64,12 @@ public TestingController(IOptions<GeneralConfig> config)
 }
 ```
 
-Now we have direct access to the `GeneralConfig` object, with the values populated as we defined in the *appsettings.json* file.
+Now we have direct access to the `GeneralConfig` object, with the values populated as we defined in the _appsettings.json_ file.
 
 There are a few things to consider when using `IOptions<T>`:
 
-* This service is injected as a **Singleton instance**: the whole application uses the same instance, and it is valid throughout the whole application lifetime.
-* **all the configurations are read at startup time**. Even if you update the *appsettings* file while the application is running, you won't see the values updated.
+- This service is injected as a **Singleton instance**: the whole application uses the same instance, and it is valid throughout the whole application lifetime.
+- **all the configurations are read at startup time**. Even if you update the _appsettings_ file while the application is running, you won't see the values updated.
 
 Some people prefer to store the `IOptions<T>` instance as a private field, and access the value when needed using the `Value` property, like this:
 
@@ -106,7 +106,7 @@ public void Setup()
     var config = new GeneralConfig { Name = "Test" };
 
     var options = Options.Create(config);
-    
+
     _sut = new TestingController(options);
 }
 ```
@@ -120,10 +120,9 @@ Below you can find a GIF that shows that the configurations do not change when t
 As you can see, I performed the following steps:
 
 1. start the application
-2. call the */TestingIOptions* endpoint: it returns the name Davide
-3. now I update the content of the *appsettings.json* file, setting the name to Davide Bellone.
+2. call the _/TestingIOptions_ endpoint: it returns the name Davide
+3. now I update the content of the _appsettings.json_ file, setting the name to Davide Bellone.
 4. when I call again the same endpoint, I don't see the updated value.
-
 
 ## IOptionsSnapshot: Scoped, less-performant, supports config reload
 
@@ -144,20 +143,20 @@ There is no way to test an `IOptionsSnapshot<T>` as we did with `IOptions<T>`, s
 
 ### Demo: the configuration changes while the application is running
 
-Look at the GIF below: here I run the application and call the */TestingIOptionsSnapshot* endpoint.
+Look at the GIF below: here I run the application and call the _/TestingIOptionsSnapshot_ endpoint.
 
 ![With IOptionsSnapshot the configuration changes while the application is running](./ioptionssnapshot.gif)
 
 I performed the following steps:
 
 1. run the application
-2. call the */TestingIOptionsSnapshot* endpoint. The returned value is the same on the *appsettings.json* file: Davide Bellone.
+2. call the _/TestingIOptionsSnapshot_ endpoint. The returned value is the same on the _appsettings.json_ file: Davide Bellone.
 3. I then update the value on the configuration file
-4. when calling again */TestingIOptionsSnapshot*, I can see that the returned value reflects the new value in the _appsettings_ file.
+4. when calling again _/TestingIOptionsSnapshot_, I can see that the returned value reflects the new value in the _appsettings_ file.
 
 ## IOptionsMonitor: Complex, Singleton, supports config reload
 
-Finally, the last one of the trio: `IOptionsMonitor<T>`. 
+Finally, the last one of the trio: `IOptionsMonitor<T>`.
 
 Using `IOptionsMonitor<T>` you can have the most updated value on the appsettings.json file.
 
@@ -172,7 +171,7 @@ There are two main differences with `IOptions<T>`:
 
 Note: **`OnChange` returns an object that implements `IDisposable` that you need to dispose**. Otherwise, as [Chris Elbert noticed (ps: follow him on Twitter!) ](https://twitter.com/realchrisebert/status/1403304311510208526), the instance of the class that uses `IOptionsMonitor<T>` will never be disposed.
 
-{{< tweet user="realchrisebert" id="1403304311510208526" >}} 
+{{< tweet user="realchrisebert" id="1403304311510208526" >}}
 
 Again, there is no way to test an `IOptionsMonitor<T>` as we did with `IOptions<T>`. So you should rely on stubs and mocks (again, maybe with [Moq or NSubstitute 🔗](https://www.code4it.dev/blog/moq-vs-nsubstitute-syntax/)).
 
@@ -210,7 +209,7 @@ By running it and modifying the config content while the application is up and r
 As you can see, I performed these steps:
 
 1. run the application
-2. call the */TestionIOptionsMonitor* endpoint. The MyName field is read from config, and Updates is 0;
+2. call the _/TestionIOptionsMonitor_ endpoint. The MyName field is read from config, and Updates is 0;
 3. I then update and save the config file. In the background, the `OnChange` callback is fired, and the Updates value is updated;
 
 Oddly, the callback is called more times than expected. I updated the file only twice, but the counter is set to 6. That's weird behavior. If you know why it happens, drop a message below 📩
@@ -221,11 +220,11 @@ We've seen a short introduction to `IOptions`, `IOptionsSnapshot`, and `IOptions
 
 There are some differences, of course. Here's a table with a recap of what we learned from this article.
 
-| Type | DI Lifetime | Best way to inject in unit tests |Allows live reload |  Has callback function | 
-|-----|----|---|---|---|
-|`IOptions<T>` | Singleton | `Options.Create<T>`| ❌ |  ❌ |
-|`IOptionsSnapshot<T>` | Scoped | Stub / Mock | 🟢 | ❌ |
-|`IOptionsMonitor<T>` | Singleton | Stub / Mock  | 🟢  | 🟢  |
+| Type                  | DI Lifetime | Best way to inject in unit tests | Allows live reload | Has callback function |
+| --------------------- | ----------- | -------------------------------- | ------------------ | --------------------- |
+| `IOptions<T>`         | Singleton   | `Options.Create<T>`              | ❌                 | ❌                    |
+| `IOptionsSnapshot<T>` | Scoped      | Stub / Mock                      | 🟢                 | ❌                    |
+| `IOptionsMonitor<T>`  | Singleton   | Stub / Mock                      | 🟢                 | 🟢                    |
 
 There's actually more: for example, with `IOptionsSnapshot` and `IOptionsMonitor` you can use **named options**, so that you can inject more instances of the same type that refer to different nodes in the JSON file.
 
@@ -239,12 +238,12 @@ For sure, one of the best resources is the official documentation:
 
 🔗 [Options pattern in ASP.NET Core | Microsoft docs](https://learn.microsoft.com/en-us/aspnet/core/fundamentals/configuration/options)
 
-I insisted on explaining that `IOptions` and `IOptionsMonitor` are *Singleton*, while `IOptionsSnapshot` is *Scoped*.
+I insisted on explaining that `IOptions` and `IOptionsMonitor` are _Singleton_, while `IOptionsSnapshot` is _Scoped_.
 If you don't know what they mean, here's a short but thorough explanation:
 
 🔗 [Dependency Injection lifetimes in .NET | Code4IT](https://www.code4it.dev/blog/dependency-injection-lifetimes/)
 
-In particular, I want you to focus on the Bonus tip, where I explain the problems of having *Transient* or *Scoped* services injected into a *Singleton* service:
+In particular, I want you to focus on the Bonus tip, where I explain the problems of having _Transient_ or _Scoped_ services injected into a _Singleton_ service:
 
 🔗[Bonus tip: Transient dependency inside a Singleton | Code4IT](https://www.code4it.dev/blog/dependency-injection-lifetimes/#bonus-tip-transient-dependency-inside-a-singleton)
 
