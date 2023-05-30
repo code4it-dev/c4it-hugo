@@ -3,7 +3,7 @@ title: 3 ways to check the object passed to mocks with Moq in C#
 date: 2022-05-17
 tags:
   - CSharp
-  - Testing
+  - Tests
 toc: true
 url: /blog/check-objects-called-mocks-in-moq
 categories:

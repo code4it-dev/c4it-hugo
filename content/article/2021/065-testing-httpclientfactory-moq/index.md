@@ -3,7 +3,7 @@ title: How to test HttpClientFactory with Moq
 date: 2021-09-28
 tags:
   - CSharp
-  - Testing
+  - Tests
 toc: true
 url: /blog/testing-httpclientfactory-moq
 categories:
