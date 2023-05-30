@@ -191,52 +191,73 @@ This happens because we must include the appsettings file in the result of the c
 
 Now, build and run the project, and you'll be able to see the correct message: "My wonderful number is 899".
 
+Clearly, the same values can be accessed via `IConfigurations`.
+
 ## Add Serilog logging
 
+Finally, we can add Serilog logs to our console applications - as well as defining Sinks.
+
+To add Serilog, you first have to install these NuGet packages:
+
+* *Serilog.Extensions.Hosting* and *Serilog.Formatting.Compact* to add the basics of Serilog;
+* *Serilog.Settings.Configuration* to read logging configurations from settings;
+* *Serilog.Sinks.Console* and *Serilog.Sinks.File* to add the Console and the File System as Sinks.
+
+Let's get back to the `CreateHost()` method, and add a new section right after `ConfigureServices`:
+
+```cs
+.UseSerilog((context, services, configuration) => configuration
+    .ReadFrom.Configuration(context.Configuration)
+    .ReadFrom.Services(services)
+    .Enrich.FromLogContext()
+    .WriteTo.Console()
+    .WriteTo.File($"report-{DateTimeOffset.UtcNow.ToString("yyyy-MM-dd-HH-mm-ss")}.txt", restrictedToMinimumLevel: LogEventLevel.Warning)
+    )
+```
+
+Here we're telling that we need to read config from Settings, add logging context, and write both on Console and on File (only if the log message is greater than Warning).
+
+Then, add an `ILogger` here and there, and admire the final result:
 
 
-## Resolve DI
+![](./logging-on-console.png)
 
 
+## Final result
+
+To wrap up, here's the final implementation of the Program class and the 
+CreateHost method:
 
 
 ```cs
-
-
-using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Hosting;
-
-internal class Program
+private static void Main(string[] args)
 {
-  private static async Task Main(string[] args)
-  {
     IHost host = CreateHost();
-
-    TaxonomyLoader worker = ActivatorUtilities.CreateInstance<TaxonomyLoader>(host.Services);
-
-    bool tagsImported = await worker.ImportTaxonomyTags();
-  }
-
-  private static IHost CreateHost() => Host.CreateDefaultBuilder()
-                  .ConfigureServices((context, services) =>
-                  {
-                    services.Configure<MongoDbConfig>(context.Configuration.GetSection("TagsDbStorage"));
-
-                    services.AddSingleton<ITaxonomyRepository, MongoDbTaxonomyRepository>();
-                    services.AddSingleton<ITaxonomyTagsSource, FileSystemTaxonomyTagsSource>();
-                    services.AddSingleton<TaxonomyLoader>();
-                  })
-                  .UseSerilog((context, services, configuration) => configuration
-                      .ReadFrom.Configuration(context.Configuration)
-                      .ReadFrom.Services(services)
-                      .Enrich.FromLogContext()
-                      .WriteTo.Console()
-                      .WriteTo.File($"report-{DateTimeOffset.UtcNow.ToString("yyyy-MM-dd-HH-mm-ss")}.txt", restrictedToMinimumLevel: LogEventLevel.Warning)
-                      )
-                  .Build();
+    NumberWorker worker = ActivatorUtilities.CreateInstance<NumberWorker>(host.Services);
+    worker.PrintNumber();
 }
+
+private static IHost CreateHost() => 
+  Host
+  .CreateDefaultBuilder()
+  .ConfigureServices((context, services) =>
+  {
+      services.Configure<NumberConfig>(context.Configuration.GetSection("Number"));
+
+      services.AddSingleton<INumberRepository, NumberRepository>();
+      services.AddSingleton<INumberService, NumberService>();
+  })
+  .UseSerilog((context, services, configuration) => configuration
+      .ReadFrom.Configuration(context.Configuration)
+      .ReadFrom.Services(services)
+      .Enrich.FromLogContext()
+      .WriteTo.Console()
+      .WriteTo.File($"report-{DateTimeOffset.UtcNow.ToString("yyyy-MM-dd-HH-mm-ss")}.txt", restrictedToMinimumLevel: LogEventLevel.Warning)
+      )
+  .Build();
 ```
 
+ 
 ## Further readings
 
 _This article first appeared on [Code4IT 🐧](https://www.code4it.dev/)_
