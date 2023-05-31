@@ -260,11 +260,23 @@ private static IHost CreateHost() =>
  
 ## Further readings
 
+As always, a few resources to learn more about the topics discussed in this article.
+
+First and foremost, have a read to this article with a full explanation of Generic Hosts in a .NET Core application:
+
+🔗 [.NET Generic Host in ASP.NET Core | Microsoft docs](https://learn.microsoft.com/en-us/aspnet/core/fundamentals/host/generic-host)
+
+Then, if you recall, we've already learned how to print serilog logs to Console:
+
+🔗 [How to log to Console with .NET Core and Serilog | Code4IT](https://www.code4it.dev/blog/serilog-log-on-console/)
+
 _This article first appeared on [Code4IT 🐧](https://www.code4it.dev/)_
 
+🔗 [Understanding IOptions, IOptionsMonitor, and IOptionsSnapshot in .NET 7 | Code4IT](https://www.code4it.dev/blog/ioptions-ioptionsmonitor-ioptionssnapshot/)
 
 ## Wrapping up
 
+In this article, we've learned how we can customize a .NET Console application to use dependency injection, external configurations, and Serilog logging.
 
 I hope you enjoyed this article! Let's keep in touch on [Twitter](https://twitter.com/BelloneDavide) or [LinkedIn](https://www.linkedin.com/in/BelloneDavide/)! 🤜🤛
 
