@@ -4,10 +4,10 @@ date: 2023-06-06
 url: /blog/dependency-injection-config-logging-in-console-application
 draft: false
 categories:
-- Blog
+  - Blog
 tags:
-- CSharp
-- dotnet
+  - CSharp
+  - dotnet
 toc: true
 summary: "By default, you cannot use Dependency Injection, custom logging, and configurations from settings in a Console Application. Unless you create a custom `Host`!"
 ---
@@ -16,7 +16,7 @@ Sometimes, you just want to create a console application to run a complex script
 
 Also, you might want to test the code: Dependency Injection allows you to test the behavior of a class without having a strict dependency on the referenced concrete classes: you can use stubs and mocks, instead.
 
-In this article, we're going to learn how to add Dependency Injection in a .NET 7 console application. The same approach can be used for other versions of .NET. We will also add logging, using Serilog, and configurations coming from an *appsettings.json* file.
+In this article, we're going to learn how to add Dependency Injection in a .NET 7 console application. The same approach can be used for other versions of .NET. We will also add logging, using Serilog, and configurations coming from an _appsettings.json_ file.
 
 We're going to start small, with the basic parts, and gradually move on to more complex scenarios. We're gonna create a simple, silly console application: we will inject a bunch of services, and print a message on the console.
 
@@ -84,9 +84,9 @@ Now, we have to build the dependency tree and inject such services.
 
 The first step to take is to **install some NuGet packages** that will allow us to add a custom `IHost` container so that we can add Dependency Injection and all the customization we usually add in projects that have a StartUp (or a Program) class, such as .NET APIs.
 
-We need to install 2 NuGet packages: *Microsoft.Extensions.Hosting.Abstractions* and *Microsoft.Extensions.Hosting* will be used to create a new `IHost` that will be used to build the dependencies tree.
+We need to install 2 NuGet packages: _Microsoft.Extensions.Hosting.Abstractions_ and _Microsoft.Extensions.Hosting_ will be used to create a new `IHost` that will be used to build the dependencies tree.
 
-By navigating your *csproj* file, you should be able to see something like this:
+By navigating your _csproj_ file, you should be able to see something like this:
 
 ```xml
 <ItemGroup>
@@ -105,26 +105,26 @@ using Microsoft.Extensions.Hosting;
 and then, within the Program class, add this method:
 
 ```cs
-private static IHost CreateHost() => 
+private static IHost CreateHost() =>
   Host.CreateDefaultBuilder()
       .ConfigureServices((context, services) =>
       {
           services.AddSingleton<INumberRepository, NumberRepository>();
           services.AddSingleton<INumberService, NumberService>();
-      })     
+      })
       .Build();
 }
 ```
 
 `Host.CreateDefaultBuilder()` creates the default `IHostBuilder` - similar to the `IWebHostBuilder`, but without any reference to web components.
 
-Then we add all the dependencies, using `services.AddSingleton<T, K>`. Notice that **it's not necessary to add `services.AddSingleton<NumberWorker>`**: when we will use the concrete instance,  the dependency tree will be resolved, without the need of having an indication of the root itself.
+Then we add all the dependencies, using `services.AddSingleton<T, K>`. Notice that **it's not necessary to add `services.AddSingleton<NumberWorker>`**: when we will use the concrete instance, the dependency tree will be resolved, without the need of having an indication of the root itself.
 
 Finally, once we have everything in place, we call `Build()` to create a new instance of `IHost`.
 
 Now, we just have to run it!
 
-In the `Main` method, create the `IHost` instance by calling `CreateHost()`. Then, by using the `ActivatorUtilities` class (coming from the *Microsoft.Externsions.DependencyInjection* namespace), create a new instance of `NumberWorker`, so that you can call `PrintNumber()`;
+In the `Main` method, create the `IHost` instance by calling `CreateHost()`. Then, by using the `ActivatorUtilities` class (coming from the _Microsoft.Externsions.DependencyInjection_ namespace), create a new instance of `NumberWorker`, so that you can call `PrintNumber()`;
 
 ```cs
 private static void Main(string[] args)
@@ -141,7 +141,7 @@ Now you are ready to run the application, and see the message on the console:
 
 ## Read configurations from appsettings.json for a Console Library
 
-We want to make our system configurable and place our configurations in an *appsettings.json* file.
+We want to make our system configurable and place our configurations in an _appsettings.json_ file.
 
 As we saw [in a recent article 🔗](https://www.code4it.dev/blog/ioptions-ioptionsmonitor-ioptionssnapshot/), we can use `IOptions<T>` to inject configurations in the constructor. For the sake of this article, I'm gonna use a POCO class, `NumberConfig`, that is mapped to a configuration section and injected into the classes.
 
@@ -183,7 +183,7 @@ public class NumberRepository : INumberRepository
 
 Run the project to admire the result, and... BOOM! It will not work! You should see the message "My wonderful number is 0", even though the number we set on the config file is -899.
 
-This happens because **we must include the *appsettings.json* file in the result of the compilation**. Right-click on that file, select the Properties menu, and set the "Copy to Output Directory" to "Copy always": 
+This happens because **we must include the _appsettings.json_ file in the result of the compilation**. Right-click on that file, select the Properties menu, and set the "Copy to Output Directory" to "Copy always":
 
 ![Copy always the appsettings file to the Output Directory](./appsettings-copyalways.png)
 
@@ -197,9 +197,9 @@ Finally, we can add Serilog logs to our console applications - as well as define
 
 To add Serilog, you first have to install these NuGet packages:
 
-* *Serilog.Extensions.Hosting* and *Serilog.Formatting.Compact* to add the basics of Serilog;
-* *Serilog.Settings.Configuration* to read logging configurations from settings (if needed);
-* *Serilog.Sinks.Console* and *Serilog.Sinks.File* to add the Console and the File System as Sinks.
+- _Serilog.Extensions.Hosting_ and _Serilog.Formatting.Compact_ to add the basics of Serilog;
+- _Serilog.Settings.Configuration_ to read logging configurations from settings (if needed);
+- _Serilog.Sinks.Console_ and _Serilog.Sinks.File_ to add the Console and the File System as Sinks.
 
 Let's get back to the `CreateHost()` method, and add a new section right after `ConfigureServices`:
 
@@ -221,9 +221,8 @@ Then, add an `ILogger` here and there, and admire the final result:
 
 ## Final result
 
-To wrap up, here's the final implementation of the Program class and the 
+To wrap up, here's the final implementation of the Program class and the
 CreateHost method:
-
 
 ```cs
 private static void Main(string[] args)
@@ -233,7 +232,7 @@ private static void Main(string[] args)
     worker.PrintNumber();
 }
 
-private static IHost CreateHost() => 
+private static IHost CreateHost() =>
   Host
   .CreateDefaultBuilder()
   .ConfigureServices((context, services) =>
@@ -252,7 +251,7 @@ private static IHost CreateHost() =>
       )
   .Build();
 ```
- 
+
 ## Further readings
 
 As always, a few resources to learn more about the topics discussed in this article.
@@ -275,7 +274,6 @@ as well as defining configurations for your project?
 
 🔗 [3 (and more) ways to set configuration values in .NET | Code4IT](https://www.code4it.dev/blog/how-to-set-configurations-values-dotnet/)
 
-
 ## Wrapping up
 
 In this article, we've learned how we can customize a .NET Console application to use dependency injection, external configurations, and Serilog logging.
@@ -285,4 +283,3 @@ I hope you enjoyed this article! Let's keep in touch on [Twitter](https://twitte
 Happy coding!
 
 🐧
-
