@@ -1,11 +1,11 @@
 ---
-title: "Sessionize"
-date: 2021-11-01
+title: "Code4IT quick notes 📖"
+date: 2023/06/01
 
 # set the link if you want to redirect the user.
-link: "https://sessionize.com/davide-bellone/"
+link: "https://notes.code4it.dev/"
 # set the html target parameter if you want to change default behavior
 target: "_blank"
-excludeFromTopNav: true
+excludeFromTopNav: false
 showDate: false
 ---
