@@ -1,21 +1,23 @@
 ---
-title: About Davide Bellone
+title: About me
 url: "/about-me"
-date: 2021-11-01T13:18:45+01:00
+date: 2021-11-01
 excludeFromTopNav: false
 showDate: false
 featuredImage: ""
 ---
 
-Ciao, I'm Davide Bellone! I'm a software developer with more than 9 years of professional experience.
+Ciao, I'm **Davide Bellone**!
 
-I'm currently employed as a **senior backend developer** in Turin, Italy.
+I'm a software developer with more than 9 years of professional experience.
 
-I've been working with Microsoft platforms and frameworks since 2014: I started as a **SharePoint** developer, then I moved to **ASP.NET MVC 5**, **.NET API**, **Angular 6**, and finally I became a **full backend** developer.
+I'm currently employed as a **senior backend developer** in Turin, **Italy**.
 
-I'm currently working with many tools and frameworks, such as **Azure**, **MongoDB**, and **Docker**.
+I've been working with Microsoft platforms and frameworks since 2014: I started as a SharePoint developer, then I moved to ASP.NET MVC 5, .NET API, Angular 6, and finally I became a full backend developer.
 
-I love learning new things, and I think that the best way to learn is to share: that's why I started my journey as a content creator and conference speaker.
+I've worked with many tools and frameworks, such as **Azure**, **MongoDB**, **Docker**, and, of course **.NET and C#**.
+
+I love learning new things, and I think that the best way to learn is to share: that's why I started my journey as a **content creator and conference speaker**.
 
 If you want to keep in touch, you can find me on [Twitter](https://twitter.com/BelloneDavide) and on [LinkedIn](https://www.linkedin.com/in/bellonedavide/) where I publish interesting (I hope😁) content about C# and .NET!
 
