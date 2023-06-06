@@ -81,17 +81,17 @@ They are the most difficult of the three to write, but they are also incredibly 
 
 An example of an E2E Test could be made of the following steps:
 
-  1. the user logs in;
-  2. the user searches for a product;
-  3. the user adds a product to the cart;
-  4. the user confirms the payment;
+1. the user logs in;
+2. the user searches for a product;
+3. the user adds a product to the cart;
+4. the user confirms the payment;
 
 that would bring to the following assertions:
 
-  1. the user can complete those paths successfully;
-  2. the order is received by the system;
-  3. the payment is correctly handled by the third-party system;
-  4. an email is sent to the user
+1. the user can complete those paths successfully;
+2. the order is received by the system;
+3. the payment is correctly handled by the third-party system;
+4. an email is sent to the user
 
 As you can see, we cover the most critical user paths.
 

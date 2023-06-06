@@ -80,7 +80,7 @@ disqusShortname = ""
 
   # Header configuration
     # your subtitle if you want to use any
-    subtitle = "Code4IT - the place for .NET developers, Azure lovers, and everyone else."
+    subtitle = "The place for .NET developers, Azure lovers, and everyone else."
 
     # if you want to use libravatar or gravatar for the header image
     avatarEmail = ""

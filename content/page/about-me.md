@@ -1,5 +1,5 @@
 ---
-title: About me
+title: About Me
 url: "/about-me"
 date: 2021-11-01
 excludeFromTopNav: false
