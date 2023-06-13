@@ -2,7 +2,7 @@
 title: "C# Tip: Use custom Equality comparers in Nunit tests"
 date: 2023-06-13
 url: /csharptips/nunit-equals-custom-comparer
-categories: 
+categories:
   - CSharp Tips
 tags:
   - CSharp
@@ -37,7 +37,7 @@ public class Player
 Let's create a dummy method that clones a player:
 
 ```cs
-public static Player GetClone(Player source) 
+public static Player GetClone(Player source)
   => new Player
     {
       Id = source.Id,
@@ -102,10 +102,9 @@ public void GetClone_WithEqualityFunction()
 
 ## EqualityComparer class: best for complex scenarios
 
-If you have a complex scenario to validate, you can create a custom class that implements the `IEqualityComparer` interface.  Here, you have to implement two methods: `Equals` and `GetHashCode`.
+If you have a complex scenario to validate, you can create a custom class that implements the `IEqualityComparer` interface. Here, you have to implement two methods: `Equals` and `GetHashCode`.
 
 Instead of just implementing the same check inside the `Equals` method, we're gonna try a different approach: we're gonna use `GetHashCode` to determine how to identify a Player, by generating a string used as a simple identifier, and then we're gonna use the HashCode of the result string for the actual comparison:
-
 
 ```cs
 public class PlayersComparer : IEqualityComparer<Player>
@@ -141,9 +140,9 @@ public void GetClone_WithEqualityComparer()
 }
 ```
 
-Of course, you can customize the `Equals` method to use whichever condition to validate the equivalence of two instances, depending on your business rules. For example, you can say that two vectors are equal if they have the exact same length and direction, even though the start and end points are different. 
+Of course, you can customize the `Equals` method to use whichever condition to validate the equivalence of two instances, depending on your business rules. For example, you can say that two vectors are equal if they have the exact same length and direction, even though the start and end points are different.
 
-❓ A question for you: where would you put the equality check: in the production code or in the tests project? 
+❓ A question for you: where would you put the equality check: in the production code or in the tests project?
 
 ## Wrapping up
 
