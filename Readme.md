@@ -4,7 +4,7 @@
 
 ### Tramite NPM
 
-Articolo:
+Articolo
 
 ```plaintext
 npm run article --slug="mio-slug"
