@@ -2,7 +2,7 @@
 
 ## Creare articolo
 
-### Tramite npm
+### Tramite NPM
 
 Articolo:
 
