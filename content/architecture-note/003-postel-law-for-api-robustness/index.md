@@ -1,5 +1,5 @@
 ---
-title: "Postel's law for API Robustness"
+title: "Davide's Code and Architecture Notes - Postel's law for API Robustness"
 date: 2023-04-18
 url: /architecture-notes/postel-law-for-api-robustness
 draft: false
