@@ -1,7 +1,7 @@
 ---
-title: "Azure App Configurations and .NET API: a smart and secure way to manage configurations"
+title: "Azure App Configuration and .NET API: a smart and secure way to manage configurations"
 date: 2023-06-14
-url: /blog/post-slug
+url: /blog/azure-app-configuration-dotnet-api
 draft: false
 categories:
 - Blog
@@ -10,7 +10,7 @@ tags:
 - DotNet
 - Azure
 toc: true
-summary: "A summary"
+summary: "Centralizing configurations can be useful for several reasons: security, consistency, deployability. In this article, we're gonna use Azure App Configuration to centralize the configurations used in a .NET API application."
 ---
 
 Almost every application requires some sort of configurations: connection strings, default values, and so on. 
@@ -83,9 +83,9 @@ public class ConfigDemoController : ControllerBase
 
 As you can see, it's all pretty straightforward. We can call the endpoint and see the exact same values that are present in our *appsettings* file.
 
-![Default values coming from the appsettings.json file](./curl-default-values.png)
+![Default values coming from the appsettings.json file](./config-default-values.png)
 
-## Create Azure App Configuration instance
+## How to create an Azure App Configuration instance
 
 Now we can move to the cloud ☁
 
@@ -98,14 +98,13 @@ Finally, you can pick the best Pricing Tier for you:
 * **Free**: well, it's free, but with fewer capabilities;
 * **Standard**: you pay more, but you can have Geo-replication and possibility to recovery deleted configurations.
 
-
-![App config basics](./1.png)
+![Azure App Configuration wizard](./azure-app-configuration-wizard.png)
 
 I will chose the Free tier, and complete the resource creation.
 
-After a while, you will finally see the resource dashboard with its basics info: 
+After a while, you will finally see the resource overview with its basics info: 
 
-![Instance dashboard](./2.png)
+![Azure App Configuration instance overview](./app-configuration-overview.png)
 
 Now we can update our configurations. As you recall, the settings structure is:
 
@@ -125,23 +124,23 @@ Now we want to update the page size and the password. Locate Configuration Explo
 
 Once you've overridden both values, you should be able to see something like this:
 
-![Simple settings on Azure App Configurations](./all-settings.png)
+![Simple settings on Azure App Configuration](./all-defined-configurations.png)
 
 
-## ss
+## How to integrate Azure App Configuration in a .NET application
 
-Now we are ready to integrate Azure App Configurations with our .NET APIs.
+Now we are ready to integrate Azure App Configuration with our .NET APIs.
 
 First things first, we must install the *Microsoft.Azure.AppConfiguration.AspNetCore* NuGet Package:
 
-![](./azure-appconfiguration-aspnetcore-nuget-package.png)
+![AppConfiguration.AspNetCore NuGet package](./azure-appconfiguration-aspnetcore-nuget-package.png)
 
 
 Then, we need to find a way to connect to our App Configuration instance. There are two ways: using Azure Active Directory (Azure AD) or using a simple Access Key. We're gonna use the latter.
 
 Get back to Azure, and locate the Access Keys menu item. Then head to Read-only keys, and copy the full connection string.
 
-![](./access-keys.png)
+![Access Keys on Azure Portal](./access-keys.png)
 
 **Do NOT store it on you repository!** There are smarter, more secure ways to store use such connection strings:
 
@@ -164,10 +163,10 @@ builder.Configuration.AddAzureAppConfiguration(ConnectionString);
 
 You can now run the APIs and call the previous endpoint to see the new results
 
-![AA](./config-from-azure.png)
+![Configurations now come also from Azure App Configuration](./config-from-azure.png)
 
 
-## Final thoughts
+## Why should you use Azure App Configuration?
 
 In my opinion, having a proper way to handle configurations is crucial for the success of a project. 
 
@@ -175,9 +174,9 @@ Centralizing configurations can be useful in three different ways:
 
 1. Your application is more secure, since you don't risk having the credentials exposed on the web;
 2. You can share configurations across different services: say that you have 4 services that access the same external APIs that require a Client Secret. Centralizing the config helps in having consistent values across the different services and, for example, updating the secret for all the applications in just one place;
-3. Use different config based on the environment: with Azure App Configurations you can use a set of tags and labels to determine which configs mus be loaded in which environment. This simplifies a lot the management of configurations across different environments.
+3. Use different config based on the environment: with Azure App Configuration you can use a set of tags and labels to determine which configs mus be loaded in which environment. This simplifies a lot the management of configurations across different environments.
 
-But notice that, using the basic approach that we used in this article, configurations coming from Azure are loaded at the startup of the application: **configs are static until you restart the application**. You can configure your application to **poll Azure App Configurations** to always have the most updated values without the need of restarting the application, but it will be the topic of a future article.
+But notice that, using the basic approach that we used in this article, configurations coming from Azure are loaded at the startup of the application: **configs are static until you restart the application**. You can configure your application to **poll Azure App Configuration** to always have the most updated values without the need of restarting the application, but it will be the topic of a future article.
 
 ## Further readings
 
@@ -196,7 +195,7 @@ Also, handling config in a smart way is easy, if you know what to do. You can fo
 
 ## Wrapping up
 
-In this article, we've learned a smart way to handle configurations using Azure App Configurations. 
+In this article, we've learned a smart way to handle configurations using Azure App Configuration. 
 
 This product can be used for free, but, of course, with limitations. 
 
@@ -208,23 +207,14 @@ Happy coding!
 
 🐧
 
-
-[ ] Titoli
-
+[X] Titoli
+[X] Frontmatter
+[X] Rinomina immagini
+[X] Alt Text per immagini
+[X] Nome cartella e slug devono combaciare
 [ ] Grammatica
-
 [ ] Bold/Italics
-
-[ ] Alt Text per immagini
-
-[ ] Frontmatter
-
-[ ] Nome cartella e slug devono combaciare
-
 [ ] Immagine di copertina
-
-[ ] Rinomina immagini
-
-curl https://localhost:7037/ConfigDemo | json
-
-https://learn.microsoft.com/en-us/azure/azure-app-configuration/quickstart-aspnet-core-app?tabs=core6x
+[ ] Rimuovi secrets dalle immagini
+[ ] Pulizia formattazione
+[ ] Review finale
