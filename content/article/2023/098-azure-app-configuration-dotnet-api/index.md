@@ -13,17 +13,17 @@ toc: true
 summary: "Centralizing configurations can be useful for several reasons: security, consistency, deployability. In this article, we're gonna use Azure App Configuration to centralize the configurations used in a .NET API application."
 ---
 
-Almost every application requires some sort of configurations: connection strings, default values, and so on. 
+Almost every application requires some sort of configuration: connection strings, default values, and so on. 
 
-It's not a good practice to keep all the configurations in your codebase: if your code leaks online, you'll have all your connection strings, private settings, API keys exposed online. 
+It's not a good practice to keep all the configurations in your codebase: if your code leaks online, you'll have all your connection strings, private settings, and API keys exposed online. 
 
 In previous articles, we've learned [how to set up configurations in a .NET application](https://www.code4it.dev/blog/how-to-set-configurations-values-dotnet/), as well as [how to access them in our code using the IOptions](https://www.code4it.dev/blog/ioptions-ioptionsmonitor-ioptionssnapshot/) family.
 
-In this article, we're gonna make our application more secure by moving our configurations out to the cloud, and use Azure App Configurations to securely use such config in our applications.
+In this article, we're gonna make our application more secure by moving our configurations out to the cloud and using Azure App Configurations to securely use such configs in our applications.
 
 But first, as always, we need a dummy project to demonstrate such capabilities.
 
-So, I created a simple .NET 7 API project with just one endpoint, */ConfigDemo*, that returns the values from the settings.
+I created a simple .NET 7 API project with just one endpoint, */ConfigDemo*, that returns the values from the settings.
 
 In fact, in the *appsettings.json* file I have these values:
 
@@ -39,7 +39,7 @@ In fact, in the *appsettings.json* file I have these values:
 }
 ```
 
-That are mapped to a `MyConfig` class:
+These values are mapped to a `MyConfig` class:
 
 ```cs
 public class MyConfig
@@ -89,18 +89,18 @@ As you can see, it's all pretty straightforward. We can call the endpoint and se
 
 Now we can move to the cloud ☁
 
-First, you have to head to the [Azure Portal](https://portal.azure.com/), and create a new App Configuration instance.
+First of all, head to the [Azure Portal](https://portal.azure.com/) and create a new App Configuration instance.
 
-You will be clearly asked to specify the subscription and the resource group, and also to specify the instance location and name.
+You will be asked to specify the subscription and the resource group, and also to specify the instance location and name.
 
 Finally, you can pick the best Pricing Tier for you:
 
 * **Free**: well, it's free, but with fewer capabilities;
-* **Standard**: you pay more, but you can have Geo-replication and possibility to recovery deleted configurations.
+* **Standard**: you pay more, but you can have Geo-replication and the possibility to recover deleted configurations.
 
 ![Azure App Configuration wizard](./azure-app-configuration-wizard.png)
 
-I will chose the Free tier, and complete the resource creation.
+I will choose the Free tier, and complete the resource creation.
 
 After a while, you will finally see the resource overview with its basics info: 
 
@@ -172,15 +172,15 @@ In my opinion, having a proper way to handle configurations is crucial for the s
 
 Centralizing configurations can be useful in three different ways:
 
-1. Your application is more secure, since you don't risk having the credentials exposed on the web;
+1. Your application is more secure since you don't risk having the credentials exposed on the web;
 2. You can share configurations across different services: say that you have 4 services that access the same external APIs that require a Client Secret. Centralizing the config helps in having consistent values across the different services and, for example, updating the secret for all the applications in just one place;
-3. Use different config based on the environment: with Azure App Configuration you can use a set of tags and labels to determine which configs mus be loaded in which environment. This simplifies a lot the management of configurations across different environments.
+3. Use different configs based on the environment: with Azure App Configuration you can use a set of tags and labels to determine which configs must be loaded in which environment. This simplifies a lot the management of configurations across different environments.
 
 But notice that, using the basic approach that we used in this article, configurations coming from Azure are loaded at the startup of the application: **configs are static until you restart the application**. You can configure your application to **poll Azure App Configuration** to always have the most updated values without the need of restarting the application, but it will be the topic of a future article.
 
 ## Further readings
 
-Configurations management is one of the keys of the success of a project: if settings are difficult to manage and, even worse, difficult to set locally for debugging, you'll lose a lot of time (true story!).
+Configuration management is one of the keys to the success of a project: if settings are difficult to manage and, even worse, difficult to set locally for debugging, you'll lose a lot of time (true story!).
 
 However, there are several ways to set configurations for a .NET application, such as Environment Variables, launchSettings, and so on.
 
@@ -215,6 +215,6 @@ Happy coding!
 [ ] Grammatica
 [ ] Bold/Italics
 [ ] Immagine di copertina
-[ ] Rimuovi secrets dalle immagini
+[X] Rimuovi secrets dalle immagini
 [ ] Pulizia formattazione
 [ ] Review finale
