@@ -1,6 +1,6 @@
 ---
 title: "Azure App Configuration and .NET API: a smart and secure way to manage configurations"
-date: 2023-06-14
+date: 2023-06-20
 url: /blog/azure-app-configuration-dotnet-api
 draft: false
 categories:
@@ -202,15 +202,3 @@ I hope you enjoyed this article! Let's keep in touch on [Twitter](https://twitte
 Happy coding!
 
 🐧
-
-[X] Titoli
-[X] Frontmatter
-[X] Rinomina immagini
-[X] Alt Text per immagini
-[X] Nome cartella e slug devono combaciare
-[X] Grammatica
-[X] Bold/Italics
-[ ] Immagine di copertina
-[X] Rimuovi secrets dalle immagini
-[ ] Pulizia formattazione
-[] Review finale
