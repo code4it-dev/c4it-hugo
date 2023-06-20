@@ -26,16 +26,14 @@ Happy coding!
 
 🐧
 
+
 [ ] Titoli
-
-[ ] Grammatica
-
-[ ] Bold/Italics
-
-[ ] Alt Text per immagini
-
 [ ] Frontmatter
-
+[ ] Rinomina immagini
+[ ] Alt Text per immagini
+[ ] Grammatica
+[ ] Bold/Italics
 [ ] Nome cartella e slug devono combaciare
-
 [ ] Immagine di copertina
+[ ] Rimuovi secrets dalle immagini
+[ ] Pulizia formattazione
