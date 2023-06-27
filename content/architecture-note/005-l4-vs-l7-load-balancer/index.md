@@ -116,7 +116,7 @@ In this article, we've learned how L7 and L4 Load Balancers differ, and what are
 
 Here's a short table to sum up the differences.
 
-| L4 Load Balancing                                                                                        | L7 Load Balancing                                                                                                |
+| L4 Load Balancing                                                                                        | L7 Load Balancing                                                                                               |
 | -------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------- |
 | Works at the transport layer                                                                             | Works at the application layer                                                                                   |
 | Uses TCP and UDP protocols                                                                               | Uses HTTP and SMTP protocols                                                                                     |
