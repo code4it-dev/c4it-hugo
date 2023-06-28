@@ -1,9 +1,11 @@
 ---
-title: My talks
+title: Public speaking
 url: "/talks"
 date: 2021-11-01T13:18:45+01:00
 excludeFromTopNav: false
 showDate: false
+showComments: false
+toc: true
 ---
 
 I love sharing knowledge with my peers. May it be in person, with this blog, or with online discussions.
