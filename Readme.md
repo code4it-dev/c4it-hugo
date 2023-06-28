@@ -84,3 +84,8 @@ $theme-gray: #b4b4b4;
 {{< youtube w7Ft2ymGmfc >}} per youtube
 
 {{< tweet user="BelloneDavide" id="1598349951876173824" >}} per twitter
+
+## Cookie Banner
+
+Gestito da https://app.easycookie.io/.
+Ho aggiunto uno script nell'header modificando la partial /layouts/partials/hooks/head-end
