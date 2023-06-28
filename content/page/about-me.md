@@ -4,6 +4,7 @@ url: "/about-me"
 date: 2021-11-01
 excludeFromTopNav: false
 showDate: false
+showComments: false
 featuredImage: ""
 ---
 
