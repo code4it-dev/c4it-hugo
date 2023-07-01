@@ -4,12 +4,12 @@ date: 2023-06-28
 url: /blog/azure-app-configuration-dynamic-config
 draft: false
 categories:
-- Blog
+  - Blog
 tags:
-- CSharp
-- dotNET
-- Azure
-- Azure App Configuration
+  - CSharp
+  - dotNET
+  - Azure
+  - Azure App Configuration
 toc: true
 summary: "ASP.NET allows you to poll Azure App Configuration to always get the most updated values without restarting your applications. It's simple, but you have to think thoroughly."
 ---
@@ -67,11 +67,11 @@ On Azure App Configuration, you have to update the configurations manually one b
 
 Imagine that you have a service that accesses an external API whose BaseUrl and API Key are stored on Az App Configuration. We now need to move to another API: we then have to update both BaseUrl and API Key. The application is running, and we want to update the info about the external API. If we updated the application configurations every time something is updated on Az App Configuration, we would end up with an invalid state - for example, we would have the new BaseUrl and the old API Key.
 
-Therefore, we have to define a configuration value that acts as a sort of versioning key for the whole list of configurations. In Azure App Configuration's jargon, it's called *Sentinel*.
+Therefore, we have to define a configuration value that acts as a sort of versioning key for the whole list of configurations. In Azure App Configuration's jargon, it's called _Sentinel_.
 
 **A Sentinel is nothing but version key**: it's a string value that is used by the application to understand if it needs to reload the whole list of configurations. Since it's just a string, you can set any value, as long as it changes over time. **My suggestion is to use the UTC date value** of the moment you have updated the value, such as 202306051522. This way, in case of errors you can understand when was the last time any of these values have changed (but you won't know which values have changed), and, **depending on the pricing tier you are using, you can compare the current values with the previous ones**.
 
-So, head back to the *Configuration Explorer* page and add a new value: I called it *Sentinel*.
+So, head back to the _Configuration Explorer_ page and add a new value: I called it _Sentinel_.
 
 ![Sentinel value on Azure App Configuration](./sentinel.png)
 
@@ -81,7 +81,7 @@ As I said, you can use any value. For the sake of this article, I'm gonna use a 
 
 We can finally move to the code!
 
-If you recall, in the previous article we added a NuGet package, *Microsoft.Azure.AppConfiguration.AspNetCore*, and then we added Azure App Configuration as a configurations source by calling
+If you recall, in the previous article we added a NuGet package, _Microsoft.Azure.AppConfiguration.AspNetCore_, and then we added Azure App Configuration as a configurations source by calling
 
 ```cs
 builder.Configuration.AddAzureAppConfiguration(ConnectionString);
@@ -95,7 +95,7 @@ Instead of that instruction, add this other one:
 builder.Configuration.AddAzureAppConfiguration(options =>
 {
     options
-    .Connect(ConnectionString) 
+    .Connect(ConnectionString)
     .Select(KeyFilter.Any, LabelFilter.Null)
     // Configure to reload configuration if the registered sentinel key is modified
     .ConfigureRefresh(refreshOptions =>
@@ -228,16 +228,16 @@ You can see a live demo here:
 
 ![Demo of configurations refreshed dinamically](./demo.gif)
 
-As you can see, the first time after updating the Sentinel value, the values are still the old ones. But, in the meantime, the values have been updated, and the cache has expired, so that the next time the values will be retrieved from Azure. 
+As you can see, the first time after updating the Sentinel value, the values are still the old ones. But, in the meantime, the values have been updated, and the cache has expired, so that the next time the values will be retrieved from Azure.
 
 ## My 2 cents on timing
 
 As we've learned, the config values are stored in a memory cache, with an expiration time. Every time the cache expires, we need to retrieve again the configurations from Azure App Configuration (in particular, by checking if the Sentinel value has been updated in the meanwhile). **Don't underestimate the cache value**, as there are pros and cons of each kind of value:
 
-* a **short timespan keeps the values always up-to-date**, making your application more reactive to changes. But it also means that you are **polling too often** the Azure App Configuration endpoints, making your application busier and incurring limitations due to the requests count;
-* a **long timespan keeps your application more performant** because there are fewer requests to the Configuration endpoints, but it also forces you to have the configurations updated after a while from the update applied on Azure.
+- a **short timespan keeps the values always up-to-date**, making your application more reactive to changes. But it also means that you are **polling too often** the Azure App Configuration endpoints, making your application busier and incurring limitations due to the requests count;
+- a **long timespan keeps your application more performant** because there are fewer requests to the Configuration endpoints, but it also forces you to have the configurations updated after a while from the update applied on Azure.
 
-There is also another issue with long timespans: if the same configurations are used by different services, you might end up in a **dirty state**. Say that you have *UserService* and *PaymentService*, and both use some configurations stored on Azure whose caching expiration is 10 minutes. Now, the following actions happen:
+There is also another issue with long timespans: if the same configurations are used by different services, you might end up in a **dirty state**. Say that you have _UserService_ and _PaymentService_, and both use some configurations stored on Azure whose caching expiration is 10 minutes. Now, the following actions happen:
 
 1. UserService starts
 2. PaymentService starts
@@ -246,7 +246,7 @@ There is also another issue with long timespans: if the same configurations are 
 
 We will end up in a situation where UserService has the most updated values, while PaymentService doesn't. There will be a time window (in our example, up to 10 minutes) in which the configurations are misaligned.
 
-Also, **take costs and limitations** into consideration: **with the Free tier you have *1000 requests per day*, while with the Standard tier, you have *30.000 per hour per replica*.** Using the default cache expiration (30 seconds) in an application with a continuous flow of users means that you are gonna call the endpoint 2880 times per day (2 times a minute * (minutes per day = 1440)). Way more than the available value on the Free tier.
+Also, **take costs and limitations** into consideration: **with the Free tier you have _1000 requests per day_, while with the Standard tier, you have _30.000 per hour per replica_.** Using the default cache expiration (30 seconds) in an application with a continuous flow of users means that you are gonna call the endpoint 2880 times per day (2 times a minute \* (minutes per day = 1440)). Way more than the available value on the Free tier.
 
 So, **think thoroughly before choosing an expiration time!**
 
