@@ -289,4 +289,4 @@ Happy coding!
 [X] Nome cartella e slug devono combaciare
 [ ] Immagine di copertina
 [X] Rimuovi secrets dalle immagini
-[ ] Pulizia formattazione
+[X] Pulizia formattazione

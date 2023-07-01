@@ -5,6 +5,7 @@ tags:
   - Azure
   - dotnet
   - CSharp
+  - Azure Service Bus
 toc: true
 url: /blog/azure-service-bus-errors
 categories:
