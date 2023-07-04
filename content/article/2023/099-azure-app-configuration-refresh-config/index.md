@@ -1,7 +1,7 @@
 ---
-title: "How to automatically reload configurations with Azure App Configuration in .NET"
-date: 2023-06-28
-url: /blog/azure-app-configuration-dynamic-config
+title: "How to automatically refresh configurations with Azure App Configuration in .NET"
+date: 2023-07-04
+url: /blog/azure-app-configuration-refresh-config
 draft: false
 categories:
   - Blog
@@ -279,14 +279,3 @@ I hope you enjoyed this article! Let's keep in touch on [Twitter](https://twitte
 Happy coding!
 
 🐧
-
-[X] Titoli
-[X] Frontmatter
-[X] Rinomina immagini
-[X] Alt Text per immagini
-[X] Grammatica
-[X] Bold/Italics
-[X] Nome cartella e slug devono combaciare
-[ ] Immagine di copertina
-[X] Rimuovi secrets dalle immagini
-[X] Pulizia formattazione
