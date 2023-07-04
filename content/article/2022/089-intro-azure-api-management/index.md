@@ -4,6 +4,7 @@ date: 2022-11-22
 tags:
   - Azure
   - API Gateway
+  - Azure API Management
 toc: true
 url: /blog/intro-azure-api-management
 categories:
