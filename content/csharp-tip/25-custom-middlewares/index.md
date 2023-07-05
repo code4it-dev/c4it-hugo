@@ -1,6 +1,6 @@
 ---
 title: "C# Tip: 2 ways to define ASP.NET Core custom Middleware"
-date: 2023-07-04
+date: 2023-07-11
 url: /csharptips/custom-middleware
 categories:
   - CSharp Tips
