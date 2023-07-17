@@ -20,7 +20,7 @@ int age = 31;
 string bio = $"Hi, I'm {age} years old";
 ```
 
-That's it: an interpolated string is the one where you can reference a variable or a property withing the string definition, using the `$` and the `{}` operators to generate such strings.
+That's it: an interpolated string is one where you can reference a variable or a property within the string definition, using the `$` and the `{}` operators to generate such strings.
 
 Did you know that you can even format how the interpolated value must be rendered when creating the string? It's just a matter of specifying the format after the `:` sign:
 
@@ -42,8 +42,8 @@ Here we have `date:yyyy-MM-dd` which basically means "format the `date` variable
 There are, obviously, different ways to format dates, as described on the [official documentation](https://learn.microsoft.com/en-us/dotnet/standard/base-types/custom-date-and-time-format-strings). Some of the most useful are:
 
 - `dd`: day of the month, in number (from 01 to 31);
-- `ddd`: abbrebiated day name (eg: Mon)
-- `dddd`: full day name (eg: Monday)
+- `ddd`: abbreviated  day name (eg: Mon)
+- `dddd`: complete day name (eg: Monday)
 - `hh`: hour in a 12-hour clock (01-> 12)
 - `HH`: hour in a 24-hour clock (00->23)
 - `MMMM`: full month day
@@ -73,7 +73,7 @@ Again, there are lots of different ways to format numbers:
 
 ## Further readings
 
-There are too many formats that you can use to convert a value to string, and we cannot explore all of them here.
+There are too many formats that you can use to convert a value to a string, and we cannot explore all of them here.
 
 But still, you can have a look at several ways to format date and time in C#
 
