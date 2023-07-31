@@ -397,16 +397,27 @@ public class IntegrationTestWebApplicationFactory : WebApplicationFactory<Progra
 }
 ```
 
+You can find the source code used for this article [on my GitHub](https://github.com/code4it-dev/IntegrationTestsExamples); feel free to downwload it and toy with it!
 
 ## Further readings
 
+This is an in-depth article about Integration Tests in .NET. I already wrote an article about it with a simpler approach that you might enjoy:
+
+🔗 [How to run integration tests for .NET API | Code4IT](https://www.code4it.dev/blog/integration-tests-for-dotnet-api/)
+
 _This article first appeared on [Code4IT 🐧](https://www.code4it.dev/)_
 
-https://www.code4it.dev/architecture-notes/testing-pyramid-vs-testing-diamond/
+As I often say, a few Integration Tests are often more useful that a ton of Unit tests. Focusing on Integration Tests instead that on Unit Tests has the benefit of ensuring that the system behaves correctly regardless of the internal implementation. In this article, I used the Chain of Responsibility pattern, so unit tests would be tighlty coupled to the Handlers. If we decided to move to another pattern, we would have to delete all the existing tests and rewrite everything from scratch. 
+
+Therefore, in my opinion, the Testing Diamond is often more efficient than the Testing Pyramid, as I explained here:
+
+🔗 [Testing Pyramid vs Testing Diamond (and how they affect Code Coverage) | Code4IT](https://www.code4it.dev/architecture-notes/testing-pyramid-vs-testing-diamond/)
 
 ## Wrapping up
 
+This was a huge article, I know.
 
+Again, feel free to download and run the example code I shared [on my GitHub](https://github.com/code4it-dev/IntegrationTestsExamples).
 I hope you enjoyed this article! Let's keep in touch on [Twitter](https://twitter.com/BelloneDavide) or [LinkedIn](https://www.linkedin.com/in/BelloneDavide/)! 🤜🤛
 
 Happy coding!
