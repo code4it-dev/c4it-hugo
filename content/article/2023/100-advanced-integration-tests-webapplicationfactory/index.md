@@ -1,5 +1,5 @@
 ---
-title: "Advanced Integration Tests with NUnit and .NET 7 API with WebApplicationFactory and NUnit"
+title: "Advanced Integration Tests for .NET 7 API with WebApplicationFactory and NUnit"
 date: 2023-08-01
 url: /blog/advanced-integration-tests-webapplicationfactory
 draft: false
