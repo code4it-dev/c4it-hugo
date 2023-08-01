@@ -1,0 +1,47 @@
+classDiagram
+   class BaseLinkParserHandler{
+    <<abstract>>
+    +GetLinkInfo(Url socialUrl)
+    +SetNext(BaseLinkParserHandler next)
+    #CanHandle(Url socialUrl)
+   }
+
+   class TwitterHandler{
+
+   }
+   class LinkedInHandler{
+
+   }
+   class InvalidHandler{
+
+   }
+
+class ISocialLinksFactory{
+    <<interface>>
+    +GetRootParser()
+}
+class SocialLinksFactory{
+    +GetRootParser()
+}
+
+class ISocialLinksParser{
+    <<interface>>
+    +GetLinkInfo()
+}
+class SocialLinksParser{
+    +GetLinkInfo()
+}
+
+class SocialPostLinkController{
+    +Get();
+}
+
+   BaseLinkParserHandler <|-- TwitterHandler
+BaseLinkParserHandler <|-- LinkedInHandler
+BaseLinkParserHandler <|-- InvalidHandler
+ISocialLinksFactory <|.. SocialLinksFactory
+ISocialLinksParser <|.. SocialLinksParser
+
+SocialPostLinkController --o ISocialLinksParser
+SocialLinksParser --o ISocialLinksFactory
+SocialLinksFactory --o BaseLinkParserHandler
