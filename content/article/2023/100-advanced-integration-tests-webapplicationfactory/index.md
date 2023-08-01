@@ -1,7 +1,7 @@
 ---
 title: "Advanced Integration Tests with NUnit and .NET 7 API with WebApplicationFactory and NUnit"
-date: 2023-07-22T16:45:13+02:00
-url: /blog/advanced-integration-tests-aspnet-api
+date: 2023-08-01
+url: /blog/advanced-integration-tests-webapplicationfactory
 draft: false
 categories:
 - Blog
@@ -48,6 +48,10 @@ There is also a Factory that builds the chain, and finally, a Service that insta
 
 As you can see, this solution can become complex. We could run lots of Unit Tests to validate that the Chain of Responsibility works as expected. We can even write a Unit Tests suite for the Factory.
 
+
+![Class Diagram](./class-diagram.png)
+
+
 But, at the end of the day, we don't really care about the internal structure of the project: as long as it works as expected, we could even use a huge `switch` block (clearly, with all the consequences of this choice). So, let's write some Integration Tests.
 
 ## How to create a custom WebApplicationFactory in .NET
@@ -85,7 +89,7 @@ public class IntegrationTestWebApplicationFactory : WebApplicationFactory<Progra
 }
 ```
 
-## How to use IntegrationTestFactory in your NUnit tests
+## How to use WebApplicationFactory in your NUnit tests
 
 It's time to start working on some real Integration Tests!
 
@@ -187,11 +191,11 @@ public async Task Should_ReturnBadRequest_When_UrlIsNotValid()
 }
 ```
 
-## InMemory collection
+## How to create test-specific configurations using InMemoryCollection
 
 `WebApplicationFactory` is highly configurable thanks to the `ConfigureWebHost` method. For instance, you can customize the settings injected into your services.
 
-Usually, you want to rely on the exact same configurations defined in your *appsettings.json* to ensure that the system behaves correctly with the "real" configurations. 
+**Usually, you want to rely on the exact same configurations defined in your *appsettings.json* file** to ensure that the system behaves correctly with the "real" configurations. 
 
 For example, I defined the key "InstanceName" in the *appsettings.json* file whose value is "Real", and whose value is used to create the returned Instance object. We can validate that that value is being read from that source as validated thanks to this test:
 
@@ -228,7 +232,7 @@ protected override void ConfigureWebHost(IWebHostBuilder builder)
 }
 ```
 
-Now, even if you had the *InstanceName* configured in your *appsettings.json* file, the value is now overridden and set to *FromTests*.
+Even if you had the *InstanceName* configured in your *appsettings.json* file, the value is now overridden and set to *FromTests*.
 
 You can validate this change by simply replacing the expected value in the previous test:
 
@@ -248,7 +252,7 @@ If you also want to discard all the other existing configuration sources, you ca
 
 ## How to set up custom dependencies for your tests
 
-Maybe you don't want to resolve all the existing dependencies, but just a subset of them. For example, **you might not want to call external APIs** with a limited number of free API calls to avoid paying for the test-related calls. You can then rely on Stub classes that simulate the dependency by giving you full control of the behavior.
+Maybe you don't want to resolve all the existing dependencies, but just a subset of them. For example, **you might not want to call external APIs** with a limited number of free API calls to avoid paying for the test-related calls. You can then **rely on Stub classes that simulate the dependency** by giving you full control of the behavior.
 
 We want to replace an existing class with a Stub one: we are going to create a stub class that will be used instead of `SocialLinkParser`:
 
@@ -290,9 +294,11 @@ public async Task Should_UseStubName()
 
 ## How to create Integration Tests on specific resolved dependencies
 
-Now we are going to test that the `SocialLinkParser` does its job, regardless of the internal implementation. Right now we have used the Chain of Responsibility pattern, and we rely on the `ISocialLinksFactory` interface to create the correct sequence of handlers. But we don't know in the future how we will define the code: maybe we will replace it all with a huge *if-else* sequence - **the only important part is that the code works, regardless of the internal implementation**.
+Now we are going to test that the `SocialLinkParser` does its job, regardless of the internal implementation. Right now we have used the Chain of Responsibility pattern, and we rely on the `ISocialLinksFactory` interface to create the correct sequence of handlers. But we don't know in the future how we will define the code: maybe we will replace it all with a huge *if-else* sequence - **the most important part is that the code works, regardless of the internal implementation**.
 
-Therefore, we have to run tests on the `SocialLinkParser` class. **Not the interface, but the concrete class**. The first step is to add the class to the DI engine in the `Program` class:
+We can proceed in two ways: writing tests on the interface or writing tests on the concrete class.
+
+For the sake of this article, we are going to run tests on the `SocialLinkParser` class. **Not the interface, but the concrete class**. The first step is to add the class to the DI engine in the `Program` class:
 
 ```cs
 builder.Services.AddScoped<SocialLinkParser>();
@@ -313,9 +319,9 @@ public async Task Should_ResolveDependency()
 }
 ```
 
-As you can see, we are creating an `IServiceScope` by calling `_factory.Services.CreateScope()`. Since we have to discard this scope after the test run, we have to place it within a `using` block. Then, we can create a new instance of `SocialLinkParser` by calling `_scope.ServiceProvider.GetRequiredService<SocialLinkParser>()` and create all the tests we want on the concrete implementation of the class. 
+As you can see, we are creating an `IServiceScope` by calling `_factory.Services.CreateScope()`. Since we have to discard this scope after the test run, we have to **place it within a `using` block**. Then, we can create a new instance of `SocialLinkParser` by calling `_scope.ServiceProvider.GetRequiredService<SocialLinkParser>()` and create all the tests we want on the concrete implementation of the class. 
 
-The benefit of this approach is that you have all the internal dependencies already resolved, without relying on mocks. You can then ensure that everything, from that point on, works as you expect.
+The benefit of this approach is that **you have all the internal dependencies already resolved, without relying on mocks**. You can then ensure that everything, from that point on, works as you expect.
 
 Here I created the scope within a `using` block. There is another approach that I prefer: create the `scope` instance in the `SetUp` method, and call `Dispose()` on it the the `TearDown` phase:
 
@@ -361,7 +367,7 @@ builder.ConfigureTestServices(services =>
 
 Now you will be able to see all the logs you generated in the Output panel of Visual Studio by selecting the Tests source:
 
-![ll](./logs.png)
+![Logs appear in the Output panel of VisualStudio](./logs.png)
 
 **Beware that you are still reading the configurations for logging from the appsettings file!** If you have specified in your project to log directly to a sink (such as DataDog or SEQ), your tests will send those logs to the specified sinks. Therefore, you should get rid of all the other logging sources by calling `ClearProviders()`:
 
@@ -380,10 +386,10 @@ public class IntegrationTestWebApplicationFactory : WebApplicationFactory<Progra
     {
         builder.ConfigureAppConfiguration((host, configurationBuilder) =>
         {
-            // remove other settings sources, if necessary
+            // Remove other settings sources, if necessary
             configurationBuilder.Sources.Clear();
 
-            // create custom key-value pairs to be used as settings
+            //Create custom key-value pairs to be used as settings
             configurationBuilder.AddInMemoryCollection(
                 new List<KeyValuePair<string, string?>>
                 {
@@ -393,17 +399,17 @@ public class IntegrationTestWebApplicationFactory : WebApplicationFactory<Progra
 
         builder.ConfigureTestServices(services =>
         {
-            // add stub classes
+            //Add stub classes
             services.AddScoped<ISocialLinkParser, StubSocialLinkParser>();
 
-            // configure logging
+            //Configure logging
             services.AddLogging(builder => builder.ClearProviders().AddConsole().AddDebug());
         });
     }
 }
 ```
 
-You can find the source code used for this article [on my GitHub](https://github.com/code4it-dev/IntegrationTestsExamples); feel free to downwload it and toy with it!
+You can find the source code used for this article [on my GitHub](https://github.com/code4it-dev/IntegrationTestsExamples); feel free to download it and toy with it!
 
 ## Further readings
 
@@ -413,7 +419,9 @@ This is an in-depth article about Integration Tests in .NET. I already wrote an 
 
 _This article first appeared on [Code4IT 🐧](https://www.code4it.dev/)_
 
-As I often say, a few Integration Tests are often more useful that a ton of Unit Tests. Focusing on Integration Tests instead that on Unit Tests has the benefit of ensuring that the system behaves correctly regardless of the internal implementation. In this article, I used the Chain of Responsibility pattern, so Unit Tests would be tighlty coupled to the Handlers. If we decided to move to another pattern, we would have to delete all the existing tests and rewrite everything from scratch. 
+As I often say, a few Integration Tests are often more useful than a ton of Unit Tests. Focusing on Integration Tests instead that on Unit Tests has the benefit of ensuring that the system behaves correctly regardless of the internal implementation. 
+
+In this article, I used the Chain of Responsibility pattern, so Unit Tests would be tightly coupled to the Handlers. If we decided to move to another pattern, we would have to delete all the existing tests and rewrite everything from scratch. 
 
 Therefore, in my opinion, the Testing Diamond is often more efficient than the Testing Pyramid, as I explained here:
 
@@ -424,20 +432,10 @@ Therefore, in my opinion, the Testing Diamond is often more efficient than the T
 This was a huge article, I know.
 
 Again, feel free to download and run the example code I shared [on my GitHub](https://github.com/code4it-dev/IntegrationTestsExamples).
+
 I hope you enjoyed this article! Let's keep in touch on [Twitter](https://twitter.com/BelloneDavide) or [LinkedIn](https://www.linkedin.com/in/BelloneDavide/)! 🤜🤛
 
 Happy coding!
 
 🐧
 
-
-[ ] Titoli
-[ ] Frontmatter
-[ ] Rinomina immagini
-[ ] Alt Text per immagini
-[ ] Grammatica
-[ ] Bold/Italics
-[ ] Nome cartella e slug devono combaciare
-[ ] Immagine di copertina
-[ ] Rimuovi secrets dalle immagini
-[ ] Pulizia formattazione
