@@ -10,7 +10,7 @@ tags:
 summary: "Customizing the behavior of an HTTP request is easy: you can use a middleware defined as a delegate or as a class."
 ---
 
-Sometimes you need to create custom logic that must be applied to all HTTP requests received by your ASP.NET Core application. In these cases, you can create a custom *middleware*: pieces of code that are executed sequentially for all incoming requests.
+Sometimes you need to create custom logic that must be applied to all HTTP requests received by your ASP.NET Core application. In these cases, you can create a custom _middleware_: pieces of code that are executed sequentially for all incoming requests.
 
 **The order of middlewares matters**. Here's a nice schema published on the [Microsoft website](https://learn.microsoft.com/en-us/aspnet/core/fundamentals/middleware/index/_static/middleware-pipeline.svg):
 
@@ -45,8 +45,8 @@ The alternative to delegates is by defining a custom class.
 
 You can call it whatever you want, but you have some constraints to follow when creating the class:
 
-* it must have a public constructor with a single parameter whose type is `RequestDelegate` (that will be used to invoke the next middleware);
-* it must expose a public method named `Invoke` or `InvokeAsync` that accepts as a first parameter an `HttpContext` and returns a `Task`;
+- it must have a public constructor with a single parameter whose type is `RequestDelegate` (that will be used to invoke the next middleware);
+- it must expose a public method named `Invoke` or `InvokeAsync` that accepts as a first parameter an `HttpContext` and returns a `Task`;
 
 Here's an example:
 
