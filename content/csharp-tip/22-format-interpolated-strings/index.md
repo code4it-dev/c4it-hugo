@@ -42,7 +42,7 @@ Here we have `date:yyyy-MM-dd` which basically means "format the `date` variable
 There are, obviously, different ways to format dates, as described on the [official documentation](https://learn.microsoft.com/en-us/dotnet/standard/base-types/custom-date-and-time-format-strings). Some of the most useful are:
 
 - `dd`: day of the month, in number (from 01 to 31);
-- `ddd`: abbreviated  day name (eg: Mon)
+- `ddd`: abbreviated day name (eg: Mon)
 - `dddd`: complete day name (eg: Monday)
 - `hh`: hour in a 12-hour clock (01-> 12)
 - `HH`: hour in a 24-hour clock (00->23)

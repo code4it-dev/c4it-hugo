@@ -4,12 +4,12 @@ date: 2023-08-01
 url: /blog/advanced-integration-tests-webapplicationfactory
 draft: false
 categories:
-- Blog
+  - Blog
 tags:
-- Tests
-- API
-- dotNET
-- CSharp
+  - Tests
+  - API
+  - dotNET
+  - CSharp
 toc: true
 summary: "Integration Tests are incredibly useful: a few Integration Tests are often more useful than lots of Unit Tests. Let's learn some advanced capabilities of `WebApplicationFactory`."
 ---
@@ -40,7 +40,7 @@ will return
 }
 ```
 
-For completeness, `instanceName` is a value coming from the *appsettings.json* file, while `info` is an object that holds some info about the social post URL passed as input.
+For completeness, `instanceName` is a value coming from the _appsettings.json_ file, while `info` is an object that holds some info about the social post URL passed as input.
 
 Internally, the code is using the **Chain of Responsibility pattern**: there is a handler that "knows" if it can handle a specific URL; if so, it just elaborates the input; otherwise, it calls the next handler.
 
@@ -48,15 +48,13 @@ There is also a Factory that builds the chain, and finally, a Service that insta
 
 As you can see, this solution can become complex. We could run lots of Unit Tests to validate that the Chain of Responsibility works as expected. We can even write a Unit Tests suite for the Factory.
 
-
 ![Class Diagram](./class-diagram.png)
-
 
 But, at the end of the day, we don't really care about the internal structure of the project: as long as it works as expected, we could even use a huge `switch` block (clearly, with all the consequences of this choice). So, let's write some Integration Tests.
 
 ## How to create a custom WebApplicationFactory in .NET
 
-When creating Integration Tests for .NET APIs you have to **instantiate a new instance of `WebApplicationFactory`**, a class coming from the `Microsoft.AspNetCore.Mvc.Testing` NuGet Package. 
+When creating Integration Tests for .NET APIs you have to **instantiate a new instance of `WebApplicationFactory`**, a class coming from the `Microsoft.AspNetCore.Mvc.Testing` NuGet Package.
 
 Since we are going to define it once and reuse it across all the tests, let's create a new class that extends `WebApplicationFactory`, and add some custom behavior to it.
 
@@ -69,7 +67,7 @@ public class IntegrationTestWebApplicationFactory : WebApplicationFactory<Progra
 
 Let's focus on the `Program` class: as you can see, **the `WebApplicationFactory` class requires an entry point**. Generally speaking, it's the `Program` class of our application.
 
-If you hover on `WebApplicationFactory<Program>` and hit `CTRL+.` on Visual Studio, the autocomplete proposes two alternatives: one is the Program class defined in your APIs, while the other one is the Program class defined in *Microsoft.VisualStudio.TestPlatform.TestHost*. **Choose the one for your API application**! The WebApplicationFactory class will then instantiate your API following the *instructions* defined in your Program class, thus resolving all the dependencies and configurations as if you were running your application locally.
+If you hover on `WebApplicationFactory<Program>` and hit `CTRL+.` on Visual Studio, the autocomplete proposes two alternatives: one is the Program class defined in your APIs, while the other one is the Program class defined in _Microsoft.VisualStudio.TestPlatform.TestHost_. **Choose the one for your API application**! The WebApplicationFactory class will then instantiate your API following the _instructions_ defined in your Program class, thus resolving all the dependencies and configurations as if you were running your application locally.
 
 What to do if you don't have the Program class? **If you use top-level statements, you don't have the Program class, because it's "implicit"**. So you cannot reference the whole class. Unless... You have to **create a new `partial class` named `Program`**, and leave it empty: this way, you have a class name that can be used to reference the API definition:
 
@@ -134,12 +132,12 @@ public IActionResult Get([FromQuery] string uri)
 
 We have 2 flows to validate:
 
-* If the input URI is valid, the HTTP Status code should be 200;
-* If the input URI is invalid, the HTTP Status code should be 400;
+- If the input URI is valid, the HTTP Status code should be 200;
+- If the input URI is invalid, the HTTP Status code should be 400;
 
 We could simply write Unit Tests for this purpose, but let me write Integration Tests instead.
 
-First of all, we have to create a test class and create a new instance of `IntegrationTestWebApplicationFactory`. Then, we will create a new `HttpClient` every time a test is run that will automatically include all the services and configurations defined in the API application. 
+First of all, we have to create a test class and create a new instance of `IntegrationTestWebApplicationFactory`. Then, we will create a new `HttpClient` every time a test is run that will automatically include all the services and configurations defined in the API application.
 
 ```cs
 public class ApiIntegrationTests : IDisposable
@@ -174,7 +172,7 @@ public async Task Should_ReturnHttp200_When_UrlIsValid()
     var result = await _client.GetAsync($"SocialPostLink?uri={inputUrl}");
 
     Assert.That(result.StatusCode, Is.EqualTo(HttpStatusCode.OK));
-}    
+}
 ```
 
 Otherwise, return Bad Request:
@@ -195,10 +193,9 @@ public async Task Should_ReturnBadRequest_When_UrlIsNotValid()
 
 `WebApplicationFactory` is highly configurable thanks to the `ConfigureWebHost` method. For instance, you can customize the settings injected into your services.
 
-**Usually, you want to rely on the exact same configurations defined in your *appsettings.json* file** to ensure that the system behaves correctly with the "real" configurations. 
+**Usually, you want to rely on the exact same configurations defined in your _appsettings.json_ file** to ensure that the system behaves correctly with the "real" configurations.
 
-For example, I defined the key "InstanceName" in the *appsettings.json* file whose value is "Real", and whose value is used to create the returned Instance object. We can validate that that value is being read from that source as validated thanks to this test:
-
+For example, I defined the key "InstanceName" in the _appsettings.json_ file whose value is "Real", and whose value is used to create the returned Instance object. We can validate that that value is being read from that source as validated thanks to this test:
 
 ```cs
 [Test]
@@ -232,7 +229,7 @@ protected override void ConfigureWebHost(IWebHostBuilder builder)
 }
 ```
 
-Even if you had the *InstanceName* configured in your *appsettings.json* file, the value is now overridden and set to *FromTests*.
+Even if you had the _InstanceName_ configured in your _appsettings.json_ file, the value is now overridden and set to _FromTests_.
 
 You can validate this change by simply replacing the expected value in the previous test:
 
@@ -294,7 +291,7 @@ public async Task Should_UseStubName()
 
 ## How to create Integration Tests on specific resolved dependencies
 
-Now we are going to test that the `SocialLinkParser` does its job, regardless of the internal implementation. Right now we have used the Chain of Responsibility pattern, and we rely on the `ISocialLinksFactory` interface to create the correct sequence of handlers. But we don't know in the future how we will define the code: maybe we will replace it all with a huge *if-else* sequence - **the most important part is that the code works, regardless of the internal implementation**.
+Now we are going to test that the `SocialLinkParser` does its job, regardless of the internal implementation. Right now we have used the Chain of Responsibility pattern, and we rely on the `ISocialLinksFactory` interface to create the correct sequence of handlers. But we don't know in the future how we will define the code: maybe we will replace it all with a huge _if-else_ sequence - **the most important part is that the code works, regardless of the internal implementation**.
 
 We can proceed in two ways: writing tests on the interface or writing tests on the concrete class.
 
@@ -319,7 +316,7 @@ public async Task Should_ResolveDependency()
 }
 ```
 
-As you can see, we are creating an `IServiceScope` by calling `_factory.Services.CreateScope()`. Since we have to discard this scope after the test run, we have to **place it within a `using` block**. Then, we can create a new instance of `SocialLinkParser` by calling `_scope.ServiceProvider.GetRequiredService<SocialLinkParser>()` and create all the tests we want on the concrete implementation of the class. 
+As you can see, we are creating an `IServiceScope` by calling `_factory.Services.CreateScope()`. Since we have to discard this scope after the test run, we have to **place it within a `using` block**. Then, we can create a new instance of `SocialLinkParser` by calling `_scope.ServiceProvider.GetRequiredService<SocialLinkParser>()` and create all the tests we want on the concrete implementation of the class.
 
 The benefit of this approach is that **you have all the internal dependencies already resolved, without relying on mocks**. You can then ensure that everything, from that point on, works as you expect.
 
@@ -419,9 +416,9 @@ This is an in-depth article about Integration Tests in .NET. I already wrote an 
 
 _This article first appeared on [Code4IT 🐧](https://www.code4it.dev/)_
 
-As I often say, a few Integration Tests are often more useful than a ton of Unit Tests. Focusing on Integration Tests instead that on Unit Tests has the benefit of ensuring that the system behaves correctly regardless of the internal implementation. 
+As I often say, a few Integration Tests are often more useful than a ton of Unit Tests. Focusing on Integration Tests instead that on Unit Tests has the benefit of ensuring that the system behaves correctly regardless of the internal implementation.
 
-In this article, I used the Chain of Responsibility pattern, so Unit Tests would be tightly coupled to the Handlers. If we decided to move to another pattern, we would have to delete all the existing tests and rewrite everything from scratch. 
+In this article, I used the Chain of Responsibility pattern, so Unit Tests would be tightly coupled to the Handlers. If we decided to move to another pattern, we would have to delete all the existing tests and rewrite everything from scratch.
 
 Therefore, in my opinion, the Testing Diamond is often more efficient than the Testing Pyramid, as I explained here:
 
@@ -438,4 +435,3 @@ I hope you enjoyed this article! Let's keep in touch on [Twitter](https://twitte
 Happy coding!
 
 🐧
-
