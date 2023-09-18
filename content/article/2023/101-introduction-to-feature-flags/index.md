@@ -1,6 +1,6 @@
 ---
 title: "Feature Flags 101: A Guide for .NET Developers"
-date: 2023-09-12
+date: 2023-09-19
 url: /blog/feature-flags-dotnet
 draft: false
 categories:
@@ -9,13 +9,14 @@ tags:
 - Dotnet
 - Razor
 - Configurations
+- Feature Flags
 toc: true
-summary: "Feature flags are a technique that allows you to control the visibility and functionality of features in your software without changing the code. They enable you to experiment with new features, perform gradual rollouts, and revert changes quickly if needed."
+summary: "Feature Flags are a technique that allows you to control the visibility and functionality of features in your software without changing the code. They enable you to experiment with new features, perform gradual rollouts, and revert changes quickly if needed."
 ---
 
 To turn functionalities on or off on an application, you can use simple `if(condition)` statements. That would work, of course. But it would not be flexible, and you'll have to scatter those checks all around the application.
 
-There is another way, though: **Feature Flags**. Feature Flags allow you to effortlessly enable and disable functionalities, such as Middlewares, HTML components, and API controllers. Using .NET, you have Feature Flags almost ready to be used: it's just a matter of installing one NuGet package and using the correct syntax.
+There is another way, though: Feature Flags. **Feature Flags allow you to effortlessly enable and disable functionalities**, such as Middlewares, HTML components, and API controllers. Using .NET, you have Feature Flags almost ready to be used: it's just a matter of installing one NuGet package and using the correct syntax.
 
 In this article, we are going to create and consume Feature Flags in an ASP.NET application. We will start from the very basics and then see how to use complex, built-in filters. We will consume Feature Flags in a generic C# code, and then we will see how to include them in a Razor application and in .NET APIs. 
 
@@ -35,7 +36,7 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddFeatureManagement();
 ```
 
-By default, **this method looks for feature flags in a configuration section named `FeatureManagement`**. 
+By default, **this method looks for Feature Flags in a configuration section named `FeatureManagement`**. 
 
 If you want to use another name, you can specify it by accessing the `Configuration` object. For example, if your section name is *MyWonderfulFlags*, you must use this line instead of the previous one:
 
@@ -201,7 +202,7 @@ Say you want to show an HTML tag when the *Header* flag is on. You can use the `
 </feature>
 ```
 
-You can also show some content when the flag is off, by setting the `negate` attribute to `true`. This comes in handy when you want to display alternative content when the flag is off:
+You can also show some content when the flag is *off*, by setting the `negate` attribute to `true`. This comes in handy when you want to display alternative content when the flag is off:
 
 ```xml
 <feature name="ShowPicture">
@@ -280,7 +281,7 @@ We learned about setting "simple" configurations in a .NET application in a prev
 
 🔗[Azure App Configuration and .NET API: a smart and secure way to manage configurations | Code4IT](https://www.code4it.dev/blog/azure-app-configuration-dotnet-api/)
 
-Here, we focused on the feature flags. As we saw, most functionalities come out of the box with .NET. 
+Here, we focused on the Feature Flags. As we saw, most functionalities come out of the box with .NET. 
 
 In particular, we learned how to use the `<feature>` tag on a Razor page. You can read more on the official documentation (even though we already covered almost everything!):
 
