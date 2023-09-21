@@ -17,4 +17,4 @@ console.table({
 execSync('git checkout master');
 execSync('git pull');
 execSync('git checkout -b cstip/'+slug);
-execSync('hugo new --kind cstip csharp-tip/'+slug+'/index.md');
+execSync('hugo new --kind cstip csharp-tip/'+slug+'/');
