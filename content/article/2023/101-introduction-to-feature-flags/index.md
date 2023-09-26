@@ -188,7 +188,7 @@ The *Microsoft.FeatureManagement.AspNetCore* NuGet package brings a lot of funct
 
 To use such functionalities, though, you have to **add the related *tag helper*: open the *_ViewImports.cshtml* file** and add the following line:
 
-```plain
+```cs
 @addTagHelper *, Microsoft.FeatureManagement.AspNetCore
 ```
 
