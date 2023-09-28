@@ -1,6 +1,6 @@
 ---
 title: "How to integrate Feature Flags stored on Azure App Configuration in a .NET Application"
-date: 2023-09-26
+date: 2023-10-03
 url: /blog/feature-flags-from-azure-app-configuration
 draft: false
 categories:
@@ -19,11 +19,13 @@ Feature Flags let you remotely control the activation of features without code c
 
 In a previous article, we learned [how to integrate Feature Flags in .NET applications](https://www.code4it.dev/blog/feature-flags-dotnet/). Also, a while ago, we learned [how to integrate Azure App Configuration in a .NET application](https://www.code4it.dev/blog/azure-app-configuration-dotnet-api/).
 
-In this article, we are going to join the two streams in a single article: in fact, we will learn how to manage Feature Flags using Azure App Configuration to make our applications able to change the rolled-out functionalities. Instead of changing the static configurations and redeploying the whole application, we are going to move the Feature Flags to Azure, in a centralized place.
+In this article, we are going to join the two streams in a single article: in fact, we will learn how to manage Feature Flags using Azure App Configuration to centralize our configurations.
+
+It's a sort of evolution from the previous article. Instead of changing the static configurations and redeploying the whole application, we are going to move the Feature Flags to Azure so that you can enable or disable those flags in **just one click**.
 
 ## A recap of Feature Flags read from the appsettings file
 
-Let's reuse the example shown in the previous example.
+Let's reuse the example shown in the previous article.
 
 We have a .NET application (in that case, we were building a Razor application, but it's not important for the sake of this article), with some configurations defined in the _appsettings_ file under the `Feature` key:
 
@@ -47,17 +49,17 @@ We have a .NET application (in that case, we were building a Razor application, 
 
 We have already dove deep into Feature Flags in a .NET application in [the previous article](https://www.code4it.dev/blog/feature-flags-dotnet/). However, let me summarize it.
 
-First of all, you have to define your flags in the _appsettings.json_ file using the structure we saw before.
+First of all, you have to **define your flags in the _appsettings.json_ file** using the structure we saw before.
 
 To use Feature Flags in .NET you have to install the _Microsoft.FeatureManagement.AspNetCore_ NuGet package.
 
-Then, you have to tell ASP.NET to use Feature Flags by calling:
+Then, you have to **tell ASP.NET to use Feature Flags** by calling:
 
 ```cs
 builder.Services.AddFeatureManagement();
 ```
 
-Finally, you are able to consume those flags in three ways:
+Finally, you are able to **consume those flags in three ways**:
 
 - inject the `IFeatureManager` interface and call `IsEnabled` or `IsEnabledAsync`;
 - use the `FeatureGate` attribute on a Controller class or a Razor model;
@@ -75,13 +77,13 @@ I'm going to reuse the same instance I created in the previous article - you can
 
 Now we have to configure the same keys defined in the appsettings file: _Header_, _Footer_, and _PrivacyPage_.
 
-Open the App Configuration instance and locate the "Feature Manager" menu item in the left panel. This is the central place for creating, removing, and managing your Feature Flags. Here, you can see that I have already added the _Header_ and _Footer_, and you can see their current state: "Footer" is enabled, while "Header" is not.
+Open the App Configuration instance and **locate the "Feature Manager" menu item** in the left panel. This is the central place for creating, removing, and managing your Feature Flags. Here, you can see that I have already added the _Header_ and _Footer_, and you can see their current state: "Footer" is enabled, while "Header" is not.
 
 ![Feature Flags manager dashboard](feature-manager-dashboard.png)
 
 How can I add the _PrivacyPage_ flag? It's elementary: click the "Create" button and fill in the fields.
 
-You have to define a Name and a Key (they can also be different), and if you want, you can add a Label and a Description. You can also define whether the flag should be active by checking the "Enable feature flag" checkbox.
+You have to **define a Name and a Key** (they can also be different), and if you want, you can add a Label and a Description. You can also define whether the flag should be active by checking the "Enable feature flag" checkbox.
 
 ![Feature Flag definition form](feature-flags-definition-form.png)
 
@@ -95,11 +97,11 @@ Head back to the App Configuration resource and locate the "Access keys" menu it
 
 ![Access Keys page with connection strings](app-configuration-connection-string.png)
 
-From here, copy the connection string (I suggest that you use the Read-only Keys) and store it somewhere.
+From here, copy the connection string (**I suggest that you use the Read-only Keys**) and store it somewhere.
 
 Before proceeding, you have to install the _Microsoft.Azure.AppConfiguration.AspNetCore_ NuGet package.
 
-Now, we can add Azure App Configuration as a source for our configurations by connecting to the connection string and by declaring that we are going to use Feature Flags:
+Now, we can **add Azure App Configuration as a source for our configurations** by connecting to the connection string and by declaring that we are going to use Feature Flags:
 
 ```cs
 builder.Configuration.AddAzureAppConfiguration(options =>
@@ -107,7 +109,7 @@ builder.Configuration.AddAzureAppConfiguration(options =>
 );
 ```
 
-That's not enough. We need to tell ASP.NET that we are going to _consume_ these configurations by adding such functionalities to the `Services` property.
+That's not enough. We need to **tell ASP.NET that we are going to _consume_ these configurations** by adding such functionalities to the `Services` property.
 
 ```cs
 builder.Services.AddAzureAppConfiguration();
@@ -115,7 +117,7 @@ builder.Services.AddAzureAppConfiguration();
 builder.Services.AddFeatureManagement();
 ```
 
-Finally, once we have built our application with the usual `builder.Build()`, we have to add the Azure App Configuration middleware:
+Finally, once we have built our application with the usual `builder.Build()`, we have to **add the Azure App Configuration middleware**:
 
 ```cs
 app.UseAzureAppConfiguration();
@@ -125,9 +127,9 @@ To try it out, run the application and validate that the flags are being applied
 
 ## Using the Percentage filter on Azure App Configuration
 
-Suppose you want to enable a functionality only to a percentage of sessions (_sessions, not users!_). In that case, you can use the Percentage Filter.
+Suppose you want to enable a functionality only to a percentage of sessions (_sessions, not users!_). In that case, you can use the Percentage filter.
 
-The previous article had a specific section dedicated to the _PercentageFilter_.
+The previous article had a specific section dedicated to the _PercentageFilter_, so you might want to check it out.
 
 As a recap, we defined the flag as:
 
@@ -171,7 +173,7 @@ The configuration we just added reflects the JSON value we previously had in the
 
 By default, **Feature Flags are stored in an internal cache for 30 seconds**.
 
-Sometimes, it's not the best for your project; you may prefer a longer duration to avoid additional calls to the App Configuration platform; other times, you'd like to have the changes immediately available.
+Sometimes, it's not the best choice for your project; you may prefer a longer duration to avoid additional calls to the App Configuration platform; other times, you'd like to have the changes immediately available.
 
 You can then define the cache expiration interval you need by configuring the options for the Feature Flags:
 
@@ -184,11 +186,11 @@ builder.Configuration.AddAzureAppConfiguration(options =>
 );
 ```
 
-This way, Feature Flag values are stored in the internal cache for 10 seconds. Then, when you reload the page, the configurations are reread from Azure App Configuration and the flags are applied correctly.
+This way, Feature Flag values are stored in the internal cache for 10 seconds. Then, when you reload the page, the configurations are reread from Azure App Configuration and the flags are applied with the new values.
 
 ## Further readings
 
-This is the final article of a path I built during these months to explore how to use configurations in .NET.
+**This is the final article of a path** I built during these months to explore how to use configurations in .NET.
 
 We started by learning how to set configuration values in a .NET application, as explained here:
 
@@ -202,7 +204,7 @@ From here, we learned how to read the same configurations from Azure App Configu
 
 🔗 [Azure App Configuration and .NET API: a smart and secure way to manage configurations | Code4IT](https://www.code4it.dev/blog/azure-app-configuration-dotnet-api/)
 
-Then we configured our applications to automatically refresh the configurations using a Sentinel value:
+Then, we configured our applications to automatically refresh the configurations using a Sentinel value:
 
 🔗 [How to automatically refresh configurations with Azure App Configuration in .NET](https://www.code4it.dev/blog/azure-app-configuration-refresh-config/)
 
@@ -255,6 +257,4 @@ Happy coding!
 
 🐧
 
-[ ] Bold/Italics
 [ ] Immagine di copertina
-[ ] Pulizia formattazione
