@@ -12,7 +12,7 @@ tags:
 - Azure App Configuration
 - Azure
 toc: true
-summary: "Learn how to use feature flags in .NET apps and read values from Azure App Configuration. Understand how to use filters, like the Percentage filter, to control feature activation, and learn how to take full control of the cache expiration of the values."
+summary: "Learn how to use Feature Flags in .NET apps and read values from Azure App Configuration. Understand how to use filters, like the Percentage filter, to control feature activation, and learn how to take full control of the cache expiration of the values."
 ---
 
 Feature Flags let you remotely control the activation of features without code changes. They help you to test, release, and manage features safely and quickly by driving changes using centralized configurations.
@@ -49,9 +49,9 @@ We have already dove deep into Feature Flags in a .NET application in [the previ
 
 First of all, you have to define your flags in the *appsettings.json* file using the structure we saw before.
 
-To use Feature flags in .NET you have to install the *Microsoft.FeatureManagement.AspNetCore* NuGet package.
+To use Feature Flags in .NET you have to install the *Microsoft.FeatureManagement.AspNetCore* NuGet package.
 
- Then, you have to tell ASP.NET to use feature flags by calling:
+ Then, you have to tell ASP.NET to use Feature Flags by calling:
 
 ```cs
 builder.Services.AddFeatureManagement();
@@ -255,16 +255,6 @@ Happy coding!
 
 🐧
 
-[X] Titoli
-[X] Frontmatter
-[X] Rinomina immagini
-[X] Alt Text per immagini
-[X] Grammatica
 [ ] Bold/Italics
-[X] Nome cartella e slug devono combaciare
 [ ] Immagine di copertina
-[X] Rimuovi secrets dalle immagini
 [ ] Pulizia formattazione
-[X] Aggiungi referenza a pacchetto NuGet 
-[ ] feature flags con lo stesso casing
-[ ] rimuovi i troppi "now"
