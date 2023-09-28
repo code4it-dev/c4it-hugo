@@ -4,12 +4,12 @@ date: 2023-09-19
 url: /blog/feature-flags-dotnet
 draft: false
 categories:
-- Blog
+  - Blog
 tags:
-- Dotnet
-- Razor
-- Configurations
-- Feature Flags
+  - Dotnet
+  - Razor
+  - Configurations
+  - Feature Flags
 toc: true
 summary: "Feature Flags are a technique that allows you to control the visibility and functionality of features in your software without changing the code. They enable you to experiment with new features, perform gradual rollouts, and revert changes quickly if needed."
 ---
@@ -18,15 +18,15 @@ To turn functionalities on or off on an application, you can use simple `if(cond
 
 There is another way, though: Feature Flags. **Feature Flags allow you to effortlessly enable and disable functionalities**, such as Middlewares, HTML components, and API controllers. Using .NET, you have Feature Flags almost ready to be used: it's just a matter of installing one NuGet package and using the correct syntax.
 
-In this article, we are going to create and consume Feature Flags in an ASP.NET application. We will start from the very basics and then see how to use complex, built-in filters. We will consume Feature Flags in a generic C# code, and then we will see how to include them in a Razor application and in .NET APIs. 
+In this article, we are going to create and consume Feature Flags in an ASP.NET application. We will start from the very basics and then see how to use complex, built-in filters. We will consume Feature Flags in a generic C# code, and then we will see how to include them in a Razor application and in .NET APIs.
 
 ## How to add the Feature Flags functionality on ASP.NET Core applications
 
-The very first step to do is to install the **Microsoft.FeatureManagement.AspNetCore** NuGet package: 
+The very first step to do is to install the **Microsoft.FeatureManagement.AspNetCore** NuGet package:
 
 ![Microsoft.FeatureManagement.AspNetCore NuGet package](./nuget-package.png)
 
-This package contains everything you need to integrate Feature Flags in an ASP.NET application, from reading configurations from the *appsettings.json* file to the utility methods we will see later in this article.
+This package contains everything you need to integrate Feature Flags in an ASP.NET application, from reading configurations from the _appsettings.json_ file to the utility methods we will see later in this article.
 
 Now that we have the package installed, we can integrate it into our application. The first step is to call `AddFeatureManagement` on the `IServiceCollection` object available in the Main method:
 
@@ -36,19 +36,19 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddFeatureManagement();
 ```
 
-By default, **this method looks for Feature Flags in a configuration section named `FeatureManagement`**. 
+By default, **this method looks for Feature Flags in a configuration section named `FeatureManagement`**.
 
-If you want to use another name, you can specify it by accessing the `Configuration` object. For example, if your section name is *MyWonderfulFlags*, you must use this line instead of the previous one:
+If you want to use another name, you can specify it by accessing the `Configuration` object. For example, if your section name is _MyWonderfulFlags_, you must use this line instead of the previous one:
 
 ```cs
 builder.Services.AddFeatureManagement(builder.Configuration.GetSection("MyWonderfulFlags"));
 ```
 
-But, for now, let's stick with the default section name: *FeatureManagement*.
+But, for now, let's stick with the default section name: _FeatureManagement_.
 
 ## Define Feature Flag values in the appsettings file
 
-As we saw, we have to create a section named *FeatureManagement* in the *appsettings* file. This section will contain a collection of keys, each representing a Feature Flag and an associated value. 
+As we saw, we have to create a section named _FeatureManagement_ in the _appsettings_ file. This section will contain a collection of keys, each representing a Feature Flag and an associated value.
 
 For now, let's say that the value is a simple boolean (we will see an advanced case later!).
 
@@ -56,18 +56,17 @@ For example, we can define our section like this:
 
 ```json
 {
-    "FeatureManagement": 
-    {
-        "Header": true,
-        "Footer": true,
-        "PrivacyPage": false,
-    }
+  "FeatureManagement": {
+    "Header": true,
+    "Footer": true,
+    "PrivacyPage": false
+  }
 }
 ```
 
 ## Using Feature Flags in generic C# code
 
-The simplest way to use Feature Flags is by accessing the value directly in the C# code. 
+The simplest way to use Feature Flags is by accessing the value directly in the C# code.
 
 By calling `AddFeatureManagement`, we have also injected the `IFeatureManager` interface, which comes in handy to check whether a flag is enabled.
 
@@ -99,7 +98,7 @@ When rolling out new versions of your application, you might want to enable or d
 
 There is a simple way to achieve this result: using the `FeatureGate` attribute.
 
-Suppose you want to hide the "Privacy" Razor page depending on its related flag, *PrivacyPage*. You then have to apply the `FeatureGate` attribute to the whole Model class (in our case, `PrivacyModel`), specifying that the flag to watch out for is `PrivacyPage`:
+Suppose you want to hide the "Privacy" Razor page depending on its related flag, _PrivacyPage_. You then have to apply the `FeatureGate` attribute to the whole Model class (in our case, `PrivacyModel`), specifying that the flag to watch out for is `PrivacyPage`:
 
 ```cs
 [FeatureGate("PrivacyPage")]
@@ -119,7 +118,7 @@ public class PrivacyModel : PageModel
 Depending on the value of the flag, we will have two results:
 
 - if the flag is enabled, we will see the whole page normally;
-- if the flag is disabled, we will receive a *404 - Not Found* response.
+- if the flag is disabled, we will receive a _404 - Not Found_ response.
 
 Let's have a look at the attribute definition:
 
@@ -146,7 +145,7 @@ If you try with
 public void OnGet()
 {
     var hello = Hello();
-    ViewData["message"] = hello; 
+    ViewData["message"] = hello;
 }
 
 [FeatureGate("PrivacyPage")]
@@ -169,9 +168,9 @@ public IActionResult Get()
 }
 ```
 
-Now, the GET endpoint will be available only if both PrivacyPage *and* Footer are enabled.
+Now, the GET endpoint will be available only if both PrivacyPage _and_ Footer are enabled.
 
-Finally, you can define that the component is available if *at least one* of the flags is enabled by setting the `requirementType` parameter to `RequirementType.Any`:
+Finally, you can define that the component is available if _at least one_ of the flags is enabled by setting the `requirementType` parameter to `RequirementType.Any`:
 
 ```cs
 [HttpGet]
@@ -184,9 +183,9 @@ public IActionResult Get()
 
 ## How to use Feature Flags in Razor Pages
 
-The *Microsoft.FeatureManagement.AspNetCore* NuGet package brings a lot of functionalities. Once installed, you can use Feature Flags in your Razor pages.
+The _Microsoft.FeatureManagement.AspNetCore_ NuGet package brings a lot of functionalities. Once installed, you can use Feature Flags in your Razor pages.
 
-To use such functionalities, though, you have to **add the related *tag helper*: open the *_ViewImports.cshtml* file** and add the following line:
+To use such functionalities, though, you have to **add the related _tag helper_: open the _\_ViewImports.cshtml_ file** and add the following line:
 
 ```cs
 @addTagHelper *, Microsoft.FeatureManagement.AspNetCore
@@ -194,7 +193,7 @@ To use such functionalities, though, you have to **add the related *tag helper*:
 
 Now, you can use the `feature` tag.
 
-Say you want to show an HTML tag when the *Header* flag is on. You can use the `feature` tag this way:
+Say you want to show an HTML tag when the _Header_ flag is on. You can use the `feature` tag this way:
 
 ```xml
 <feature name="Header">
@@ -202,7 +201,7 @@ Say you want to show an HTML tag when the *Header* flag is on. You can use the `
 </feature>
 ```
 
-You can also show some content when the flag is *off*, by setting the `negate` attribute to `true`. This comes in handy when you want to display alternative content when the flag is off:
+You can also show some content when the flag is _off_, by setting the `negate` attribute to `true`. This comes in handy when you want to display alternative content when the flag is off:
 
 ```xml
 <feature name="ShowPicture">
@@ -213,9 +212,9 @@ You can also show some content when the flag is *off*, by setting the `negate` a
 </feature>
 ```
 
-Clearly, if *ShowPicture* is on, it shows the image; otherwise, it displays a text message.
+Clearly, if _ShowPicture_ is on, it shows the image; otherwise, it displays a text message.
 
-Similar to the `FeatureGate` attribute, you can apply multiple flags and choose whether all of them or at least one must be *on* to show the content by setting the `requirement` attribute to `Any` (remember: the default value is `All`):
+Similar to the `FeatureGate` attribute, you can apply multiple flags and choose whether all of them or at least one must be _on_ to show the content by setting the `requirement` attribute to `Any` (remember: the default value is `All`):
 
 ```xml
 <feature name="Header, Footer" requirement="All">
@@ -224,7 +223,7 @@ Similar to the `FeatureGate` attribute, you can apply multiple flags and choose 
 
 <feature name="Header, Footer" requirement="Any">
     <p>Either header or footer is enabled.</p>
-</feature>  
+</feature>
 ```
 
 ## Conditional Feature Filters: a way to activate flags based on specific advanced conditions
@@ -236,27 +235,27 @@ Sometimes, you want to activate features using complex conditions. For example:
 
 Let's see how to use the percentage filter.
 
-The first step is to add the related Feature Filter to the FeatureManagement functionality. In our case, we will add the  *Microsoft.FeatureManagement.FeatureFilters.PercentageFilter*.
+The first step is to add the related Feature Filter to the FeatureManagement functionality. In our case, we will add the _Microsoft.FeatureManagement.FeatureFilters.PercentageFilter_.
 
 ```cs
 builder.Services.AddFeatureManagement()
     .AddFeatureFilter<PercentageFilter>();
 ```
 
-Now we just have to define the related flag in the *appsettings* file. We cannot use anymore a boolean value, but we need a complex object. Let's configure the *ShowPicture* flag to use the Percentage filter.
+Now we just have to define the related flag in the _appsettings_ file. We cannot use anymore a boolean value, but we need a complex object. Let's configure the _ShowPicture_ flag to use the Percentage filter.
 
 ```json
 {
-    "ShowPicture": {
-        "EnabledFor": [
-            {
-                "Name": "Percentage",
-                "Parameters": {
-                    "Value": 60
-                }
-            }
-        ]
-    }
+  "ShowPicture": {
+    "EnabledFor": [
+      {
+        "Name": "Percentage",
+        "Parameters": {
+          "Value": 60
+        }
+      }
+    ]
+  }
 }
 ```
 
@@ -266,12 +265,12 @@ Have a look at the structure. Now we have:
 - `EnabledFor` is an array, not a single object;
 - every object within the array is made of two fields: `Name`, which must match the filter name, and `Parameters`, which is a generic object whose value depends on the type of filter.
 
-In this example,  we have set `"Value": 60`. This means that the flag will be active in around 60% of calls. In the remaining 40%, the flag will be off. 
+In this example, we have set `"Value": 60`. This means that the flag will be active in around 60% of calls. In the remaining 40%, the flag will be off.
 
 Now, I encourage you to **toy with this filter**:
 Apply it to a section or a page.
 Run the application.
-Refresh the page several times *without restarting the application*. 
+Refresh the page several times _without restarting the application_.
 
 You'll see the component appear and disappear.
 
@@ -281,12 +280,11 @@ We learned about setting "simple" configurations in a .NET application in a prev
 
 🔗[Azure App Configuration and .NET API: a smart and secure way to manage configurations | Code4IT](https://www.code4it.dev/blog/azure-app-configuration-dotnet-api/)
 
-Here, we focused on the Feature Flags. As we saw, most functionalities come out of the box with .NET. 
+Here, we focused on the Feature Flags. As we saw, most functionalities come out of the box with .NET.
 
 In particular, we learned how to use the `<feature>` tag on a Razor page. You can read more on the official documentation (even though we already covered almost everything!):
 
 🔗[FeatureTagHelper Class | Microsoft Docs](https://learn.microsoft.com/en-us/dotnet/api/microsoft.featuremanagement.mvc.taghelpers.featuretaghelper)
-
 
 _This article first appeared on [Code4IT 🐧](https://www.code4it.dev/)_
 
