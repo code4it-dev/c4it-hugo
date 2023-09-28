@@ -10,6 +10,7 @@ tags:
   - dotNET
   - Azure
   - Azure App Configuration
+  - Configurations
 toc: true
 summary: "ASP.NET allows you to poll Azure App Configuration to always get the most updated values without restarting your applications. It's simple, but you have to think thoroughly."
 ---

@@ -10,6 +10,7 @@ tags:
   - DotNet
   - Azure
   - Azure App Configuration
+  - Configurations
 toc: true
 summary: "Centralizing configurations can be useful for several reasons: security, consistency, deployability. In this article, we're gonna use Azure App Configuration to centralize the configurations used in a .NET API application."
 ---
