@@ -227,7 +227,7 @@ Similar to the `FeatureGate` attribute, you can apply multiple flags and choose 
 </feature>  
 ```
 
-## Feature Gate Filters: a way to activate flags based on specific advanced conditions
+## Conditional Feature Filters: a way to activate flags based on specific advanced conditions
 
 Sometimes, you want to activate features using complex conditions. For example:
 
