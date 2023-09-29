@@ -19,9 +19,8 @@ Let's say that you like a song, you listen to it at least 2 times a day and you 
 
 And let's say that this song is _Tooth Fairy_ by Nanowar of Steel.
 
-<div class="videoWrapper">
-    <iframe  src="https://www.youtube.com/embed/CzvQxQYKO88" frameborder="0" allow="autoplay; encrypted-media; picture-in-picture" allowfullscreen></iframe>
-</div>
+{{< youtube CzvQxQYKO88 >}}
+
 You can just copy and paste, right? Nah, too easy! 😁
 
 ## Initial steps

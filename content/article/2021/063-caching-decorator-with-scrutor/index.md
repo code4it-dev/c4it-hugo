@@ -225,7 +225,7 @@ Using the Decorator pattern brings many benefits.
 
 An example of Decorator outside the programming world? The following video from YouTube, where you can see that each cup (component) has only one responsibility, and can be easily decorated with many other cups.
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/T_7aVZZDGNM" title="Decorator pattern as a Cup drawing" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+{{< youtube T_7aVZZDGNM >}}
 
 ## Additional links
 
