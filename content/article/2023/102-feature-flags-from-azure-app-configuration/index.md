@@ -1,5 +1,5 @@
 ---
-title: "How to integrate Feature Flags stored on Azure App Configuration in a .NET Application"
+title: "How to integrate Feature Flags stored on Azure App Configuration in an ASP.NET Core Application"
 date: 2023-10-03
 url: /blog/feature-flags-from-azure-app-configuration
 draft: false
@@ -12,12 +12,12 @@ tags:
   - Azure App Configuration
   - Azure
 toc: true
-summary: "Learn how to use Feature Flags in .NET apps and read values from Azure App Configuration. Understand how to use filters, like the Percentage filter, to control feature activation, and learn how to take full control of the cache expiration of the values."
+summary: "Learn how to use Feature Flags in ASP.NET Core apps and read values from Azure App Configuration. Understand how to use filters, like the Percentage filter, to control feature activation, and learn how to take full control of the cache expiration of the values."
 ---
 
 Feature Flags let you remotely control the activation of features without code changes. They help you to test, release, and manage features safely and quickly by driving changes using centralized configurations.
 
-In a previous article, we learned [how to integrate Feature Flags in .NET applications](https://www.code4it.dev/blog/feature-flags-dotnet/). Also, a while ago, we learned [how to integrate Azure App Configuration in a .NET application](https://www.code4it.dev/blog/azure-app-configuration-dotnet-api/).
+In a previous article, we learned [how to integrate Feature Flags in ASP.NET Core applications](https://www.code4it.dev/blog/feature-flags-dotnet/). Also, a while ago, we learned [how to integrate Azure App Configuration in an ASP.NET Core application](https://www.code4it.dev/blog/azure-app-configuration-dotnet-api/).
 
 In this article, we are going to join the two streams in a single article: in fact, we will learn how to manage Feature Flags using Azure App Configuration to centralize our configurations.
 
@@ -27,7 +27,7 @@ It's a sort of evolution from the previous article. Instead of changing the stat
 
 Let's reuse the example shown in the previous article.
 
-We have a .NET application (in that case, we were building a Razor application, but it's not important for the sake of this article), with some configurations defined in the _appsettings_ file under the `Feature` key:
+We have an ASP.NET Core application (in that case, we were building a Razor application, but it's not important for the sake of this article), with some configurations defined in the _appsettings_ file under the `Feature` key:
 
 ```json
 {
@@ -47,11 +47,11 @@ We have a .NET application (in that case, we were building a Razor application, 
 }
 ```
 
-We have already dove deep into Feature Flags in a .NET application in [the previous article](https://www.code4it.dev/blog/feature-flags-dotnet/). However, let me summarize it.
+We have already dove deep into Feature Flags in an ASP.NET Core application in [the previous article](https://www.code4it.dev/blog/feature-flags-dotnet/). However, let me summarize it.
 
 First of all, you have to **define your flags in the _appsettings.json_ file** using the structure we saw before.
 
-To use Feature Flags in .NET you have to install the _Microsoft.FeatureManagement.AspNetCore_ NuGet package.
+To use Feature Flags in ASP.NET Core you have to install the _Microsoft.FeatureManagement.AspNetCore_ NuGet package.
 
 Then, you have to **tell ASP.NET to use Feature Flags** by calling:
 
@@ -87,7 +87,7 @@ You have to **define a Name and a Key** (they can also be different), and if you
 
 ![Feature Flag definition form](feature-flags-definition-form.png)
 
-## Read Feature Flags from Azure App Configuration in a .NET application
+## Read Feature Flags from Azure App Configuration in an ASP.NET Core application
 
 It's time to integrate Azure App Configuration with our ASP.NET Core application.
 
@@ -190,27 +190,27 @@ This way, Feature Flag values are stored in the internal cache for 10 seconds. T
 
 ## Further readings
 
-**This is the final article of a path** I built during these months to explore how to use configurations in .NET.
+**This is the final article of a path** I built during these months to explore how to use configurations in ASP.NET Core.
 
-We started by learning how to set configuration values in a .NET application, as explained here:
+We started by learning how to set configuration values in an ASP.NET Core application, as explained here:
 
-🔗 [3 (and more) ways to set configuration values in .NET](https://www.code4it.dev/blog/how-to-set-configurations-values-dotnet/)
+🔗 [3 (and more) ways to set configuration values in ASP.NET Core](https://www.code4it.dev/blog/how-to-set-configurations-values-dotnet/)
 
 Then, we learned how to read and use them with the `IOptions` family:
 
-🔗 [Understanding IOptions, IOptionsMonitor, and IOptionsSnapshot in .NET 7](https://www.code4it.dev/blog/ioptions-ioptionsmonitor-ioptionssnapshot/)
+🔗 [Understanding IOptions, IOptionsMonitor, and IOptionsSnapshot in ASP.NET Core](https://www.code4it.dev/blog/ioptions-ioptionsmonitor-ioptionssnapshot/)
 
 From here, we learned how to read the same configurations from Azure App Configuration, to centralize our settings:
 
-🔗 [Azure App Configuration and .NET API: a smart and secure way to manage configurations | Code4IT](https://www.code4it.dev/blog/azure-app-configuration-dotnet-api/)
+🔗 [Azure App Configuration and ASP.NET Core API: a smart and secure way to manage configurations | Code4IT](https://www.code4it.dev/blog/azure-app-configuration-dotnet-api/)
 
 Then, we configured our applications to automatically refresh the configurations using a Sentinel value:
 
-🔗 [How to automatically refresh configurations with Azure App Configuration in .NET](https://www.code4it.dev/blog/azure-app-configuration-refresh-config/)
+🔗 [How to automatically refresh configurations with Azure App Configuration in ASP.NET Core](https://www.code4it.dev/blog/azure-app-configuration-refresh-config/)
 
 Finally, we introduced Feature Flags in our apps:
 
-🔗 [Feature Flags 101: A Guide for .NET Developers | Code4IT](https://www.code4it.dev/blog/feature-flags-dotnet/)
+🔗 [Feature Flags 101: A Guide for ASP.NET Core Developers | Code4IT](https://www.code4it.dev/blog/feature-flags-dotnet/)
 
 And then we got to this article!
 
@@ -220,7 +220,7 @@ _This article first appeared on [Code4IT 🐧](https://www.code4it.dev/)_
 
 In this article, we have configured an ASP.NET Core application to read the Feature Flags stored on Azure App Configuration.
 
-Here's the minimal code you need to add Feature Flags for .NET API Controllers:
+Here's the minimal code you need to add Feature Flags for ASP.NET Core API Controllers:
 
 ```cs
 var builder = WebApplication.CreateBuilder(args);
@@ -256,5 +256,3 @@ I hope you enjoyed this article! Let's keep in touch on [Twitter](https://twitte
 Happy coding!
 
 🐧
-
-[ ] Immagine di copertina

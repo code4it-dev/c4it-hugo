@@ -1,5 +1,5 @@
 ---
-title: "Feature Flags 101: A Guide for .NET Developers"
+title: "Feature Flags 101: A Guide for ASP.NET Core Developers"
 date: 2023-09-19
 url: /blog/feature-flags-dotnet
 draft: false
@@ -16,9 +16,9 @@ summary: "Feature Flags are a technique that allows you to control the visibilit
 
 To turn functionalities on or off on an application, you can use simple `if(condition)` statements. That would work, of course. But it would not be flexible, and you'll have to scatter those checks all around the application.
 
-There is another way, though: Feature Flags. **Feature Flags allow you to effortlessly enable and disable functionalities**, such as Middlewares, HTML components, and API controllers. Using .NET, you have Feature Flags almost ready to be used: it's just a matter of installing one NuGet package and using the correct syntax.
+There is another way, though: Feature Flags. **Feature Flags allow you to effortlessly enable and disable functionalities**, such as Middlewares, HTML components, and API controllers. Using ASP.NET Core, you have Feature Flags almost ready to be used: it's just a matter of installing one NuGet package and using the correct syntax.
 
-In this article, we are going to create and consume Feature Flags in an ASP.NET application. We will start from the very basics and then see how to use complex, built-in filters. We will consume Feature Flags in a generic C# code, and then we will see how to include them in a Razor application and in .NET APIs.
+In this article, we are going to create and consume Feature Flags in an ASP.NET Core application. We will start from the very basics and then see how to use complex, built-in filters. We will consume Feature Flags in a generic C# code, and then we will see how to include them in a Razor application and in ASP.NET Core APIs.
 
 ## How to add the Feature Flags functionality on ASP.NET Core applications
 
@@ -276,11 +276,11 @@ You'll see the component appear and disappear.
 
 ## Further readings
 
-We learned about setting "simple" configurations in a .NET application in a previous article. You should read it to have a better understanding of how we can define configurations.
+We learned about setting "simple" configurations in an ASP.NET Core application in a previous article. You should read it to have a better understanding of how we can define configurations.
 
-🔗[Azure App Configuration and .NET API: a smart and secure way to manage configurations | Code4IT](https://www.code4it.dev/blog/azure-app-configuration-dotnet-api/)
+🔗[Azure App Configuration and ASP.NET Core API: a smart and secure way to manage configurations | Code4IT](https://www.code4it.dev/blog/azure-app-configuration-dotnet-api/)
 
-Here, we focused on the Feature Flags. As we saw, most functionalities come out of the box with .NET.
+Here, we focused on the Feature Flags. As we saw, most functionalities come out of the box with ASP.NET Core.
 
 In particular, we learned how to use the `<feature>` tag on a Razor page. You can read more on the official documentation (even though we already covered almost everything!):
 
