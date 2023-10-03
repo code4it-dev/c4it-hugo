@@ -4,6 +4,7 @@ date: 2022-10-18
 tags:
   - CSharp
   - dotnet
+  - Configurations
 toc: true
 url: /blog/how-to-set-configurations-values-dotnet
 categories:

@@ -37,3 +37,4 @@ Happy coding!
 [ ] Immagine di copertina
 [ ] Rimuovi secrets dalle immagini
 [ ] Pulizia formattazione
+[ ] Controlla se ASP.NET Core oppure .NET

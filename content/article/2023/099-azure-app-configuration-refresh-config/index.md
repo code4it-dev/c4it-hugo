@@ -1,5 +1,5 @@
 ---
-title: "How to automatically refresh configurations with Azure App Configuration in .NET"
+title: "How to automatically refresh configurations with Azure App Configuration in ASP.NET Core"
 date: 2023-07-04
 url: /blog/azure-app-configuration-refresh-config
 draft: false
@@ -10,6 +10,7 @@ tags:
   - dotNET
   - Azure
   - Azure App Configuration
+  - Configurations
 toc: true
 summary: "ASP.NET allows you to poll Azure App Configuration to always get the most updated values without restarting your applications. It's simple, but you have to think thoroughly."
 ---
@@ -22,7 +23,7 @@ In this article, we're gonna learn **how to make configurations dynamic**: by th
 
 Since this one is a kind of improvement of [the previous article](https://www.code4it.dev/blog/azure-app-configuration-dotnet-api/), you should read it first.
 
-Let me summarize here the code showcased in the previous article. We have a .NET API application whose only purpose is to return the configurations stored in an object, whose shape is this one:
+Let me summarize here the code showcased in the previous article. We have an ASP.NET Core API application whose only purpose is to return the configurations stored in an object, whose shape is this one:
 
 ```json
 {
@@ -252,15 +253,15 @@ So, **think thoroughly before choosing an expiration time!**
 
 ## Further readings
 
-This article is a continuation of a previous one, and I suggest you read the other one to understand how to set up Azure App Configuration and how to integrate it in a .NET API application in case you don't want to use dynamic configuration.
+This article is a continuation of a previous one, and I suggest you read the other one to understand how to set up Azure App Configuration and how to integrate it in an ASP.NET Core API application in case you don't want to use dynamic configuration.
 
-🔗 [Azure App Configuration and .NET API: a smart and secure way to manage configurations | Code4IT](https://www.code4it.dev/blog/azure-app-configuration-dotnet-api/)
+🔗 [Azure App Configuration and ASP.NET Core API: a smart and secure way to manage configurations | Code4IT](https://www.code4it.dev/blog/azure-app-configuration-dotnet-api/)
 
 _This article first appeared on [Code4IT 🐧](https://www.code4it.dev/)_
 
 Also, we learned that using `IOptions` we are not getting the most updated values: in fact, we need to use `IOptionsMonitor`. Check out this article to understand the other differences in the `IOptions` family.
 
-🔗 [Understanding IOptions, IOptionsMonitor, and IOptionsSnapshot in .NET 7 | Code4IT](https://www.code4it.dev/blog/ioptions-ioptionsmonitor-ioptionssnapshot/)
+🔗 [Understanding IOptions, IOptionsMonitor, and IOptionsSnapshot in ASP.NET Core | Code4IT](https://www.code4it.dev/blog/ioptions-ioptionsmonitor-ioptionssnapshot/)
 
 Finally, I briefly talked about pricing. As of July 2023, there are just 2 pricing tiers, with different limitations.
 

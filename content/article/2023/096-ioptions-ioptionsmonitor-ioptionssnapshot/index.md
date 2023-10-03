@@ -8,6 +8,7 @@ categories:
 tags:
   - CSharp
   - dotNET
+  - Configurations
 toc: true
 summary: "There are several ways to handle configurations in a .NET Application. In this article, we're going to learn how to use `IOptions<T>`, `IOptionsSnapshot<T>`, and `IOptionsMonitor<T>`"
 ---
