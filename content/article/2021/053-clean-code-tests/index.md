@@ -1,13 +1,16 @@
 ---
 title: Clean code tips - Tests
 date: 2021-03-23
+url: /blog/clean-code-tests
+draft: false
+categories:
+  - Blog
 tags:
   - Clean Code
 toc: true
-url: /blog/clean-code-tests
-categories:
-  - Blog
 summary: Tests are as important as production code. Well, they are even more important! So writing them well brings lots of benefits to your projects.
+images:
+  - /blog/clean-code-tests/featuredImage.png
 ---
 
 Clean code principles apply not only to production code but even to tests. Indeed, a test should be even more clean, easy-to-understand, and meaningful than production code.

@@ -1,12 +1,16 @@
 ---
 title: "Clean Code Tip: throw exceptions instead of returning null when there is no fallback"
 date: 2022-09-27
-tags:
-  - Clean Code
 url: /cleancodetips/exceptions-instead-of-null
+draft: false
 categories:
   - Clean Code Tips
+tags:
+  - Clean Code
+toc: true
 summary: In case of unmanageable error, should you return null or throw exceptions?
+images:
+  - /cleancodetips/exceptions-instead-of-null/featuredImage.png
 ---
 
 **When you don't have any fallback** operation to manage null values (eg: retry pattern), you should throw an exception instead of returning null.

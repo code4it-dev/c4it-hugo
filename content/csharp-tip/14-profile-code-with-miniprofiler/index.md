@@ -1,12 +1,16 @@
 ---
 title: "C# Tip: use Miniprofiler instead of Stopwatch to profile code performance"
 date: 2022-09-13
-tags:
-  - CSharp
 url: /csharptips/profile-code-with-miniprofiler
+draft: false
 categories:
   - CSharp Tips
+tags:
+  - CSharp
+toc: true
 summary: Miniprofiler is a nice tool to profile your code in a smart way.
+images:
+  - /csharptips/profile-code-with-miniprofiler/featuredImage.png
 ---
 
 Do you need to tune up the performance of your code? You can create some StopWatch objects and store the execution times or rely on external libraries like **MiniProfiler**.

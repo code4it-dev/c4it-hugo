@@ -1,16 +1,19 @@
 ---
 title: PostgreSQL CRUD operations with C# and Dapper
 date: 2022-03-01
+url: /blog/postgres-crud-dapper
+draft: false
+categories:
+  - Blog
 tags:
   - CSharp
   - Database
   - SQL
   - PostgreSQL
 toc: true
-url: /blog/postgres-crud-dapper
-categories:
-  - Blog
 summary: Mapping every SQL result to a data type can be a pain. To simplify our life, we can use an ORM like Dapper to automatically map the data.
+images:
+  - /blog/postgres-crud-dapper/featuredImage.png
 ---
 
 In a [previous article](https://www.code4it.dev/blog/postgres-crud-operations-npgsql), we've seen how to perform simple CRUD operations on a Postgres database by using Npgsql, a library that allows you to write and perform queries to be executed specifically on a PostgreSQL database.

@@ -2,12 +2,16 @@
 title: "C# Tip: Improve memory allocation by initializing collection size"
 date: 2023-09-26
 url: /csharptips/initialize-collection-size
+draft: false
 categories:
   - CSharp Tips
 tags:
   - CSharp
   - dotNET
+toc: true
 summary: "Sometimes just a minor change can affect performance. Here's a simple trick: initialize your collections by specifying the initial size!"
+images:
+  - /csharptips/initialize-collection-size/featuredImage.png
 ---
 
 When you initialize a collection, like a `List`, you create it with the default size.

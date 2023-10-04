@@ -1,15 +1,18 @@
 ---
 title: Simplify debugging with DebuggerDisplay attribute dotNET
 date: 2021-07-13
+url: /blog/debuggerdisplay-attribute
+draft: false
+categories:
+  - Blog
 tags:
   - CSharp
   - dotnet
   - Visual Studio
 toc: true
-url: /blog/debuggerdisplay-attribute
-categories:
-  - Blog
 summary: Debugging our .NET applications can be cumbersome. With the DebuggerDisplay attribute we can simplify it by displaying custom messages.
+images:
+  - /blog/debuggerdisplay-attribute/featuredImage.png
 ---
 
 Picture this: you are debugging a .NET application, and you need to retrieve a list of objects. To make sure that the items are as you expect, you need to look at the content of each item.

@@ -1,14 +1,17 @@
 ---
 title: Cool validation with FluentValidation
 date: 2020-06-16
+url: /blog/fluentvalidation
+draft: false
+categories:
+  - Blog
 tags:
   - CSharp
   - dotnet
 toc: true
-url: /blog/fluentvalidation
-categories:
-  - Blog
 summary: Validating inputs is crucial for every application. If you want an easy and versatile way, you can try FluentValidation.
+images:
+  - /blog/fluentvalidation/featuredImage.png
 ---
 
 Needless to say, validating inputs is important. Invalid inputs may break your application and bring your system to an unstable state.

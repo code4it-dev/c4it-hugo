@@ -1,15 +1,18 @@
 ---
 title: How to search for YouTube videos in a channel with .NET Core 3
 date: 2020-03-02
+url: /blog/csharp-extension-methods
+draft: false
+categories:
+  - Blog
 tags:
   - CSharp
   - dotnet
   - YouTube
 toc: true
-url: /blog/csharp-extension-methods
-categories:
-  - Blog
 summary: YouTube provides some APIs for getting info about a channel videos. But they also provide .NET libraries to achieve the same result with C#. Let's have a try!
+images:
+  - /blog/csharp-extension-methods/featuredImage.png
 ---
 
 Let's say that you have a YouTube channel. Now, you want to list all the videos that you uploaded, and you are really strong in .NET Core 3.

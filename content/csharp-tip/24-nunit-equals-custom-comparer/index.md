@@ -2,12 +2,16 @@
 title: "C# Tip: Use custom Equality comparers in Nunit tests"
 date: 2023-06-13
 url: /csharptips/nunit-equals-custom-comparer
+draft: false
 categories:
   - CSharp Tips
 tags:
   - CSharp
   - Testing
-summary: "When writing unit tests, there are smarter ways to check if two objects are equal than just comparing every field one by one."
+toc: true
+summary: When writing unit tests, there are smarter ways to check if two objects are equal than just comparing every field one by one.
+images:
+  - /csharptips/nunit-equals-custom-comparer/featuredImage.png
 ---
 
 When writing unit tests, you might want to check that the result returned by a method is equal to the one you're expecting.

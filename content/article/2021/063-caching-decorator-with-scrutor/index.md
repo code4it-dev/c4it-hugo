@@ -1,13 +1,16 @@
 ---
 title: How to add a caching layer in .NET 5 with Decorator pattern and Scrutor
 date: 2021-08-10
+url: /blog/caching-decorator-with-scrutor
+draft: false
+categories:
+  - Blog
 tags:
   - dotnet
 toc: true
-url: /blog/caching-decorator-with-scrutor
-categories:
-  - Blog
 summary: "You should not add the caching logic in the same component used for retrieving data from external sources: you'd better use the Decorator Pattern. We'll see how to use it, what benefits it brings to your application, and how to use Scrutor to add it to your .NET projects."
+images:
+  - /blog/caching-decorator-with-scrutor/featuredImage.png
 ---
 
 When fetching external resources - like performing a GET on some remote APIs - you often need to cache the result. Even a simple caching mechanism can boost the performance of your application: the fewer actual calls to the external system, the faster the response time of the overall application.

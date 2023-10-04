@@ -1,12 +1,16 @@
 ---
 title: "Clean code tip: How to choose meaningful names?"
 date: 2021-05-25
-tags:
-  - Clean Code
 url: /cleancodetips/choose-meaningful-names
+draft: false
 categories:
   - Clean Code Tips
+tags:
+  - Clean Code
+toc: true
 summary: Choosing meaningful names takes time! Time spent finding good names is time saved trying to figure out what you meant.
+images:
+  - /cleancodetips/choose-meaningful-names/featuredImage.png
 ---
 
 One of the fundamentals of clean code is: use meaningful names.

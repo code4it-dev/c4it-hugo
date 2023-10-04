@@ -1,14 +1,17 @@
 ---
 title: How you can create extension methods in C#
 date: 2020-02-18
+url: /blog/csharp-extension-methods
+draft: false
+categories:
+  - Blog
 tags:
   - CSharp
   - dotnet
 toc: true
-url: /blog/csharp-extension-methods
-categories:
-  - Blog
 summary: Extension methods in C# are really useful, but there are few rules to follow...
+images:
+  - /blog/csharp-extension-methods/featuredImage.png
 ---
 
 Probably you have already heard of **extension methods**: those are C# methods used to add new functionalities to an existing class.

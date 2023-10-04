@@ -9,7 +9,9 @@ tags:
   - Software Architecture
   - Distributed systems
 toc: true
-summary: "«Consistency, Availability, and Partition tolerance. Pick two». Is it really THAT simple? Let's learn a bit more about the CAP theorem."
+summary: «Consistency, Availability, and Partition tolerance. Pick two». Is it really THAT simple? Let's learn a bit more about the CAP theorem.
+images:
+  - /architecture-notes/cap-theorem/featuredImage.png
 ---
 
 Data consistency is one of the most important things to handle when building distributed systems. Will your users always get the most recent data? Is it really THAT necessary?

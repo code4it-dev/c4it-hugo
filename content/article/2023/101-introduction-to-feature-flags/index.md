@@ -11,7 +11,9 @@ tags:
   - Configurations
   - Feature Flags
 toc: true
-summary: "Feature Flags are a technique that allows you to control the visibility and functionality of features in your software without changing the code. They enable you to experiment with new features, perform gradual rollouts, and revert changes quickly if needed."
+summary: Feature Flags are a technique that allows you to control the visibility and functionality of features in your software without changing the code. They enable you to experiment with new features, perform gradual rollouts, and revert changes quickly if needed.
+images:
+  - /blog/feature-flags-dotnet/featuredImage.png
 ---
 
 To turn functionalities on or off on an application, you can use simple `if(condition)` statements. That would work, of course. But it would not be flexible, and you'll have to scatter those checks all around the application.

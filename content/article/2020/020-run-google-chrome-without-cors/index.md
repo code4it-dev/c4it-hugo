@@ -1,13 +1,16 @@
 ---
 title: How to run Google Chrome without CORS
 date: 2020-03-24
+url: /blog/run-google-chrome-without-cors
+draft: false
+categories:
+  - Blog
 tags:
   - MISC
 toc: true
-url: /blog/run-google-chrome-without-cors
-categories:
-  - Blog
 summary: You may need to run Google Chrome with CORS checks disabled. Here's how you can do it on Windows 10.
+images:
+  - /blog/run-google-chrome-without-cors/featuredImage.png
 ---
 
 A few days ago I came across a problem: while developing a page I was integrating some external APIs. Those APIs were misconfigured, so running the application on localhost brought me a CORS error.

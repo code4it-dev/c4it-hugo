@@ -1,13 +1,16 @@
 ---
 title: How to use String.Format - and why you should care about it
 date: 2020-12-01
+url: /blog/how-to-use-string-format
+draft: false
+categories:
+  - Blog
 tags:
   - CSharp
 toc: true
-url: /blog/how-to-use-string-format
-categories:
-  - Blog
 summary: Is string.Format obsolete? Not at all, it still has cards to play! Let's see how we can customize format and create custom formatters.
+images:
+  - /blog/how-to-use-string-format/featuredImage.png
 ---
 
 Formatting strings is one of the basic operations we do in our day-by-day job. Many times we create methods to provide specific formatting for our data, but not always we want to implement additional methods for every type of formatting we need - too many similar methods will clutter our code.

@@ -1,15 +1,18 @@
 ---
 title: A few tips for performance optimization
 date: 2020-01-06
+url: /blog/few-tips-for-performance-optimization
+draft: false
+categories:
+  - Blog
 tags:
   - dotnet
   - CSharp
   - Performance
 toc: true
-url: /blog/few-tips-for-performance-optimization
-categories:
-  - Blog
 summary: More than 50% of mobile users abandon a website if it takes more than 3 seconds to load. Here you'll learn few trick to improve your site performance.
+images:
+  - /blog/few-tips-for-performance-optimization/featuredImage.png
 ---
 
 When talking about must-have for websites, performance is one of them. Why is it important? And how can you achieve it?

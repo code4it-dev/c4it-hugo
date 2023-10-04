@@ -1,13 +1,16 @@
 ---
 title: Clean code tips - names and functions
 date: 2020-07-21
+url: /blog/clean-code-names-and-functions
+draft: false
+categories:
+  - Blog
 tags:
   - Clean Code
 toc: true
-url: /blog/clean-code-names-and-functions
-categories:
-  - Blog
 summary: I don't have to tell you why you need to write clean code. Here you'll see some tips about how to name things and how to structure functions
+images:
+  - /blog/clean-code-names-and-functions/featuredImage.png
 ---
 
 A few days ago I started (re)reading [Clean Code by Robert Martin](https://www.amazon.it/Clean-Code-Handbook-Software-Craftsmanship/dp/0132350882 "Clean Code by Uncle Bob"). It's a fundamental book for programmers, so it worth reading it every once in a while.

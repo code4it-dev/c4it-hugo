@@ -1,14 +1,17 @@
 ---
 title: 3 ways to check the object passed to mocks with Moq in C#
 date: 2022-05-17
+url: /blog/check-objects-called-mocks-in-moq
+draft: false
+categories:
+  - Blog
 tags:
   - CSharp
   - Tests
 toc: true
-url: /blog/check-objects-called-mocks-in-moq
-categories:
-  - Blog
 summary: In unit tests, sometimes you need to perform deep checks on the object passed to the mocked service. We will learn 3 ways to do that with Moq and C#
+images:
+  - /blog/check-objects-called-mocks-in-moq/featuredImage.png
 ---
 
 When writing unit tests, you can use Mocks to simulate the usage of class dependencies.

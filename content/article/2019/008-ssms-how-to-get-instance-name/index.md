@@ -1,15 +1,18 @@
 ---
 title: "Retrieving your SQL LocalDB Instance Name: A How-To Guide"
 date: 2019-05-21
+url: /blog/ssms-how-to-get-instance-name
+draft: false
+categories:
+  - Blog
 tags:
   - SQL
   - SSMS
   - DB
 toc: true
-url: /blog/ssms-how-to-get-instance-name
-categories:
-  - Blog
 summary: Sometimes, when I open SQL Server Management Studio, I forget about my Local DB instance name. Here's how to retrieve it.
+images:
+  - /blog/ssms-how-to-get-instance-name/featuredImage.png
 ---
 
 This article is just a note for something I forget the most: my LocalDB instance names.

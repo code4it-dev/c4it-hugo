@@ -1,16 +1,19 @@
 ---
 title: How to add a Startup class to Azure Functions
 date: 2020-04-14
+url: /blog/azure-functions-startup-class
+draft: false
+categories:
+  - Blog
 tags:
   - dotnet
   - Azure Function
   - Azure
   - Serverless
 toc: true
-url: /blog/azure-functions-startup-class
-categories:
-  - Blog
 summary: "Azure Functions are one of the best examples of serverless applications. By default you can't use Dependency injection: here's how you can configure it by adding the Startup class."
+images:
+  - /blog/azure-functions-startup-class/featuredImage.png
 ---
 
 Azure Functions are event-driven applications that run serverless. Usually, they are triggered by an HTTP request, an update on Blob storage, a message on Service Bus or simply a timer.

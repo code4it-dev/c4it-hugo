@@ -1,12 +1,16 @@
 ---
 title: "Clean Code Tip: Tests should be even more well-written than production code"
 date: 2022-05-24
-tags:
-  - Clean Code
 url: /cleancodetips/tests-should-be-readable-too
+draft: false
 categories:
   - Clean Code Tips
+tags:
+  - Clean Code
+toc: true
 summary: Should you write your tests with the same care you write the production code? Of course you should! But what does it mean?
+images:
+  - /cleancodetips/tests-should-be-readable-too/featuredImage.png
 ---
 
 You surely take care of your code to make it easy to read and understand, right? RIGHT??

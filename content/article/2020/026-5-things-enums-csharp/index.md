@@ -1,13 +1,16 @@
 ---
 title: 5 things you should know about enums in C#
 date: 2020-05-05
+url: /blog/5-things-enums-csharp
+draft: false
+categories:
+  - Blog
 tags:
   - CSharp
 toc: true
-url: /blog/5-things-enums-csharp
-categories:
-  - Blog
 summary: "Enums are often used with C#. Boring, right? Maybe there is something you didn't know: casting, parsing and flagged enums."
+images:
+  - /blog/5-things-enums-csharp/featuredImage.png
 ---
 
 Enums are really useful if you want to, well, enumerate the possible values for a field. An example of enumeration is the list of movie genres:

@@ -1,15 +1,18 @@
 ---
 title: How to run integration tests for .NET API
 date: 2020-08-11
+url: /blog/integration-tests-for-dotnet-api
+draft: false
+categories:
+  - Blog
 tags:
   - Tests
   - dotnet
   - CSharp
 toc: true
-url: /blog/integration-tests-for-dotnet-api
-categories:
-  - Blog
 summary: Integration tests are useful to check if multiple components fit together well. How can you test your APIs? And how can you mock dependencies?
+images:
+  - /blog/integration-tests-for-dotnet-api/featuredImage.png
 ---
 
 You already write Unit tests, right?

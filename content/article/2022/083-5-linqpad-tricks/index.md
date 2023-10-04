@@ -1,14 +1,17 @@
 ---
 title: 5 tricks every C# dev should know about LINQPad
 date: 2022-07-19
+url: /blog/5-linqpad-tricks
+draft: false
+categories:
+  - Blog
 tags:
   - dotnet
   - CSharp
 toc: true
-url: /blog/5-linqpad-tricks
-categories:
-  - Blog
 summary: LINQPad is one of the tools I use daily. But still, I haven't used it at its full power. And you?
+images:
+  - /blog/5-linqpad-tricks/featuredImage.png
 ---
 
 LINQPad is one of my best friends: I use it daily, and it helps me A LOT when I need to run some throwaway code.

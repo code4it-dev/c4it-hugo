@@ -1,14 +1,17 @@
 ---
 title: 8 things about Records in C# you probably didn't know
 date: 2022-05-31
+url: /blog/8-things-about-records-csharp
+draft: false
+categories:
+  - Blog
 tags:
   - CSharp
   - dotnet
 toc: true
-url: /blog/8-things-about-records-csharp
-categories:
-  - Blog
 summary: C# recently introduced Records, a new way of defining types. In this article, we will see 8 things you probably didn't know about C# Records
+images:
+  - /blog/8-things-about-records-csharp/featuredImage.png
 ---
 
 Records are the new data type introduced in 2021 with C# 9 and .NET Core 5.

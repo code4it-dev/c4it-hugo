@@ -1,12 +1,16 @@
 ---
 title: "C# tip: define Using Aliases to avoid ambiguity"
 date: 2021-09-21
-tags:
-  - CSharp
 url: /csharptips/using-alias
+draft: false
 categories:
   - CSharp Tips
+tags:
+  - CSharp
+toc: true
 summary: Sometimes we need to use objects with the same name but from different namespaces. How to remove that ambiguity? By Using Aliases!
+images:
+  - /csharptips/using-alias/featuredImage.png
 ---
 
 You may have to reference classes or services that come from different namespaces or packages, but that have the same name. It may become tricky to understand which reference refers to a specific type.

@@ -1,13 +1,16 @@
 ---
 title: Clean code tips - Abstraction and objects
 date: 2020-10-20
+url: /blog/clean-code-abstraction-and-objects
+draft: false
+categories:
+  - Blog
 tags:
   - Clean Code
 toc: true
-url: /blog/clean-code-abstraction-and-objects
-categories:
-  - Blog
 summary: Are Getters and Setters the correct way to think of abstraction? What are pro and cons of OOP and Procedural programming? And, in the OOP world, how can you define objects?
+images:
+  - /blog/clean-code-abstraction-and-objects/featuredImage.png
 ---
 
 This is the third part of my series of tips about clean code.

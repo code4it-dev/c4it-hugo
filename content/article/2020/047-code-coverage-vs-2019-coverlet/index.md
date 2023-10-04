@@ -1,14 +1,17 @@
 ---
 title: How to view code coverage with Coverlet and Visual Studio 2019
 date: 2020-12-29
+url: /blog/code-coverage-vs-2019-coverlet
+draft: false
+categories:
+  - Blog
 tags:
   - Visual Studio
   - Tests
 toc: true
-url: /blog/code-coverage-vs-2019-coverlet
-categories:
-  - Blog
 summary: Code coverage is an indicator of the quality of your code. With Coverlet and VS2019 you can have a human readable report to see where to improve your code.
+images:
+  - /blog/code-coverage-vs-2019-coverlet/featuredImage.png
 ---
 
 Having a high code coverage percentage boosts your confidence in your code: the more thoroughly your code is tested, the lesser are the possibilities to have bugs. Of course, You'll never have a bug-free project, that's utopian. But you can work toward reducing the possible bugs by testing each and every part of your code.

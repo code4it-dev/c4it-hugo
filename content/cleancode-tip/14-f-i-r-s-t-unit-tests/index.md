@@ -1,12 +1,16 @@
 ---
 title: "Clean Code Tip: F.I.R.S.T. acronym for better unit tests"
 date: 2022-07-26
-tags:
-  - Clean Code
 url: /cleancodetips/f-i-r-s-t-unit-tests
+draft: false
 categories:
   - Clean Code Tips
+tags:
+  - Clean Code
+toc: true
 summary: "Good unit tests have some properties in common: they are Fast, Independent, Repeatable, Self-validating, and Thorough. In a word: FIRST!"
+images:
+  - /cleancodetips/f-i-r-s-t-unit-tests/featuredImage.png
 ---
 
 **FIRST** is an acronym that you should always remember if you want to write clean and extensible tests.

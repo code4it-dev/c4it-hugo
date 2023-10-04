@@ -8,7 +8,9 @@ categories:
 tags:
   - CSharp
 toc: true
-summary: "We all use `switch` statements in our code. Do you use them at their full potential?"
+summary: We all use `switch` statements in our code. Do you use them at their full potential?
+images:
+  - /csharptips/switch-expressions-and-statements/featuredImage.png
 ---
 
 We all use `switch` statements in our code: they are a helpful way to run different code paths based on an check on a variable.

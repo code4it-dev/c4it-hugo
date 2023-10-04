@@ -1,12 +1,16 @@
 ---
 title: "Clean code tip: use the same name for the same concept"
 date: 2021-10-05
-tags:
-  - Clean Code
 url: /cleancodetips/use-same-name-for-same-concept
+draft: false
 categories:
   - Clean Code Tips
+tags:
+  - Clean Code
+toc: true
 summary: "Smaller functions help us write better code, but have also a nice side effect: they help us to understand where an exception was thrown. Let's see how!"
+images:
+  - /cleancodetips/use-same-name-for-same-concept/featuredImage.png
 ---
 
 As I always say, naming things is hard. We've already talked about this in [a previous article](https://www.code4it.dev/cleancodetips/choose-meaningful-names "How to choose meaningful names tip on Code4IT").

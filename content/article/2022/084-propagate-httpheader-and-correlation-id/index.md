@@ -1,14 +1,17 @@
 ---
 title: How to propagate HTTP Headers (and  Correlation IDs) using HttpClients in C#
 date: 2022-08-02
+url: /blog/propagate-httpheader-and-correlation-id
+draft: false
+categories:
+  - Blog
 tags:
   - CSharp
   - dotnet
 toc: true
-url: /blog/propagate-httpheader-and-correlation-id
-categories:
-  - Blog
 summary: Propagating HTTP Headers can be useful, especially when dealing with Correlation IDs. It's time to customize our HttpClients!
+images:
+  - /blog/propagate-httpheader-and-correlation-id/featuredImage.png
 ---
 
 Imagine this: you have a system made up of different applications that communicate via HTTP. There's some sort of entry point, exposed to the clients, that orchestrates the calls to the other applications. How do you correlate those requests?
@@ -201,7 +204,6 @@ By using `_contextAccessor` we can access the current HTTP Context. From there, 
 
 <div style="max-width:70%;height:0;padding-bottom:100%;position:relative;margin:auto;"><iframe src="https://giphy.com/embed/Z8koEOoTT2rgghCzXK" width="100%" height="100%" style="position:absolute" frameBorder="0" class="giphy-embed" allowFullScreen></iframe></div><p><a href="https://giphy.com/gifs/nickelodeon-nick-all-that-clone-Z8koEOoTT2rgghCzXK">HTTP Headers are "cloned" and propagated</a></p>
 Notice that we've used `TryAddWithoutValidation` instead of `Add`: in this way, we can use whichever HTTP header key we want without worrying about invalid names (such as the ones with a new line in it). Invalid header names will simply be ignored, as opposed to the Add method that will throw an exception.
-
 Finally, we continue with the HTTP call by executing `base.SendAsync`, passing the `HttpRequestMessage` object now enriched with additional headers.
 
 ## Using HttpMessageHandlerBuilder to configure how HttpClients must be built
@@ -235,7 +237,6 @@ The `Configure` method allows you to customize how the `HttpMessageHandler` will
 
 <div style="max-width:70%;height:0;padding-bottom:56%;position:relative;margin:auto;"><iframe src="https://giphy.com/embed/Yj6d4OMmDV3bnYtOow" width="100%" height="100%" style="position:absolute" frameBorder="0" class="giphy-embed" allowFullScreen></iframe></div><p><a href="https://giphy.com/gifs/CBeebiesHQ-painting-diy-Yj6d4OMmDV3bnYtOow">via GIPHY</a></p>
 By having a look at the definition of `HttpMessageHandlerBuilder` you can grasp a bit of what happens when we're creating HttpClients in .NET.
-
 ```cs
 namespace Microsoft.Extensions.Http
 {
@@ -256,8 +257,10 @@ namespace Microsoft.Extensions.Http
 
         public abstract HttpMessageHandler Build();
     }
+
 }
-```
+
+````
 
 Ah, and remember the wise words you can read in the [docs of that class](https://docs.microsoft.com/en-us/dotnet/api/microsoft.extensions.http.httpmessagehandlerbuilder):
 
@@ -277,7 +280,7 @@ public static IServiceCollection AddHeaderPropagation(this IServiceCollection se
     services.TryAddEnumerable(ServiceDescriptor.Singleton<IHttpMessageHandlerBuilderFilter, HeaderPropagationMessageHandlerBuilderFilter>());
     return services;
 }
-```
+````
 
 Here, we're gonna extend the `IServiceCollection` with those functionalities. At first, we're adding `AddHttpContextAccessor`, which allows us to access the current HTTP Context (the one we've used in the `HeaderPropagationMessageHandler` class).
 
@@ -377,7 +380,6 @@ We will then see the same HTTP Header on the destination endpoint.
 
 <div style="max-width:70%;height:0;padding-bottom:60%;position:relative;margin:auto;"><iframe src="https://giphy.com/embed/8UF0EXzsc0Ckg" width="100%" height="100%" style="position:absolute" frameBorder="0" class="giphy-embed" allowFullScreen></iframe></div><p><a href="https://giphy.com/gifs/finally-atlast-itsover-8UF0EXzsc0Ckg"> We did it!</a></p>
 ## Propagating CorrelationId to a specific HttpClient
-
 You can also specify which headers need to be propagated on single HTTP Clients:
 
 ```cs

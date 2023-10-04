@@ -1,12 +1,16 @@
 ---
 title: "C# Tip: Raise synchronous events using Timer (and not a While loop)"
 date: 2022-11-29
-tags:
-  - CSharp
 url: /csharptips/timer-to-trigger-synchronous-events
+draft: false
 categories:
   - CSharp Tips
+tags:
+  - CSharp
+toc: true
 summary: "When you need to fire synchronous events, don't use a while(true) loop: use a Timer!"
+images:
+  - /csharptips/timer-to-trigger-synchronous-events/featuredImage.png
 ---
 
 There may be times when you need to process a specific task on a timely basis, such as **polling an endpoint** to look for updates or refreshing a Refresh Token.

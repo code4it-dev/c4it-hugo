@@ -1,12 +1,16 @@
 ---
 title: "C# Tip: Convert ExpandoObjects to IDictionary"
 date: 2022-05-10
-tags:
-  - CSharp
 url: /csharptips/expandoobject-to-dictionary
+draft: false
 categories:
   - CSharp Tips
+tags:
+  - CSharp
+toc: true
 summary: How to get all the keys of an ExpandoObject? Convert it to Dictionary!
+images:
+  - /csharptips/expandoobject-to-dictionary/featuredImage.png
 ---
 
 In C#, `ExpandoObjects` are dynamically-populated objects without a predefined _shape_.

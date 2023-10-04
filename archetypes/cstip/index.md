@@ -9,6 +9,8 @@ tags:
 - CSharp
 toc: false
 summary: "A summary"
+images:
+ - /csharptips/post-slug/featuredImage.png
 ---
 
 ## Further readings
@@ -37,3 +39,5 @@ Happy coding!
 [ ] Immagine di copertina
 [ ] Rimuovi secrets dalle immagini
 [ ] Pulizia formattazione
+[ ] Metti la giusta OgTitle
+[ ] Fai resize della immagine di copertina

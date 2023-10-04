@@ -1,5 +1,5 @@
 ---
-title: "How to add Dependency Injection, Configurations, and Logging in a .NET 7 Console Application"
+title: How to add Dependency Injection, Configurations, and Logging in a .NET 7 Console Application
 date: 2023-06-06
 url: /blog/dependency-injection-config-logging-in-console-application
 draft: false
@@ -9,7 +9,9 @@ tags:
   - CSharp
   - dotnet
 toc: true
-summary: "By default, you cannot use Dependency Injection, custom logging, and configurations from settings in a Console Application. Unless you create a custom `Host`!"
+summary: By default, you cannot use Dependency Injection, custom logging, and configurations from settings in a Console Application. Unless you create a custom `Host`!
+images:
+  - /blog/dependency-injection-config-logging-in-console-application/featuredImage.png
 ---
 
 Sometimes, you just want to create a console application to run a complex script. Just because it is a "simple" console application, it doesn't mean that you should not use best practices, such as using Dependency Injection.

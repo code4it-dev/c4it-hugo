@@ -1,12 +1,16 @@
 ---
 title: "C# Tip: Use Debug-Assert to break the debugging flow if a condition fails"
 date: 2022-04-05
-tags:
-  - CSharp
 url: /csharptips/debug-assert
+draft: false
 categories:
   - CSharp Tips
+tags:
+  - CSharp
+toc: true
 summary: It would be great if we could break the debugging flow if a condition is (not) met. Can we? Of course!
+images:
+  - /csharptips/debug-assert/featuredImage.png
 ---
 
 Sometimes, while debugging, you want to check if the state of your code is still valid, or, at least, it corresponds to some expectations.

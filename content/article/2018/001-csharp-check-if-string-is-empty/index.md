@@ -1,13 +1,16 @@
 ---
 title: How to check if a string is really empty with C#
 date: 2018-10-01
+url: /blog/csharp-check-if-string-is-empty
+draft: false
+categories:
+  - Blog
 tags:
   - CSharp
 toc: true
-url: /blog/csharp-check-if-string-is-empty
-categories:
-  - Blog
 summary: "Is a string empty? What if it contains only white spaces? You shouldn't reinvent the wheel, since .NET exposes methods exactly for these cases: String.IsNullOrEmpty and String.IsNullOrWhiteSpace."
+images:
+  - /blog/csharp-check-if-string-is-empty/featuredImage.png
 ---
 
 > To be, or not to be (empty), that is the question...

@@ -1,16 +1,19 @@
 ---
 title: How to perform CRUD operations with Entity Framework Core and PostgreSQL
 date: 2022-03-29
+url: /blog/postgres-crud-entityframework
+draft: false
+categories:
+  - Blog
 tags:
   - CSharp
   - Database
   - SQL
   - PostgreSQL
 toc: true
-url: /blog/postgres-crud-entityframework
-categories:
-  - Blog
 summary: With Entity Framework you can perform operations on relational databases without writing a single line of SQL. We will use EF to integrate PostgreSQL in our application
+images:
+  - /blog/postgres-crud-entityframework/featuredImage.png
 ---
 
 When working with relational databases, you often come across two tasks: writing SQL queries and mapping the results to some DTO objects.

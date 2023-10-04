@@ -1,15 +1,18 @@
 ---
 title: A few things I learned at .NET Conference Italia 2018
 date: 2018-10-29
+url: /blog/dotnet-conference-italia-2018
+draft: false
+categories:
+  - Blog
 tags:
   - dotnet
   - CSharp
   - MISC
 toc: true
-url: /blog/dotnet-conference-italia-2018
-categories:
-  - Blog
 summary: "Some of the things I learned at .NET Conf Italia: interfaces and abstract classes, Blazor, C# default interfaces and .NET Core on Samsung TV"
+images:
+  - /blog/dotnet-conference-italia-2018/featuredImage.png
 ---
 
 Friday, October 26th, 2018 I attended the .NET Conference in Milan, Italy. It was an event organized by [ASP Italia](http://www.aspitalia.com "ASP Italia website"), with the sponsorship of Microsoft and [Icubed](https://icubed.it/ "Icubed website").

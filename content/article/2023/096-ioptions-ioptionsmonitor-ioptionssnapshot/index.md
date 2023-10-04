@@ -1,5 +1,5 @@
 ---
-title: "Understanding IOptions, IOptionsMonitor, and IOptionsSnapshot in .NET 7"
+title: Understanding IOptions, IOptionsMonitor, and IOptionsSnapshot in .NET 7
 date: 2023-05-23
 url: /blog/ioptions-ioptionsmonitor-ioptionssnapshot
 draft: false
@@ -10,7 +10,9 @@ tags:
   - dotNET
   - Configurations
 toc: true
-summary: "There are several ways to handle configurations in a .NET Application. In this article, we're going to learn how to use `IOptions<T>`, `IOptionsSnapshot<T>`, and `IOptionsMonitor<T>`"
+summary: There are several ways to handle configurations in a .NET Application. In this article, we're going to learn how to use `IOptions<T>`, `IOptionsSnapshot<T>`, and `IOptionsMonitor<T>`
+images:
+  - /blog/ioptions-ioptionsmonitor-ioptionssnapshot/featuredImage.png
 ---
 
 When dealing with configurations in a .NET application, we can choose different strategies. For example, you can simply inject an `IConfiguration` instance in your constructor, and retrieve every value by name.

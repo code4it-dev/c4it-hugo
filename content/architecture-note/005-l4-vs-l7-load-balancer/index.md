@@ -1,5 +1,5 @@
 ---
-title: "Davide's Code and Architecture Notes - L4 vs L7 Load Balancer"
+title: Davide's Code and Architecture Notes - L4 vs L7 Load Balancer
 date: 2023-06-27
 url: /architecture-notes/l4-vs-l7-load-balancers
 draft: false
@@ -9,6 +9,8 @@ tags:
   - Software Architecture
 toc: true
 summary: "If you need to handle lots of incoming requests, you should manage the incoming traffic by balancing the load across different servers. You should consider adding a Load Balancer: it's a layer of abstraction that handles requests, availability, and security in a centralized place."
+images:
+  - /architecture-notes/l4-vs-l7-load-balancers/featuredImage.png
 ---
 
 When handling a massive amount of requests, a system generally needs to balance the incoming load to avoid overloading a single server. To do that, we typically use a Load Balancer in front of our applications to handle all the incoming traffic.

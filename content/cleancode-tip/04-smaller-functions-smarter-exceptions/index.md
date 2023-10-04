@@ -1,12 +1,16 @@
 ---
 title: "Clean code tip: small functions bring smarter exceptions"
 date: 2021-08-17
-tags:
-  - Clean Code
 url: /cleancodetips/smaller-functions-smarter-exceptions
+draft: false
 categories:
   - Clean Code Tips
+tags:
+  - Clean Code
+toc: true
 summary: "Smaller functions help us write better code, but have also a nice side effect: they help us to understand where an exception was thrown. Let's see how!"
+images:
+  - /cleancodetips/smaller-functions-smarter-exceptions/featuredImage.png
 ---
 
 Small functions not only improve your code readability but also help to debug faster your applications in case of unhandled exceptions.

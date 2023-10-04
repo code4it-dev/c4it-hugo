@@ -7,8 +7,10 @@ categories:
   - CSharp Tips
 tags:
   - CSharp
-toc: false
-summary: "Interpolated strings are those built with the `$` symbol, that you can use to create strings using existing variables or properties. Did you know that you can apply custom formattings to such values?"
+toc: true
+summary: Interpolated strings are those built with the `$` symbol, that you can use to create strings using existing variables or properties. Did you know that you can apply custom formattings to such values?
+images:
+  - /csharptips/format-interpolated-strings/featuredImage.png
 ---
 
 As you know, there are many ways to "create" strings in C#. You can use a `StringBuilder`, you can simply concatenate strings, or you can use _interpolated_ strings.

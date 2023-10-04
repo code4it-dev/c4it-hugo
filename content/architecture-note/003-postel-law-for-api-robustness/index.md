@@ -1,5 +1,5 @@
 ---
-title: "Davide's Code and Architecture Notes - Postel's law for API Robustness"
+title: Davide's Code and Architecture Notes - Postel's law for API Robustness
 date: 2023-04-18
 url: /architecture-notes/postel-law-for-api-robustness
 draft: false
@@ -10,6 +10,8 @@ tags:
   - API
 toc: true
 summary: "A system should be **robust**: it should be able to resist change and, well, not generate regressions. Postel's law helps define a mindset to create robust APIs."
+images:
+  - /architecture-notes/postel-law-for-api-robustness/featuredImage.png
 ---
 
 When designing and building Web APIs, we should follow Postel's law to make our API more robust.

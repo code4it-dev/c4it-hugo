@@ -1,14 +1,17 @@
 ---
 title: How to log Correlation IDs in .NET APIs with Serilog
 date: 2022-09-20
+url: /blog/serilog-correlation-id
+draft: false
+categories:
+  - Blog
 tags:
   - CSharp
   - dotnet
 toc: true
-url: /blog/serilog-correlation-id
-categories:
-  - Blog
 summary: APIs often call other APIs to perform operations. If an error occurs in one of them, how can you understand the context that caused that error? You can use Correlation IDs in your logs!
+images:
+  - /blog/serilog-correlation-id/featuredImage.png
 ---
 
 _Correlation IDs_ are values that are passed across different systems to correlate the operations performed during a "macro" operation.

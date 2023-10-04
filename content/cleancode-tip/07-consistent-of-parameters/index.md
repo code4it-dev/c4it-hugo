@@ -1,12 +1,16 @@
 ---
 title: "Clean Code Tip: Keep the parameters in a consistent order"
 date: 2021-11-30
-tags:
-  - Clean Code
 url: /cleancodetips/consistent-of-parameters
+draft: false
 categories:
   - Clean Code Tips
+tags:
+  - Clean Code
+toc: true
 summary: Following a coherent standard, even for parameters order, helps developers when writing and, even more, reading code. How to do that?
+images:
+  - /cleancodetips/consistent-of-parameters/featuredImage.png
 ---
 
 If you have a set of related functions, use always a coherent order of parameters.
