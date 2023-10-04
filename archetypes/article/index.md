@@ -9,6 +9,8 @@ tags:
 - CSharp
 toc: true
 summary: "A summary"
+images:
+ - /blog/post-slug/featuredImage.png
 ---
 
 
@@ -38,3 +40,5 @@ Happy coding!
 [ ] Rimuovi secrets dalle immagini
 [ ] Pulizia formattazione
 [ ] Controlla se ASP.NET Core oppure .NET
+[ ] Metti la giusta OgTitle
+[ ] Fai resize della immagine di copertina

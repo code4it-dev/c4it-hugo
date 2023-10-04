@@ -9,6 +9,8 @@ tags:
 - Software Architecture
 toc: true
 summary: "A summary"
+images:
+ - /architecture-notes/post-slug/featuredImage.png
 ---
 
 
@@ -37,3 +39,5 @@ Happy coding!
 [ ] Immagine di copertina
 [ ] Rimuovi secrets dalle immagini
 [ ] Pulizia formattazione
+[ ] Metti la giusta OgTitle
+[ ] Fai resize della immagine di copertina
