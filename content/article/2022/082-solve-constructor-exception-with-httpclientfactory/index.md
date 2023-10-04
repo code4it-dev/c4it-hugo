@@ -1,14 +1,17 @@
 ---
 title: How to solve InvalidOperationException for constructors using HttpClientFactory in C#
 date: 2022-07-05
+url: /blog/solve-constructor-exception-with-httpclientfactory
+draft: false
+categories:
+  - Blog
 tags:
   - CSharp
   - dotnet
 toc: true
-url: /blog/solve-constructor-exception-with-httpclientfactory
-categories:
-  - Blog
 summary: A suitable constructor for type 'X' could not be located. What a strange error message! Luckily it's easy to solve.
+images:
+  - /blog/solve-constructor-exception-with-httpclientfactory/featuredImage.png
 ---
 
 A few days ago I was preparing the demo for a new article. The demo included a class with an `IHttpClientFactory` service injected into the constructor. Nothing more.

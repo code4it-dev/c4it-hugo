@@ -1,16 +1,19 @@
 ---
 title: How to upgrade Azure Functions v2 to v3
 date: 2020-04-21
+url: /blog/azure-functions-v2-to-v3
+draft: false
+categories:
+  - Blog
 tags:
   - dotnet
   - Azure
   - Azure Function
   - Serverless
 toc: true
-url: /blog/azure-functions-v2-to-v3
-categories:
-  - Blog
 summary: Do you have an Azure Function that you want to upgrade from v2 to v3? Don't panic, it's just a matter of few steps!
+images:
+  - /blog/azure-functions-v2-to-v3/featuredImage.png
 ---
 
 Azure Functions are a great way to implement serverless services. You can implement them with many languages, like C# and JavaScript, and can be configured both on the Azure Portal and on your local machine.

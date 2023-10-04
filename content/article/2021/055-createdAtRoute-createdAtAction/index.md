@@ -1,13 +1,16 @@
 ---
 title: Getting resource location with CreatedAtAction and CreatedAtRoute action results
 date: 2021-04-20
+url: /blog/createdAtRoute-createdAtAction
+draft: false
+categories:
+  - Blog
 tags:
   - dotnet
 toc: true
-url: /blog/createdAtRoute-createdAtAction
-categories:
-  - Blog
 summary: It's not a good practice to return the ID of a newly created item in the HTTP Response Body. What to do? You can return it in the HTTP Response Headers, with CreatedAtAction and CreatedAtRoute.
+images:
+  - /blog/createdAtRoute-createdAtAction/featuredImage.png
 ---
 
 Even though many devs (including me!) often forget about it, REST is not a synonym of HTTP API: it is an architectural style based on the central idea of **resource**.

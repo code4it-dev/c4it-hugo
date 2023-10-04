@@ -1,14 +1,17 @@
 ---
 title: How to resolve dependencies in .NET APIs based on current HTTP Request
 date: 2021-11-09
+url: /blog/resolving-dependencies-depending-on-httprequest
+draft: false
+categories:
+  - Blog
 tags:
   - dotnet
   - CSharp
 toc: true
-url: /blog/resolving-dependencies-depending-on-httprequest
-categories:
-  - Blog
 summary: Did you know that in .NET you can resolve specific dependencies using Factories? We'll use them to switch between concrete classes based on the current HTTP Request
+images:
+  - /blog/resolving-dependencies-depending-on-httprequest/featuredImage.png
 ---
 
 Say that you have an interface and that you want to specify its concrete class at runtime using the native Dependency Injection engine provided by .NET.

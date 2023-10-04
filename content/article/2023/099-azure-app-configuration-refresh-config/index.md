@@ -1,5 +1,5 @@
 ---
-title: "How to automatically refresh configurations with Azure App Configuration in ASP.NET Core"
+title: How to automatically refresh configurations with Azure App Configuration in ASP.NET Core
 date: 2023-07-04
 url: /blog/azure-app-configuration-refresh-config
 draft: false
@@ -12,7 +12,9 @@ tags:
   - Azure App Configuration
   - Configurations
 toc: true
-summary: "ASP.NET allows you to poll Azure App Configuration to always get the most updated values without restarting your applications. It's simple, but you have to think thoroughly."
+summary: ASP.NET allows you to poll Azure App Configuration to always get the most updated values without restarting your applications. It's simple, but you have to think thoroughly.
+images:
+  - /blog/azure-app-configuration-refresh-config/featuredImage.png
 ---
 
 In a previous article, we learned how to centralize configurations using Azure App Configuration, a service provided by Azure to share configurations in a secure way. Using Azure App Configuration, you'll be able to store the most critical configurations in a single place and apply them to one or more environments or projects.

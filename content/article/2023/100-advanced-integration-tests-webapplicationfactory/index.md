@@ -1,5 +1,5 @@
 ---
-title: "Advanced Integration Tests for .NET 7 API with WebApplicationFactory and NUnit"
+title: Advanced Integration Tests for .NET 7 API with WebApplicationFactory and NUnit
 date: 2023-08-01
 url: /blog/advanced-integration-tests-webapplicationfactory
 draft: false
@@ -12,6 +12,8 @@ tags:
   - CSharp
 toc: true
 summary: "Integration Tests are incredibly useful: a few Integration Tests are often more useful than lots of Unit Tests. Let's learn some advanced capabilities of `WebApplicationFactory`."
+images:
+  - /blog/advanced-integration-tests-webapplicationfactory/featuredImage.png
 ---
 
 In a [previous article](https://www.code4it.dev/blog/integration-tests-for-dotnet-api/), we learned a quick way to create Integration Tests for ASP.NET API by using `WebApplicationFactory`. That was a nice introductory article. But now we will delve into more **complex topics** and examples.

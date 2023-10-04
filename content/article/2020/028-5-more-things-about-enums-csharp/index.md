@@ -1,13 +1,16 @@
 ---
 title: 5 more things you should know about enums in C#
 date: 2020-05-19
+url: /blog/5-more-things-about-enums-csharp
+draft: false
+categories:
+  - Blog
 tags:
   - CSharp
 toc: true
-url: /blog/5-more-things-about-enums-csharp
-categories:
-  - Blog
 summary: We've already seen some of the things you should know about enums in C#. Here we'll dive into Flagged enumerations, serialization and so on.
+images:
+  - /blog/5-more-things-about-enums-csharp/featuredImage.png
 ---
 
 In a [previous article](https://www.code4it.dev/blog/5-things-enums-csharp "5 things you didn't know about enums in C#"), I explained some details about enums in C#. Here I'll talk about some other things that are useful and/or curious to know about them.

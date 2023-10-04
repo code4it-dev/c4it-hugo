@@ -1,14 +1,17 @@
 ---
 title: How to use HttpRepl to navigate API endpoints
 date: 2020-09-22
+url: /blog/httprepl
+draft: false
+categories:
+  - Blog
 tags:
   - MISC
   - dotnet
 toc: true
-url: /blog/httprepl
-categories:
-  - Blog
 summary: With HttpRepl you can perform HTTP operations as they were local folders, using the CLI. Let's see how to configure it and run GET and POST operations.
+images:
+  - /blog/httprepl/featuredImage.png
 ---
 
 Ever wondered if it's possible to interact with some APIs using the CLI instead of writing a client or using tools like Postman or Insomnia? One of the most used tools is _cURL_, that you can use to call an endpoint via HTTP and print the result on the console. One of its limits is that you must know exactly the URL to call: you can't discover the endpoints exposed by the target API.

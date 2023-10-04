@@ -1,12 +1,16 @@
 ---
 title: "C# Tip: How to temporarily change the CurrentCulture"
 date: 2022-03-08
-tags:
-  - CSharp
 url: /csharptips/change-current-culture-in-using-block
+draft: false
 categories:
   - CSharp Tips
+tags:
+  - CSharp
+toc: true
 summary: What can you do if you need to temporarily change the CurrentCulture in C#?
+images:
+  - /csharptips/change-current-culture-in-using-block/featuredImage.png
 ---
 
 It may happen, even just for testing some functionalities, that you want to change the Culture of the thread your application is running on.

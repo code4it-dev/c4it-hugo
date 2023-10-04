@@ -1,14 +1,17 @@
 ---
 title: How to expose .NET Assembly Version via API endpoint routing
 date: 2021-05-18
+url: /blog/assembly-version-via-api-endpoint-routing
+draft: false
+categories:
+  - Blog
 tags:
   - dotnet
   - CSharp
 toc: true
-url: /blog/assembly-version-via-api-endpoint-routing
-categories:
-  - Blog
 summary: Knowing the Assembly Version of the API you've deployed on an environment may be helpful for many reasons. We're gonna see why, how to retrieve it, and how to expose it with Endpoint Routing  (bye-bye Controllers and Actions!)
+images:
+  - /blog/assembly-version-via-api-endpoint-routing/featuredImage.png
 ---
 
 Sometimes it can be useful to show the version of the running Assembly in one .NET Core API endpoint: for example, when you want to know which version of your code is running in an environment, or to expose a simple endpoint that acts as a "minimal" health check.

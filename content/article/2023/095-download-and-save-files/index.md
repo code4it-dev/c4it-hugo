@@ -1,5 +1,5 @@
 ---
-title: "How to download an online file and store it on file system with C#"
+title: How to download an online file and store it on file system with C#
 date: 2023-05-09
 url: /blog/download-and-save-files
 draft: false
@@ -9,6 +9,8 @@ tags:
   - CSharp
 toc: true
 summary: "Downloading a file from a remote resource seems an easy task: download the byte stream and copy it to a local file. Beware of edge cases!"
+images:
+  - /blog/download-and-save-files/featuredImage.png
 ---
 
 Downloading files from an online source and saving them on the local machine seems an easy task.

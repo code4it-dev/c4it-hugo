@@ -1,12 +1,16 @@
 ---
 title: "C# Tip: LINQ's Enumerable.Range to generate a sequence of consecutive numbers"
 date: 2023-01-17
-tags:
-  - CSharp
 url: /csharptips/enumerable-range
+draft: false
 categories:
   - CSharp Tips
+tags:
+  - CSharp
+toc: true
 summary: "If you need a sequence of numbers, you can pick two ways: use a While loop, or use Enumerable.Range"
+images:
+  - /csharptips/enumerable-range/featuredImage.png
 ---
 
 When you need to generate a sequence of numbers in ascending order, you can just use a `while` loop with an enumerator, or you can use `Enumerable.Range`.

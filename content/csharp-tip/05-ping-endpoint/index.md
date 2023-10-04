@@ -1,12 +1,16 @@
 ---
 title: "C# Tip: use the Ping class instead of an HttpClient to ping an endpoint"
 date: 2021-10-19
-tags:
-  - CSharp
 url: /csharptips/ping-endpoint
+draft: false
 categories:
   - CSharp Tips
+tags:
+  - CSharp
+toc: true
 summary: Sometimes you need to ping some endpoints. Don't rely on HttpClient, but use the native Ping class.
+images:
+  - /csharptips/ping-endpoint/featuredImage.png
 ---
 
 What if you wanted to see if a remote website is up and running?

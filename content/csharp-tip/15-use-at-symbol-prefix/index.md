@@ -1,12 +1,16 @@
 ---
 title: "C# Tip: use the @ prefix when a name is reserved"
 date: 2022-10-25
-tags:
-  - CSharp
 url: /csharptips/use-at-symbol-prefix
+draft: false
 categories:
   - CSharp Tips
+tags:
+  - CSharp
+toc: true
 summary: C#, as every other language, has several reserved keywords. Did you know that you can use them if you use the `@` prefix?
+images:
+  - /csharptips/use-at-symbol-prefix/featuredImage.png
 ---
 
 You already know it: using meaningful names for variables, methods, and classes allows you to write more readable and maintainable code.

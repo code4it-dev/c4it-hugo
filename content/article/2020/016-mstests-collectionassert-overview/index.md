@@ -1,14 +1,17 @@
 ---
 title: MSTest CollectionAssert class - an overview
 date: 2020-02-04
+url: /blog/mstests-collectionassert-overview
+draft: false
+categories:
+  - Blog
 tags:
   - CSharp
   - Tests
 toc: true
-url: /blog/mstests-collectionassert-overview
-categories:
-  - Blog
 summary: The CollectionAssert class if fine for basic tests on collections in C#. We will have a look at the methods exposed by this class.
+images:
+  - /blog/mstests-collectionassert-overview/featuredImage.png
 ---
 
 This is the third part of our journey. In the [first part](https://www.code4it.dev/blog/mstests-assert-overview "Unit testing with Assert") we listed the methods belonging to the **Assert** class, while in the [second part](https://www.code4it.dev/blog/mstests-stringassert-overview "Unit testing with StringAssert") we had a look at the **StringAssert** class.

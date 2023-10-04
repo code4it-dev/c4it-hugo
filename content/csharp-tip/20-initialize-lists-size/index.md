@@ -1,12 +1,16 @@
 ---
 title: "C# Tip: Initialize lists size to improve performance"
 date: 2023-02-28
-tags:
-  - CSharp
 url: /csharptips/initialize-lists-size
+draft: false
 categories:
   - CSharp Tips
+tags:
+  - CSharp
+toc: true
 summary: Lists have an inner capacity. Every time you add more items than the current Capacity, you add performance overhead. How to prevent it?
+images:
+  - /csharptips/initialize-lists-size/featuredImage.png
 ---
 
 Some collections, like `List<T>`, have a predefined initial size.

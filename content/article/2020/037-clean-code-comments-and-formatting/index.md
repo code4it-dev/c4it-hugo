@@ -1,13 +1,16 @@
 ---
 title: Clean code tips - comments and formatting
 date: 2020-08-18
+url: /blog/clean-code-comments-and-formatting
+draft: false
+categories:
+  - Blog
 tags:
   - Clean Code
 toc: true
-url: /blog/clean-code-comments-and-formatting
-categories:
-  - Blog
 summary: Are all comments bad? When they are necessary? Why formatting is so important? Writing clean code does not only refer to the executed code, but also to everything around.
+images:
+  - /blog/clean-code-comments-and-formatting/featuredImage.png
 ---
 
 This is the second part of my series of tips about clean code. We'll talk about comments, why many of them are useless or even dangerous, why some are necessary and how to improve your comments. We'll also have a look at why formatting is so important, and we can't afford to write messy code.

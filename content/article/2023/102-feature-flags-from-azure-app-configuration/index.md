@@ -1,5 +1,5 @@
 ---
-title: "How to integrate Feature Flags stored on Azure App Configuration in an ASP.NET Core Application"
+title: How to integrate Feature Flags stored on Azure App Configuration in an ASP.NET Core Application
 date: 2023-10-03
 url: /blog/feature-flags-from-azure-app-configuration
 draft: false
@@ -12,7 +12,9 @@ tags:
   - Azure App Configuration
   - Azure
 toc: true
-summary: "Learn how to use Feature Flags in ASP.NET Core apps and read values from Azure App Configuration. Understand how to use filters, like the Percentage filter, to control feature activation, and learn how to take full control of the cache expiration of the values."
+summary: Learn how to use Feature Flags in ASP.NET Core apps and read values from Azure App Configuration. Understand how to use filters, like the Percentage filter, to control feature activation, and learn how to take full control of the cache expiration of the values.
+images:
+  - /blog/feature-flags-from-azure-app-configuration/featuredImage.png
 ---
 
 Feature Flags let you remotely control the activation of features without code changes. They help you to test, release, and manage features safely and quickly by driving changes using centralized configurations.

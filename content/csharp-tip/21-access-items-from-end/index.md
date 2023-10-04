@@ -1,12 +1,16 @@
 ---
 title: "C# Tip: Access items from the end of the array using the ^ operator"
 date: 2023-04-11
-tags:
-  - CSharp
 url: /csharptips/access-items-from-end-of-array
+draft: false
 categories:
   - CSharp Tips
+tags:
+  - CSharp
+toc: true
 summary: Shorter code is often easier to read. Not always, but often. And the `^` operator can make your code easier to read and less error-prone
+images:
+  - /csharptips/access-items-from-end-of-array/featuredImage.png
 ---
 
 Say that you have an array of N items and you need to access an element counting from the end of the collection.

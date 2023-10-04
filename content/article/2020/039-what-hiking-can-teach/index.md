@@ -1,15 +1,18 @@
 ---
 title: 10 things hiking can teach you as a junior developer
 date: 2020-09-08
+url: /blog/what-hiking-can-teach
+draft: false
+categories:
+  - Blog
 tags:
   - Career
   - MISC
   - Programming
 toc: true
-url: /blog/what-hiking-can-teach
-categories:
-  - Blog
 summary: During this holiday I hiked for the first time. I found some lessons that hiking can teach junior devs
+images:
+  - /blog/what-hiking-can-teach/featuredImage.png
 ---
 
 I just finished my holidays. For the first time in my life instead of relaxing and getting a tan on the beach, I spent my summer holidays in the mountains. For sure I won't show a perfect tan in the office this year, because - even though **it was almost the first time** for me - I spent almost every day hiking. That was quite extreme for me 'cause, trust me, I'm a lazy guy! Just to give you an example, if I'm watching a movie, and I have to choose between staying on the couch or getting up to get some snacks, I'd rather stay hungry than leaving the couch!

@@ -2,12 +2,16 @@
 title: "C# Tip: 2 ways to define ASP.NET Core custom Middleware"
 date: 2023-07-11
 url: /csharptips/custom-middleware
+draft: false
 categories:
   - CSharp Tips
 tags:
   - CSharp
   - dotNET
+toc: true
 summary: "Customizing the behavior of an HTTP request is easy: you can use a middleware defined as a delegate or as a class."
+images:
+  - /csharptips/custom-middleware/featuredImage.png
 ---
 
 Sometimes you need to create custom logic that must be applied to all HTTP requests received by your ASP.NET Core application. In these cases, you can create a custom _middleware_: pieces of code that are executed sequentially for all incoming requests.

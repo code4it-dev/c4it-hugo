@@ -1,5 +1,5 @@
 ---
-title: "Davide's Code and Architecture Notes - Testing Pyramid vs Testing Diamond (and how they affect Code Coverage)"
+title: Davide's Code and Architecture Notes - Testing Pyramid vs Testing Diamond (and how they affect Code Coverage)
 date: 2023-05-30
 url: /architecture-notes/testing-pyramid-vs-testing-diamond
 draft: false
@@ -9,7 +9,9 @@ tags:
   - Software Architecture
   - Tests
 toc: true
-summary: "Testing Pyramid and Testing Diamond are two ways of managing automated tests. We're going to learn what they are and how they are built in relation to Unit Tests, Integration Tests, and End-to-end Tests."
+summary: Testing Pyramid and Testing Diamond are two ways of managing automated tests. We're going to learn what they are and how they are built in relation to Unit Tests, Integration Tests, and End-to-end Tests.
+images:
+  - /architecture-notes/testing-pyramid-vs-testing-diamond/featuredImage.png
 ---
 
 Every software project requires some sort of testing. You can execute them manually or put in place a whole suite of automatic tests that run timely, for example when you close a PR or daily, every day at the same time.

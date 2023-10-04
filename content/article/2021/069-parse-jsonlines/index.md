@@ -1,13 +1,16 @@
 ---
 title: "How to parse JSON Lines (JSONL) with C# "
 date: 2021-11-23
+url: /blog/parse-jsonlines
+draft: false
+categories:
+  - Blog
 tags:
   - CSharp
 toc: true
-url: /blog/parse-jsonlines
-categories:
-  - Blog
 summary: "JSONL is JSON's less famous sibling: it allows you to store JSON objects separating them with new line. We will learn how to parse a JSONL string with C#."
+images:
+  - /blog/parse-jsonlines/featuredImage.png
 ---
 
 For sure, you already know JSON: it's one of the most commonly used formats to share data as text.

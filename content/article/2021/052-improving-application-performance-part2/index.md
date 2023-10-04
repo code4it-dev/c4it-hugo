@@ -1,15 +1,18 @@
 ---
 title: "14 to 2 seconds: how I improved the performance of an endpoint by 82% - part 2"
 date: 2021-03-09
+url: /blog/improving-application-performance-part2
+draft: false
+categories:
+  - Blog
 tags:
   - Performance
   - dotnet
   - CSharp
 toc: true
-url: /blog/improving-application-performance-part2
-categories:
-  - Blog
 summary: Language details may impact application performance. In this article we'll see some of the C# tips that brought me to improve my application. Singleton creation, StringBuilder and more!
+images:
+  - /blog/improving-application-performance-part2/featuredImage.png
 ---
 
 In this second article, I'm going to share some more tips that brought me to improve the performance of an API from 14sec to less than 3 seconds: an improvement of 82%.

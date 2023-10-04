@@ -1,14 +1,17 @@
 ---
 title: Profiling .NET code with MiniProfiler
 date: 2021-12-07
+url: /blog/miniprofiler
+draft: false
+categories:
+  - Blog
 tags:
   - CSharp
   - dotnet
 toc: true
-url: /blog/miniprofiler
-categories:
-  - Blog
 summary: Is your application slow? How to find bottlenecks? If so, you can use MiniProfiler to profile a .NET API application and analyze the timings of the different operations.
+images:
+  - /blog/miniprofiler/featuredImage.png
 ---
 
 Sometimes your project does not perform well as you would expect. Bottlenecks occur, and it can be hard to understand where and why.

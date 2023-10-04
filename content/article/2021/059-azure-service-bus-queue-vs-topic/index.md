@@ -1,16 +1,19 @@
 ---
 title: "Azure Service Bus: Queues vs Topics"
 date: 2021-06-15
+url: /blog/azure-service-bus-queue-vs-topic
+draft: false
+categories:
+  - Blog
 tags:
   - Azure
   - dotnet
   - CSharp
   - Azure Service Bus
 toc: true
-url: /blog/azure-service-bus-queue-vs-topic
-categories:
-  - Blog
 summary: Queues or Topics? How are they similar and how they are different? We'll see how to use those capabilities in Azure Service Bus with .NET and C#
+images:
+  - /blog/azure-service-bus-queue-vs-topic/featuredImage.png
 ---
 
 In the previous article, we've seen that with Azure Service Bus, the message broker provided by Microsoft, you can send messages in a queue in a way that the first application that receives it, also removes that message from the queue.

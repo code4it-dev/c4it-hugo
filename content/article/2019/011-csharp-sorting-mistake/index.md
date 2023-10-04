@@ -1,14 +1,17 @@
 ---
 title: C# sorting - a subtle mistake
 date: 2019-11-15
+url: /blog/csharp-sorting-mistake
+draft: false
+categories:
+  - Blog
 tags:
   - CSharp
   - dotnet
 toc: true
-url: /blog/csharp-sorting-mistake
-categories:
-  - Blog
 summary: Is it true that the inverse of a negative number is always a positive number? If you think it's true, you might get a subtle error while implementing comparison.
+images:
+  - /blog/csharp-sorting-mistake/featuredImage.png
 ---
 
 Recently I've learned a _funny_ (ehm...) thing.

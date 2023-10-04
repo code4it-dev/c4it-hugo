@@ -1,12 +1,16 @@
 ---
 title: "C# Tip: use yield return to return one item at the time"
 date: 2021-12-14
-tags:
-  - CSharp
 url: /csharptips/yield-return
+draft: false
 categories:
   - CSharp Tips
+tags:
+  - CSharp
+toc: true
 summary: "Yield is a keyword that allows you to return an item at the time instead of creating a full list and returning it as a whole. "
+images:
+  - /csharptips/yield-return/featuredImage.png
 ---
 
 To me, `yield return` has always been one of the most difficult things to understand.

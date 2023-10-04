@@ -1,14 +1,17 @@
 ---
 title: "Health Checks in .NET: 2 ways to check communication with MongoDB"
 date: 2023-03-07
+url: /blog/mongodb-healthcheck
+draft: false
+categories:
+  - Blog
 tags:
   - dotnet
   - MongoDB
 toc: true
-url: /blog/mongodb-healthcheck
-categories:
-  - Blog
 summary: Health Checks are fundamental to keep track of the health of a system. How can we check if MongoDB is healthy?
+images:
+  - /blog/mongodb-healthcheck/featuredImage.png
 ---
 
 In any complex system, you have to deal with external dependencies.

@@ -1,12 +1,16 @@
 ---
 title: "Clean Code Tip: Not all comments are bad"
 date: 2022-03-22
-tags:
-  - Clean Code
 url: /cleancodetips/good-comments
+draft: false
 categories:
   - Clean Code Tips
+tags:
+  - Clean Code
+toc: true
 summary: "Is it true that we should always avoid comments in our code? In my opinion, no: let's see when adding comments is not only good but necessary."
+images:
+  - /cleancodetips/good-comments/featuredImage.png
 ---
 
 Many developers say that

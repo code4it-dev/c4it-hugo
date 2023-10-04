@@ -1,12 +1,16 @@
 ---
 title: "Clean Code Tip: Avoid subtle duplication of code and logic"
 date: 2022-06-28
-tags:
-  - Clean Code
 url: /cleancodetips/avoid-subtle-duplication
+draft: false
 categories:
   - Clean Code Tips
+tags:
+  - Clean Code
+toc: true
 summary: Duplication is not only about lines of code, but also about data usage and meaning. You should avoid that kind of duplication.
+images:
+  - /cleancodetips/avoid-subtle-duplication/featuredImage.png
 ---
 
 Duplication is not only about lines of code, but also about **data usage and meaning.**

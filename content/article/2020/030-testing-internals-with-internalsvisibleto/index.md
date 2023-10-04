@@ -1,14 +1,17 @@
 ---
 title: Testing internal members with InternalsVisibleTo
 date: 2020-06-02
+url: /blog/testing-internals-with-internalsvisibleto
+draft: false
+categories:
+  - Blog
 tags:
   - CSharp
   - dotnet
 toc: true
-url: /blog/testing-internals-with-internalsvisibleto
-categories:
-  - Blog
 summary: Internal members can be accessed only within the same assembly. And for different assemblies? Here's for you the InternalsVisibleTo attribute!
+images:
+  - /blog/testing-internals-with-internalsvisibleto/featuredImage.png
 ---
 
 Do you remember the [**internal** access modifier](https://docs.microsoft.com/en-us/dotnet/csharp/language-reference/keywords/internal "Internal keyword reference")? It allows you to **access classes, methods and properties only within files in the same assembly**.

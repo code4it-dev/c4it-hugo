@@ -1,12 +1,16 @@
 ---
 title: "Clean Code Tip: AAA pattern for tests: why is it important?"
 date: 2022-02-22
-tags:
-  - Clean Code
 url: /cleancodetips/aaa-pattern-for-tests
+draft: false
 categories:
   - Clean Code Tips
+tags:
+  - Clean Code
+toc: true
 summary: The most important trait of Tests? They must be correct. The second one? They must be readable. The AAA pattern helps you write better tests.
+images:
+  - /cleancodetips/aaa-pattern-for-tests/featuredImage.png
 ---
 
 Even though many developers underestimate this part, tests should be written even more clearly than production code.

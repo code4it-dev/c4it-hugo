@@ -1,13 +1,16 @@
 ---
 title: Logging with Serilog and Seq
 date: 2020-04-28
+url: /blog/logging-with-serilog-and-seq
+draft: false
+categories:
+  - Blog
 tags:
   - dotnet
 toc: true
-url: /blog/logging-with-serilog-and-seq
-categories:
-  - Blog
 summary: Having a robust logging system is crucial for any application. There are many tools, and one of these is Serilog. Here you'll learn how to use it in a .NET application and how to integrate it with Seq.
+images:
+  - /blog/logging-with-serilog-and-seq/featuredImage.png
 ---
 
 One of the most important things to consider when developing and application is logging: not only it is useful for tracking errors and check if the system works correctly, but also it helps you with additional info about the status of the application in a particular point of the code, making it easier to debug the application.

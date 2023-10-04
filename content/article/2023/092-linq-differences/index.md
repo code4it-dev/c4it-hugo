@@ -1,13 +1,16 @@
 ---
 title: "LINQ for beginners: pick the right methods!"
 date: 2023-01-10
+url: /blog/linq-differences
+draft: false
+categories:
+  - Blog
 tags:
   - CSharp
 toc: true
-url: /blog/linq-differences
-categories:
-  - Blog
 summary: LINQ is a set of methods that help developers perform operations on sets of items. There are tons of methods - do you know which is the one for you?
+images:
+  - /blog/linq-differences/featuredImage.png
 ---
 
 LINQ is one of the most loved functionalities by C# developers. It allows you to perform calculations and projections over a collection of items, making your code easy to build and, even more, easy to understand.

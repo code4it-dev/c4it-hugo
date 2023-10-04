@@ -1,12 +1,16 @@
 ---
 title: "Clean Code Tip: Methods should have a coherent level of abstraction"
 date: 2022-11-15
-tags:
-  - Clean Code
 url: /cleancodetips/coherent-levels-of-abstraction
+draft: false
 categories:
   - Clean Code Tips
+tags:
+  - Clean Code
+toc: true
 summary: Don't let the reader get lost in the code details!
+images:
+  - /cleancodetips/coherent-levels-of-abstraction/featuredImage.png
 ---
 
 Mixed levels of abstraction make the code harder to understand.

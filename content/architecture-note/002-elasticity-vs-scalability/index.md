@@ -1,14 +1,17 @@
 ---
 title: Davide's Code and Architecture Notes - Understanding Elasticity and Scalability with Pokémon Go and TikTok
 date: 2023-02-21
+url: /architecture-notes/elasticity-vs-scalability
+draft: false
+categories:
+  - Code and Architecture Notes
 tags:
   - Software Architecture
   - Architecture
 toc: true
-url: /architecture-notes/elasticity-vs-scalability
-categories:
-  - Code and Architecture Notes
 summary: "Elasticity and Scalability: two important Architectural attributes, similar but quite different"
+images:
+  - /architecture-notes/elasticity-vs-scalability/featuredImage.png
 ---
 
 Every time I hear someone talk about microservices they talk about Scalability and Elasticity.

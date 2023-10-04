@@ -1,12 +1,16 @@
 ---
 title: "Clean code tip: Use pronounceable and searchable names"
 date: 2021-07-20
-tags:
-  - Clean Code
 url: /cleancodetips/use-pronounceable-names
+draft: false
 categories:
   - Clean Code Tips
+tags:
+  - Clean Code
+toc: true
 summary: Two of the operations you often do with your code is to discuss it, or perform a search over it. So using good names will help in both situations.
+images:
+  - /cleancodetips/use-pronounceable-names/featuredImage.png
 ---
 
 Ok, you write code. Maybe alone. But what happens when you have to talk about the code with someone else? To help clear communication, you should always use _easily pronounceable_ name.

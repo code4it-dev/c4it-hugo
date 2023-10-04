@@ -1,14 +1,17 @@
 ---
 title: 13 tips for delivering better tech talks
 date: 2021-05-04
+url: /blog/tech-talk-13-tips
+draft: false
+categories:
+  - Blog
 tags:
   - Talks
   - Career
 toc: true
-url: /blog/tech-talk-13-tips
-categories:
-  - Blog
 summary: Doing a tech talk is easy. Doing a *good* talk is harder. We're going to see some tips to improve the delivery of your conferences.
+images:
+  - /blog/tech-talk-13-tips/featuredImage.png
 ---
 
 I love to deliver tech talks: they help me improve both my technical and communication skills.

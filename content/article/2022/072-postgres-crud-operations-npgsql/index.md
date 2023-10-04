@@ -1,16 +1,19 @@
 ---
 title: CRUD operations on PostgreSQL using C# and Npgsql
 date: 2022-02-01
+url: /blog/postgres-crud-operations-npgsql
+draft: false
+categories:
+  - Blog
 tags:
   - CSharp
   - Database
   - SQL
   - PostgreSQL
 toc: true
-url: /blog/postgres-crud-operations-npgsql
-categories:
-  - Blog
 summary: Once we have a Postgres instance running, we can perform operations on it. We will use Npgsql to query a Postgres instance with C#
+images:
+  - /blog/postgres-crud-operations-npgsql/featuredImage.png
 ---
 
 PostgreSQL is one of the most famous relational databases. It has got tons of features, and it is open source.

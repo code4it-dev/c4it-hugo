@@ -1,14 +1,17 @@
 ---
 title: "Davide's Code and Architecture Notes - Server-side caching strategies: how do they work?"
 date: 2023-01-24
+url: /architecture-notes/caching-strategies
+draft: false
+categories:
+  - Code and Architecture Notes
 tags:
   - Software Architecture
   - Architecture
 toc: true
-url: /architecture-notes/caching-strategies
-categories:
-  - Code and Architecture Notes
 summary: "Cache-aside, Read-through, Write-through, Write-behind: quite easy on the surface, but let's go a little deeper!"
+images:
+  - /architecture-notes/caching-strategies/featuredImage.png
 ---
 
 As you surely know, _caching_ is a technique that allows you to store data in a way that is incredibly efficient to access.

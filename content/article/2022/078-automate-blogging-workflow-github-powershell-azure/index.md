@@ -1,13 +1,16 @@
 ---
 title: "From idea to publishing, and beyond: how I automated my blogging workflow with GitHub, PowerShell, and Azure"
 date: 2022-05-03
+url: /blog/automate-blogging-workflow-github-powershell-azure
+draft: false
+categories:
+  - Blog
 tags:
   - Career
 toc: true
-url: /blog/automate-blogging-workflow-github-powershell-azure
-categories:
-  - Blog
 summary: After 100 articles, I've found some neat ways to automate my blogging workflow. I will share my experience and the tools I use from the very beginning to the very end.
+images:
+  - /blog/automate-blogging-workflow-github-powershell-azure/featuredImage.png
 ---
 
 This is my 100th article 🥳 To celebrate it, I want to share with you the full process I use for writing and publishing articles.

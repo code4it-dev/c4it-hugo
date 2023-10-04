@@ -1,14 +1,17 @@
 ---
 title: Thoughts after my very first public speech
 date: 2019-10-20
+url: /blog/thoughts-after-my-first-public-speech
+draft: false
+categories:
+  - Blog
 tags:
   - Talks
   - Career
 toc: true
-url: /blog/thoughts-after-my-first-public-speech
-categories:
-  - Blog
 summary: Having a public speech seems easy. In some ways, it really is. But the first time can be hard. Here's my thought after my first experience in public speaking.
+images:
+  - /blog/thoughts-after-my-first-public-speech/featuredImage.png
 ---
 
 Days ago I had my first speech.

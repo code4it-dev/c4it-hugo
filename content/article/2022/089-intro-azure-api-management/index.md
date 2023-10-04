@@ -1,15 +1,18 @@
 ---
 title: How to create an API Gateway using Azure API Management
 date: 2022-11-22
+url: /blog/intro-azure-api-management
+draft: false
+categories:
+  - Blog
 tags:
   - Azure
   - API Gateway
   - Azure API Management
 toc: true
-url: /blog/intro-azure-api-management
-categories:
-  - Blog
 summary: In a microservices architecture, an API Gateway hides your real endpoints. We will create one using Azure API Management
+images:
+  - /blog/intro-azure-api-management/featuredImage.png
 ---
 
 If you're building an application that exposes several services you might not want to expose them on different hosts. Consumers will have a hard time configuring their application with all the different hostnames, and you will be forced to maintain the same URLs even if you need to move to other platforms or, for instance, you want to transform a REST endpoint into an Azure Function.
