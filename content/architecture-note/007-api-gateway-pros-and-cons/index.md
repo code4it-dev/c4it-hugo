@@ -34,11 +34,12 @@ Say that you've built a Hotel booking system that is made of 3 services:
 - _SearchAPI_, deployed at *https://mycompany.org/search/api*
 - _DiscountAPI_, deployed at *https://discounts.mycompany.org/v1/api* (notice the _v1_)
 
+
+![Booking service without API Gateway](./booking-service-without-api-gateway.png)
+
 By adding an API Gateway, you can hide these APIs behind a single host, like *https://api.mycompany.org/*, mapping the route path to the original services' URLs.
 
 ![API Gateway as a façade in front of other services](./api-gateway-basic-example.png)
-
-> èèèèèèèèèèèèèèèè AGGIUNGI IMMAGINE èèèèèèèèèèèèèèèèèè
 
 As with everything in the world, there are advantages and disadvantages. Let's learn! 🔥
 
@@ -66,23 +67,6 @@ With API Gateways, you can **centralize the settings** for such common concerns 
 
 API Gateways also help with **service documentation**: since you have all the internal services listed in the API Gateway, just by looking at its configurations, you can see the list of the deployed APIs and their hostname.
 
-![Settings are applied to all the services behind an API Gateway](./settings-applied-to-all-services.png)
-
-> òòòòòòòòòòòòòòòòòòòòòò DISEGNOO òòòòòòòòòòòòòòòòòòòòòòòòòò
-
-### Enhanced performance
-
-Depending on the vendor, you can have different tools to improve the overall performance.
-
-For example, you can **cache responses** to get quicker response times, or you can apply uniformed **data compressions**.
-
-Some vendors allow you to have multiple instances of the same service available behind the API Gateway, acting as a sort of Load Balancer.
-
-Another powerful technique you can implement is **[SSL Termination](https://www.code4it.dev/blog/overview-api-gateways/#ssl-termination)**. In a simple architecture, if you have to communicate securely with 3 systems to aggregate the result, you have to validate the SSL connection three times. With SSL Termination, you can move these operations on the API Gateway component and avoid doing that in all the other services, making the application more performant.
-
-![SSL termination improves performance in a system with an API Gateway](./ssl-termination-with-api-gateway.png)
-
-> òòòòòòòòòòòòòòòòòòòòòò DISEGNOO òòòòòòòòòòòòòòòòòòòòòòòòòò
 
 ### Flexibility
 
@@ -94,7 +78,16 @@ Hiding the actual API endpoints behind a Gateway also allows you to **implement 
 
 ![API Composition simplifies the data aggregation](./api-composition.png)
 
-> òòòòòòòòòòòòòòòòòDISEGNOOOòòòòòòòòòòòòòòòòòòòòòòòòòòòòò
+
+### Enhanced performance
+
+Depending on the vendor, you can have different tools to improve the overall performance.
+
+For example, you can **cache responses** to get quicker response times, or you can apply uniformed **data compressions**.
+
+Some vendors allow you to have multiple instances of the same service available behind the API Gateway, acting as a sort of Load Balancer.
+
+Another powerful technique you can implement is **[SSL Termination](https://www.code4it.dev/blog/overview-api-gateways/#ssl-termination)**. In a simple architecture, if you have to communicate securely with 3 systems to aggregate the result, you have to validate the SSL connection three times. With SSL Termination, you can move these operations on the API Gateway component and avoid doing that in all the other services, making the application more performant.
 
 ## Disadvangages
 
@@ -112,8 +105,6 @@ So, when using an API Gateway:
 
 ![An API Gateway becomes a single point of failure](./api-gateway-as-single-point-of-failure.png)
 
-> IMMAGINEEEEE
-
 ### Increased latency
 
 An API Gateway is an additional hop in the API processing: when a client wants to call an API application, all requests must first pass through the API Gateway, which, in turn, will call the internal API.
@@ -121,8 +112,6 @@ An API Gateway is an additional hop in the API processing: when a client wants t
 This processing, this routing, adds some network latency. Maybe it's not noticeable, but it depends on the Gateway you choose, the underlying infrastructure, and the processing done by the Gateway.
 
 ![An API Gateway adds some latency in the request flow](./api-gateway-add-latency.png)
-
-> IMMAGINEEEEE
 
 ### Vendor Lock-in
 
@@ -208,8 +197,3 @@ I hope you enjoyed this article! Let's keep in touch on [Twitter](https://twitte
 Happy coding!
 
 🐧
-
-[ ] Rinomina immagini
-[ ] Bold/Italics
-[ ] Aggiungi tabella di recap con immagine
-
