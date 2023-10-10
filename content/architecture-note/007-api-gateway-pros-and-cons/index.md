@@ -58,7 +58,7 @@ You can also **centralize Access Control Policies** by adding them to the API Ga
 
 Finally, you can monitor in a single place all the incoming requests and analyze the traffic to spot unusual behaviour.
 
-### Reduce complexity
+### Reduced complexity
 
 Some concerns are common to all the APIs within the same system, such as **rate limiting**, **throttling**, and **access control**.
 
@@ -146,9 +146,9 @@ They are two totally different components of an architecture.
 
 Some vendors provide both functionalities, while others don't. So, keep the two meanings distinct, and try to use the correct wording.
 
-## API Gateway vendors
+## API Gateway vendors comparison
 
-Here is a list of some API gateway vendors' prices, pros, and cons.
+Here is a list of some API Gateway vendors' prices, pros, and cons.
 
 Notice: I have yet to try all these vendors. The info in this list comes primarily from their official documentation and, in some cases, from other resources that compare such products.
 
@@ -156,7 +156,7 @@ Notice: I have yet to try all these vendors. The info in this list comes primari
   - Price: Kong offers free community and paid enterprise editions.
   - Pros: Kong is easy to install and configure, supports many plugins and integrations, and has a large and active community.
   - Cons: Kong may have performance issues when handling large volumes of traffic, requires Nginx as a dependency, and has limited support for GraphQL, available only for the enterprise edition.
-- **[Tyk](https://tyk.io/)**: it's a lightweight API gateway written in Go. It offers API analytics, a developer portal, a dashboard, security, and other features. It can be deployed on-premises, in the cloud, or as a hybrid.
+- **[Tyk](https://tyk.io/)**: it's a lightweight API Gateway written in Go. It offers API analytics, a developer portal, a dashboard, security, and other features. It can be deployed on-premises, in the cloud, or as a hybrid.
   - Price: Tyk offers a 5-week free trial and four payment tiers. The Starter edition costs $600 per month for up to 10 million API calls.
   - Pros: Tyk is fast, scalable, and flexible and has a rich set of features and plugins.
   - Cons: Even though Tyk is open source, it has no free tier.
@@ -209,18 +209,8 @@ Happy coding!
 
 🐧
 
-[ ] Titoli
-[ ] Frontmatter
 [ ] Rinomina immagini
-[ ] Alt Text per immagini
-[ ] Grammatica
 [ ] Bold/Italics
-[ ] Nome cartella e slug devono combaciare
 [ ] Immagine di copertina
-[ ] Rimuovi secrets dalle immagini
-[ ] Pulizia formattazione
-[ ] OgImage
 [ ] Aggiungi tabella di recap con immagine
-[ ] Controlla se ho messo API Gateway scritto coerente
 
-https://www.code4it.dev/architecture-notes/l4-vs-l7-load-balancers/
