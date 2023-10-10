@@ -22,9 +22,9 @@ Also, for big organizations, it can happen that a team is used to working on the
 
 There are different services that provide different complexity at different prices, like [Azure API Management](https://azure.microsoft.com/en-us/services/api-management/ "Azure API Management reference"), [Amazon API Gateway](https://aws.amazon.com/api-gateway/ "Amazon AWS API Gateway reference"), and [Ocelot](https://github.com/ThreeMammals/Ocelot "Ocelot repository").
 
-## UI Composition
+## API Composition
 
-An interesting thing to do with API Gateways is UI Composition.
+An interesting thing to do with API Gateways is API Composition.
 
 Imagine that you must show info that comes from different services, for example, the list of available products with few details about the product itself and info about the seller. You can handle this problem in 3 ways:
 
