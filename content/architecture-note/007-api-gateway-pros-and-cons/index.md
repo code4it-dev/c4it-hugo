@@ -211,6 +211,5 @@ Happy coding!
 
 [ ] Rinomina immagini
 [ ] Bold/Italics
-[ ] Immagine di copertina
 [ ] Aggiungi tabella di recap con immagine
 
