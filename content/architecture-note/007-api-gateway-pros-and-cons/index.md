@@ -26,7 +26,7 @@ Imagine that your application is made of several web services and APIs. Each of 
 
 While it can be helpful for internal development - you have a clear separation of operations available in your system - it can become cumbersome for the developers who have to integrate all those endpoints in their application.
 
-That's where API Gateways come into play: they add a sort of _façade_ in front of your set of APIs to uniform the access to your system.
+That's where API Gateways come into play: they **add a sort of _façade_ in front of your set of APIs** to uniform the access to your system.
 
 Say that you've built a Hotel booking system that is made of 3 services:
 
@@ -57,7 +57,7 @@ Let's go back to the Hotel Booking system in our example. External users will on
 
 You can also **centralize Access Control Policies** by adding them to the API Gateway and have them applied to all the APIs behind the Gateway.
 
-Finally, you can monitor in a single place all the incoming requests and analyze the traffic to spot unusual behaviour.
+Finally, you can **monitor all the incoming requests** and analyze the traffic to spot unusual behaviour in a single place.
 
 ### Reduced complexity
 
@@ -70,11 +70,11 @@ API Gateways also help with **service documentation**: since you have all the in
 
 ### Flexibility
 
-Since API Gateways act as a façade in front of other services, you can integrate services that work with different protocols or formats.
+Since API Gateways act as a façade in front of other services, you can integrate services that work with **different protocols or formats**.
 
 For example, you can have one service that exposes GraphQL APIs, another one that works with GRPC, and have them all exposed as REST APIs using the API Gateway as a wrapper/converter to and from such formats.
 
-Hiding the actual API endpoints behind a Gateway also allows you to **implement [API Composition](https://www.code4it.dev/blog/overview-api-gateways/#api-composition)**, which is a technique that will enable you to aggregate the results from different internal API calls and return the caller only the final result (as opposed as making the client call 3 services and then compose the result afterwards).
+Hiding the actual API endpoints behind a Gateway also allows you to **implement [API Composition](https://www.code4it.dev/blog/overview-api-gateways/#api-composition)**, which is a technique that will enable you to aggregate the results from different internal API calls and return the caller only the final result (as opposed as making the client call each single service and compose the result afterwards).
 
 ![API Composition simplifies the data aggregation](./api-composition.png)
 
@@ -87,7 +87,7 @@ For example, you can **cache responses** to get quicker response times, or you c
 
 Some vendors allow you to have multiple instances of the same service available behind the API Gateway, acting as a sort of Load Balancer.
 
-Another powerful technique you can implement is **[SSL Termination](https://www.code4it.dev/blog/overview-api-gateways/#ssl-termination)**. In a simple architecture, if you have to communicate securely with 3 systems to aggregate the result, you have to validate the SSL connection three times. With SSL Termination, you can move these operations on the API Gateway component and avoid doing that in all the other services, making the application more performant.
+Another powerful technique you can implement is [SSL Termination](https://www.code4it.dev/blog/overview-api-gateways/#ssl-termination). In a simple architecture, if you have to communicate securely with 3 systems to aggregate the result, you have to validate the SSL connection three times. With **SSL Termination**, you can move these operations on the API Gateway component and avoid doing that in all the other services, making the application more performant.
 
 ## Disadvangages
 
@@ -95,19 +95,19 @@ Another powerful technique you can implement is **[SSL Termination](https://www.
 
 Since we placed an API Gateway in front of all the other API applications, all the external communication passes through the API Gateway.
 
-This means that if the API Gateway is unavailable, the whole system becomes unavailable as well, even though the single APIs are still up and running.
+This means that **if the API Gateway is unavailable, the whole system becomes unavailable as well**, even though the single APIs are still up and running.
 
 So, when using an API Gateway:
 
-- beware of the settings: an error in the configurations can have consequences on the whole system;
+- **beware of the settings**: an error in the configurations can have consequences on the whole system;
 - ensure that the Gateway is capable of handling the incoming load of requests: if the API Gateway cannot cope with the number of incoming requests, it may become unavailable and make the whole system offline.
-- ensure that you have some protection against DDoS attacks (see the previous point).
+- ensure that you have some **protection against DDoS attacks** (see the previous point).
 
 ![An API Gateway becomes a single point of failure](./api-gateway-as-single-point-of-failure.png)
 
 ### Increased latency
 
-An API Gateway is an additional hop in the API processing: when a client wants to call an API application, all requests must first pass through the API Gateway, which, in turn, will call the internal API.
+An API Gateway is an **additional hop** in the API processing: when a client wants to call an API application, all requests must first pass through the API Gateway, which, in turn, will call the internal API.
 
 This processing, this routing, adds some network latency. Maybe it's not noticeable, but it depends on the Gateway you choose, the underlying infrastructure, and the processing done by the Gateway.
 
@@ -139,7 +139,7 @@ Some vendors provide both functionalities, while others don't. So, keep the two 
 
 Here is a list of some API Gateway vendors' prices, pros, and cons.
 
-Notice: I have yet to try all these vendors. The info in this list comes primarily from their official documentation and, in some cases, from other resources that compare such products.
+Notice: *I have yet to try all these vendors*. The info in this list comes primarily from their official documentation and, in some cases, from other resources that compare such products.
 
 - **[Kong](https://konghq.com/products/kong-gateway)**: it's an Open Source product that provides features such as authentication, rate limiting, logging, caching, and more. It is written in Lua and runs on top of Nginx.
   - Price: Kong offers free community and paid enterprise editions.
