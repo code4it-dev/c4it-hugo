@@ -122,7 +122,7 @@ Everything works fine!
 
 No, just joking! 😅
 
-If we try it at http://localhost:7071/api/SayHello?name=davide, we get this error:
+If we try it at `http://localhost:7071/api/SayHello?name=davide`, we get this error:
 
 > Microsoft.Extensions.DependencyInjection.Abstractions: Unable to resolve service for type 'AzureFunctionV2Example.IGreetingsService' while attempting to activate 'AzureFunctionV2Example.AzureFunctionV2'.
 

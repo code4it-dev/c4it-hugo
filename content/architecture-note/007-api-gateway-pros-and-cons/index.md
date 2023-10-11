@@ -1,5 +1,5 @@
 ---
-title: "Davide's Code and Architecture Notes - Pros and Cons of API Gateways (plus vendors comparison)"
+title: "Davide's Code and Architecture Notes - Pros and Cons of API Gateways (with vendors comparison)"
 date: 2023-10-10
 url: /architecture-notes/api-gateway-pros-and-cons
 draft: false
@@ -34,7 +34,6 @@ Say that you've built a Hotel booking system that is made of 3 services:
 - _SearchAPI_, deployed at *https://mycompany.org/search/api*
 - _DiscountAPI_, deployed at *https://discounts.mycompany.org/v1/api* (notice the _v1_)
 
-
 ![Booking service without API Gateway](./booking-service-without-api-gateway.png)
 
 By adding an API Gateway, you can hide these APIs behind a single host, like *https://api.mycompany.org/*, mapping the route path to the original services' URLs.
@@ -67,7 +66,6 @@ With API Gateways, you can **centralize the settings** for such common concerns 
 
 API Gateways also help with **service documentation**: since you have all the internal services listed in the API Gateway, just by looking at its configurations, you can see the list of the deployed APIs and their hostname.
 
-
 ### Flexibility
 
 Since API Gateways act as a façade in front of other services, you can integrate services that work with **different protocols or formats**.
@@ -77,7 +75,6 @@ For example, you can have one service that exposes GraphQL APIs, another one tha
 Hiding the actual API endpoints behind a Gateway also allows you to **implement [API Composition](https://www.code4it.dev/blog/overview-api-gateways/#api-composition)**, which is a technique that will enable you to aggregate the results from different internal API calls and return the caller only the final result (as opposed as making the client call each single service and compose the result afterwards).
 
 ![API Composition simplifies the data aggregation](./api-composition.png)
-
 
 ### Enhanced performance
 
@@ -139,7 +136,7 @@ Some vendors provide both functionalities, while others don't. So, keep the two 
 
 Here is a list of some API Gateway vendors' prices, pros, and cons.
 
-Notice: *I have yet to try all these vendors*. The info in this list comes primarily from their official documentation and, in some cases, from other resources that compare such products.
+Notice: _I have yet to try all these vendors_. The info in this list comes primarily from their official documentation and, in some cases, from other resources that compare such products.
 
 - **[Kong](https://konghq.com/products/kong-gateway)**: it's an Open Source product that provides features such as authentication, rate limiting, logging, caching, and more. It is written in Lua and runs on top of Nginx.
   - Price: Kong offers free community and paid enterprise editions.

@@ -76,60 +76,60 @@ So, a good idea is to split the method into smaller, well-scoped methods:
 
 ```cs
 static void Main()
+{
+	try
 	{
-		try
-		{
-			PrintAllPlayersInTeam(123);
-		}
-		catch (Exception ex)
-		{
-			Console.WriteLine(ex.Message);
-			Console.WriteLine(ex.StackTrace);
-		}
-
+		PrintAllPlayersInTeam(123);
+	}
+	catch (Exception ex)
+	{
+		Console.WriteLine(ex.Message);
+		Console.WriteLine(ex.StackTrace);
 	}
 
-	public static void PrintAllPlayersInTeam(int teamId)
+}
+
+public static void PrintAllPlayersInTeam(int teamId)
+{
+	Team currentTeam = GetTeamDetails(teamId);
+
+	var players = GetPlayersInTeam(currentTeam.TeamCode);
+
+	foreach (var player in players)
 	{
-		Team currentTeam = GetTeamDetails(teamId);
+		string report = BuildPlayerReport(player);
 
-		var players = GetPlayersInTeam(currentTeam.TeamCode);
-
-		foreach (var player in players)
-		{
-			string report = BuildPlayerReport(player);
-
-			Console.WriteLine(report);
-		}
-
+		Console.WriteLine(report);
 	}
 
-	public static string BuildPlayerReport(Player player)
-	{
-		string report = "Player Id:" + player.Id;
-		report += Environment.NewLine;
-		report += "Player Name: " + player.FirstName.ToLower();
-		report += Environment.NewLine;
-		report += "Player Last Name: " + player.LastName.ToLower();
+}
 
-		return report;
-	}
+public static string BuildPlayerReport(Player player)
+{
+	string report = "Player Id:" + player.Id;
+	report += Environment.NewLine;
+	report += "Player Name: " + player.FirstName.ToLower();
+	report += Environment.NewLine;
+	report += "Player Last Name: " + player.LastName.ToLower();
 
-	public static Team GetTeamDetails(int teamId)
-	{
-		Feed teamFeed = _sportClient.GetFeedForTeam(teamId);
-		Team currentTeam = _feedParser.ParseTeamFeed(teamFeed.Content.ToLower());
-		return currentTeam;
+	return report;
+}
 
-	}
+public static Team GetTeamDetails(int teamId)
+{
+	Feed teamFeed = _sportClient.GetFeedForTeam(teamId);
+	Team currentTeam = _feedParser.ParseTeamFeed(teamFeed.Content.ToLower());
+	return currentTeam;
+}
 
-	public static IEnumerable<Player> GetPlayersInTeam(string teamCode)
-	{
-		Feed playerFeed = _sportClient.GetPlayersFeedForTeam(teamCode.ToUpper());
+public static IEnumerable<Player> GetPlayersInTeam(string teamCode)
+{
+	Feed playerFeed = _sportClient.GetPlayersFeedForTeam(teamCode.ToUpper());
 
-		var players = _feedParser.ParsePlayerFeed(playerFeed.Content.ToLower()).ToList();
-		return players;
-	}
+	var players = _feedParser.ParsePlayerFeed(playerFeed.Content.ToLower()).ToList();
+	return players;
+}
+
 ```
 
 Of course, **this is not a perfect code, but it give you the idea!**.

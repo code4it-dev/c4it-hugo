@@ -79,7 +79,7 @@ This works because **`ExpandoObject` implements `IDictionary`**, so you can simp
 Here's the class definition:
 
 ```cs
- public sealed class ExpandoObject :
+public sealed class ExpandoObject :
 	IDynamicMetaObjectProvider,
 	IDictionary<string, object?>,
 	ICollection<KeyValuePair<string, object?>>,

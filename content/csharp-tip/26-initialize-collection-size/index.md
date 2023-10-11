@@ -94,7 +94,7 @@ If we talk about **memory allocation**, we waste an overage of **2.5x** memory i
 
 ## Initialize an HashSet
 
-Similar to what we've done with `List's, we can see significant improvements when initializing correctly other data types, such as `HashSet's.
+Similar to what we've done with `List`'s, we can see significant improvements when initializing correctly other data types, such as `HashSet`'s.
 
 Let's run the same benchmarks, but this time, let's initialize a `HashSet<int>` instead of a `List<int>`.
 

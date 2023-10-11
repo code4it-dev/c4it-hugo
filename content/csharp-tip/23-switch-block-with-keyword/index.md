@@ -31,7 +31,7 @@ public record Dancer(int Age, string Dance) : User(Age);
 
 Let's see different usages of switch statements and switch expressions.
 
-## Switch statements in C#
+## Switch statements
 
 Switch statements are those with the standard `switch (something)` block. They allow for different executions of paths, acting as a list of `if` - `else if` blocks.
 
@@ -141,7 +141,7 @@ Here we have the `when g.Age < 10` filter applied to the `Gamer g` variable.
 
 Clearly, if we set the age to 30, we will see _I'm a gamer, and I have a Nintendo Switch_.
 
-## Switch Expression in C#
+## Switch Expression
 
 Switch expressions act like Switch Statements, but **they return a value that can be assigned to a variable** or, in general, used immediately.
 
