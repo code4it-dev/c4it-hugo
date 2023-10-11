@@ -7,7 +7,7 @@ categories:
   - CSharp Tips
 tags:
   - CSharp
-  - Testing
+  - Tests
 toc: true
 summary: When writing unit tests, there are smarter ways to check if two objects are equal than just comparing every field one by one.
 images:

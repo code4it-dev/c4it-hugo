@@ -7,7 +7,6 @@ categories:
   - Code and Architecture Notes
 tags:
   - Software Architecture
-  - Architecture
 toc: true
 summary: "Elasticity and Scalability: two important Architectural attributes, similar but quite different"
 images:

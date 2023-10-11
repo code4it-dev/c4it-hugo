@@ -8,7 +8,7 @@ categories:
 tags:
   - SQL
   - SSMS
-  - DB
+  - Database
 toc: true
 summary: Sometimes, when I open SQL Server Management Studio, I forget about my Local DB instance name. Here's how to retrieve it.
 images:

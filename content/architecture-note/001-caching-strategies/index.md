@@ -7,7 +7,6 @@ categories:
   - Code and Architecture Notes
 tags:
   - Software Architecture
-  - Architecture
 toc: true
 summary: "Cache-aside, Read-through, Write-through, Write-behind: quite easy on the surface, but let's go a little deeper!"
 images:
