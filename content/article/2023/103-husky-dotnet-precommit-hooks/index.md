@@ -279,9 +279,43 @@ The last step is to call these tasks from within our `pre-commit` file. So, repl
 
 ## Final result and optimizations
 
-Now that we have 
+Now that we have everything in place, we can optimize the script to make it faster.
 
- 
+Let's see which parts we can optimize.
+
+The fist step is the *build phase*. For sure, we have to run `dotnet build` to see if the project builds correctly. You can consider adding the `--no-restore` flag to skip the `restore` step before building.
+
+Then we have the *format phase*: we can avoid formatting every file using one of the steps defined before. I'd go with the third approach we saw.
+
+Then, we have the *test phase*. We can add both the `--no-restore` and the `--no-build` flag to the command, since we have already built everything before. But wait! The format phase updated the content of our files, so we still have to build the whole solution. Unless we swap the *build* and the *format* phases.
+
+So, here we have the final `pre-commit` file:
+
+```bash
+#!/bin/sh
+. "$(dirname "$0")/_/husky.sh"
+
+echo 'Ready to commit changes!'
+
+echo 'Format'
+
+dotnet husky run --name dotnet-format-staged-files
+
+echo 'Build'
+
+dotnet build --no-restore
+
+echo 'Test'
+
+dotnet test --no-restore
+
+echo 'Completed pre-commit changes'
+```
+
+Yes, I know that when you run `dotnet test` you also build the solution, but I prefer having two separate steps just for clarity!
+
+Ah, and **don't remove the `#!/bin/sh` at the beginning of the script**!
+
 ## Skip git hooks
 
 To trigger the hook, just run `git commit -m "message"`. **Before** completing the commit, the hook will run all the commands. **If one of them fails, the whole commit operation is aborted**.
@@ -296,21 +330,23 @@ git commit -m "my message" --no-verify
 
 ## Further readings
 
-https://git-scm.com/book/en/v2/Customizing-Git-Git-Hooks
-
-[Husky with NPM](https://www.code4it.dev/blog/conventional-commit-with-githooks/)
-
-_This article first appeared on [Code4IT 🐧](https://www.code4it.dev/)_
-
-🔗 [Husky.Net documentation](https://alirezanet.github.io/Husky.Net/)
+Husky.NET is a porting of the Husky tool that we already used in a previous article, where we used it as an NPM dependency. In that article, we also learned how to customize Conventional Commits using Git hooks.
 
 🔗 [How to customize Conventional Commits in a .NET application using GitHooks | Code4IT](https://www.code4it.dev/blog/conventional-commit-with-githooks/)
 
+As we learned, there are many more Git hooks that we can use. You can see the full list on the Git documentation:
 
-🔗 [Using dotnet tools](https://dev.to/gutsav/using-dotnet-tools-46ln)
+🔗 [Customizing Git - Git Hooks | Git docs](https://git-scm.com/book/en/v2/Customizing-Git-Git-Hooks)
 
+_This article first appeared on [Code4IT 🐧](https://www.code4it.dev/)_
 
-https://alirezanet.github.io/Husky.Net/guide/task-runner.html
+Of course, if you want to get the best out of Husky.NET, I suggest you have a look at the official documentation:
+
+🔗 [Husky.Net documentation](https://alirezanet.github.io/Husky.Net/)
+
+One last thing: we installe Husky.NET using dotnet tools. If you want to learn more about this topic, I found a nice article online that you might want to read:
+
+🔗 [Using dotnet tools | Gustav Ehrenborg](https://dev.to/gutsav/using-dotnet-tools-46ln)
 
 ## Wrapping up
 
