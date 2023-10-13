@@ -1,6 +1,6 @@
 ---
 title: "Pre-commit hooks with Husky.NET - build, format, and test your .NET application before a Git commit"
-date: 2023-10-12
+date: 2023-10-17
 url: /blog/husky-dotnet-precommit-hooks
 draft: false
 categories:
@@ -356,6 +356,3 @@ I hope you enjoyed this article! Let's keep in touch on [Twitter](https://twitte
 Happy coding!
 
 🐧
-
-[ ] Immagine di copertina
-[ ] Fai resize della immagine di copertina
