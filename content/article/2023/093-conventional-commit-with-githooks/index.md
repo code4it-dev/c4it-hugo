@@ -8,6 +8,7 @@ categories:
 tags:
   - dotnet
   - npm
+  - git
 toc: true
 summary: Using Conventional Commits you can define a set of rules useful for writing meaningful commit messages. Using NPM. Yes, in a dotNET application!
 images:
