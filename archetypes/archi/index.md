@@ -4,9 +4,9 @@ date: {{ .Date }}
 url: /architecture-notes/post-slug
 draft: false
 categories:
-- Code and Architecture Notes
+ - Code and Architecture Notes
 tags:
-- Software Architecture
+ - Software Architecture
 toc: true
 summary: "A summary"
 images:
