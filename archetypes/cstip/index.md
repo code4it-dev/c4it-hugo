@@ -4,9 +4,9 @@ date: {{ .Date }}
 url: /csharptips/post-slug
 draft: false
 categories:
-- CSharp Tips
+ - CSharp Tips
 tags: 
-- CSharp
+ - CSharp
 toc: false
 summary: "A summary"
 images:

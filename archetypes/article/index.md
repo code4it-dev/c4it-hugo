@@ -4,9 +4,9 @@ date: {{ .Date }}
 url: /blog/post-slug
 draft: false
 categories:
-- Blog
+ - Blog
 tags:
-- CSharp
+ - CSharp
 toc: true
 summary: "A summary"
 images:
