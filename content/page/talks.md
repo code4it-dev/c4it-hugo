@@ -15,11 +15,11 @@ That's why I also decided to give a try to tech conferences.
 
 ## 2023
 
-| Title                                    | Event                   | Date       | Duration | Level        |                                                                                     |
-| ---------------------------------------- | ----------------------- | ---------- | -------- | ------------ | ----------------------------------------------------------------------------------- |
-| **.NET 5, 6, and 7** for busy developers | Dotnet Sheff            | 2023-06-21 | 1h       | Intermediate | [🎥](https://www.youtube.com/watch?v=Wj_2g_P1lDw)  [🔗](https://www.meetup.com/it-IT/dotnetsheff/events/292550572/)                    |
-| **.NET 5, 6, and 7** for busy developers | Johannesburg User Group | 2023-05-09 | 40m      | Intermediate | [🔗](https://www.meetup.com/it-IT/johannesburg-ms-dev-user-group/events/293190230/) |
-| **.NET 5, 6, and 7** for busy developers | Cloudgen Verona         | 2023-02-10 | 50m      | Intermediate | [🔗](https://cloudgen.it/agenda-codegen-2023/)                                      |
+| Title                                    | Event                   | Date       | Duration | Level        |                                                                                                                    |
+| ---------------------------------------- | ----------------------- | ---------- | -------- | ------------ | ------------------------------------------------------------------------------------------------------------------ |
+| **.NET 5, 6, and 7** for busy developers | Dotnet Sheff            | 2023-06-21 | 1h       | Intermediate | [🎥](https://www.youtube.com/watch?v=Wj_2g_P1lDw) [🔗](https://www.meetup.com/it-IT/dotnetsheff/events/292550572/) |
+| **.NET 5, 6, and 7** for busy developers | Johannesburg User Group | 2023-05-09 | 40m      | Intermediate | [🔗](https://www.meetup.com/it-IT/johannesburg-ms-dev-user-group/events/293190230/)                                |
+| **.NET 5, 6, and 7** for busy developers | Cloudgen Verona         | 2023-02-10 | 50m      | Intermediate | [🔗](https://cloudgen.it/agenda-codegen-2023/)                                                                     |
 
 ## 2022
 
