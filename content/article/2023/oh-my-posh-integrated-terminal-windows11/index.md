@@ -16,11 +16,13 @@ images:
 
 The content of the blog you are reading right now is stored in a Git repository. Every time I create an article, I create a new Git Branch to isolate the changes.
 
-To generate the skeleton of the articles, I use the command line (well, I generally use PowerShell); in particular, given that I'm using both Windows 10 Windows 11 - depending on the laptop I'm working on - I use the **Integrated Terminal**, which allows you to define the style, the fonts, and so on of every terminal configured in the settings.
+To generate the skeleton of the articles, I use the command line (well, I generally use PowerShell); in particular, given that I'm using both Windows 10 and Windows 11 - depending on the laptop I'm working on - I use the **Integrated Terminal**, which allows you to define the style, the fonts, and so on of every terminal configured in the settings.
 
 ![Windows terminal with default style](./windows-terminal-default.png)
 
-The default setup is pretty basic: no info is shown, except for the current path - I want to customize the appearance. I want to show the status of the Git repository, including:
+The default setup is pretty basic: no info is shown except for the current path - I want to customize the appearance. 
+
+I want to show the status of the Git repository, including:
 
 - repository name
 - branch name
@@ -39,18 +41,18 @@ Clearly, you first have to check if the profile file exists.
 Open the PowerShell and type:
 
 ```bash
-$PROFILE # you can also use $profile lowercase - it's the same!
+$PROFILE # You can also use $profile lowercase - it's the same!
 ```
 
 This command shows you the **expected path of this file**. The file, if it exists, is stored in that location.
 
 ![The Profile file is expected to be under a specific folder whose path can be found using the $PROFILE command](./profile-path.png)
 
-In this case, the `$Profile` file should be available under the folder `C:\Users\d.bellone\Documents\WindowsPowerShell`. It does not exist, though!
+In this case, the `$Profile` file should be available under the folder `C:\Users\d.bellone\Documents\WindowsPowerShell`. In my case, it does not exist, though!
 
 ![The Profile file is expected to be under a specific path, but it may not exist](./powershell-profile-folder-is-empty.png)
 
-Therefore, you have to create it manually: head to that folder and **create a file named `Microsoft.PowerShell_profile.ps1`.**
+Therefore, you must create it manually: head to that folder and **create a file named `Microsoft.PowerShell_profile.ps1`.**
 
 Note: it might happen that not even the `WindowsPowerShell` folder exists. If it's missing, well, create it!
 
@@ -72,7 +74,7 @@ If you prefer **Scoop**, the command is:
 scoop install https://github.com/JanDeDobbeleer/oh-my-posh/releases/latest/download/oh-my-posh.json
 ```
 
-And, if you like working with **PowerShell**, just execute:
+And, if you like working with **PowerShell**, execute:
 
 ```powershell
 Set-ExecutionPolicy Bypass -Scope Process -Force; Invoke-Expression ((New-Object System.Net.WebClient).DownloadString('https://ohmyposh.dev/install.ps1'))
@@ -133,23 +135,23 @@ So, yeah, feel free to proceed and set the new Execution policy to have your Pow
 
 Now, OhMyPosh can run in the current profile.
 
-Head to a Git repository, and notice that... It's not working!🤬 Or, well, we have the Git information but we are missing some icons and glyphs.
+Head to a Git repository and notice that... It's not working!🤬 Or, well, we have the Git information, but we are missing some icons and glyphs.
 
 ![Oh My Posh is loaded correctly, but some icons are missing due to the wrong font](./ohmyposh-is-loaded-but-icons-are-missing.png)
 
-## Step 5: Use the CaskaydiaCove font, and not Cascadia Code
+## Step 5: Use CaskaydiaCove, not Cascadia Code, as a font
 
-We still have to **install the right font with the missing icons**.
+We still have to **install the correct font with the missing icons**.
 
 We will install it using [Chocolatey](https://chocolatey.org/install), a package manager available for Windows 11.
 
-To check if you have it installed, run
+To check if you have it installed, run:
 
 ```bash
 choco -v
 ```
 
-Now, to install correct font family, **open a PowerShell with administration privileges** and run:
+Now, to install the correct font family, **open a PowerShell with administration privileges** and run:
 
 ```bash
 choco install cascadia-code-nerd-font
@@ -172,7 +174,7 @@ Open it again, navigate to a Git repository, and admire the result.
 
 ## Further readings
 
-The first time I read about OhMyPosh it was on Scott Hanselman's blog. I couldn't make his solution work - and that's the reason I wrote this article. However, in his article, he shows how he customized his own Terminal with more glyphs and icons, so you might want to give it a read.
+The first time I read about OhMyPosh, it was on Scott Hanselman's blog. I couldn't make his solution work - and that's the reason I wrote this article. However, in his article, he shows how he customized his own Terminal with more glyphs and icons, so you should give it a read.
 
 🔗 [My Ultimate PowerShell prompt with Oh My Posh and the Windows Terminal | Scott Hanselman's blog](https://www.hanselman.com/blog/my-ultimate-powershell-prompt-with-oh-my-posh-and-the-windows-terminal)
 
@@ -180,13 +182,13 @@ We customized our PowerShell profile with just one simple configuration. However
 
 🔗 [How to Create a PowerShell Profile – Step-by-Step | Lazyadmin](https://lazyadmin.nl/powershell/powershell-profile/)
 
-One of the core parts of this article is that we have to use *CaskaydiaCove* as a font, instead of the (in)famous *Cascadia Code*. But why?
+One of the core parts of this article is that we have to use *CaskaydiaCove* as a font instead of the (in)famous *Cascadia Code*. But why?
 
 🔗 [Why CaskaydiaCove and not Cascadia Code? | GitHub](https://github.com/ryanoasis/nerd-fonts/tree/master/patched-fonts/CascadiaCode#why-caskaydiacove-and-not-cascadia-code)
 
-Finally, as I said in the beginning of this article, I use Git and Git Branches to handle the creation and management of my blog articles. That's just the tip of the iceberg! 🏔️
+Finally, as I said at the beginning of this article, I use Git and Git Branches to handle the creation and management of my blog articles. That's just the tip of the iceberg! 🏔️
 
-If you want to steal my (previous) workflow, have a look at the behind the scenes of my blogging process (note: in the meanwhile a lot of things have changed, but these steps can still be useful for you)
+If you want to steal my (previous) workflow, have a look at the behind-the-scenes of my blogging process (note: in the meanwhile, a lot of things have changed, but these steps can still be helpful for you)
 
 🔗 [From idea to publishing, and beyond: how I automated my blogging workflow with GitHub, PowerShell, and Azure | Code4IT](https://www.code4it.dev/blog/automate-blogging-workflow-github-powershell-azure/)
 
@@ -196,7 +198,7 @@ _This article first appeared on [Code4IT 🐧](https://www.code4it.dev/)_
 
 In this article, we learned how to install OhMyPosh in PowerShell and overcome all the errors you (well, I) don't see described in other articles.
 
-I wrote this step-by-step article alongside installing these tools on my local machine, so **I'm pretty confident the solution will work**.
+I wrote this step-by-step article alongside installing these tools on my local machine, so **I'm confident the solution will work**.
 
 Did this solution work for you? Let me know! 📨
 
@@ -206,10 +208,7 @@ Happy coding!
 
 🐧
 
-[ ] Frontmatter
-[ ] Rinomina immagini
-[ ] Alt Text per immagini
-[ ] Grammatica
+[ ] Frontmatter 
 [ ] Bold/Italics
 [ ] Nome cartella e slug devono combaciare
 [ ] Immagine di copertina
