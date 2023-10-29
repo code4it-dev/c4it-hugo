@@ -9,7 +9,7 @@ tags:
   - PowerShell
   - MISC
 toc: true
-summary: "A step-by-step guide on how to customize your PowerShell profile to show all the necessary Git-related info using OhMyPosh."
+summary: "Learn how to integrate Oh My Posh, a cross-platform tool that lets you create beautiful and informative prompts for PowerShell."
 images:
   - /blog/ohmyposh-integrated-terminal-powershell/featuredImage.png
 ---
@@ -20,7 +20,7 @@ To generate the skeleton of the articles, I use the command line (well, I genera
 
 ![Windows terminal with default style](./windows-terminal-default.png)
 
-The default setup is pretty basic: no info is shown except for the current path - I want to customize the appearance. 
+The **default profile is pretty basic**: no info is shown except for the current path - I want to customize the appearance.
 
 I want to show the status of the Git repository, including:
 
@@ -28,15 +28,15 @@ I want to show the status of the Git repository, including:
 - branch name
 - outgoing commits
 
-There are lots of articles that teach how to use OhMyPosh with Cascadia Code. *Unfortunately, I couldn't make them work.*
+There are lots of articles that teach how to use OhMyPosh with Cascadia Code. _Unfortunately, I couldn't make them work._
 
 In this article, I teach you **how I fixed it on my local machine**. It's a **step-by-step guide** I wrote while installing it on my local machine. I hope it works for you as well!
 
 ## Step 1: Create the $PROFILE file if it does not exist
 
-In PowerShell, you can customize the current execution by customizing the `$PROFILE` file.
+In PowerShell, you can customize the current execution by updating the `$PROFILE` file.
 
-Clearly, you first have to check if the profile file exists.
+Clearly, you first have to **check if the profile file exists**.
 
 Open the PowerShell and type:
 
@@ -80,7 +80,7 @@ And, if you like working with **PowerShell**, execute:
 Set-ExecutionPolicy Bypass -Scope Process -Force; Invoke-Expression ((New-Object System.Net.WebClient).DownloadString('https://ohmyposh.dev/install.ps1'))
 ```
 
-I used *Winget*, and you can see the installation process here:
+I used _Winget_, and you can see the installation process here:
 
 ![Install OhMyPosh with Winget](./install-ohmyposh-with-winget.png)
 
@@ -98,7 +98,7 @@ This command is executed every time you open the PowerShell with the default pro
 
 Now, you can save and close the file.
 
-*Hint: you can open the profile file with Notepad by running `notepad $PROFILE`.*
+_Hint: you can open the profile file with Notepad by running `notepad $PROFILE`._
 
 ## Step 4: Set the Execution Policy to RemoteSigned
 
@@ -108,8 +108,8 @@ Restart the terminal. In all probability, you will see an error like this:
 
 The error message
 
->The file `<path>\Microsoft.PowerShell_profile.ps1` is
-not digitally signed. You cannot run this script on the current system
+> The file `<path>\Microsoft.PowerShell_profile.ps1` is
+> not digitally signed. You cannot run this script on the current system
 
 means that PowerShell does not trust the script it's trying to load.
 
@@ -159,10 +159,10 @@ choco install cascadia-code-nerd-font
 
 Once the installation is complete, you must tell Integrated Terminal to use the correct font by following these steps:
 
-1. open to the *Settings* page (by hitting `CTRL + ,`)
+1. open to the _Settings_ page (by hitting `CTRL + ,`)
 2. select the profile you want to update (in my case, I'll update the default profile)
-3. open the *Appearance* section
-4. under *Font face* **select CaskaydiaCove Nerd Font**
+3. open the _Appearance_ section
+4. under _Font face_ **select CaskaydiaCove Nerd Font**
 
 ![PowerShell profile settings - Font Face should be CaskaydiaCove Nerd Font](./powershell-profile-settings-fontface.png)
 
@@ -182,7 +182,7 @@ We customized our PowerShell profile with just one simple configuration. However
 
 🔗 [How to Create a PowerShell Profile – Step-by-Step | Lazyadmin](https://lazyadmin.nl/powershell/powershell-profile/)
 
-One of the core parts of this article is that we have to use *CaskaydiaCove* as a font instead of the (in)famous *Cascadia Code*. But why?
+One of the core parts of this article is that we have to use _CaskaydiaCove_ as a font instead of the (in)famous _Cascadia Code_. But why?
 
 🔗 [Why CaskaydiaCove and not Cascadia Code? | GitHub](https://github.com/ryanoasis/nerd-fonts/tree/master/patched-fonts/CascadiaCode#why-caskaydiacove-and-not-cascadia-code)
 
@@ -208,12 +208,5 @@ Happy coding!
 
 🐧
 
-[ ] Frontmatter 
-[ ] Bold/Italics
-[ ] Nome cartella e slug devono combaciare
 [ ] Immagine di copertina
-[ ] Pulizia formattazione
-[ ] Metti la giusta OgTitle
 [ ] Fai resize della immagine di copertina
-[ ] PowerShell con S maiuscola
-[ ] Integrated Terminal con T maiuscola
