@@ -1,5 +1,5 @@
 ---
-title: "OhMyPosh and CascadiaCode not working? How to fix it in Windows 10 and Windows 11 Integrated Terminal"
+title: "OhMyPosh and CascadiaCode not working on PowerShell? How to fix it in Windows 10 and Windows 11 Integrated Terminal"
 date: 2023-10-25
 url: /blog/ohmyposh-integrated-terminal-powershell
 draft: false
@@ -9,18 +9,18 @@ tags:
   - PowerShell
   - MISC
 toc: true
-summary: "A summary"
+summary: "A step-by-step guide on how to customize your PowerShell profile to show all the necessary Git-related info using OhMyPosh."
 images:
   - /blog/ohmyposh-integrated-terminal-powershell/featuredImage.png
 ---
 
-The content of the blog you are reading right now is stored in a GIT repository. Every time I create an article, I create a new GIT Branch to isolate the updates.
+The content of the blog you are reading right now is stored in a Git repository. Every time I create an article, I create a new Git Branch to isolate the changes.
 
-To generate the skeleton of the articles I use the command line; in particular, given that I'm using Windows 11, I use the **Integrated Terminal**, which allows you to customize the style, the fonts, and so on of every terminal configured in the settings.
+To generate the skeleton of the articles, I use the command line (well, I generally use PowerShell); in particular, given that I'm using both Windows 10 Windows 11 - depending on the laptop I'm working on - I use the **Integrated Terminal**, which allows you to define the style, the fonts, and so on of every terminal configured in the settings.
 
 ![Windows terminal with default style](./windows-terminal-default.png)
 
-It's a pretty basic setup, and I want to customize it. I want to show the status of the GIT repository, including:
+The default setup is pretty basic: no info is shown, except for the current path - I want to customize the appearance. I want to show the status of the Git repository, including:
 
 - repository name
 - branch name
@@ -28,74 +28,37 @@ It's a pretty basic setup, and I want to customize it. I want to show the status
 
 There are lots of articles that teach how to use OhMyPosh with Cascadia Code. *Unfortunately, I couldn't make them work.*
 
-In this article, I teach you how I fixed it in my local machine. It's a step-by-step guide that I wrote while installing it on my local machine. I hope it works for you as well!
+In this article, I teach you **how I fixed it on my local machine**. It's a **step-by-step guide** I wrote while installing it on my local machine. I hope it works for you as well!
 
-## Step 1: Create the $PROFILE if it does not exist
+## Step 1: Create the $PROFILE file if it does not exist
 
 In PowerShell, you can customize the current execution by customizing the `$PROFILE` file.
 
-Clearly, you first have to check is if the profile file exists.
+Clearly, you first have to check if the profile file exists.
 
 Open the PowerShell and type:
 
 ```bash
-$PROFILE
+$PROFILE # you can also use $profile lowercase - it's the same!
 ```
 
-This command shows you the **expected path of this file**. The file, if exists, is stored in that location.
+This command shows you the **expected path of this file**. The file, if it exists, is stored in that location.
 
-![Profile path](./profile-path.png)
+![The Profile file is expected to be under a specific folder whose path can be found using the $PROFILE command](./profile-path.png)
 
 In this case, the `$Profile` file should be available under the folder `C:\Users\d.bellone\Documents\WindowsPowerShell`. It does not exist, though!
 
-![The PowerShell profile folder is empty](./powershell-profile-folder-is-empty.png)
+![The Profile file is expected to be under a specific path, but it may not exist](./powershell-profile-folder-is-empty.png)
 
-Therefore you have to create it manually: head to that folder, and **create a file named `Microsoft.PowerShell_profile.ps1`.**
+Therefore, you have to create it manually: head to that folder and **create a file named `Microsoft.PowerShell_profile.ps1`.**
 
-## Step 2: Add OhMyPosh to the PowerShell profile
+Note: it might happen that not even the `WindowsPowerShell` folder exists. If it's missing, well, create it!
 
-Open the `Microsoft.PowerShell_profile.ps1` file and add the following line:
+## Step 2: Install OhMyPosh using Winget, Scoop, or PowerShell
 
-```bash
-oh-my-posh init pwsh | Invoke-Expression
-```
+To use _OhMyPosh_, we have to - of course - install it.
 
-Then save and close the file.
-
-*Hint: you can open the profile file with notepad by running `notepad $PROFILE`.*
-
-## Step 3: Run PowerShell with the current profile and fix errors
-
-To execute the current PowerShell instance with the profile we just created, run the command
-
-```bash
-. $PROFILE
-```
-
-Most probably you will see this error: 
-
-> The file `<path>\Microsoft.PowerShell_profile.ps1` is
-not digitally signed. You cannot run this script on the current system.
-
-This happens because the script is potentially unsafe. To allow PowerShell to run the command, you have to _temporarely_ disable these checks by running
-
-```powershell
-Set-ExecutionPolicy -Scope Process -ExecutionPolicy Bypass
-```
-
-With this command, you are bypassing the checks **only for the current session**.
-
-Run the command, restart the Terminal, and run again `. $PROFILE`. This time, you should be able to see a **different error**:
-
-![OhMyPosh is not recognized as a name of a cmdlet](./ohmyposh-not-recognized.png)
- 
-Different error: it means it's a progress! 🚀
-
-## Step 4: Install OhMyPosh
-
-To use [OhMyPosh](https://ohmyposh.dev/docs/installation/windows), we have - of course - to install it.
-
-As explained in the official documentation, we have three ways to install it, depending on the tool you prefer.
+As explained [in the official documentation](https://ohmyposh.dev/docs/installation/windows), we have **three ways to install OhMyPosh**, depending on the tool you prefer.
 
 If you use **Winget**, just run:
 
@@ -109,9 +72,9 @@ If you prefer **Scoop**, the command is:
 scoop install https://github.com/JanDeDobbeleer/oh-my-posh/releases/latest/download/oh-my-posh.json
 ```
 
-While, if you prefer working with **PowerShell**, just execute:
+And, if you like working with **PowerShell**, just execute:
 
-```bash
+```powershell
 Set-ExecutionPolicy Bypass -Scope Process -Force; Invoke-Expression ((New-Object System.Net.WebClient).DownloadString('https://ohmyposh.dev/install.ps1'))
 ```
 
@@ -119,33 +82,66 @@ I used *Winget*, and you can see the installation process here:
 
 ![Install OhMyPosh with Winget](./install-ohmyposh-with-winget.png)
 
-Now, to apply these changes, you have to **restart PowerShell**.
+Now, to apply these changes, you have to **restart the PowerShell**.
 
-Once you open it again, you will see an error that we already saw:
+## Step 3: Add OhMyPosh to the PowerShell profile
 
-![Alt text](image-3.png)
-
-To fix it **as a temporary workaround**, run again
+Open the `Microsoft.PowerShell_profile.ps1` file and add the following line:
 
 ```powershell
-Set-ExecutionPolicy -Scope Process -ExecutionPolicy Bypass
+oh-my-posh init pwsh | Invoke-Expression
 ```
 
-Now we can run OhMyPosh in the current profile. To enable it, run
+This command is executed every time you open the PowerShell with the default profile, and it initializes OhMyPosh to have it available during the current session.
 
+Now, you can save and close the file.
+
+*Hint: you can open the profile file with Notepad by running `notepad $PROFILE`.*
+
+## Step 4: Set the Execution Policy to RemoteSigned
+
+Restart the terminal. In all probability, you will see an error like this:
+
+!["The file .ps1 is not digitally signed" error](./the-file-is-not-digitally-signed.png)
+
+The error message
+
+>The file `<path>\Microsoft.PowerShell_profile.ps1` is
+not digitally signed. You cannot run this script on the current system
+
+means that PowerShell does not trust the script it's trying to load.
+
+To see which Execution Policy is currently active, run:
+
+```powershell
+Get-ExecutionPolicy
 ```
-. $PROFILE
+
+You'll probably see that the value is `AllSigned`.
+
+To enable the execution of scripts created on your local machine, you have to **set the Execution Policy value to `RemoteSigned`**, using this command by **running the PowerShell in administrator mode**:
+
+```powershell
+Set-ExecutionPolicy RemoteSigned
 ```
 
-and... **It's not working**! Or, at least, we don't have any icon.
+Let's see the definition of the `RemoteSigned` Execution policy as per [SQLShack's article](https://www.sqlshack.com/choosing-and-setting-a-powershell-execution-policy):
 
-![Alt text](image-4.png)
+> This is also a **safe PowerShell Execution policy to set in an enterprise environment**. This policy dictates that any script that was not created on the system that the script is running on, should be signed. Therefore, **this will allow you to write your own script and execute it**.
 
-## Step X: Use CaskadyaCove (not Cascadia Code)
+So, yeah, feel free to proceed and set the new Execution policy to have your PowerShell profile loaded correctly every time you open a new PowerShell instance.
 
-We still have to install the right font.
+Now, OhMyPosh can run in the current profile.
 
-We will install it using [Chocolatey](https://chocolatey.org/install), a package manager available for Windows11.
+Head to a Git repository, and notice that... It's not working!🤬 Or, well, we have the Git information but we are missing some icons and glyphs.
+
+![Oh My Posh is loaded correctly, but some icons are missing due to the wrong font](./ohmyposh-is-loaded-but-icons-are-missing.png)
+
+## Step 5: Use the CaskaydiaCove font, and not Cascadia Code
+
+We still have to **install the right font with the missing icons**.
+
+We will install it using [Chocolatey](https://chocolatey.org/install), a package manager available for Windows 11.
 
 To check if you have it installed, run
 
@@ -159,72 +155,48 @@ Now, to install correct font family, **open a PowerShell with administration pri
 choco install cascadia-code-nerd-font
 ```
 
-Once the installation is complete, you must tell Integrated Terminal to use the correct font:
+Once the installation is complete, you must tell Integrated Terminal to use the correct font by following these steps:
 
-1. open to the Settings page (by hitting `CTRL + ,`)
-2. select the profile you want to update (in my case, I'll update the Default profile)
-3. open the Appearance section
-4. under Font face select **CaskaydiaCove Nerd Font**
+1. open to the *Settings* page (by hitting `CTRL + ,`)
+2. select the profile you want to update (in my case, I'll update the default profile)
+3. open the *Appearance* section
+4. under *Font face* **select CaskaydiaCove Nerd Font**
 
-![Alt text](image-5.png)
+![PowerShell profile settings - Font Face should be CaskaydiaCove Nerd Font](./powershell-profile-settings-fontface.png)
 
 Now close the Integrated Terminal to apply the changes.
 
-Open it again, navigate to a git repository, and admire the result.
+Open it again, navigate to a Git repository, and admire the result.
 
-![Alt text](image-6.png)
-
-## STEP X: Update the ExecutionPolicy
-
-Every time we open the Integrated Terminal we see that terrible _The file `<path>\Microsoft.PowerShell_profile.ps1` is
-not digitally signed. You cannot run this script on the current system_ error message.
-
-As a temporary workaround, I suggested to run:
-
-```powershell
-Set-ExecutionPolicy -Scope Process -ExecutionPolicy Bypass
-```
-
-Now that we know that everything is working correctly, we can (should?) fix it once for all.
-
-To do that, we need to set the Execution Policy to `RemoteSigned`, using this command:
-
-```Get-ExecutionPolicy
-# Set the ExecutionPolicy to RemoteSigned:
-Set-ExecutionPolicy RemoteSigned
-```
-
-Let's see the definition of the `RemoteSigned` Execution policy as per [SQLShack's article](https://www.sqlshack.com/choosing-and-setting-a-powershell-execution-policy):
-
-> This is also a safe PowerShell Execution policy to set in an enterprise environment. This policy dictates that any script that was not created on the system that the script is running on, should be signed. Therefore, this will allow you to write your own script and execute it.
-
-So, yeah, feel free to proceed and set the new Execution policy to have your PowerShell profile loaded correctly every time you open a new PowerShell instance.
+![OhMyPosh with icons and fonts loaded correctly](./ohmyposh-with-fonts-loaded-correctly.png)
 
 ## Further readings
 
-The first time I read about OhMyPosh was on Scott Hanselman's blog. I couldn't make his solution work - and that's the reason I wrote this article. However, in his article, he shows how he customized his own Terminal with more glyphs and icons, so you might want to give it a read.
+The first time I read about OhMyPosh it was on Scott Hanselman's blog. I couldn't make his solution work - and that's the reason I wrote this article. However, in his article, he shows how he customized his own Terminal with more glyphs and icons, so you might want to give it a read.
 
 🔗 [My Ultimate PowerShell prompt with Oh My Posh and the Windows Terminal | Scott Hanselman's blog](https://www.hanselman.com/blog/my-ultimate-powershell-prompt-with-oh-my-posh-and-the-windows-terminal)
 
-_This article first appeared on [Code4IT 🐧](https://www.code4it.dev/)_
-
-We customized our PowerShell profile with just one simple configuration. However, there's a lot more. You can read Ruud's in-depth article about PowerShell profiles.
+We customized our PowerShell profile with just one simple configuration. However, you can do a lot more. You can read Ruud's in-depth article about PowerShell profiles.
 
 🔗 [How to Create a PowerShell Profile – Step-by-Step | Lazyadmin](https://lazyadmin.nl/powershell/powershell-profile/)
 
-One of the core parts of this article is that we have to use CaskaydiaCove as a font, instead of the (in)famous Cascadia Code. But why?
+One of the core parts of this article is that we have to use *CaskaydiaCove* as a font, instead of the (in)famous *Cascadia Code*. But why?
 
 🔗 [Why CaskaydiaCove and not Cascadia Code? | GitHub](https://github.com/ryanoasis/nerd-fonts/tree/master/patched-fonts/CascadiaCode#why-caskaydiacove-and-not-cascadia-code)
 
-Finally, as I said in the beginning of this article, I use GIT and Git Branches to handle the creation and management of my blog articles. That's just the tip of the iceberg! If you want to steal my (previous) workflow, have a look at the behind the scenes of my blogginh process (note: in the meanwhile a lot of things have changed!)
+Finally, as I said in the beginning of this article, I use Git and Git Branches to handle the creation and management of my blog articles. That's just the tip of the iceberg! 🏔️
+
+If you want to steal my (previous) workflow, have a look at the behind the scenes of my blogging process (note: in the meanwhile a lot of things have changed, but these steps can still be useful for you)
 
 🔗 [From idea to publishing, and beyond: how I automated my blogging workflow with GitHub, PowerShell, and Azure | Code4IT](https://www.code4it.dev/blog/automate-blogging-workflow-github-powershell-azure/)
+
+_This article first appeared on [Code4IT 🐧](https://www.code4it.dev/)_
 
 ## Wrapping up
 
 In this article, we learned how to install OhMyPosh in PowerShell and overcome all the errors you (well, I) don't see described in other articles.
 
-I wrote this step-by-step article alongside installing these tools on my local machine, so I'm pretty confident the solution will work.
+I wrote this step-by-step article alongside installing these tools on my local machine, so **I'm pretty confident the solution will work**.
 
 Did this solution work for you? Let me know! 📨
 
@@ -234,7 +206,6 @@ Happy coding!
 
 🐧
 
-[ ] Titoli
 [ ] Frontmatter
 [ ] Rinomina immagini
 [ ] Alt Text per immagini
@@ -242,17 +213,8 @@ Happy coding!
 [ ] Bold/Italics
 [ ] Nome cartella e slug devono combaciare
 [ ] Immagine di copertina
-[ ] Rimuovi secrets dalle immagini
 [ ] Pulizia formattazione
-[ ] Controlla se ASP.NET Core oppure .NET
 [ ] Metti la giusta OgTitle
 [ ] Fai resize della immagine di copertina
 [ ] PowerShell con S maiuscola
 [ ] Integrated Terminal con T maiuscola
-[ ] Prova con l'altro PC a rifare il giro, ottimizzando il tutto:
- 
- - set execution policy (prima, peró, leggi la policy corrente)
- - install OhMyPosh
- - set Profile
- - install font
- - customize PowerShell
