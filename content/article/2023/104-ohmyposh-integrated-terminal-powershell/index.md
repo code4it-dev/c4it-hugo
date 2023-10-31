@@ -1,6 +1,6 @@
 ---
 title: "OhMyPosh and CascadiaCode not working on PowerShell? How to fix it in Windows 10 and Windows 11 Integrated Terminal"
-date: 2023-10-25
+date: 2023-10-31
 url: /blog/ohmyposh-integrated-terminal-powershell
 draft: false
 categories:
@@ -208,5 +208,3 @@ Happy coding!
 
 🐧
 
-[ ] Immagine di copertina
-[ ] Fai resize della immagine di copertina
