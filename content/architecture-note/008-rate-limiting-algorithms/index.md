@@ -1,7 +1,7 @@
 ---
 title: "Davide's Code and Architecture Notes - 4 algorithms to implement Rate Limiting, with comparison"
 date: 2023-11-03
-url: /architecture-notes/post-slug
+url: /architecture-notes/rate-limiting-algorithms
 draft: false
 categories:
  - Code and Architecture Notes
@@ -10,7 +10,7 @@ tags:
 toc: true
 summary: "A summary"
 images:
- - /architecture-notes/post-slug/featuredImage.png
+ - /architecture-notes/rate-limiting-algorithms/featuredImage.png
 ---
 
 When developing any API application, whether it is a monolith, a microservice, a distributed system, or whatever, you should add some sort of Rate Limiting.
@@ -39,7 +39,7 @@ Now, what strategies do we have to implement Rate Limit?
 
 Let's see the 4 algorithms!
 
-### Fixed-window rate limiting 
+### Fixed-window rate limiting
 
 The **Fixed-window algorithm** restricts the number of requests allowed during a given time window. **The time frame is defined by the server, and it's the same for all the clients.**
 
@@ -68,7 +68,7 @@ This algorithm is more fair than the fixed-window algorithm, as it considers the
 
 However, given that you must now store info about the request counters related to each client, it is also more complex and resource-intensive to implement.
 
-### Leaky bucket rate limiting
+### Leaky Bucket rate limiting
 
 The **Leaky bucket algorithm** simulates a leaky bucket that can hold a fixed number of requests.
 
@@ -83,7 +83,7 @@ Let's see a practical example: each request fills one slot (a drop of water) in 
 ]]]]]]]]]]]]]]]]]]]DISEGNOOOO[[[[[[[[[[[[[[[[[[[
 
 
-### Token bucket rate limiting
+### Token Bucket rate limiting
 
 The **Token bucket algorithm** is similar to the leaky bucket algorithm, but instead of filling slots with requests, it consumes *tokens* from a bucket. 
 
@@ -97,8 +97,7 @@ One of the differences with Leaky Bucket is that Token Bucket allows bursts of r
 
 ]]]]]]]]]]]]]]]]]]]DISEGNOOOO[[[[[[[[[[[[[[[[[[[
 
-
-### Comparing the algorithms (todo)
+### Comparing the Rate Limiting algorithms
 
 
 | Algorithm | Description | Burst Handling | Discarding | Advantages | Disadvantages |
@@ -141,17 +140,8 @@ Happy coding!
 🐧
 
 
-[ ] Titoli
 [ ] Frontmatter
 [ ] Rinomina immagini
 [ ] Alt Text per immagini
-[ ] Grammatica
 [ ] Bold/Italics
-[ ] Nome cartella e slug devono combaciare
-[ ] Immagine di copertina
-[ ] Rimuovi secrets dalle immagini
 [ ] Pulizia formattazione
-[ ] Metti la giusta OgTitle
-[ ] Fai resize della immagine di copertina
-
- 
