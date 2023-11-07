@@ -1,6 +1,6 @@
 ---
 title: "Davide's Code and Architecture Notes - 4 algorithms to implement Rate Limiting, with comparison"
-date: 2023-11-03
+date: 2023-11-07
 url: /architecture-notes/rate-limiting-algorithms
 draft: false
 categories:
@@ -8,14 +8,14 @@ categories:
 tags:
  - Software Architecture
 toc: true
-summary: "A summary"
+summary: "You should always put a limit to the number of incoming requests. Otherwise, you can have your systems exposed to malicious attackers. Let's see the four main algorithms to implement Rate Limit."
 images:
  - /architecture-notes/rate-limiting-algorithms/featuredImage.png
 ---
 
 When developing any API application, whether it is a monolith, a microservice, a distributed system, or whatever, you should add some sort of Rate Limiting.
 
-Rate Limiting is just a way to say to the caller, "Hey, stop, you're calling me too many times!". At first sight, it's easy. But... What do we mean by "too many times"? How can we track these "too many times"?
+Rate Limiting is just a way to say to the caller, "*Hey, stop, you're calling me too many times!*". At first sight, it's easy. But... What do we mean by "too many times"? How can we track these "too many times"?
 
 In this article, we will learn what Rate Limiting is and what problems it solves; we will also focus on the four main algorithms to determine if the callers have reached the limit.
 
@@ -25,11 +25,11 @@ Rate Limiting is a way to stop clients from calling our systems too many times.
 
 Considering that every request to our system uses part of our resources, if we have too many requests simultaneously, we could end up with the whole system down. Sure, we could add a [L4 or L7 Load Balancer](https://www.code4it.dev/architecture-notes/l4-vs-l7-load-balancers/) to our system, but it might not be enough.
 
-Adding Rate Limiting has some benefits:
+Adding Rate Limiting has **some benefits**:
 
-1. It shields you from **DDoS** - if an attacker tries to impact your system by calling your APIs so many times that the whole system goes down, thanks to Rate Limiting, you have a way to reduce the number of performed operations (clearly, you can't stop the client from calling you, but you can stop before executing the whole operation).
+1. It **shields you from DDoS** - if an attacker tries to impact your system by calling your APIs so many times that the whole system goes down, thanks to Rate Limiting, you have a way to reduce the number of performed operations (clearly, you can't stop the client from calling you, but you can stop before executing the whole operation).
 2. It adds a security layer **preventing Brute force attacks**. Let's see a practical example: if an attacker attempts to steal the identity of a person by trying all the possible passwords (using *password spray*), your Rate Limit policies stop them from performing too many tentatives.
-3. if part of the system is degraded and cannot process a request quickly, a client could add a retry policy. Suppose the caller calls you too many times. In that case, it might overload the already degraded component, making it totally unable to handle any request, even coming from other clients.
+3. If part of the system is degraded and cannot process a request quickly, a client could add a retry policy. Suppose the caller calls you too many times. In that case, it might overload the already degraded component, making it totally unable to handle any request, even coming from other clients.
 
 To ensure the clients know that you are not processing their requests because they tried to call your systems too many times, you have to **use the correct HTTP Response code: 429 Too Many Requests**. This way, the callers can implement a retry logic that considers that if the call was unsuccessful, it might be due to the number of subsequent calls. **The response should also include a *Retry-After* HTTP header** to tell the client how long to wait before performing the next request.
 
@@ -49,7 +49,7 @@ You can choose two types of fixed-window rate limiting: user-based and server-ba
 
 This algorithm is simple to implement, but it has some drawbacks. One is that it can allow bursts of requests at the beginning or at the end of each window, which can overload the system. Also, suppose a lot of requests are throttled to the next minute. In that case, you end up adding and adding more requests to the beginning of the next minute, causing a burst of requests that the system might not be able to handle.
 
-]]]]]]]]]]]]]]]]]]]DISEGNOOOO[[[[[[[[[[[[[[[[[[[
+![Fixed-window rate limiting algorithm](./fixed-window.png)
 
 ### Sliding-window Rate Limiting
 
@@ -62,9 +62,10 @@ If the timeframe is 100 requests per minute, we can have:
 
 So, both clients can call the system 100 times per minute, but their time frames are independent of each other. **Timeframes can overlap**.
 
-]]]]]]]]]]]]]]]]]]]DISEGNOOOO[[[[[[[[[[[[[[[[[[[
+![Sliding-window rate limiting algorithm](./sliding-window.png)
 
-This algorithm is more fair than the fixed-window algorithm, as it considers the request history of each independent client in a sliding window rather than a fixed window. 
+
+This algorithm is **more fair than the fixed-window algorithm**, as it considers the request history of each independent client in a sliding window rather than a fixed window. 
 
 However, given that you must now store info about the request counters related to each client, it is also more complex and resource-intensive to implement.
 
@@ -74,14 +75,13 @@ The **Leaky bucket algorithm** simulates a leaky bucket that can hold a fixed nu
 
 Picture a bucket with a tiny hole at its base. The bucket is filled with water (symbolizing incoming requests) at varying speeds, but the water leaks from the hole steadily. If the bucket is already full and additional water is added, it spills over, representing the discarding of extra requests.
 
-This algorithm ensures **the request flow is constant** and mitigates congestion. If requests are added faster than they can be processed, the surplus requests are discarded.
+This algorithm ensures **the request flow is constant** and mitigates congestion. **If requests are added faster than they can be processed, the surplus requests are discarded.**
 
 The algorithm can be implemented using a FIFO (First In, First Out) queue. The queue stores the list of requests, and a fixed quantity of requests are removed from the queue at a regular pace, and then processed.
 
 Let's see a practical example: each request fills one slot (a drop of water) in the bucket, and each slot leaks out constantly. If the bucket size is 100 requests and the leak rate is 5 requests per second, then if every client sends more than 5 requests per second, the bucket will fill up, and incoming requests will be blocked or throttled until some slots leak out. 
 
-]]]]]]]]]]]]]]]]]]]DISEGNOOOO[[[[[[[[[[[[[[[[[[[
-
+![Leaky Bucket rate limiting algorithm](./leaky-bucket.png)
 
 ### Token Bucket rate limiting
 
@@ -91,13 +91,15 @@ You can assign each operation a different number of required tokens; for instanc
 
 The bucket now has a minimum (zero) and a maximum number of tokens available. When a request arrives, it removes the related number of tokens from the bucket.
 
-At the same time, **tokens are added at a constant rate**. For example, in a bucket with at most 100 tokens, you can add 5 tokens every 10 seconds. Once you've reached the limit, you drop the tokens (and not the requests).
+At the same time, **tokens are added at a constant rate**. For example, in a bucket with at most 100 tokens, you can add 5 tokens every 10 seconds. Once you've reached the limit, **you drop the tokens (and not the requests)**.
 
 One of the differences with Leaky Bucket is that Token Bucket allows bursts of requests, while Leaky Bucket only supports requests to be processed at a constant rate.
 
-]]]]]]]]]]]]]]]]]]]DISEGNOOOO[[[[[[[[[[[[[[[[[[[
+![Token Bucket rate limiting algorithm](./token-bucket.png)
 
 ### Comparing the Rate Limiting algorithms
+
+Let's compare the main differences of the four algorithms.
 
 
 | Algorithm | Description | Burst Handling | Discarding | Advantages | Disadvantages |
@@ -138,10 +140,3 @@ I hope you enjoyed this article! Let's keep in touch on [Twitter](https://twitte
 Happy coding!
 
 🐧
-
-
-[ ] Frontmatter
-[ ] Rinomina immagini
-[ ] Alt Text per immagini
-[ ] Bold/Italics
-[ ] Pulizia formattazione
