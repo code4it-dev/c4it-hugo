@@ -4,18 +4,18 @@ date: 2023-11-07
 url: /architecture-notes/rate-limiting-algorithms
 draft: false
 categories:
- - Code and Architecture Notes
+  - Code and Architecture Notes
 tags:
- - Software Architecture
+  - Software Architecture
 toc: true
 summary: "You should always put a limit to the number of incoming requests. Otherwise, you can have your systems exposed to malicious attackers. Let's see the four main algorithms to implement Rate Limit."
 images:
- - /architecture-notes/rate-limiting-algorithms/featuredImage.png
+  - /architecture-notes/rate-limiting-algorithms/featuredImage.png
 ---
 
 When developing any API application, whether it is a monolith, a microservice, a distributed system, or whatever, you should add some sort of Rate Limiting.
 
-Rate Limiting is just a way to say to the caller, "*Hey, stop, you're calling me too many times!*". At first sight, it's easy. But... What do we mean by "too many times"? How can we track these "too many times"?
+Rate Limiting is just a way to say to the caller, "_Hey, stop, you're calling me too many times!_". At first sight, it's easy. But... What do we mean by "too many times"? How can we track these "too many times"?
 
 In this article, we will learn what Rate Limiting is and what problems it solves; we will also focus on the four main algorithms to determine if the callers have reached the limit.
 
@@ -28,10 +28,10 @@ Considering that every request to our system uses part of our resources, if we h
 Adding Rate Limiting has **some benefits**:
 
 1. It **shields you from DDoS** - if an attacker tries to impact your system by calling your APIs so many times that the whole system goes down, thanks to Rate Limiting, you have a way to reduce the number of performed operations (clearly, you can't stop the client from calling you, but you can stop before executing the whole operation).
-2. It adds a security layer **preventing Brute force attacks**. Let's see a practical example: if an attacker attempts to steal the identity of a person by trying all the possible passwords (using *password spray*), your Rate Limit policies stop them from performing too many tentatives.
+2. It adds a security layer **preventing Brute force attacks**. Let's see a practical example: if an attacker attempts to steal the identity of a person by trying all the possible passwords (using _password spray_), your Rate Limit policies stop them from performing too many tentatives.
 3. If part of the system is degraded and cannot process a request quickly, a client could add a retry policy. Suppose the caller calls you too many times. In that case, it might overload the already degraded component, making it totally unable to handle any request, even coming from other clients.
 
-To ensure the clients know that you are not processing their requests because they tried to call your systems too many times, you have to **use the correct HTTP Response code: 429 Too Many Requests**. This way, the callers can implement a retry logic that considers that if the call was unsuccessful, it might be due to the number of subsequent calls. **The response should also include a *Retry-After* HTTP header** to tell the client how long to wait before performing the next request.
+To ensure the clients know that you are not processing their requests because they tried to call your systems too many times, you have to **use the correct HTTP Response code: 429 Too Many Requests**. This way, the callers can implement a retry logic that considers that if the call was unsuccessful, it might be due to the number of subsequent calls. **The response should also include a _Retry-After_ HTTP header** to tell the client how long to wait before performing the next request.
 
 ## Rate Limiting algorithms
 
@@ -64,8 +64,7 @@ So, both clients can call the system 100 times per minute, but their time frames
 
 ![Sliding-window rate limiting algorithm](./sliding-window.png)
 
-
-This algorithm is **more fair than the fixed-window algorithm**, as it considers the request history of each independent client in a sliding window rather than a fixed window. 
+This algorithm is **more fair than the fixed-window algorithm**, as it considers the request history of each independent client in a sliding window rather than a fixed window.
 
 However, given that you must now store info about the request counters related to each client, it is also more complex and resource-intensive to implement.
 
@@ -79,13 +78,13 @@ This algorithm ensures **the request flow is constant** and mitigates congestion
 
 The algorithm can be implemented using a FIFO (First In, First Out) queue. The queue stores the list of requests, and a fixed quantity of requests are removed from the queue at a regular pace, and then processed.
 
-Let's see a practical example: each request fills one slot (a drop of water) in the bucket, and each slot leaks out constantly. If the bucket size is 100 requests and the leak rate is 5 requests per second, then if every client sends more than 5 requests per second, the bucket will fill up, and incoming requests will be blocked or throttled until some slots leak out. 
+Let's see a practical example: each request fills one slot (a drop of water) in the bucket, and each slot leaks out constantly. If the bucket size is 100 requests and the leak rate is 5 requests per second, then if every client sends more than 5 requests per second, the bucket will fill up, and incoming requests will be blocked or throttled until some slots leak out.
 
 ![Leaky Bucket rate limiting algorithm](./leaky-bucket.png)
 
 ### Token Bucket rate limiting
 
-The **Token bucket algorithm** is similar to the leaky bucket algorithm, but instead of filling slots with requests, it consumes *tokens* from a bucket. 
+The **Token bucket algorithm** is similar to the leaky bucket algorithm, but instead of filling slots with requests, it consumes _tokens_ from a bucket.
 
 You can assign each operation a different number of required tokens; for instance, you can define that heavier operations require 5 tokens to be executed, while other operations require 2 tokens.
 
@@ -101,13 +100,12 @@ One of the differences with Leaky Bucket is that Token Bucket allows bursts of r
 
 Let's compare the main differences of the four algorithms.
 
-
-| Algorithm | Description | Burst Handling | Discarding | Advantages | Disadvantages |
-| --- | --- | --- | --- | --- | --- |
-| **Fixed Window** | Divides time into fixed windows. For each window, it maintains a counter of requests. When the counter reaches the limit, subsequent requests are dropped until a new window starts. | Does not handle bursts. | Discards requests when the limit is reached. | Easy to implement. It can prevent the starvation of newer requests. | Can lead to a rush in requests, especially at the beginning of the time window. |
-| **Sliding Window** | Uses a moving window to track the number of requests made over a given time period. The window is strictly related to the caller, and not shared with other clients. | Handles bursts by taking the previous counter into account. | Discards requests when the estimated count is greater than the capacity. |  Handles bursts by taking the previous counter into account. More accurate than Fixed Window. | More complex to implement than Fixed Window. |
-| **Leaky Bucket** | As a request arrives, it is leaked out of the bucket at a constant rate. If the bucket is full when a request arrives, the request is discarded. | Does not handle bursts. Sends requests at an average rate. | Discards requests when the bucket is full. | Sends requests at a constant rate. More robust compared to Token Bucket. Memory efficient. | Can lead to request loss since it discards requests (not tokens). Processes requests at an average rate, leading to a slower response time. |
-| **Token Bucket** | A token is added to the bucket every N seconds. The bucket has a maximum number of tokens it can hold. If a token arrives when the bucket is full, it is discarded. | Allows for large bursts to be sent faster. | Discards tokens, but not requests. | Allows for large bursts to be sent faster. Tokens are discarded, not requests. Memory efficient. | Might exceed the rate limit during the same time window. Inefficient use of available network resources. |
+| Algorithm          | Description                                                                                                                                                                          | Burst Handling                                              | Discarding                                                               | Advantages                                                                                       | Disadvantages                                                                                                                               |
+| ------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ----------------------------------------------------------- | ------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------- |
+| **Fixed Window**   | Divides time into fixed windows. For each window, it maintains a counter of requests. When the counter reaches the limit, subsequent requests are dropped until a new window starts. | Does not handle bursts.                                     | Discards requests when the limit is reached.                             | Easy to implement. It can prevent the starvation of newer requests.                              | Can lead to a rush in requests, especially at the beginning of the time window.                                                             |
+| **Sliding Window** | Uses a moving window to track the number of requests made over a given time period. The window is strictly related to the caller, and not shared with other clients.                 | Handles bursts by taking the previous counter into account. | Discards requests when the estimated count is greater than the capacity. | Handles bursts by taking the previous counter into account. More accurate than Fixed Window.     | More complex to implement than Fixed Window.                                                                                                |
+| **Leaky Bucket**   | As a request arrives, it is leaked out of the bucket at a constant rate. If the bucket is full when a request arrives, the request is discarded.                                     | Does not handle bursts. Sends requests at an average rate.  | Discards requests when the bucket is full.                               | Sends requests at a constant rate. More robust compared to Token Bucket. Memory efficient.       | Can lead to request loss since it discards requests (not tokens). Processes requests at an average rate, leading to a slower response time. |
+| **Token Bucket**   | A token is added to the bucket every N seconds. The bucket has a maximum number of tokens it can hold. If a token arrives when the bucket is full, it is discarded.                  | Allows for large bursts to be sent faster.                  | Discards tokens, but not requests.                                       | Allows for large bursts to be sent faster. Tokens are discarded, not requests. Memory efficient. | Might exceed the rate limit during the same time window. Inefficient use of available network resources.                                    |
 
 ## Further readings
 
@@ -118,8 +116,8 @@ One of the best articles out there has been published by TIBCO:
 🔗 [What is Rate Limiting? | TIBCO](https://www.tibco.com/reference-center/what-is-rate-limiting)
 
 _This article first appeared on [Code4IT 🐧](https://www.code4it.dev/)_
- 
- If you want to know more about the Leaky Bucket algorithm, here's a fantastic article with clear examples and some code snippets in C++, Java, C#, and more. It actually talks about packets (Leaky Token is also used in networking), but the idea is the same:
+
+If you want to know more about the Leaky Bucket algorithm, here's a fantastic article with clear examples and some code snippets in C++, Java, C#, and more. It actually talks about packets (Leaky Token is also used in networking), but the idea is the same:
 
 🔗 [Leaky bucket algorithm | GeeksForGeeks](https://www.geeksforgeeks.org/leaky-bucket-algorithm/)
 
