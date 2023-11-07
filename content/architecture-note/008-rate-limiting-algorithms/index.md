@@ -86,11 +86,11 @@ Let's see a practical example: each request fills one slot (a drop of water) in 
 
 The **Token bucket algorithm** is similar to the leaky bucket algorithm, but instead of filling slots with requests, it consumes _tokens_ from a bucket.
 
-You can assign each operation a different number of required tokens; for instance, you can define that heavier operations require 5 tokens to be executed, while other operations require 2 tokens.
+Each client has an allocated number of tokens it can consume. It can use them all in a burst, or use them at a regular pace.
 
-The bucket now has a minimum (zero) and a maximum number of tokens available. When a request arrives, it removes the related number of tokens from the bucket.
+The bucket now has a minimum (zero) and a maximum number of tokens available. When a request arrives, the system removes the related number of tokens from the bucket.
 
-At the same time, **tokens are added at a constant rate**. For example, in a bucket with at most 100 tokens, you can add 5 tokens every 10 seconds. Once you've reached the limit, **you drop the tokens (and not the requests)**.
+At the same time, **tokens are added at a constant rate**. For example, in a bucket with at most 100 tokens, the system can add 5 tokens every 10 seconds. Once the bucket has reached the limit, **the system drops the exceeding tokens (and not the requests)**.
 
 One of the differences with Leaky Bucket is that Token Bucket allows bursts of requests, while Leaky Bucket only supports requests to be processed at a constant rate.
 
