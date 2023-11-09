@@ -154,26 +154,25 @@ var optimalTime = CreateAndTrack(sourceFolderPath,
     Path.Combine(rootFolder, "Optimal.zip"),
     CompressionLevel.Optimal);
     
- _output.WriteAsJson(new
- {
-     Smallest = smallestTime,
-     NoCompressionTime = noCompressionTime,
-     FastestTime = fastestTime,
-     OptimalTime = optimalTime
- });
+
 ```
 
 By executing this operation, we have this table:
 
-|  Compression Type | Execution time (ms) | Size (bytes)   | Size on disk (bytes) |
-|-------------------|---------------------|----------------|----------------------|
-| Optimal           | a                   | b              | c                    |
-| Fastest           | d                   | 16,935,519,764 | 17,004,888,064       |
-| Smallest          | e                   | 17,339,881,242 | 17,339,883,520       |
-| No Compression    | f                   | 17,497,652,162 | 17,497,653,248       |
+|  Compression Type | Execution time (ms) | Execution time (s) | Size (bytes)   | Size on disk (bytes) |
+|-------------------|---------------------|--------------------|----------------|----------------------|
+| Optimal           | 483481              | 483                | 17,340,065,594 | 17,340,067,840       |
+| Fastest           | 661674              | 661                | 16,935,519,764 | 17,004,888,064       |
+| Smallest          | 344756              | 344                | 17,339,881,242 | 17,339,883,520       |
+| No Compression    | 42521               | 42                 | 17,497,652,162 | 17,497,653,248       |
 
+We can see a bunch weird things: 
 
-We can see a weird thing: Fastest compression generates a smaller file than Smallest compression.
+- Fastest compression generates a smaller file than Smallest compression.
+- Fastest compression is way slower than Smallest compression.
+- Optimal lies in the middle.
+
+This is to say: don't trust the names; always benchmark the parts where you need performance, even with a test as simple as this.
 
 ## Wrapping up
 
