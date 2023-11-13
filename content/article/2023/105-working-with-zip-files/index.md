@@ -1,6 +1,6 @@
 ---
 title: "How to extract, create, and navigate Zip Files in C#"
-date: 2023-11-12
+date: 2023-11-14
 url: /blog/working-with-zip-files
 draft: false
 categories:
