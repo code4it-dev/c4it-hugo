@@ -1,17 +1,17 @@
 ---
 title: "How to extract, create, and navigate Zip Files in C#"
-date: 2023-11-14
+date: 2023-11-12
 url: /blog/working-with-zip-files
 draft: false
 categories:
- - Blog
+  - Blog
 tags:
- - CSharp
-- Zip
+  - CSharp
+    - Zip
 toc: true
 summary: "Learn how to zip and unzip compressed files with C#. Beware: it's not as obvious as it might seem!"
 images:
- - /blog/working-with-zip-files/featuredImage.png
+  - /blog/working-with-zip-files/featuredImage.png
 ---
 
 When working with local files, you might need to open, create, or update Zip files.
@@ -44,15 +44,15 @@ The `ZipArchiveEntry` object contains several fields, like the file's name and t
 There are a few **key points to remember** about the entries listed in the `ZipArchiveEntry`.
 
 1. It is a `ReadOnlyCollection<ZipArchiveEntry>`: it means that even if you find a way to add or update the items in memory, the changes are not applied to the actual files;
-2. **It lists all files and folders**, not only those at the root level. As you can see from the image above, it lists both the files at the root level, like *File.txt*, and those in inner folders, such as *TestZip/InnerFolder/presentation.pptx*;
-3. Each file is characterized by two similar but different properties: `Name` is the actual file name (like *presentation.pptx*), while `FullName` contains the path from the root of the archive (e.g. *TestZip/InnerFolder/presentation.pptx*);
-4. It lists **folders as if they were files**: in the image above, you can see *TestZip/InnerFolder*. You can recognize them because their `Name` property is empty and their `Length` is 0;
+2. **It lists all files and folders**, not only those at the root level. As you can see from the image above, it lists both the files at the root level, like _File.txt_, and those in inner folders, such as _TestZip/InnerFolder/presentation.pptx_;
+3. Each file is characterized by two similar but different properties: `Name` is the actual file name (like _presentation.pptx_), while `FullName` contains the path from the root of the archive (e.g. _TestZip/InnerFolder/presentation.pptx_);
+4. It lists **folders as if they were files**: in the image above, you can see _TestZip/InnerFolder_. You can recognize them because their `Name` property is empty and their `Length` is 0;
 
 ![Folders are treated like files, but with no Size or Name](./folder-details.png)
 
 Lastly, remember that **`ZipFile.Open` returns an `IDisposable`**, so you should place the operations within a `using` statement.
 
-❓❓A question for you! Why do we see an item for the *TestZip/InnerFolder* folder, but there is no reference to the *TestZip* folder? Drop a comment below 📩
+❓❓A question for you! Why do we see an item for the _TestZip/InnerFolder_ folder, but there is no reference to the _TestZip_ folder? Drop a comment below 📩
 
 ## Using C# to extract the Zip to a local path
 
@@ -68,7 +68,7 @@ var destinationPath = @"C:\Users\d.bellone\Desktop\MyDestination";
 ZipFile.ExtractToDirectory(zipPath, destinationPath);
 ```
 
-Once you run it, you will see the content of the Zip copied and extracted to the *MyDestination* folder.
+Once you run it, you will see the content of the Zip copied and extracted to the _MyDestination_ folder.
 
 Note that **this method creates the destination folder** if it does not exist.
 
@@ -81,11 +81,11 @@ This method accepts two more parameters:
 
 The key method here is `ZipFile.CreateFromDirectory`, which allows you to create Zip files in a flexible way.
 
-The first mandatory value is, of course, the *source directory path*.
+The first mandatory value is, of course, the _source directory path_.
 
 The second mandatory parameter is the destination of the resulting Zip file.
 
-It can be the *local path* to the file:
+It can be the _local path_ to the file:
 
 ```cs
 string sourceFolderPath = @"\Desktop\myFolder";
@@ -154,20 +154,20 @@ var fastestTime = CreateAndTrack(sourceFolderPath,
 var optimalTime = CreateAndTrack(sourceFolderPath,
     Path.Combine(rootFolder, "Optimal.zip"),
     CompressionLevel.Optimal);
-    
+
 
 ```
 
 By executing this operation, we have this table:
 
-|  Compression Type | Execution time (ms) | Execution time (s) | Size (bytes)   | Size on disk (bytes) |
-|-------------------|---------------------|--------------------|----------------|----------------------|
-| Optimal           | 483481              | 483                | 17,340,065,594 | 17,340,067,840       |
-| Fastest           | 661674              | 661                | 16,935,519,764 | 17,004,888,064       |
-| Smallest          | 344756              | 344                | 17,339,881,242 | 17,339,883,520       |
-| No Compression    | 42521               | 42                 | 17,497,652,162 | 17,497,653,248       |
+| Compression Type | Execution time (ms) | Execution time (s) | Size (bytes)   | Size on disk (bytes) |
+| ---------------- | ------------------- | ------------------ | -------------- | -------------------- |
+| Optimal          | 483481              | 483                | 17,340,065,594 | 17,340,067,840       |
+| Fastest          | 661674              | 661                | 16,935,519,764 | 17,004,888,064       |
+| Smallest         | 344756              | 344                | 17,339,881,242 | 17,339,883,520       |
+| No Compression   | 42521               | 42                 | 17,497,652,162 | 17,497,653,248       |
 
-We can see a bunch of weird things: 
+We can see a bunch of weird things:
 
 - Fastest compression generates a smaller file than Smallest compression.
 - Fastest compression is way slower than Smallest compression.
