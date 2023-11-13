@@ -1,27 +1,28 @@
 ---
-title: "Work With Zip Files"
-date: 2023-11-09T10:56:08+01:00
-url: /blog/post-slug
+title: "How to extract, create, and navigate Zip Files in C#"
+date: 2023-11-14
+url: /blog/working-with-zip-files
 draft: false
 categories:
  - Blog
 tags:
  - CSharp
+- Zip
 toc: true
-summary: "A summary"
+summary: "Learn how to zip and unzip compressed files with C#. Beware: it's not as obvious as it might seem!"
 images:
- - /blog/post-slug/featuredImage.png
+ - /blog/working-with-zip-files/featuredImage.png
 ---
 
 When working with local files, you might need to open, create, or update Zip files.
 
-In this article, we are gonna learn how to work with Zip files in C#. We will learn how to perform the basic operations such as open, extract, and create a Zip file.
+In this article, we will learn how to work with Zip files in C#. We will learn how to perform basic operations such as opening, extracting, and creating a Zip file.
 
-The main class we are going to use is called `ZipFile`, and comes from the `System.IO.Compression` namespace. It's been present in C# since .NET Framework 4.5, so we can say it's pretty stable 😉
+The main class we will use is named `ZipFile`, and comes from the `System.IO.Compression` namespace. It's been present in C# since .NET Framework 4.5, so we can say it's pretty stable 😉 Nevertheless, **there are some tricky points that you need to know before using this class**. Let's learn!
 
-## How to list all items in a Zip file
+## Using C# to list all items in a Zip file
 
-Once you have a Zip file, you might want to access the internal items without extracting the whole Zip.
+Once you have a Zip file, you can access the internal items without extracting the whole Zip.
 
 You can use the `ZipFile.Open` method.
 
@@ -32,32 +33,32 @@ System.Collections.ObjectModel.ReadOnlyCollection<ZipArchiveEntry> entries = arc
 
 Notice that I specified the `ZipArchiveMode`. This is an Enum whose values are `Read`, `Create`, and `Update`.
 
-By using the `Entries` property of the `ZipArchive`, you can access the whole list of files stored within the Zip folder, each of them represented by a `ZipArchiveEntry` instance.
+Using the `Entries` property of the `ZipArchive`, you can access the whole list of files stored within the Zip folder, each represented by a `ZipArchiveEntry` instance.
 
-![AA](./zip-entries-list.png)
+![All entries in the current Zip file](./zip-entries-list.png)
 
-The `ZipArchiveEntry` object contains several fields, like the name of the file, the full path (from the root archive).
+The `ZipArchiveEntry` object contains several fields, like the file's name and the full path from the root archive.
 
-![ZipEntry attributes](./zip-entry-example.png)
+![Details of a single ZipEntry item](./zip-entry-example.png)
 
-There are a few key points to remember about the entries listed in the `ZipArchiveEntry`.
+There are a few **key points to remember** about the entries listed in the `ZipArchiveEntry`.
 
-1. It is a `ReadOnlyCollection<ZipArchiveEntry>`: it means that even if you find a way to add or update the items in-memory, the changes are not applied to the actual files;
-2. **It lists all files and folders**, not only the once at the root level. As you can see from the image above, it lists both the file at root level (*File.txt*), and those in inner folders (*TestZip/InnerFolder/presentation.pptx*);
-3. Each file is charachterized by two properties: `Name` is the actual file name (like *presentation.pptx*), and `FullName` also contains the path from the root of the archive (eg *TestZip/InnerFolder/presentation.pptx*);
-4. It also lists folders as if they were files: in the image above you can see *TestZip/InnerFolder*. You can recognize them because their `Name` property is empty and they `Length` is 0;
+1. It is a `ReadOnlyCollection<ZipArchiveEntry>`: it means that even if you find a way to add or update the items in memory, the changes are not applied to the actual files;
+2. **It lists all files and folders**, not only those at the root level. As you can see from the image above, it lists both the files at the root level, like *File.txt*, and those in inner folders, such as *TestZip/InnerFolder/presentation.pptx*;
+3. Each file is characterized by two similar but different properties: `Name` is the actual file name (like *presentation.pptx*), while `FullName` contains the path from the root of the archive (e.g. *TestZip/InnerFolder/presentation.pptx*);
+4. It lists **folders as if they were files**: in the image above, you can see *TestZip/InnerFolder*. You can recognize them because their `Name` property is empty and their `Length` is 0;
 
-![Alt text](./folder-details.png)
+![Folders are treated like files, but with no Size or Name](./folder-details.png)
 
 Lastly, remember that **`ZipFile.Open` returns an `IDisposable`**, so you should place the operations within a `using` statement.
 
 ❓❓A question for you! Why do we see an item for the *TestZip/InnerFolder* folder, but there is no reference to the *TestZip* folder? Drop a comment below 📩
 
-## How to extract the Zip to a local path
+## Using C# to extract the Zip to a local path
 
-Extracting a Zip folder is easy, but not totally obvious.
+Extracting a Zip folder is easy but not obvious.
 
-We have only one way to do that: by caling the `ZipFile.ExtractToDirectory` method.
+We have only one way to do that: by calling the `ZipFile.ExtractToDirectory` method.
 
 It accepts as mandatory parameters the path of the Zip file to be extracted and the path to the destination:
 
@@ -67,7 +68,7 @@ var destinationPath = @"C:\Users\d.bellone\Desktop\MyDestination";
 ZipFile.ExtractToDirectory(zipPath, destinationPath);
 ```
 
-Once you run it, you will see the content of the Zip copied and estracted to the *MyDestination* folder.
+Once you run it, you will see the content of the Zip copied and extracted to the *MyDestination* folder.
 
 Note that **this method creates the destination folder** if it does not exist.
 
@@ -76,13 +77,13 @@ This method accepts two more parameters:
 - `entryNameEncoding`, by which you can specify the encoding. **The default value is UTF-8**.
 - `overwriteFiles` allows you to specify whether it must overwrite existing files. The default value is `false`. If set to false and the destination files already exist, this method throws a `System.IO.IOException` saying that the file already exists.
 
-## Create a Zip from a folder
+## Using C# to create a Zip from a folder
 
 The key method here is `ZipFile.CreateFromDirectory`, which allows you to create Zip files in a flexible way.
 
 The first mandatory value is, of course, the *source directory path*.
 
-The second mandatory parameter is the destination of the resulted Zip file.
+The second mandatory parameter is the destination of the resulting Zip file.
 
 It can be the *local path* to the file:
 
@@ -108,11 +109,11 @@ using (MemoryStream memStream = new MemoryStream())
 You can finally add some optional parameters:
 
 - `compressionLevel`, whose values are `Optimal`, `Fastest`, `NoCompression`, `SmallestSize`.
-- `includeBaseDirectory`: a flag that defines if you have to copy only the fist-level files or also the root folder.
+- `includeBaseDirectory`: a flag that defines if you have to copy only the first-level files or also the root folder.
 
-## A quick comparison of Compression Levels
+## A quick comparison of the four Compression Levels
 
-As we just saw, we have 4 compression levels: `Optimal`, `Fastest`, `NoCompression`, `SmallestSize`.
+As we just saw, we have four compression levels: `Optimal`, `Fastest`, `NoCompression`, and `SmallestSize`.
 
 What happens if I use the different values to zip all the photos and videos of my latest trip?
 
@@ -166,38 +167,22 @@ By executing this operation, we have this table:
 | Smallest          | 344756              | 344                | 17,339,881,242 | 17,339,883,520       |
 | No Compression    | 42521               | 42                 | 17,497,652,162 | 17,497,653,248       |
 
-We can see a bunch weird things: 
+We can see a bunch of weird things: 
 
 - Fastest compression generates a smaller file than Smallest compression.
 - Fastest compression is way slower than Smallest compression.
 - Optimal lies in the middle.
 
-This is to say: don't trust the names; always benchmark the parts where you need performance, even with a test as simple as this.
+This is to say: don't trust the names; **remember to benchmark the parts where you need performance**, even with a test as simple as this.
 
 ## Wrapping up
 
 This was a quick article about one specific class in the .NET ecosystem.
 
-As we saw, even though the class is simple and it's all about 3 methods, there are some things you should keep in mind before using this class in your code.
+As we saw, even though the class is simple and it's all about three methods, there are some things you should keep in mind before using this class in your code.
 
 I hope you enjoyed this article! Let's keep in touch on [Twitter](https://twitter.com/BelloneDavide) or [LinkedIn](https://www.linkedin.com/in/BelloneDavide/)! 🤜🤛
 
 Happy coding!
 
 🐧
-
-
-[ ] Titoli
-[ ] Frontmatter
-[ ] Rinomina immagini
-[ ] Alt Text per immagini
-[ ] Grammatica
-[ ] Bold/Italics
-[ ] Nome cartella e slug devono combaciare
-[ ] Immagine di copertina
-[ ] Rimuovi secrets dalle immagini
-[ ] Pulizia formattazione
-[ ] Controlla se ASP.NET Core oppure .NET
-[ ] Metti la giusta OgTitle
-[ ] Fai resize della immagine di copertina
- 
