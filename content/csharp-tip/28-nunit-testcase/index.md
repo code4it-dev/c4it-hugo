@@ -1,6 +1,6 @@
 ---
 title: "C# Tip: Use TestCase to run similar unit tests with NUnit"
-date: 2023-11-27
+date: 2023-11-28
 url: /csharptips/nunit-testcase
 draft: false
 categories:
