@@ -1,0 +1,366 @@
+---
+title: "4 ways to create Unit Tests without Interfaces"
+date: 2023-12-06T14:09:19+01:00
+url: /blog/post-slug
+draft: false
+categories:
+ - Blog
+tags:
+ - CSharp
+toc: true
+summary: "A summary"
+images:
+ - /blog/post-slug/featuredImage.png
+---
+
+One of the most common traits of C# developers is the excessive usage of interfaces.
+
+For every class/service we create, we usually create the related interface. Most of the times, we don't need them because we have multiple implementations of an interface. Rather, we say that **we need an interface to enable mocking**.
+
+That's true, it's pretty straightforward to mock an interface: there are lots of libraries, like Moq and NSubstitute, that allow you to create mocks and pass them to the class under test. What if there were another way?
+
+In this article, we will learn how to have full control over a dependency while having the concrete class, and not the related interface, injected in the constructor.
+
+## What .NET developers always do
+
+If you're a developer like me, you've been thought something like this:
+
+> One of the SOLID principles is Dependency Inversion; to achieve it, you need Dependency Injection. The best way to do that is by creating an interface, injecting it in the consumer's constructor, and then map the interface and the concrete class.
+
+### The "changing the database" argument
+
+One phrase that I often hear is:
+
+> Injecting interfaces allows me to change the concrete implementation of a class without worrying about the caller. You know, just in case I had to change the database engine...
+
+Yes, that's totally right - using interfaces, you can change the internal implementation in a bat of an eye.
+
+Let's be honest: **in all your career, how many times have you changed the underlaying database?** In my career, it happened just once: we tried to build a solution using Gremlin for CosmosDB, but it turned out to be too expensive - so we switched back to a simpler MongoDB.
+
+But, all in all, it wasn't thanks to the interface that we managed to switch easily: it was because we strictly separated the classes and did not leaked the models related to Gremlin into the core code.
+
+Still, interfaces can be useful, especially when dealing with multiple implementations of the same methods, or when you want to wrap your head around the methods, inputs, and outputs exposed by a module.
+
+### The "I need to mock" argument
+
+Another one I like is this:
+
+> Interfaces are necessary for mocking dependsencies! Otherwise, how can I create unit tests?
+
+Well, I used to agree with this argument. I was used to mock interfaces by using libraries like Moq, and define, using the `SetUp` method, the behavior of the dependency.
+
+It's still a valid way, but my point is that that's not the only one!
+
+One of the simples ways is to mark some classes as `abstract`. But... this means you'll end up with every single class marked as abstract. Not the best idea.
+
+We have another tool in our belt!
+
+## A simple example
+
+Let's start with a *real-ish* example.
+
+We have a `NumbersRepository` that just exposes one method: `GetNumbers()`.
+
+```cs
+public class NumbersRepository
+{
+    private readonly int[] _allNumbers;
+
+    public NumbersRepository()
+    {
+        _allNumbers = Enumerable.Range(0, int.MaxValue).ToArray();
+    }
+
+    public IEnumerable<int> GetNumbers() => Random.Shared.GetItems(_allNumbers, 50);
+}
+```
+
+Generally, one would be tempted to add an interface with the same name as the class, `INumbersRepository`, and include the `GetNumbers` method in the interface definition.
+
+We are not going to do that - the interface is not necessary, so why cluttering the code with something like that?
+
+Now, for the consumer. We have a simple `NumbersSearchService` that accepts, via Dependency Injection, an instance of `NumbersRepository` (yes, the concrete class!), and uses it to perform a simple search:
+
+```cs
+public class NumbersSearchService
+{
+    private readonly NumbersRepository _repository;
+
+    public NumbersSearchService(NumbersRepository repository)
+    {
+        _repository = repository;
+    }
+
+    public bool Contains(int number)
+    {
+        var numbers = _repository.GetNumbers();
+        return numbers.Contains(number);
+    }
+}
+```
+
+Now, how can we test this class without using the interface?
+
+## Way 1: Use the "virtual" keyword in the dependency to create stubs
+
+We can decide to create subclasses of those concrete classes by overriding just some of those functionalities.
+
+For example, we can choose to mark the `GetNumbers` method in the `NumbersRepository` class as `virtual`, making it easily overridable from a subclass.
+
+```diff
+public class NumbersRepository
+{
+    private readonly int[] _allNumbers;
+
+    public NumbersRepository()
+    {
+        _allNumbers = Enumerable.Range(0, 100).ToArray();
+    }
+
+-    public IEnumerable<int> GetNumbers() => Random.Shared.GetItems(_allNumbers, 50);
++    public virtual IEnumerable<int> GetNumbers() => Random.Shared.GetItems(_allNumbers, 50);
+}
+```
+
+Now, in our unit tests, we can create a subtype of `NumbersRepository` to have full control of the `GetNumbers` method:
+
+```cs
+internal class StubNumberRepo : NumbersRepository
+{
+    private IEnumerable<int> _numbers;
+
+    public void SetNumbers(params int[] numbers) => _numbers = numbers;
+    
+    public override IEnumerable<int> GetNumbers() => _numbers;
+}
+```
+
+We have overridden the `GetNumbers` method, but to do so we had to include a new method, `SetNumbers`, to define the expected result of the former method.
+
+We then can use it in our tests like this:
+
+```cs
+[Test]
+public void Should_WorkWithStubRepo()
+{
+    // Arrange
+    var repository = new StubNumberRepo();
+    repository.SetNumbers(1, 2, 3);
+    var service = new NumbersSearchService(repository);
+
+    // Act
+    var result = service.Contains(3);
+
+    // Assert
+    Assert.That(result, Is.True);
+}
+```
+
+You then have the full control over the subclass. But this approach comes with a problem: if you have multiple methods marked as `virtual`, and you are going to use all of them in your test classes, then you will need to override each single method (to have control over them), and work out how to decide wheter to use the concrete method or the stub implementation.
+
+For example, we can update the `StubNumberRepo` to let the consumer choose if we need the dummy values or the base implementation:
+
+```cs
+internal class StubNumberRepo : NumbersRepository
+{
+    private IEnumerable<int> _numbers;
+    private bool _useStubNumbers;
+
+    public void SetNumbers(params int[] numbers)
+    {
+        _numbers = numbers;
+        _useStubNumbers = true;
+    }
+ 
+    public override IEnumerable<int> GetNumbers()
+    {
+        if (_useStubNumbers)
+            return _numbers;
+        return base.GetNumbers();
+    }
+}
+```
+
+With this approach, by default we use the concrete implementation of `NumbersRepository`, because `_useStubNumbers` is `false`. If we call the `SetNumbers` method, we also specify that we don't want to use the original implementation.
+
+## Way 2: virtual in class
+
+Similar to the previous approach, we can mark some methods **of the caller** as `virtual`, to give us the possibility to change parts of our class while keeping everything else as it was.
+
+Do achieve it, we have to refactor a little our Service class:
+
+```diff
+public class NumbersSearchService
+{
+    private readonly NumbersRepository _repository;
+
+    public NumbersSearchService(NumbersRepository repository)
+    {
+        _repository = repository;
+
+    }
+
+    public bool Contains(int number)
+    {
+-       var numbers = _repository.GetNumbers();
++       var numbers = GetNumbers();
+        return numbers.Contains(number);
+    }
+
++    public virtual IEnumerable<int> GetNumbers() => _repository.GetNumbers();
+}
+```
+
+The key is that we moved the calls to the external references to a separate method marked as `virtual`.
+
+This way we can create a stub class of the Service itself, without the need of stubbing its dependencies:
+
+```cs
+internal class StubNumberSearch : NumbersSearchService
+{
+    private IEnumerable<int> _numbers;
+    private bool _useStubNumbers;
+
+    public StubNumberSearch() : base(null)
+    {
+
+    }
+
+    public void SetNumbers(params int[] numbers)
+    {
+        _numbers = numbers.ToArray();
+        _useStubNumbers = true;
+    }
+
+    public override IEnumerable<int> GetNumbers()
+        => _useStubNumbers ? _numbers : base.GetNumbers();
+}
+```
+
+The approach is almost identical to the one we saw before. The difference can be seen in your tests:
+
+```cs
+[Test]
+public void Should_UseStubService()
+{
+    // Arrange
+    var service = new StubNumberSearch();
+    service.SetNumbers(12, 15, 30);
+
+    // Act
+    var result = service.Contains(15);
+
+    // Assert
+    Assert.That(result, Is.True);
+}
+```
+
+There is a problem with this approach: many devs (correctly) add null checks in the constructor to ensure that the dependencies are not null:
+
+```cs
+public NumbersSearchService(NumbersRepository repository)
+{
+    ArgumentNullException.ThrowIfNull(repository);
+    _repository = repository;
+}
+```
+
+While this approach makes it save to use the `NumbersSearchService` reference within the class' methods, it also stops us from creating a `StubNumberSearch`: since we want to create an instance of `NumbersSearchService` without the burden of injecting all the dependencies, we call the base constructor passing `null` as a value for the dependencies. If we validate against null, the stub class becomes unusable.
+
+There's a simple solution: adding a **protected empty constructor**:
+
+```cs
+public NumbersSearchService(NumbersRepository repository)
+{
+    ArgumentNullException.ThrowIfNull(repository);
+    _repository = repository;
+}
+
+protected NumbersSearchService()
+{
+
+}
+```
+
+We mark it as protected because we want that only subclasses can access it.
+
+## Way 3: Using the "new" keyword in methods
+
+Similar to the `virtual` keyword is the `new` keyword, which can be applied to methods.
+
+We can then remove the `virtual` keyword from the base class and hide its implementation by marking the overriding method as `new`.
+
+```diff
+public class NumbersSearchService
+{
+    private readonly NumbersRepository _repository;
+
+    public NumbersSearchService(NumbersRepository repository)
+    {
+        ArgumentNullException.ThrowIfNull(repository);
+        _repository = repository;
+    }
+ 
+    public bool Contains(int number)
+    {
+        var numbers = _repository.GetNumbers();
+        return numbers.Contains(number);
+    }
+
+-    public virtual IEnumerable<int> GetNumbers() => _repository.GetNumbers();
++    public IEnumerable<int> GetNumbers() => _repository.GetNumbers();
+}
+```
+
+```diff
+internal class StubNumberSearch : NumbersSearchService
+{
+    private IEnumerable<int> _numbers;
+    private bool _useStubNumbers;
+
+    public void SetNumbers(params int[] numbers)
+    {
+        _numbers = numbers.ToArray();
+        _useStubNumbers = true;
+    }
+
+-    public override IEnumerable<int> GetNumbers() => _useStubNumbers ? _numbers : base.GetNumbers();
++    public new IEnumerable<int> GetNumbers() => _useStubNumbers ? _numbers : base.GetNumbers();
+}
+```
+
+We haven't actually solved any problem except for one: we can now avoid cluttering our classes with the `virtual` keyword.
+
+> **A question for you!** Is there any difference between using the `new` and the `virtual` keyword? When you should pick one instead of the other? Let me know in the comments section! 📩
+
+## Way 4: Mocks su metodi virtual
+
+
+## Further readings
+
+_This article first appeared on [Code4IT 🐧](https://www.code4it.dev/)_
+
+
+## Wrapping up
+
+
+I hope you enjoyed this article! Let's keep in touch on [Twitter](https://twitter.com/BelloneDavide) or [LinkedIn](https://www.linkedin.com/in/BelloneDavide/)! 🤜🤛
+
+Happy coding!
+
+🐧
+
+
+[ ] Titoli
+[ ] Frontmatter
+[ ] Rinomina immagini
+[ ] Alt Text per immagini
+[ ] Grammatica
+[ ] Bold/Italics
+[ ] Nome cartella e slug devono combaciare
+[ ] Immagine di copertina
+[ ] Rimuovi secrets dalle immagini
+[ ] Pulizia formattazione
+[ ] Controlla se ASP.NET Core oppure .NET
+[ ] Metti la giusta OgTitle
+[ ] Fai resize della immagine di copertina
