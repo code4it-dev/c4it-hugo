@@ -335,14 +335,125 @@ We haven't actually solved any problem except for one: we can now avoid clutteri
 
 ## Way 4: Mocks su metodi virtual
 
+Sometimes I hear developers say that *mocks are evil*, and you should never use them.
+
+Oh, come on! Don't be so silly!
+
+Right, using mocks you are writing tests on a irrealistic environment. But, well, that's exaclty the point of having mocks!
+
+If you think about it, at school, during Science lessons, we've been taught to do our scientific calculations using approximations: ignore the air resistance, ignore friction, and so on. We knew that that world did not exist, but we removed some parts to make it easier to validate our hypotesis.
+
+In my opinion, it's the same for testing. Mocks are useful to have full control on a *specific* behavior. Still, only relying on mocks makes your tests pretty brittle: you cannot be sure that your system is working under real conditions.
+
+That's why, as I explained [in a previous article](https://www.code4it.dev/architecture-notes/testing-pyramid-vs-testing-diamond/), I prefer the Testing Diamond over the Testing Pyramid. In many real cases, five Integration Tests are more valuable than fifty Unit Tests.
+
+But still, mocks can be useful. How can we use them, if we don't have *interfaces*?
+
+Let's start with the basic example:
+
+```cs
+public class NumbersRepository
+{
+    private readonly int[] _allNumbers;
+
+    public NumbersRepository()
+    {
+        _allNumbers = Enumerable.Range(0, 100).ToArray();
+    }
+
+    public IEnumerable<int> GetNumbers() => Random.Shared.GetItems(_allNumbers, 50);
+}
+
+public class NumbersSearchService
+{
+    private readonly NumbersRepository _repository;
+
+    public NumbersSearchService(NumbersRepository repository)
+    {
+        ArgumentNullException.ThrowIfNull(repository);
+        _repository = repository;
+    }
+
+    public bool Contains(int number)
+    {
+        var numbers = _repository.GetNumbers();
+        return numbers.Contains(number);
+    }
+}
+```
+
+If we tried to use Moq to create a mock of `NumbersRepository` (again, the concrete class), like this:
+
+```cs
+[Test]
+public void Should_WorkWithMockRepo()
+{
+    // Arrange
+    var repository = new Moq.Mock<NumbersRepository>();
+    repository.Setup(_ => _.GetNumbers()).Returns(new int[] { 1, 2, 3 });
+    var service = new NumbersSearchService(repository.Object);
+
+    // Act
+    var result = service.Contains(3);
+
+    // Assert
+    Assert.That(result, Is.True);
+}
+```
+
+It will fail with this error:
+
+> System.NotSupportedException : Unsupported expression: _ => _.GetNumbers()
+> Non-overridable members (here: NumbersRepository.GetNumbers) may not be used in setup / verification expressions.
+
+That's because the implementation `GetNumbers` is fixed as defined in the `NumbersRepository` class, and cannot be overridden. 
+
+Unless you mark it as `virtual`, as we did before.
+
+```diff
+public class NumbersRepository
+{
+    private readonly int[] _allNumbers;
+
+    public NumbersRepository()
+    {
+        _allNumbers = Enumerable.Range(0, 100).ToArray();
+    }
+
+-    public IEnumerable<int> GetNumbers() => Random.Shared.GetItems(_allNumbers, 50);
++    public virtual IEnumerable<int> GetNumbers() => Random.Shared.GetItems(_allNumbers, 50);
+}
+```
+
+Now the test passes: **we have successfully mocked a concrete class!**
 
 ## Further readings
+
+Testing is a crucial part of any software application. I personally write unit tests even for throwaway software - this way I can ensure that I'm doing the correct thing without the need of manual debug.
+
+However, one part that is often undererstimated is the code quality of tests. In my opinion, tests should be written even better than production code. You can find more about this topic here:
+
+🔗 [Tests should be even more well-written than production code | Code4IT](https://www.code4it.dev/cleancodetips/tests-should-be-readable-too/)
+
+
+Also, Unit tests are not enough. You should probably write more Integration Tests than Unit Tests. This one is a testing strategy called Testing Diamond
+
+🔗 [Testing Pyramid vs Testing Diamond (and how they affect Code Coverage) | Code4IT](https://www.code4it.dev/architecture-notes/testing-pyramid-vs-testing-diamond/)
 
 _This article first appeared on [Code4IT 🐧](https://www.code4it.dev/)_
 
 
+Clearly, you can write Integration Tests for .NET APIs is an easy way. In this article, I explain how to create and customize Integration Tests using NUnit:
+
+🔗 [Advanced Integration Tests for .NET 7 API with WebApplicationFactory and NUnit | Code4IT](https://www.code4it.dev/blog/advanced-integration-tests-webapplicationfactory/)
+
 ## Wrapping up
 
+In this article, we learned that it's not necessary defining interfaces for the sake of having mocks. 
+
+We have different other options. 
+
+I know, this is a controversial topic - I'm not saying that you *should* remove all your interfaces (I think it's a matter of personal taste, somehow!), but with this article I want to highlight that you *can* avoid interfaces.
 
 I hope you enjoyed this article! Let's keep in touch on [Twitter](https://twitter.com/BelloneDavide) or [LinkedIn](https://www.linkedin.com/in/BelloneDavide/)! 🤜🤛
 
