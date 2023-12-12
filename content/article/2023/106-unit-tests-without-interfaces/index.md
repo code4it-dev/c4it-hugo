@@ -476,6 +476,3 @@ I hope you enjoyed this article! Let's keep in touch on [Twitter](https://twitte
 Happy coding!
 
 🐧
-
-[ ] Immagine di copertina
-[ ] Fai resize della immagine di copertina
