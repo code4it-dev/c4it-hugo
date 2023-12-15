@@ -366,8 +366,6 @@ Comparing strings is trivial: the `string.Compare` method is all you need.
 
 There are several ways to compare string: you can specify the comparison rules by setting the `comparisonType` parameter, which accepts a `StringComparison` value.
 
-Even though they are 
-
 ```cs
 [MemoryDiagnoser]
 [Config(typeof(CsvConfig))]
@@ -404,6 +402,8 @@ public class StringCompareOrdinalVsInvariant()
 }
 ```
 
+Let's see the results:
+
 | Method                         | Size    | Mean          | Error       | StdDev      | Ratio |
 |------------------------------- |-------- |--------------:|------------:|------------:|------:|
 | WithOrdinalIgnoreCase          | 100     |      2.380 us |   0.2856 us |   0.8420 us |  1.00 |
@@ -421,16 +421,27 @@ public class StringCompareOrdinalVsInvariant()
 | WithOrdinalIgnoreCase          | 1000000 |  2,050.894 us |  59.5966 us | 173.8460 us |  1.00 |
 | WithInvariantCultureIgnoreCase | 1000000 | 18,138.063 us | 360.1967 us | 986.0327 us |  8.87 |
 
+As you can see, there's a HUGE difference between Ordinal and Invariant.
 
-![Alt text](image.png)
+When dealing with 100.000 items, `StringComparison.InvariantCultureIgnoreCase` is **12 times slower** than `StringComparison.OrdinalIgnoreCase`!
+
+![Ordinal vs Invariant culture](./ordinal-vs-invariant.png)
+
+Why? Also, why should we use one instead of the other?
+
+Have a look at this code snippet:
 
 ```cs
-var s1 = "Strasse";
-var s2 = "Straße";
+var s1 = "Aa";
+var s2 = "A" + new string('\u0000', 3) + "a";
 
-s1.Equals(s2, StringComparison.Ordinal);           //false
-s1.Equals(s2, StringComparison.InvariantCulture);  //true
+string.Equals(s1, s2, StringComparison.InvariantCultureIgnoreCase); //True
+string.Equals(s1, s2, StringComparison.OrdinalIgnoreCase); //False
 ```
+
+As you can see, `s1` and `s2` represent **equivalent, but not equal, strings**. We can then deduce that `OrdinalIgnoreCase` checks for the exact values of the characters, while `InvariantCultureIgnoreCase` check the *"meaning"* of the string.
+
+So, in most cases, you might want to use `OrdinalIgnoreCase` (as always, it depends on your use case!)
 
 ## Newtonsoft vs System.Json
 
