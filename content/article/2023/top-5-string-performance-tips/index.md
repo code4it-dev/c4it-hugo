@@ -1,5 +1,5 @@
 ---
-title: "Top 5 String Performance Tips"
+title: "Top 6 String Performance Tips"
 date: 2023-12-15T11:48:29+01:00
 url: /blog/post-slug
 draft: false
@@ -360,6 +360,104 @@ So, what should we do? Here's my two cents:
 2. If you read data from an external API, customize your JSON deserializer to convert whitespace strings as empty values;
 3. Needless to say it, choose the right method depending on the use case. If a string like "\n    \n   \t" is a valid value for you, use `string.IsNullOrEmpty`.
 
+## ToUpper vs ToUpperInvariant vs ToLower vs ToLowerInvariant
+
+Even though they look similar, there is a huge difference in terms of performance between these four methods.
+
+```cs
+[MemoryDiagnoser]
+[Config(typeof(CsvConfig))]
+public class ToUpperVsToLower()
+{
+    [Params(100, 1000, 10_000, 100_000, 1_000_000)]
+    public int Size;
+
+    public string[] AllStrings { get; set; }
+
+    [IterationSetup]
+    public void Setup()
+    {
+        AllStrings = StringArrayGenerator.Generate(Size);
+    }
+
+    [Benchmark]
+    public void WithToUpper()
+    {
+        foreach (string s in AllStrings)
+        {
+            _ = s?.ToUpper();
+        }
+    }
+
+    [Benchmark]
+    public void WithToUpperInvariant()
+    {
+        foreach (string s in AllStrings)
+        {
+            _ = s?.ToUpperInvariant();
+        }
+    }
+
+    [Benchmark]
+    public void WithToLower()
+    {
+        foreach (string s in AllStrings)
+        {
+            _ = s?.ToLower();
+        }
+    }
+
+    [Benchmark]
+    public void WithToLowerInvariant()
+    {
+        foreach (string s in AllStrings)
+        {
+            _ = s?.ToLowerInvariant();
+        }
+    }
+}
+```
+
+What will this benchmark generate?
+
+| Method               | Size    | Mean          | Error       | StdDev       | Median        | P95           | Ratio |
+|--------------------- |-------- |--------------:|------------:|-------------:|--------------:|--------------:|------:|
+| WithToUpper          | 100     |      9.153 us |   0.9720 us |     2.789 us |      8.200 us |     14.980 us |  1.57 |
+| WithToUpperInvariant | 100     |      6.572 us |   0.5650 us |     1.639 us |      6.200 us |      9.400 us |  1.14 |
+| WithToLower          | 100     |      6.881 us |   0.5076 us |     1.489 us |      7.100 us |      9.220 us |  1.19 |
+| WithToLowerInvariant | 100     |      6.143 us |   0.5212 us |     1.529 us |      6.100 us |      8.400 us |  1.00 |
+|                      |         |               |             |              |               |               |       |
+| WithToUpper          | 1000    |     69.776 us |   9.5416 us |    27.833 us |     68.650 us |    108.815 us |  2.60 |
+| WithToUpperInvariant | 1000    |     51.284 us |   7.7945 us |    22.860 us |     38.700 us |     89.290 us |  1.85 |
+| WithToLower          | 1000    |     49.520 us |   5.6085 us |    16.449 us |     48.100 us |     79.110 us |  1.85 |
+| WithToLowerInvariant | 1000    |     27.000 us |   0.7370 us |     2.103 us |     26.850 us |     30.375 us |  1.00 |
+|                      |         |               |             |              |               |               |       |
+| WithToUpper          | 10000   |    241.221 us |   4.0480 us |     3.588 us |    240.900 us |    246.560 us |  1.68 |
+| WithToUpperInvariant | 10000   |    339.370 us |  42.4036 us |   125.028 us |    381.950 us |    594.760 us |  1.48 |
+| WithToLower          | 10000   |    246.861 us |  15.7924 us |    45.565 us |    257.250 us |    302.875 us |  1.12 |
+| WithToLowerInvariant | 10000   |    143.529 us |   2.1542 us |     1.910 us |    143.500 us |    146.105 us |  1.00 |
+|                      |         |               |             |              |               |               |       |
+| WithToUpper          | 100000  |  2,165.838 us |  84.7013 us |   223.137 us |  2,118.900 us |  2,875.800 us |  1.66 |
+| WithToUpperInvariant | 100000  |  1,885.329 us |  36.8408 us |    63.548 us |  1,894.500 us |  1,967.020 us |  1.41 |
+| WithToLower          | 100000  |  1,478.696 us |  23.7192 us |    50.547 us |  1,472.100 us |  1,571.330 us |  1.10 |
+| WithToLowerInvariant | 100000  |  1,335.950 us |  18.2716 us |    35.203 us |  1,330.100 us |  1,404.175 us |  1.00 |
+|                      |         |               |             |              |               |               |       |
+| WithToUpper          | 1000000 | 20,936.247 us | 414.7538 us | 1,163.014 us | 20,905.150 us | 22,928.350 us |  1.64 |
+| WithToUpperInvariant | 1000000 | 19,056.983 us | 368.7473 us |   287.894 us | 19,085.400 us | 19,422.880 us |  1.41 |
+| WithToLower          | 1000000 | 14,266.714 us | 204.2906 us |   181.098 us | 14,236.500 us | 14,593.035 us |  1.06 |
+| WithToLowerInvariant | 1000000 | 13,464.127 us | 266.7547 us |   327.599 us | 13,511.450 us | 13,926.495 us |  1.00 |
+
+Let's see it as the usual Log10 plot:
+
+![ToUpper vs ToLower](./toUpper-vs-toLower.png)
+
+We can notice a few points:
+
+1. The ToUpper family is generally slower than the ToLowerFamily;
+2. The Invariant family is faster than the non-Invariant; we will see more below;
+
+So, if you have to normalize strings by using the same casing, `ToLowerInvariant` is the best choice.
+
 ## OrdinalIgnoreCase vs InvariantCultureIgnoreCase 
 
 Comparing strings is trivial: the `string.Compare` method is all you need.
@@ -443,7 +541,67 @@ As you can see, `s1` and `s2` represent **equivalent, but not equal, strings**. 
 
 So, in most cases, you might want to use `OrdinalIgnoreCase` (as always, it depends on your use case!)
 
-## Newtonsoft vs System.Json
+## Newtonsoft vs System.Text.Json
+
+For the last benchmark I created the exact same model used [as an example](https://github.com/bchavez/Bogus/blob/master/Examples/GettingStarted/Program.cs) in the offical documentation.
+
+The purpose of this benchmark is to see which JSON serialization library is faster: Newtonsoft or System.Text.Json?
+
+```cs
+[MemoryDiagnoser]
+[Config(typeof(CsvConfig))]
+public class JsonSerializerComparison
+{
+    [Params(100, 10_000, 1_000_000)]
+    public int Size;
+    List<User?> Users { get; set; }
+
+    [IterationSetup]
+    public void Setup()
+    {
+        Users = UsersCreator.GenerateUsers(Size);
+    }
+
+    [Benchmark(Baseline = true)]
+    public void WithJson()
+    {
+        foreach (User? user in Users)
+        {
+            var asString = System.Text.Json.JsonSerializer.Serialize(user);
+
+            _ = System.Text.Json.JsonSerializer.Deserialize<User?>(asString);
+        }
+    }
+
+    [Benchmark]
+    public void WithNewtonsoft()
+    {
+        foreach (User? user in Users)
+        {
+            string asString = Newtonsoft.Json.JsonConvert.SerializeObject(user);
+            _ = Newtonsoft.Json.JsonConvert.DeserializeObject<User?>(asString);
+        }
+    }
+}
+```
+
+As you might know, the .NET team has added lots of performance improvements to the JSON Serialization functionalities, and you can really see the difference!
+
+| Method         | Size    | Mean         | Error       | StdDev      | Median       | Ratio | RatioSD | Gen0         | Gen1      | Allocated     | Alloc Ratio |
+|--------------- |-------- |-------------:|------------:|------------:|-------------:|------:|--------:|-------------:|----------:|--------------:|------------:|
+| WithJson       | 100     |     2.063 ms |   0.1409 ms |   0.3927 ms |     1.924 ms |  1.00 |    0.00 |            - |         - |     292.87 KB |        1.00 |
+| WithNewtonsoft | 100     |     4.452 ms |   0.1185 ms |   0.3243 ms |     4.391 ms |  2.21 |    0.39 |            - |         - |     882.71 KB |        3.01 |
+|                |         |              |             |             |              |       |         |              |           |               |             |
+| WithJson       | 10000   |    44.237 ms |   0.8787 ms |   1.3936 ms |    43.873 ms |  1.00 |    0.00 |    4000.0000 | 1000.0000 |   29374.98 KB |        1.00 |
+| WithNewtonsoft | 10000   |    78.661 ms |   1.3542 ms |   2.6090 ms |    78.865 ms |  1.77 |    0.08 |   14000.0000 | 1000.0000 |   88440.99 KB |        3.01 |
+|                |         |              |             |             |              |       |         |              |           |               |             |
+| WithJson       | 1000000 | 4,233.583 ms |  82.5804 ms | 113.0369 ms | 4,202.359 ms |  1.00 |    0.00 |  484000.0000 | 1000.0000 | 2965741.56 KB |        1.00 |
+| WithNewtonsoft | 1000000 | 5,260.680 ms | 101.6941 ms | 108.8116 ms | 5,219.955 ms |  1.24 |    0.04 | 1448000.0000 | 1000.0000 |  8872031.8 KB |        2.99 |
+
+
+As you can see, Newtonsoft is 2x slower than System.Text.Json, and it allocates 3x the memory, compared with the other library.
+
+So, well, if you don't use library-specific functionalities, I suggest you replacing *Newtonsoft* with *System.Text.Json*.
 
 ## Further readings
 
@@ -468,11 +626,8 @@ Happy coding!
 [ ] Bold/Italics
 [ ] Nome cartella e slug devono combaciare
 [ ] Immagine di copertina
-[ ] Rimuovi secrets dalle immagini
 [ ] Pulizia formattazione
-[ ] Controlla se ASP.NET Core oppure .NET
 [ ] Metti la giusta OgTitle
 [ ] Fai resize della immagine di copertina
 [ ] Le immagini PNG hanno tutte lo sfondo trasparente. Metti lo sfondi bianco
 [ ] rilancia benchmark stringbuilder mettendo baseline. sostituisci tabella e immagine
-[ ] Togli riferimenti ad R 
