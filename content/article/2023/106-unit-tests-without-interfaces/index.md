@@ -445,6 +445,8 @@ public class NumbersRepository
 
 Now the test passes: **we have successfully mocked a concrete class!**
 
+ 
+
 ## Further readings
 
 Testing is a crucial part of any software application. I personally write Unit Tests even for throwaway software - this way, I can ensure that I'm doing the correct thing without the need for manual debugging.
@@ -469,7 +471,18 @@ In this article, we learned that it's not necessary to create interfaces for the
 
 We have different other options.
 
-I know, this is a controversial topic - I'm not saying that you _should_ remove all your interfaces (I think it's a matter of personal taste, somehow!), but with this article, I want to highlight that you _can_ avoid interfaces.
+Honestly speaking, I'm still used to creating interfaces and using them with mocks.
+
+I find it easy to do, and this approach provides a quick way to create tests and drive the behaviour of the dependencies.
+
+Also, I recognize that interfaces created for the sole purpose of mocking are quite pointless: we have learned that there are other ways, and we should consider trying out these solutions.
+
+Still, interfaces are quite handy for two "non-technical" reasons:
+
+* using interfaces, you can understand in a glimpse what are the operations that you can call in a clean and concise way;
+* interfaces and mocks allow you to easily use TDD: while writing the test cases, you also define what methods you need and the expected behaviour. I know you can do that using stubs, but I find it easier with interfaces.
+
+I know, this is a controversial topic - **I'm not saying that you _should_ remove all your interfaces (I think it's a matter of personal taste, somehow!), but with this article, I want to highlight that you _can_ avoid interfaces.**
 
 I hope you enjoyed this article! Let's keep in touch on [Twitter](https://twitter.com/BelloneDavide) or [LinkedIn](https://www.linkedin.com/in/BelloneDavide/)! 🤜🤛
 
