@@ -628,13 +628,11 @@ Happy coding!
 
 🐧
 
-
 [ ] Titoli
 [ ] Frontmatter
 [ ] Rinomina immagini
 [ ] Alt Text per immagini
 [ ] Bold/Italics
-[ ] Nome cartella e slug devono combaciare
 [ ] Immagine di copertina
 [ ] Pulizia formattazione
 [ ] Fai resize della immagine di copertina
