@@ -1,40 +1,43 @@
 ---
-title: "Top 6 String Performance Tips"
-date: 2023-12-15T11:48:29+01:00
-url: /blog/post-slug
+title: "Top 6 Performance Tips when dealing with strings in C# 12 and .NET 8"
+date: 2023-12-15
+url: /blog/top-6-string-performance-tips
 draft: false
 categories:
  - Blog
 tags:
  - CSharp
+- Performance
+- Benchmarks
 toc: true
-summary: "A summary"
+summary: "Small changes sometimes make a huge difference. Learn these 6 tips to improve the performance of your application just by handling strings correctly."
 images:
- - /blog/post-slug/featuredImage.png
+ - /blog/top-6-string-performance-tips/featuredImage.png
 ---
 
-Sometimes, just a minor change makes a huge difference. Maybe you won't notice it when performing the operation a few times, but the improvement is significant when repeating the operation thousands of time.
+Sometimes, just a minor change makes a huge difference. Maybe you won't notice it when performing the same operation a few times. Still, the improvement is significant when repeating the operation thousands of times.
 
 In this article, we will learn five simple tricks to improve the performance of your application when dealing with strings.
 
-Note: this article is part of [C# Advent Calendar 2023](https://csadvent.christmas/), organized by [Matthew D. Groves](https://twitter.com/mgroves): it's maybe the only Christmas tradition I like (yes, I'm kinda of a Grinch 😂).
+Note: this article is part of [C# Advent Calendar 2023](https://csadvent.christmas/), organized by [Matthew D. Groves](https://twitter.com/mgroves): it's maybe the only Christmas tradition I like (yes, I'm kind of a Grinch 😂).
 
 ## Solution setup
 
 Before jumping to the benchmarks, I want to spend a few words on the tools I used for this article.
 
+The project is a **.NET 8 class library** running on a laptop with an i5 processor.
+
 ### Run benchmarks with BenchmarkDotNet
 
-I'm using **BenchmarkDotNet** to create benchmarks of my code. BenchmarkDotNet is a library that runs your methods several times, captures some metrics, and generates a report of the executions. If you follow my blog, you might know that I've used it several times - for example, in my old article [Enum.HasFlag performance with BenchmarkDotNet](https://www.code4it.dev/blog/hasflag-performance-benchmarkdotnet/).
+I'm using **BenchmarkDotNet** to create benchmarks for my code. BenchmarkDotNet is a library that runs your methods several times, captures some metrics, and generates a report of the executions. If you follow my blog, you might know I've used it several times - for example, in my old article "[Enum.HasFlag performance with BenchmarkDotNet](https://www.code4it.dev/blog/hasflag-performance-benchmarkdotnet/)".
 
 All the benchmarks I created follow the same structure:
 
 ```cs
 [MemoryDiagnoser]
-[Config(typeof(CsvConfig))]
 public class BenchmarkName()
 {
-    [Params(1, 5, 10)]
+    [Params(1, 5, 10)] // clearly, I won't use these values
     public int Size;
 
     public string[] AllStrings { get; set; }
@@ -62,16 +65,15 @@ public class BenchmarkName()
 In short:
 
 - the class is marked with the `[MemoryDiagnoser]` attribute: the benchmark will retrieve info for both time and memory usage;
-- the class has the `[Config(typeof(CsvConfig))]` attribute: this attribute adds some custom configurations (see below) that help generating plots and diagrams;
-- there is a property named `Size` with the attribute `[Params(1, 5, 10)]`: the `Params` attribute lists the possible values for the `Size` property;
+- there is a property named `Size` with the attribute `[Params]`: this attribute lists the possible values for the `Size` property;
 - there is a method marked as `[IterationSetup]`: this method runs before every single execution, takes the value from the `Size` property, and initializes the `AllStrings` array;
-- the methods that will be benchmarked are marked with the `[Benchmark]` attribute.
+- the methods that are parts of the benchmark are marked with the `[Benchmark]` attribute.
 
 ### Generating strings with Bogus
 
-To generate dummy values I relied on **Bogus**: this library allows you to generate realistic values for your objects, with a great level of customizations.
+I relied on **Bogus** to create dummy values. This NuGet library allows you to generate realistic values for your objects with a great level of customization.
 
-The string array generation strategy is shared across all the benchmarks, so I moved it in a static method:
+The string array generation strategy is shared across all the benchmarks, so I moved it to a static method:
 
 ```cs
  public static class StringArrayGenerator
@@ -108,25 +110,24 @@ The string array generation strategy is shared across all the benchmarks, so I m
  }
 ```
 
-Here I have a default set of predefined values (`[string.Empty, "   ", "\n  \t", null]`), which can be expanded with the values coming from the `additionalStrings` array, which are placed in random positions of the array.
+Here I have a default set of predefined values (`[string.Empty, "   ", "\n  \t", null]`), which can be expanded with the values coming from the `additionalStrings` array. These values are then placed in random positions of the array.
 
 In most cases, though, the value of the string is defined by Bogus.
 
-### Generating plots with R and chartbenchmark.net
+### Generating plots with chartbenchmark.net
 
-To generate the plots you will see in this article I relied on two methods.
+To generate the plots you will see in this article, I relied on  [chartbenchmark.net](https://chartbenchmark.net/). It's a fantastic tool created by [Carlos Villegas](https://github.com/yv989c) that transforms the output generated by BenchmarkDotNet on the console in a dynamic, customizable plot.
 
-The easiest one was using [chartbenchmark.net](https://chartbenchmark.net/): it's a fantastic tool created by [Carlos Villegas](https://github.com/yv989c) that transforms the output generated by BenchmarkDotNet on console in a dynamic, customizable plot.
+Please note that **all the plots in this article have a Log10 scale**: this scale allows me to show you the performance values of all the executions in the same plot. If I used the Linear scale, you would be able to see only the biggest values.
 
 We are ready. **It's time to run some benchmarks!**
 
-## StringBuilder vs Concatenation
+## StringBuilder is (almost always) better than String Concatenation
 
 Let's start with a simple trick: if you need to concatenate strings, **using a StringBuilder is *generally* more efficient than concatenating string**.
 
 ```cs
 [MemoryDiagnoser]
-[Config(typeof(CsvConfig))]
 public class StringBuilderVsConcatenation()
 {
     [Params(4, 100, 10_000, 100_000)]
@@ -165,9 +166,9 @@ public class StringBuilderVsConcatenation()
 }
 ```
 
-Every time you concatenate strings with the `+` sign you create a new instance of a `string`. This operation takes some time, and allocates memory for every operation.
+Whenever you concatenate strings with the `+` sign, you create a new instance of a `string`. This operation takes some time and allocates memory for every operation.
 
-On the contrary, using a `StringBuilder` object you can add the strings in memory and, using a performance-wise method, generate the final string.
+On the contrary, using a `StringBuilder` object, you can add the strings in memory and generate the final string using a performance-wise method.
 
 Here's the result table:
 
@@ -184,7 +185,7 @@ Here's the result table:
 
 Let's see it as a plot.
 
-**Beware of the scale in the diagram!**: it's a Log10 scale, so you'd better have a look at the value displayed on the Y axis.
+**Beware of the scale in the diagram!**: it's a Log10 scale, so you'd better have a look at the value displayed on the Y-axis.
 
 ![StringBuilder vs Concatenation benchmark](./stringbuilder-vs-concatenation.png)
 
@@ -195,18 +196,17 @@ There are some remarkable points:
 1. When there are just a few strings to concatenate, the `+` operator is more performant, both on timing and allocated memory;
 2. When you need to concatenate 100000 strings, the concatenation is **~7000 times slower** than the string builder.
 
-As a conclusion: use the `StringBuilder` if you need to concatenate more than 5 or 6 strings. Use the string concatenation for smaller operations.
+In conclusion, use the `StringBuilder` to concatenate more than 5 or 6 strings. Use the string concatenation for smaller operations.
 
-## EndsWith string vs char
+## EndsWith(string) vs EndsWith(char) 
 
-One simple improvement can be done if you use `StartsWith` or `EndsWith` passing a single character.
+One simple improvement can be made if you use `StartsWith` or `EndsWith`, passing a single character.
 
-There are two similar overloads: one that accepts a `string`, one that accepts a `char`.
+There are two similar overloads: one that accepts a `string`, and one that accepts a `char`.
 
 
 ```cs
 [MemoryDiagnoser]
-[Config(typeof(CsvConfig))]
 public class EndsWithStringVsChar()
 {
     [Params(100, 1000, 10_000, 100_000, 1_000_000)]
@@ -260,19 +260,21 @@ We have the following results:
 | **EndsWithChar**   | 1000000 | 2,199.463 us |  74.4067 us | 217.0480 us | 2,190.600 us |  1.00 |
 | **EndsWithString** | 1000000 | 7,506.450 us | 190.7587 us | 562.4562 us | 7,356.250 us |  3.45 |
 
-Again, let's generate the plot using the **Log10** scale:
+Again, let's generate the plot using the *Log10* scale:
 
 ![EndsWith char vs EndsWith string](./endswith-char-vs-endswith-string.png)
 
 They appear to be almost identical, but look closely: **based on this benchmark**, when we have 10000, using `EndsWith(string)` is 10x slower than `EndsWith(char)`. 
 
-Also, here duration ratio on the 1.000.000-items array is ~3.5. At first I thought that there was an error on the benchmark, but when running it again on the benchmark, the ratio does not change.
+Also, here, the duration ratio on the 1.000.000-items array is ~3.5. At first, I thought there was an error on the benchmark, but when rerunning it on the benchmark, the ratio did not change.
 
-Looks like you have the best improvement ratio when the array has ~10.000 items.
+It looks like you have the best improvement ratio when the array has ~10.000 items.
 
-## IsNullOrEmpty vs IsNullOrEmpty + Trim vs IsNullOrWhitespace
+## IsNullOrEmpty vs IsNullOrWhitespace vs IsNullOrEmpty + Trim
 
 As you might know, `string.IsNullOrWhiteSpace` performs stricter checks than `string.IsNullOrEmpty`.
+
+(If you didn't know, have a look [at this quick explanation](https://www.code4it.dev/csharptips/string-isnullorempty-isnullorwhitespace/) of the cases covered by these methods).
 
 Does it affect performance?
 
@@ -280,7 +282,6 @@ To demonstrate it, I have created three benchmarks: one for `string.IsNullOrEmpt
 
 ```cs
 [MemoryDiagnoser]
-[Config(typeof(CsvConfig))]
 public class StringEmptyBenchmark
 {
     [Params(100, 1000, 10_000, 100_000, 1_000_000)]
@@ -348,25 +349,24 @@ We have the following values:
 | **StringIsNullOrEmptyWithTrim** | 1000000 | 4,691.103 us | 112.2382 us | 327.4040 us |  2.28 |
 | **StringIsNullOrWhitespace**    | 1000000 | 4,198.809 us |  83.6526 us | 161.1702 us |  2.04 |
 
-As you can see from the Log10 table, the results are quite similar:
+As you can see from the Log10 table, the results are pretty similar:
 
 ![IsNullOrEmpty vs IsNullOrWhiteSpace vs Trim](./string-isnullorempty-vs-trim-vs-isnullorwhitespace.png)
 
-On average, `StringIsNullOrWhitespace` ~2 times slower than `StringIsNullOrEmpty`.
+On average, `StringIsNullOrWhitespace` is ~2 times slower than `StringIsNullOrEmpty`.
 
 So, what should we do? Here's my two cents:
 
-1. For all the data coming from the outside (passed as input to your system, received from an API call, read from the database), use `string.IsNUllOrWhiteSpace`: this way you can ensure that you are not receving unexpected data;
+1. For all the data coming from *the outside* (passed as input to your system, received from an API call, read from the database), use `string.IsNUllOrWhiteSpace`: this way you can ensure that you are not receiving unexpected data;
 2. If you read data from an external API, customize your JSON deserializer to convert whitespace strings as empty values;
-3. Needless to say it, choose the right method depending on the use case. If a string like "\n    \n   \t" is a valid value for you, use `string.IsNullOrEmpty`.
+3. Needless to say, choose the proper method depending on the use case. If a string like "\n    \n   \t" is a valid value for you, use `string.IsNullOrEmpty`.
 
-## ToUpper vs ToUpperInvariant vs ToLower vs ToLowerInvariant
+## ToUpper vs ToUpperInvariant vs ToLower vs ToLowerInvariant: they look similar, but they are not
 
 Even though they look similar, there is a huge difference in terms of performance between these four methods.
 
 ```cs
 [MemoryDiagnoser]
-[Config(typeof(CsvConfig))]
 public class ToUpperVsToLower()
 {
     [Params(100, 1000, 10_000, 100_000, 1_000_000)]
@@ -453,20 +453,19 @@ Let's see it as the usual Log10 plot:
 
 We can notice a few points:
 
-1. The ToUpper family is generally slower than the ToLowerFamily;
-2. The Invariant family is faster than the non-Invariant; we will see more below;
+1. The ToUpper family is generally slower than the ToLower family;
+2. The Invariant family is faster than the non-Invariant one; we will see more below;
 
-So, if you have to normalize strings by using the same casing, `ToLowerInvariant` is the best choice.
+So, if you have to normalize strings using the same casing, `ToLowerInvariant` is the best choice.
 
 ## OrdinalIgnoreCase vs InvariantCultureIgnoreCase 
 
 Comparing strings is trivial: the `string.Compare` method is all you need.
 
-There are several ways to compare string: you can specify the comparison rules by setting the `comparisonType` parameter, which accepts a `StringComparison` value.
+There are several modes to compare strings: you can specify the comparison rules by setting the `comparisonType` parameter, which accepts a `StringComparison` value.
 
 ```cs
 [MemoryDiagnoser]
-[Config(typeof(CsvConfig))]
 public class StringCompareOrdinalVsInvariant()
 {
     [Params(100, 1000, 10_000, 100_000, 1_000_000)]
@@ -519,7 +518,7 @@ Let's see the results:
 | WithOrdinalIgnoreCase          | 1000000 |  2,050.894 us |  59.5966 us | 173.8460 us |  1.00 |
 | WithInvariantCultureIgnoreCase | 1000000 | 18,138.063 us | 360.1967 us | 986.0327 us |  8.87 |
 
-As you can see, there's a HUGE difference between Ordinal and Invariant.
+As you can see, **there's a HUGE difference between Ordinal and Invariant**.
 
 When dealing with 100.000 items, `StringComparison.InvariantCultureIgnoreCase` is **12 times slower** than `StringComparison.OrdinalIgnoreCase`!
 
@@ -537,19 +536,18 @@ string.Equals(s1, s2, StringComparison.InvariantCultureIgnoreCase); //True
 string.Equals(s1, s2, StringComparison.OrdinalIgnoreCase); //False
 ```
 
-As you can see, `s1` and `s2` represent **equivalent, but not equal, strings**. We can then deduce that `OrdinalIgnoreCase` checks for the exact values of the characters, while `InvariantCultureIgnoreCase` check the *"meaning"* of the string.
+As you can see, `s1` and `s2` represent **equivalent, but not equal, strings**. We can then deduce that `OrdinalIgnoreCase` checks for the exact values of the characters, while `InvariantCultureIgnoreCase` checks the string's *"meaning"*.
 
 So, in most cases, you might want to use `OrdinalIgnoreCase` (as always, it depends on your use case!)
 
-## Newtonsoft vs System.Text.Json
+## Newtonsoft vs System.Text.Json: it's a matter of memory allocation, not time
 
-For the last benchmark I created the exact same model used [as an example](https://github.com/bchavez/Bogus/blob/master/Examples/GettingStarted/Program.cs) in the offical documentation.
+For the last benchmark, I created the exact same model used [as an example](https://github.com/bchavez/Bogus/blob/master/Examples/GettingStarted/Program.cs) in the official documentation.
 
-The purpose of this benchmark is to see which JSON serialization library is faster: Newtonsoft or System.Text.Json?
+This benchmark aims to see which JSON serialization library is faster: Newtonsoft or System.Text.Json?
 
 ```cs
 [MemoryDiagnoser]
-[Config(typeof(CsvConfig))]
 public class JsonSerializerComparison
 {
     [Params(100, 10_000, 1_000_000)]
@@ -599,16 +597,29 @@ As you might know, the .NET team has added lots of performance improvements to t
 | WithNewtonsoft | 1000000 | 5,260.680 ms | 101.6941 ms | 108.8116 ms | 5,219.955 ms |  1.24 |    0.04 | 1448000.0000 | 1000.0000 |  8872031.8 KB |        2.99 |
 
 
-As you can see, Newtonsoft is 2x slower than System.Text.Json, and it allocates 3x the memory, compared with the other library.
+As you can see, Newtonsoft is 2x slower than System.Text.Json, and it allocates 3x the memory compared with the other library.
 
-So, well, if you don't use library-specific functionalities, I suggest you replacing *Newtonsoft* with *System.Text.Json*.
+So, well, if you don't use library-specific functionalities, I suggest you replace *Newtonsoft* with *System.Text.Json*.
 
-## Further readings
-
-_This article first appeared on [Code4IT 🐧](https://www.code4it.dev/)_
 
 
 ## Wrapping up
+
+In this article, we learned that even tiny changes can make a difference in the long run.
+
+Let's recap some:
+
+1. Using StringBuilder is generally WAY faster than using string concatenation unless you need to concatenate 2 to 4 strings;
+2. Sometimes, the difference is not about execution time but memory usage;
+3. EndsWith and StartsWith perform better if you look for a char instead of a string. If you think of it, it totally makes sense!
+4. More often than not, string.IsNullOrWhiteSpace performs better checks than string.IsNullOrEmpty; however, there is a huge difference in terms of performance, so you should pick the correct method depending on the usage;
+5. ToUpper and ToLower look similar; however, ToLower is quite faster than ToUpper;
+6. Ordinal and Invariant comparison return the same value for *almost* every input; but Ordinal is faster than Invariant;
+7. Newtonsoft performs similarly to System.Text.Json, but it allocates way more memory.
+
+_This article first appeared on [Code4IT 🐧](https://www.code4it.dev/)_
+
+My suggestion is always the same: **take your time to explore the possibilities! Toy with your code, try to break it, benchmark it. You'll find interesting takes!**
 
 
 I hope you enjoyed this article! Let's keep in touch on [Twitter](https://twitter.com/BelloneDavide) or [LinkedIn](https://www.linkedin.com/in/BelloneDavide/)! 🤜🤛
@@ -622,12 +633,11 @@ Happy coding!
 [ ] Frontmatter
 [ ] Rinomina immagini
 [ ] Alt Text per immagini
-[ ] Grammatica
 [ ] Bold/Italics
 [ ] Nome cartella e slug devono combaciare
 [ ] Immagine di copertina
 [ ] Pulizia formattazione
-[ ] Metti la giusta OgTitle
 [ ] Fai resize della immagine di copertina
 [ ] Le immagini PNG hanno tutte lo sfondo trasparente. Metti lo sfondi bianco
 [ ] rilancia benchmark stringbuilder mettendo baseline. sostituisci tabella e immagine
+[ ] togli CsvExporter dal codice
