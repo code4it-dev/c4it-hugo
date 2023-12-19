@@ -1,6 +1,6 @@
 ---
 title: "Top 6 Performance Tips when dealing with strings in C# 12 and .NET 8"
-date: 2023-12-15
+date: 2023-12-19
 url: /blog/top-6-string-performance-tips
 draft: false
 categories:
@@ -624,5 +624,3 @@ Happy coding!
 
 🐧
 
-[ ] Immagine di copertina
-[ ] Fai resize della immagine di copertina
