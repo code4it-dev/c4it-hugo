@@ -265,7 +265,7 @@ Again, let's generate the plot using the _Log10_ scale:
 
 ![EndsWith(char) vs EndsWith(string) in C# performance benchmark](./endswith-char-vs-endswith-string.png)
 
-They appear to be almost identical, but look closely: *based on this benchmark*, when we have 10000, using `EndsWith(string)` is 10x slower than `EndsWith(char)`.
+They appear to be almost identical, but look closely: _based on this benchmark_, when we have 10000, using `EndsWith(string)` is 10x slower than `EndsWith(char)`.
 
 Also, here, the duration ratio on the 1.000.000-items array is ~3.5. At first, I thought there was an error on the benchmark, but when rerunning it on the benchmark, the ratio did not change.
 
@@ -458,7 +458,7 @@ We can notice a few points:
 
 So, if you have to normalize strings using the same casing, `ToLowerInvariant` is the best choice.
 
-## Tip #5: OrdinalIgnoreCase vs InvariantCultureIgnoreCase: logically (almost) equivalent, but with different performance 
+## Tip #5: OrdinalIgnoreCase vs InvariantCultureIgnoreCase: logically (almost) equivalent, but with different performance
 
 Comparing strings is trivial: the `string.Compare` method is all you need.
 
@@ -623,4 +623,3 @@ I hope you enjoyed this article! Let's keep in touch on [Twitter](https://twitte
 Happy coding!
 
 🐧
-
