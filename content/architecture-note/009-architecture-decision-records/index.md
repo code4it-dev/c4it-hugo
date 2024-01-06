@@ -104,18 +104,36 @@ However, we also need to consider the following drawbacks and risks:
 
 There are several tools to generate ADR tools for your project.
 
-- **[adr-tools by npryce](https://github.com/npryce/adr-tools)**: an CLI tool that automatically creates and manages the history of your ADRs. It's a nice tool, but it hasn't been updated in the last five years.
-- **[adr-tools-python by tinkerer](https://bitbucket.org/tinkerer_/adr-tools-python/src/master/)**: available on BitBucket, relies on Python. It's newer than the one by Npryce, but it hasn't been updated since 2021.
-- **[adr-cli by Jandev](https://github.com/Jandev/adr-cli)**, which is a porting of adr-tools by npryce, but written in .NET
+- [adr-tools by npryce](https://github.com/npryce/adr-tools): an CLI tool that automatically creates and manages the history of your ADRs. It's a nice tool, but it hasn't been updated in the last five years.
+- [adr-tools-python by tinkerer](https://bitbucket.org/tinkerer_/adr-tools-python/src/master/): available on BitBucket, relies on Python. It's newer than the one by Npryce, but it hasn't been updated since 2021.
+- [adr-cli by Jandev](https://github.com/Jandev/adr-cli), which is a porting of adr-tools by npryce, but written in .NET
 - [ADR Manager](https://github.com/adr/adr-manager), a UI tool that connects to your GitHub repository and generate ADR files.
-- **my own cli tool: [adr-power-cli by me, Davide Bellone](https://github.com/bellons91/adr-power-cli)**: it's a recent fork from Jandev's repo, and I plan to add lots of more functionalities. **Feel free to suggest improvements, functionalities, and everything needed to create ADRs**.
+
+And there is a new tool in the block: the one I recently decided to manage! It's called **[adr-power-cli](https://github.com/bellons91/adr-power-cli)**: it's a recent fork from Jandev's repo, and I plan to add lots of more functionalities. **Feel free to suggest improvements, functionalities, and everything needed to create ADRs**. I have big plans for this tool!
 
 ## Further readings
 
+I first learned about ADRs thanks to Mark Richard's YouTube channel. Here, Mark explains a lot of topics about Sowftware Architecture, both from a technical standpoint but also tackling soft skills.
+
+🔗 [Developer to Architect, by Mark Richards](https://www.developertoarchitect.com/lessons/)
+
+Here's one of his videos:
+
+{{< youtube LMBqGPLvonU >}}
+
+.
+
 _This article first appeared on [Code4IT 🐧](https://www.code4it.dev/)_
-https://www.ozimmer.ch/practices/2022/11/22/MADRTemplatePrimer.html
+
+Another great source is Olaf Zimmermann's blog, where he has lots of great content about software architecture, and a whole section focused on ADRs.
+
+🔗 [Olaf Zimmermann's articles about ADRs](https://ozimmer.ch/tags/#architectural-decisions)  
 
 ## Wrapping up
+
+In my opinion, ADRs are a great tool, expecially for projects whose requirements are not defined upfront and that it's expected to have a long lifespan.
+
+One of the most important phases, while taking architectural decisions, is **discussing the decision**. An archictect should not impose the architecture to the team. Other stakeholders, such as the developers, may have some concerns, or notice a case that cannot be covered by the solution. It's important to keep the ADR in the "Open to discussion" status, and listen to every comment to this decision.
 
 I hope you enjoyed this article! Let's keep in touch on [Twitter](https://twitter.com/BelloneDavide) or [LinkedIn](https://www.linkedin.com/in/BelloneDavide/)! 🤜🤛
 

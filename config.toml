@@ -29,8 +29,8 @@ disqusShortname = ""
 
   # Description and meta data for the search engines
   author = "Davide Bellone"
-  description = "Code4IT - a blog for dotnet developers"
-  keywords = "blog,personal,responsive,search,font awesome,pages,posts,multilingual,highlight.js,syntax highlighting,premium,shortcuts"
+  description = "Code4IT - a blog for .NET enthusiasts, Azure lovers, and Backend developers"
+  keywords = "blog,dotnet,azure,backend development,software,software architecture,davide bellone,.net,testing,c#,csharp"
 
   # How many articles should be displayed at once?
   paginate = 7
@@ -80,7 +80,7 @@ disqusShortname = ""
 
   # Header configuration
     # your subtitle if you want to use any
-    subtitle = "The place for .NET developers, Azure lovers, and everyone else."
+    subtitle = "The place for .NET enthusiasts, Azure lovers, and backend developers"
 
     # if you want to use libravatar or gravatar for the header image
     avatarEmail = ""
