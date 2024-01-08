@@ -1,43 +1,55 @@
 ---
-title: "Davide's Code and Architecture Notes - Architecture Decision Records"
-date: 2023-12-20T09:59:34+01:00
-url: /architecture-notes/post-slug
+title: "Davide's Code and Architecture Notes - Tracking decision with Architecture Decision Records (ADRs)"
+date: 2024-01-08
+url: /architecture-notes/architecture-decision-records
 draft: false
 categories:
   - Code and Architecture Notes
 tags:
   - Software Architecture
+  - ADR
 toc: true
-summary: "A summary"
+summary: "When designing a system's architecture, you have many choices to make. How can you track them? ADRs are formal documents to track the reasons behind your decisions, giving context and info about the consequences of each choice."
 images:
-  - /architecture-notes/post-slug/featuredImage.png
+  - /architecture-notes/architecture-decision-records/featuredImage.png
 ---
 
-Picture this: you are the architect in charge with the design of the the project. You make some choices, everything goes well for months. Then, all of a sudden, a new requirement arrives. That kind of requirement that make you think "is this architecture the right one? should we change anything?".
+Picture this: you are the architect in charge of the design of the architecture. You make some choices; everything goes well for months. Then, all of a sudden, a new requirement arrives. That kind of requirement makes you think, "Is this architecture the right one? Should we change anything?". 
 
-Why did you build your application as such? Why did you use gRPC instead of HTTP? Why Blazor instead of VueJS? If only you had something to remind you why you made some choices...
+You don't remember the reasons behind your choices.
+Why did you build your application that way? Why did you use gRPC instead of HTTP? Why Blazor instead of VueJS? If only you had something to remind you why you made some choices...
 
-Architecture Decision Record (ADR) is a way to describe, track, and discuss architectural and design decisions. It allows you have a well-defined process to make informed decisions, and to keep track of the _whys_ behind your choices.
+An **Architecture Decision Record (ADR) is a way to describe, track, and discuss architectural and design decisions.** It allows you to have a well-defined process to make informed decisions and to keep track of the _whys_ behind your choices.
 
-In this article, we will learn what ADRs are, what are the main parts, and how to generate documentation with an open source project.
+In this article, we will learn what ADRs are, their main parts, and how to generate documentation with open-source projects.
 
 ## Strucure of an ADR
 
-An Architecture Decision Record (ADR) is a document that summarize, tracks, and explains a important architectural decisions. It's not just the list of decision: it's a document that tracks also the current **context**, the alternatives considered, and the **consequences** of the final choice.
+An Architecture Decision Record (ADR) is a document that summarizes, tracks and explains critical architectural decisions. It's not just the decision list: it's a document that also tracks the **current context**, the alternatives considered, and the **consequences** of the final choice.
 
-ADR is made up of a set of files, each describing a decision. For each file you describe:
+ADR is made of a set of files, each describing a decision. For each file you describe:
 
-- **The decision being made**. For example, "Use Azure Service Bus as a queue vendor".
-- **The status of the decision**. For example "Under discussion", "Accepted", "Superseded".
-- **The time of this decision**. For each ADR you should specify when it has been created and when it has reached a new status.
-- **The context around the decision**. For example "We are currently using Azure as a main vendor".
-- **The consequences of the decision**. For example, "We accept to have higher execution costs but we can more easily have support from the infrastructure team".
+- **The decision being made**. For example, "Use Azure Service Bus as a queue platform".
+- **The status of the decision**. For example, "Under discussion", "Accepted", and "Superseded".
+- **The time of this decision**. For each ADR, you should specify when it was created and when it reached a new status.
+- **The context around the decision**. For example, "We are currently using Azure as a main vendor".
+- **The consequences of the decision**. For example, "We accept to have vendor lock-in, but this way, we can more easily have support from the infrastructure team".
 
-Usually, you might want to have a strict flow of status, making sure that once it has reached a final status, the ADR cannot be changed. **You can add more details**, of course, **but you should not change the decision taken.**
+Usually, you should **have a strict flow of status**, ensuring that once it has reached one of the final statuses, the ADR decision cannot be changed. **You can add more details**, of course, **but you should not change the decision taken.**
+
+Examples of statuses are:
+
+**Draft**: you are still describing the decision, and you are not ready to propose it yet.
+**Proposed**: you have explained all the details behind your decision so it can be officially discussed.
+**Open to discussion**: everybody can add comments to your decision, allowing you to consider other points of view and cover weak spots you did not find.
+**Accepted**: the team agrees with your decision, and you can now implement it.
+**Rejected**: the proposed solution is not feasible, so you cannot proceed with the implementation.
+**Deprecated**: the decision is no longer useful or necessary. For example, you removed the whole component from your system. 
+**Superseded**: another ADR superseded the current one, making it obsolete.
 
 ![ADR status flow](./adr-status.png)
 
-Special mention to the **superseded status**: once a decision reaches the Accepted status, if you change your mind you must create a new ADR to supersede the previous one. For example, say that ADR-30 was about "Use SOAP communication". Then, you notice that you must change the communication protocol to gRPC. You can procede in the following way:
+Special mention to the **superseded status**: once a decision reaches the Accepted status, if you change your mind, you must create a new ADR to supersede the previous one. For example, say that ADR-30 was about "Use SOAP communication". Then, you notice that you must change the communication protocol to gRPC. You can proceed in the following way:
 
 1. Create a new ADR, say ADR-105.
 2. Add a tag to ADR-105, something like _supersedes ADR-30_.
@@ -49,20 +61,20 @@ This way, you can reconstruct the history behind a specific choice.
 
 Let's see some of the best practices for creating and maintaining ADRs:
 
-- Use a consistent format and structure for each ADR. You can find several templates online.
-- Store ADRs in a text file (even a simple Markdown is file) close to the code base relevant to that decision, or in a central repository if the decision affects multiple code bases. In this way, putting the ADRs under source control, you can always review the history of the updates and keep everything tracked.
-- Use a clear and descriptive file name, such as `ADR-001-use-azure-service-bus.md` or `0001-use-azure-service-bus.md`.
-- Keep ADRs concise and focused on one decision per document. Add only the necessary info to understand the rationale behind a decision.
-- Update ADRs as the decision evolves or changes over time. Include the previous decision and why a change is made.
-- Review ADRs periodically to ensure they are still relevant, accurate, and consistent with the current state of the architecture and the business needs.
+- Use a **consistent format and structure** for each ADR. You can find several templates online.
+- **Store ADRs in a text file close to the code base** relevant to that decision, or in a central repository if the decision affects multiple code bases. In this way, by putting the ADRs under source control, you can always review the history of the updates and keep everything tracked.
+- Use a **clear and descriptive file name**, such as `ADR-001-use-azure-service-bus.md` or `0001-use-azure-service-bus.md`.
+- Keep ADRs concise and **focused on one decision per document**. Add only the necessary info to understand the rationale behind a decision.
+- **Update ADRs as the decision evolves or changes over time**. Include the previous decision and why a change is made.
+- **Review ADRs periodically to ensure they are still relevant**, accurate, and consistent with the current state of the architecture and the business needs.
 
-If you want a nice list of ADR templates, have a look at [this Github repository by Joel Parker Henderson](https://github.com/joelparkerhenderson/architecture-decision-record/tree/main/locales/en/templates).
+If you want a nice list of ADR templates, have a look at [this GitHub repository by Joel Parker Henderson](https://github.com/joelparkerhenderson/architecture-decision-record/tree/main/locales/en/templates).
 
 ## A realistic example of ADR
 
 Say that we have to pick a cloud provider for our serverless system. We need to choose between Azure and AWS.
 
-Let's see how a ADR describes the existing status, the reasons behind our decision, and also considers the possible drawbacks.
+Let's see how an ADR describes why we chose Azure instead of AWS. Notice how the ADR describes the existing status, the reasons behind the decision, and also considers the possible drawbacks.
 
 ```markdown
 # ADR 001: Use Azure Functions instead of AWS Lambda
@@ -73,15 +85,15 @@ Accepted (2024-01-11)
 
 ## Context
 
-We are developing a serverless system that needs to run various functions in response to events such as HTTP requests, database changes, or message queue triggers. We need to choose a cloud provider that offers a reliable, scalable, and cost-effective platform for running these functions.
+We are developing a serverless system that needs to run various functions in response to events such as HTTP requests or message queue triggers. We need to choose a cloud provider that offers a reliable, scalable, and cost-effective platform for running these functions. The possible choices are AWS and Azure.
 
 ## Decision
 
 We have decided to use **Azure Functions** as our serverless platform instead of AWS Lambda. The main reasons for this decision are:
 
-- Azure Functions supports more programming languages than AWS Lambda, including C#, Java, JavaScript, Python, PowerShell, and TypeScript. This gives us more flexibility and choice in developing our functions.
+- Azure Functions supports more programming languages than AWS Lambda, including C#, Java, JavaScript, Python, PowerShell, and TypeScript. This gives us more flexibility and choice in developing our functions since the team is currently working with several programming languages.
 - Azure Functions has a better integration with other Azure services, such as Azure Storage, Azure Cosmos DB, Azure Event Hubs, and Azure Service Bus. This makes it easier to connect our functions to various data sources and destinations.
-- Azure Functions has a lower cold start latency than AWS Lambda, which means that our functions will start faster when they are invoked for the first time or after a period of inactivity. This improves the user experience and reduces the response time of our system.
+- Azure Functions has a lower cold start latency than AWS Lambda, which means that our functions will start faster when they are invoked for the first time or after a period of inactivity. This improves the user experience and reduces the response time of the system.
 - Azure Functions has a more transparent and predictable pricing model than AWS Lambda, which charges based on the number of requests, the execution time, and the memory allocation of each function. Azure Functions charges based on the number of executions, the execution time, and the memory consumption of the whole function app, which is a logical grouping of functions. This makes it easier to estimate and control our costs.
 
 ## Consequences
@@ -107,13 +119,13 @@ There are several tools to generate ADR tools for your project.
 - [adr-tools by npryce](https://github.com/npryce/adr-tools): an CLI tool that automatically creates and manages the history of your ADRs. It's a nice tool, but it hasn't been updated in the last five years.
 - [adr-tools-python by tinkerer](https://bitbucket.org/tinkerer_/adr-tools-python/src/master/): available on BitBucket, relies on Python. It's newer than the one by Npryce, but it hasn't been updated since 2021.
 - [adr-cli by Jandev](https://github.com/Jandev/adr-cli), which is a porting of adr-tools by npryce, but written in .NET
-- [ADR Manager](https://github.com/adr/adr-manager), a UI tool that connects to your GitHub repository and generate ADR files.
+- [ADR Manager](https://github.com/adr/adr-manager), a UI tool that connects to your GitHub repository and generates ADR files.
 
-And there is a new tool in the block: the one I recently decided to manage! It's called **[adr-power-cli](https://github.com/bellons91/adr-power-cli)**: it's a recent fork from Jandev's repo, and I plan to add lots of more functionalities. **Feel free to suggest improvements, functionalities, and everything needed to create ADRs**. I have big plans for this tool!
+And there is a new tool in the block: the one I recently decided to manage! It's called **[adr-power-cli](https://github.com/bellons91/adr-power-cli)**: it's a recent fork from Jandev's repo, and I plan to add lots of more functionalities. **Feel free to suggest improvements, functionalities, and everything needed to create ADRs**. I have big plans for this tool! 🚀
 
 ## Further readings
 
-I first learned about ADRs thanks to Mark Richard's YouTube channel. Here, Mark explains a lot of topics about Sowftware Architecture, both from a technical standpoint but also tackling soft skills.
+I first learned about ADRs thanks to Mark Richard's YouTube channel. Here, Mark explains a lot of topics about Software Architecture, both from a technical standpoint and also tackling soft skills.
 
 🔗 [Developer to Architect, by Mark Richards](https://www.developertoarchitect.com/lessons/)
 
@@ -125,15 +137,15 @@ Here's one of his videos:
 
 _This article first appeared on [Code4IT 🐧](https://www.code4it.dev/)_
 
-Another great source is Olaf Zimmermann's blog, where he has lots of great content about software architecture, and a whole section focused on ADRs.
+Another great source is Olaf Zimmermann's blog, where he shares lots of great content about software architecture. He has a whole section focused on ADRs.
 
 🔗 [Olaf Zimmermann's articles about ADRs](https://ozimmer.ch/tags/#architectural-decisions)  
 
 ## Wrapping up
 
-In my opinion, ADRs are a great tool, expecially for projects whose requirements are not defined upfront and that it's expected to have a long lifespan.
+In my opinion, ADRs are a great tool, especially for projects whose requirements are not defined upfront and that are expected to have a long lifespan.
 
-One of the most important phases, while taking architectural decisions, is **discussing the decision**. An archictect should not impose the architecture to the team. Other stakeholders, such as the developers, may have some concerns, or notice a case that cannot be covered by the solution. It's important to keep the ADR in the "Open to discussion" status, and listen to every comment to this decision.
+One of the most important phases while taking architectural decisions is **discussing the decision**. An architect should not impose the architecture on the team. Other stakeholders, such as the developers, may have some concerns or notice a case that the solution cannot cover. It's important to keep the ADR in the "Open to discussion" status and listen to every comment on this decision.
 
 I hope you enjoyed this article! Let's keep in touch on [Twitter](https://twitter.com/BelloneDavide) or [LinkedIn](https://www.linkedin.com/in/BelloneDavide/)! 🤜🤛
 
@@ -142,14 +154,10 @@ Happy coding!
 🐧
 
 [ ] Titoli
-[ ] Frontmatter
 [ ] Rinomina immagini
 [ ] Alt Text per immagini
-[ ] Grammatica
 [ ] Bold/Italics
 [ ] Nome cartella e slug devono combaciare
 [ ] Immagine di copertina
-[ ] Rimuovi secrets dalle immagini
 [ ] Pulizia formattazione
-[ ] Metti la giusta OgTitle
 [ ] Fai resize della immagine di copertina
