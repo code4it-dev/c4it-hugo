@@ -1,6 +1,6 @@
 ---
 title: "Davide's Code and Architecture Notes - Tracking decision with Architecture Decision Records (ADRs)"
-date: 2024-01-08
+date: 2024-01-09
 url: /architecture-notes/architecture-decision-records
 draft: false
 categories:
@@ -14,7 +14,7 @@ images:
   - /architecture-notes/architecture-decision-records/featuredImage.png
 ---
 
-Picture this: you are the architect in charge of the design of the architecture. You make some choices; everything goes well for months. Then, all of a sudden, a new requirement arrives. That kind of requirement makes you think, "Is this architecture the right one? Should we change anything?". 
+Picture this: you are the architect in charge of the design of the architecture. You make some choices; everything goes well for months. Then, all of a sudden, a new requirement arrives. That kind of requirement makes you think, "Is this architecture the right one? Should we change anything?".
 
 You don't remember the reasons behind your choices.
 Why did you build your application that way? Why did you use gRPC instead of HTTP? Why Blazor instead of VueJS? If only you had something to remind you why you made some choices...
@@ -23,7 +23,7 @@ An **Architecture Decision Record (ADR) is a way to describe, track, and discuss
 
 In this article, we will learn what ADRs are, their main parts, and how to generate documentation with open-source projects.
 
-## Strucure of an ADR
+## Structure of an ADR
 
 An Architecture Decision Record (ADR) is a document that summarizes, tracks and explains critical architectural decisions. It's not just the decision list: it's a document that also tracks the **current context**, the alternatives considered, and the **consequences** of the final choice.
 
@@ -39,15 +39,15 @@ Usually, you should **have a strict flow of status**, ensuring that once it has 
 
 Examples of statuses are:
 
-**Draft**: you are still describing the decision, and you are not ready to propose it yet.
-**Proposed**: you have explained all the details behind your decision so it can be officially discussed.
-**Open to discussion**: everybody can add comments to your decision, allowing you to consider other points of view and cover weak spots you did not find.
-**Accepted**: the team agrees with your decision, and you can now implement it.
-**Rejected**: the proposed solution is not feasible, so you cannot proceed with the implementation.
-**Deprecated**: the decision is no longer useful or necessary. For example, you removed the whole component from your system. 
-**Superseded**: another ADR superseded the current one, making it obsolete.
+- **Draft**: you are still describing the decision, and you are not ready to propose it yet.
+- **Proposed**: you have explained all the details behind your decision so it can be officially discussed.
+- **Open to discussion**: everybody can add comments to your decision, allowing you to consider other points of view and cover weak spots you did not find.
+- **Accepted**: the team agrees with your decision, and you can now implement it.
+- **Rejected**: the proposed solution is not feasible, so you cannot proceed with the implementation.
+- **Deprecated**: the decision is no longer useful or necessary. For example, you removed the whole component from your system.
+- **Superseded**: another ADR superseded the current one, making it obsolete.
 
-![ADR status flow](./adr-status.png)
+![ADR status flow: each ADR must end up in a final status](./adr-status.png)
 
 Special mention to the **superseded status**: once a decision reaches the Accepted status, if you change your mind, you must create a new ADR to supersede the previous one. For example, say that ADR-30 was about "Use SOAP communication". Then, you notice that you must change the communication protocol to gRPC. You can proceed in the following way:
 
@@ -57,7 +57,7 @@ Special mention to the **superseded status**: once a decision reaches the Accept
 
 This way, you can reconstruct the history behind a specific choice.
 
-## Best practices for ADRs
+## Best practices for creating ADRs
 
 Let's see some of the best practices for creating and maintaining ADRs:
 
@@ -121,7 +121,7 @@ There are several tools to generate ADR tools for your project.
 - [adr-cli by Jandev](https://github.com/Jandev/adr-cli), which is a porting of adr-tools by npryce, but written in .NET
 - [ADR Manager](https://github.com/adr/adr-manager), a UI tool that connects to your GitHub repository and generates ADR files.
 
-And there is a new tool in the block: the one I recently decided to manage! It's called **[adr-power-cli](https://github.com/bellons91/adr-power-cli)**: it's a recent fork from Jandev's repo, and I plan to add lots of more functionalities. **Feel free to suggest improvements, functionalities, and everything needed to create ADRs**. I have big plans for this tool! 🚀
+🚀 And there is a new tool in the block: the one I recently decided to manage! It's called **[adr-power-cli](https://github.com/bellons91/adr-power-cli)**: it's a recent fork from Jandev's repo, and I plan to add lots of more functionalities. **Feel free to suggest improvements, functionalities, and everything needed to create ADRs**. I have big plans for this tool! 🚀
 
 ## Further readings
 
@@ -139,7 +139,7 @@ _This article first appeared on [Code4IT 🐧](https://www.code4it.dev/)_
 
 Another great source is Olaf Zimmermann's blog, where he shares lots of great content about software architecture. He has a whole section focused on ADRs.
 
-🔗 [Olaf Zimmermann's articles about ADRs](https://ozimmer.ch/tags/#architectural-decisions)  
+🔗 [Olaf Zimmermann's articles about ADRs](https://ozimmer.ch/tags/#architectural-decisions)
 
 ## Wrapping up
 
@@ -152,12 +152,3 @@ I hope you enjoyed this article! Let's keep in touch on [Twitter](https://twitte
 Happy coding!
 
 🐧
-
-[ ] Titoli
-[ ] Rinomina immagini
-[ ] Alt Text per immagini
-[ ] Bold/Italics
-[ ] Nome cartella e slug devono combaciare
-[ ] Immagine di copertina
-[ ] Pulizia formattazione
-[ ] Fai resize della immagine di copertina
