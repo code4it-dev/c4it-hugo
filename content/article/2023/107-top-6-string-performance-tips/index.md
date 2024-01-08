@@ -201,6 +201,8 @@ There are some remarkable points:
 
 In conclusion, use the `StringBuilder` to concatenate more than 5 or 6 strings. Use the string concatenation for smaller operations.
 
+**Edit 2024-01-08**: turn out that `string.Concat` has an overload that accepts an array of strings. **`string.Concat(string[])` is actually faster than using the StringBuilder**. Read more [this article by Robin Choffardet](https://rchoffardet.github.io/articles/1-string-concatenation-performance/).
+
 ## Tip #2: EndsWith(string) vs EndsWith(char): pick the right overload
 
 One simple improvement can be made if you use `StartsWith` or `EndsWith`, passing a single character.
