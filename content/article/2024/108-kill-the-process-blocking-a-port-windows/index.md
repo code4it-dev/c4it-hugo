@@ -47,7 +47,7 @@ NETSTAT is a command that shows info about the **active TCP/IP network connectio
 netstat -noa -p TCP
 ```
 
-![Alt text](image.png)
+![Netstat command to show all active TCP connections](./netstat-all-tcp.png)
 
 Notice that **the last column lists the PID (Process ID)** bound to each connection.
 
@@ -57,8 +57,7 @@ From here, we can use the `findstr` command to get only the rows with a specific
 netstat -noa -p TCP | findstr 7261
 ```
 
-
-![Alt text](image-1.png)
+![Netstat info filtered by string](./filtered-netstat-info.png)
 
 Now, by looking at the last column, we can identify the Process ID: 19160.
 
@@ -68,7 +67,7 @@ Now that we have the Process ID (PID), we can open the Task Manager, paste the P
 
 In our case, it was an instance of Visual Studio running an API application. We can now kill the process by hitting **End Task**.
 
-![Alt text](image-2.png)
+![Using Task Manager on Windows11 to find the process with specified ID](./task-manager-win11.png)
 
 If you prefer working with PowerShell, you can find the details of the related process by using the `Get-Process` command:
 
@@ -76,7 +75,7 @@ If you prefer working with PowerShell, you can find the details of the related p
 Get-Process -ID 19160
 ```
 
-![Alt text](image-3.png)
+![Process info found using PowerShell](./process-info-by-pid-powershell.png)
 
 Then, you can use the `taskkill` command by specifying the PID, using the `/PID` flag, and adding the `/F` flag to *force* the killing of the process.
 
@@ -84,7 +83,7 @@ Then, you can use the `taskkill` command by specifying the PID, using the `/PID`
 taskkill /PID 19160 /F
 ```
 
-We have killed the process related to the running application. Visual Studio is still working, of course. 
+We have killed the process related to the running application. Visual Studio is still working, of course.
 
 ## Further readings
 
@@ -109,9 +108,6 @@ Happy coding!
 
 🐧
 
-[ ] Rinomina immagini
-[ ] Alt Text per immagini
-[ ] Nome cartella e slug devono combaciare
 [ ] Immagine di copertina
 [ ] Pulizia formattazione
 [ ] Fai resize della immagine di copertina
