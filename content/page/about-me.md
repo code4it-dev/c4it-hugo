@@ -5,7 +5,7 @@ date: 2021-11-01
 excludeFromTopNav: false
 showDate: false
 showComments: false
-featuredImage: ""
+featuredImage: "/img/personal-cover-image.png"
 ---
 
 Ciao, I'm **Davide Bellone**!
