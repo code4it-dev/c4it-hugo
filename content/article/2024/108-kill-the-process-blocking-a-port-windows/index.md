@@ -1,20 +1,20 @@
 ---
 title: "How to kill a process running on a local port in Windows"
-date: 2024-01-11
+date: 2024-01-16
 url: /blog/kill-the-process-blocking-a-port-windows
 draft: false
 categories:
- - Blog
+  - Blog
 tags:
- - PowerShell
- - MISC
+  - PowerShell
+  - MISC
 toc: true
 summary: "Now you can't run your application because another process already uses the port. How can you find that process? How to kill it?"
 images:
- - /blog/kill-the-process-blocking-a-port-windows/featuredImage.png
+  - /blog/kill-the-process-blocking-a-port-windows/featuredImage.png
 ---
 
-Sometimes, when trying to run your ASP.NET application, there's something stopping you. 
+Sometimes, when trying to run your ASP.NET application, there's something stopping you.
 
 Have you ever found a message like this?
 
@@ -38,10 +38,10 @@ netstat
 
 NETSTAT is a command that shows info about the **active TCP/IP network connections**. It accepts several options. In this case, we will use:
 
-* `-n`: Displays addresses and port numbers in numerical form.
-* `-o`: Displays the owning process ID associated with each connection.
-* `-a`: Displays all connections and listening ports;
-* `-p`: Filter for a specific protocol (TCP or UDP)
+- `-n`: Displays addresses and port numbers in numerical form.
+- `-o`: Displays the owning process ID associated with each connection.
+- `-a`: Displays all connections and listening ports;
+- `-p`: Filter for a specific protocol (TCP or UDP)
 
 ```powershell
 netstat -noa -p TCP
@@ -77,7 +77,7 @@ Get-Process -ID 19160
 
 ![Process info found using PowerShell](./process-info-by-pid-powershell.png)
 
-Then, you can use the `taskkill` command by specifying the PID, using the `/PID` flag, and adding the `/F` flag to *force* the killing of the process.
+Then, you can use the `taskkill` command by specifying the PID, using the `/PID` flag, and adding the `/F` flag to _force_ the killing of the process.
 
 ```powershell
 taskkill /PID 19160 /F
@@ -87,10 +87,9 @@ We have killed the process related to the running application. Visual Studio is 
 
 ## Further readings
 
-Hey, what are these fancy colours on the PowerShell? 
+Hey, what are these fancy colours on the PowerShell?
 
 It's a customization I added to show the current folder and the info about the associated GIT repository. It's incredibly useful while developing and navigating the file system with PowerShell.
-
 
 🔗 [OhMyPosh and CascadiaCode not working on PowerShell? How to fix it in Windows 10 and Windows 11 Integrated Terminal](https://www.code4it.dev/blog/ohmyposh-integrated-terminal-powershell/)
 
@@ -98,7 +97,7 @@ _This article first appeared on [Code4IT 🐧](https://www.code4it.dev/)_
 
 ## Wrapping up
 
-As you can imagine, this article exists because I often forget how to find the process that stops my development. 
+As you can imagine, this article exists because I often forget how to find the process that stops my development.
 
 It's always nice to delve into these topics to learn more about what you can do with PowerShell and which flags are available for a command.
 
@@ -107,7 +106,3 @@ I hope you enjoyed this article! Let's keep in touch on [Twitter](https://twitte
 Happy coding!
 
 🐧
-
-[ ] Immagine di copertina
-[ ] Pulizia formattazione
-[ ] Fai resize della immagine di copertina
