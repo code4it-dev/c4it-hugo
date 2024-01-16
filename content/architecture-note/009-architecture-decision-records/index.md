@@ -121,7 +121,7 @@ There are several tools to generate ADR tools for your project.
 - [adr-cli by Jandev](https://github.com/Jandev/adr-cli), which is a porting of adr-tools by npryce, but written in .NET
 - [ADR Manager](https://github.com/adr/adr-manager), a UI tool that connects to your GitHub repository and generates ADR files.
 
-🚀 And there is a new tool in the block: the one I recently decided to manage! It's called **[adr-power-cli](https://github.com/bellons91/adr-power-cli)**: it's a recent fork from Jandev's repo, and I plan to add lots of more functionalities. **Feel free to suggest improvements, functionalities, and everything needed to create ADRs**. I have big plans for this tool! 🚀
+<!-- 🚀 And there is a new tool in the block: the one I recently decided to manage! It's called **[adr-power-cli](https://github.com/bellons91/adr-power-cli)**: it's a recent fork from Jandev's repo, and I plan to add lots of more functionalities. **Feel free to suggest improvements, functionalities, and everything needed to create ADRs**. I have big plans for this tool! 🚀 -->
 
 ## Further readings
 
