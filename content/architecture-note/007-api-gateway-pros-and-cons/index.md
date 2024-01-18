@@ -86,7 +86,7 @@ Some vendors allow you to have multiple instances of the same service available 
 
 Another powerful technique you can implement is [SSL Termination](https://www.code4it.dev/blog/overview-api-gateways/#ssl-termination). In a simple architecture, if you have to communicate securely with 3 systems to aggregate the result, you have to validate the SSL connection three times. With **SSL Termination**, you can move these operations on the API Gateway component and avoid doing that in all the other services, making the application more performant.
 
-## Disadvangages
+## Disadvantages
 
 ### Single point of failure
 

@@ -32,7 +32,6 @@ public static class Calculator
 One way to create tests is by creating one test for each possible combination of values:
 
 ```cs
-
 public class SumTests
 {
 
