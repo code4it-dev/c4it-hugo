@@ -1,6 +1,6 @@
 ---
 title: "C# Tip: ObservableCollection - a data type to intercept changes to the collection"
-date: 2024-01-18
+date: 2024-01-23
 url: /csharptips/observablecollection
 draft: false
 categories:
