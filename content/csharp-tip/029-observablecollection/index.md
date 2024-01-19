@@ -1,34 +1,34 @@
 ---
-title: "C# Tip: Observable Collection"
-date: 2024-01-18T14:09:12+01:00
-url: /csharptips/post-slug
+title: "C# Tip: ObservableCollection - a data type to intercept changes to the collection"
+date: 2024-01-18
+url: /csharptips/observablecollection
 draft: false
 categories:
- - CSharp Tips
-tags: 
- - CSharp
+  - CSharp Tips
+tags:
+  - CSharp
 toc: false
-summary: "A summary"
+summary: "`ObservableCollection<T>` is a data type that allows you to react when an item is added or removed from the collection. Let's learn more!"
 images:
- - /csharptips/post-slug/featuredImage.png
+  - /csharptips/observablecollection/featuredImage.png
 ---
 
-Imagine you need a way to raise events whenever an item is added or removed to a collection.
+Imagine you need a way to raise events whenever an item is added or removed from a collection.
 
 Instead of building a new class from scratch, you can use `ObservableCollection<T>` to store items, raise events, and act when the internal state of the collection changes.
 
 In this article, we will learn how to use `ObservableCollection<T>`, an out-of-the-box collection available in .NET.
 
-## Introducing ObservableCollection
+## Introducing the ObservableCollection type
 
 `ObservableCollection<T>` is a generic collection coming from the `System.Collections.ObjectModel` namespace.
 
-It allows the most common operations such as `Add<T>(T item)` and `Remove<T>(T item)`, as you can expect from most of the collections in .NET.
+It allows the most common operations, such as `Add<T>(T item)` and `Remove<T>(T item)`, as you can expect from most of the collections in .NET.
 
-However, it implements two interfaces:
+Moreover, it implements two interfaces:
 
-- `INotifyCollectionChanged` can be used to raise events when the internal collection is changed.
-- `INotifyPropertyChanged` can be used to raise events when one of the properties of the changes.
+- `INotifyCollectionChanged` can be used to **raise events when the internal collection is changed**.
+- `INotifyPropertyChanged` can be used to **raise events when one of the properties of the changes**.
 
 Let's see a simple example of the usage:
 
@@ -51,7 +51,7 @@ collection.Move(1, 2);
 
 As you can see, we can do all the basic operations: add, remove, swap items (with the `Move` method), and check if the collection contains a specific value.
 
-You can simplify the initialization by passing a collection in the constructor:
+You can **simplify the initialization by passing a collection in the constructor**:
 
 ```cs
  var collection = new ObservableCollection<string>(new string[] { "Mario", "Luigi", "Peach" });
@@ -67,9 +67,9 @@ You can simplify the initialization by passing a collection in the constructor:
  collection.Move(1, 2);
 ```
 
-## Intercepting changes to the inner collection
+## How to intercept changes to the underlying collection
 
-As we said, this data type implements `INotifyCollectionChanged`. Thanks to this interface, we can add **events handlers** to the `CollectionChanged` event and see what happened.
+As we said, this data type implements `INotifyCollectionChanged`. Thanks to this interface, we can add **events handlers** to the `CollectionChanged` event and see what happens.
 
 ```cs
 var collection = new ObservableCollection<string>(new string[] { "Mario", "Luigi", "Peach" });
@@ -96,7 +96,7 @@ Console.WriteLine("Swapping items...");
 collection.Move(1, 2);
 ```
 
-The `WhenCollectionChanges` delegate exposes a `NotifyCollectionChangedEventArgs` that gives you info about the previous and the current items in the collection:
+The `WhenCollectionChanges` method accepts a `NotifyCollectionChangedEventArgs` that gives you info about the intercepted changes:
 
 ```cs
 private void WhenCollectionChanges(object? sender, NotifyCollectionChangedEventArgs e)
@@ -115,7 +115,7 @@ private void WhenCollectionChanges(object? sender, NotifyCollectionChangedEventA
 }
 ```
 
-So, every time an operation occurs, we we some logs.
+Every time an operation occurs, we write some logs.
 
 The result is:
 
@@ -149,15 +149,15 @@ Swapping items...
 
 Notice a few points:
 
-- the `sender` property holds the current items in collection. It's an `object?`, so you have to cast it to another type to use it.
-- the `NotifyCollectionChangedEventArgs` has differetn meanings depending on the operation:
+- **the `sender` property holds the current items in the collection**. It's an `object?`, so you have to cast it to another type to use it.
+- the `NotifyCollectionChangedEventArgs` has different meanings depending on the operation:
   - when adding a value, `OldItems` is null and `NewItems` contains the items added during the operation;
   - when removing an item, `OldItems` contains the value just removed, and `NewItems` is `null`.
   - when swapping two items, both `OldItems` and `NewItems` contain the item you are moving.
 
-## Property changed
+## How to intercept when a collection property has changed
 
-To execute events when a property changes we need to add a delegate to the `PropertyChanged` event. However, it's not available directly on the `ObservableCollection` type: you first have to cast it to an `INotifyPropertyChanged`:
+To execute events when a property changes, we need to add a delegate to the `PropertyChanged` event. However, it's not available directly on the `ObservableCollection` type: you first have to cast it to an `INotifyPropertyChanged`:
 
 ```cs
 var collection = new ObservableCollection<string>(new string[] { "Mario", "Luigi", "Peach" });
@@ -227,36 +227,43 @@ Swapping items...
 > Property Item[] has changed
 ```
 
-As you can see, for every add/remove operation we have two events raised: one to say that the `Count` has changed, one to say that the internal `Item[]` are changed.
+As you can see, for every add/remove operation, we have two events raised: one to say that the `Count` has changed, and one to say that the internal `Item[]` is changed.
 
-However, notice what happens in the Swapping section: you just change the order of the items, so the `Count` property does not change.
-
+However, notice what happens in the Swapping section: since you just change the order of the items, the `Count` property does not change.
 
 _This article first appeared on [Code4IT 🐧](https://www.code4it.dev/)_
 
-## Wrapping up
+## Final words
 
-As always, my suggestion is to explore the language and toy with the parameters, properties, data types, and so on.
+As you probably noticed, **events are fired after the collection has been initialized.** Clearly, it considers the items passed in the constructor as the initial state, and all the subsequent operations that mutate the state _can_ raise events.
 
-You'll find lots of interesting things that may come in handy.
+Also, notice that events are fired only if the reference to the value changes. If the collection holds more complex classes, like:
+
+```cs
+public class User
+{
+    public string Name { get; set; }
+}
+```
+
+No event is fired if you change the value of the `Name` property of an object already part of the collection:
+
+```cs
+var me = new User { Name = "Davide" };
+var collection = new ObservableCollection<User>(new User[] { me });
+
+collection.CollectionChanged += WhenCollectionChanges;
+(collection as INotifyPropertyChanged).PropertyChanged += WhenPropertyChanges;
+
+me.Name = "Updated"; // It does not fire any event!
+```
+
+As always, I suggest exploring the language and toying with the parameters, properties, data types, etc.
+
+You'll find lots of exciting things that may come in handy.
 
 I hope you enjoyed this article! Let's keep in touch on [Twitter](https://twitter.com/BelloneDavide) or [LinkedIn](https://www.linkedin.com/in/BelloneDavide/)! 🤜🤛
 
 Happy coding!
 
 🐧
-
-
-
-[ ] Titoli
-[ ] Frontmatter
-[ ] Rinomina immagini
-[ ] Alt Text per immagini
-[ ] Grammatica
-[ ] Bold/Italics
-[ ] Nome cartella e slug devono combaciare
-[ ] Immagine di copertina
-[ ] Rimuovi secrets dalle immagini
-[ ] Pulizia formattazione
-[ ] Metti la giusta OgTitle
-[ ] Fai resize della immagine di copertina
