@@ -6,8 +6,8 @@ draft: false
 categories:
   - Blog
 tags:
-  - CSharp
-    - Zip
+- CSharp
+- Zip
 toc: true
 summary: "Learn how to zip and unzip compressed files with C#. Beware: it's not as obvious as it might seem!"
 images:
