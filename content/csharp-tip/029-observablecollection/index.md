@@ -258,6 +258,8 @@ collection.CollectionChanged += WhenCollectionChanges;
 me.Name = "Updated"; // It does not fire any event!
 ```
 
+Notice that **`ObservableCollection<T>` is not thread-safe**! You can find an [interesting article](https://www.meziantou.net/thread-safe-observable-collection-in-dotnet.htm) by Gérald Barré (aka Meziantou) where he explains a thread-safe version of `ObservableCollection<T>` he created. Check it out!
+
 As always, I suggest exploring the language and toying with the parameters, properties, data types, etc.
 
 You'll find lots of exciting things that may come in handy.
