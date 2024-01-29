@@ -106,68 +106,21 @@ Now it's ready! Open a C# class, and start typing `int100`. You'll see our snipp
 
 By hitting Tab twice, then, you'll see the content of the snippet being generated
 
+## How to use placeholders when defining snippets in Visual Studio
 
-## Snippet complesso con placeholder
+Wouldn't it be nice to have the possibility to define customizable parts of your snippets?
 
-## Esecuzione finale
+Let's see a real example: I want to create a snippet to create unit tests with these characteristics:
 
-## Bonus: come visualizzare tutti gli snippet in VS
+- it already contains the AAA (Arrange, Act, Assert) sections;
+- the method name should follow the pattern "SOMETHING should DO STUFF when CONDITION". In particular, it will be MethodName_Should_DoSomething_When_ConditionIsMet.
 
-## Further readings
+You can define placeholders using the `$` symbol. You will then see the placeholders in the table at the bottom of the UI. In this example, the placeholders are `$TestMethod$`, `$DoSomething$`, and `$Condition$`. For each of these placeholders I also added a description, to better explain the purpose of each placeholder.
 
-_This article first appeared on [Code4IT 🐧](https://www.code4it.dev/)_
+![Alt text](./testsync-snippet.png)
 
+The XML looks like this:
 
-## Wrapping up
-
-
-I hope you enjoyed this article! Let's keep in touch on [Twitter](https://twitter.com/BelloneDavide) or [LinkedIn](https://www.linkedin.com/in/BelloneDavide/)! 🤜🤛
-
-Happy coding!
-
-🐧
-
-
-[ ] Titoli
-[ ] Frontmatter
-[ ] Rinomina immagini
-[ ] Alt Text per immagini
-[ ] Grammatica
-[ ] Bold/Italics
-[ ] Nome cartella e slug devono combaciare
-[ ] Immagine di copertina
-[ ] Rimuovi secrets dalle immagini
-[ ] Pulizia formattazione
-[ ] Controlla se ASP.NET Core oppure .NET
-[ ] Metti la giusta OgTitle
-[ ] Fai resize della immagine di copertina
-
-
-## Appunti
-
-- Installa SnippetDesigner e restart VS
-![Alt text](code-snippets-manager-menu-item.png) aprire uno specifico progetto. Sarebbe meglio avere un progetto aperto in modo da testare subito lo snippet
-- Crea un nuovo file **vuoto** con estensione .snippet
-- Salvalo sotto  \Documents\Visual Studio 2022\Code Snippets\Visual C#\My Code Snippets\firstSnippet.snippet
-
-Click su Apri file, riapri il file di prima, vedi schermata con SnippetDesigner:
-customizza il contenuto, poi salva
-
-
-Aggiungi lo snippet tra quelli disponibili, qui:
-
-![Alt text](code-snippets-manager-menu-item.png)
-
-Seleziona CSharp, click su Import, seleziona nuovo script
-![Alt text](code-snippets-manager.png)
-![Alt text](code-snippets-manager.png)
-![Alt text](snippet-int100.png)00.png)
-
-...
-
-XML test sync:
-
-![Alt text](image-10.png)
 
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
@@ -223,14 +176,69 @@ public void $TestMethod$_Should_$DoSomething$_When_$Condition$()
 </CodeSnippets>
 ```
 
-![](./testsync.gif)
+Now, import it as we already did before.
 
-per vedere gli altri snippet
+Then, head to your code, start typing `testsync`, and you'll see the snippet coming to life. The placeholders we defined are higlighted. You can the fill in these placeholders, hit tab, and move to the next one.
 
-![Apri View>Tools>Snippet explorer](image-4.png)
-![Lista di tutti gli snippet disponibili. ](image-3.png)
+![Test sync](./testsync.gif)
 
 
-https://learn.microsoft.com/en-us/visualstudio/ide/walkthrough-creating-a-code-snippet?view=vs-2022
 
-https://github.com/mmanela/SnippetDesigner/wiki/Creating-a-snippet-from-scratch
+## Bonus: how to view all the snippets defined in VS
+
+If you want to learn more about your IDE and the available snippets, you can have a look at the Snippet Explorer table.
+
+You can find it under *View* > *Tools* > *Snippet Explorer*.
+
+![Apri View>Tools>Snippet explorer](./snippet-explorer-menu-item.png)
+
+Here you can see all the snippets, their shortcuts, and the content of each snippet. You can also see the placehoders, highlighted in green.
+
+![List of snippets available in Snippet Explorer](./snippet-explorer-details.png)
+
+It's a good place to learn more about Visual Studio.
+
+## Further readings
+
+As always, you can read more on Microsoft Docs. It's a valuable resource, even thought I find it quite difficult to follow.
+
+🔗 [Create a code snippet in Visual Studio | Microsoft docs](https://learn.microsoft.com/en-us/visualstudio/ide/walkthrough-creating-a-code-snippet?view=vs-2022)
+
+
+I prefer working with the UI. If you want to have a look at the repo of the extension we used in this article, here's the link:
+
+🔗 [SnippetDesigner extension | GitHub](https://github.com/mmanela/SnippetDesigner/)
+
+
+_This article first appeared on [Code4IT 🐧](https://www.code4it.dev/)_
+
+
+## Wrapping up
+
+There are some tips that may improve both the code quality and the developer productivity.
+
+If you want to enforce some structures or rules, I suggest to add such snippets in your repository and, when somebody joins your team, teach them how to import those snippets.
+
+
+I hope you enjoyed this article! Let's keep in touch on [Twitter](https://twitter.com/BelloneDavide) or [LinkedIn](https://www.linkedin.com/in/BelloneDavide/)! 🤜🤛
+
+Happy coding!
+
+🐧
+
+
+[ ] Titoli
+[ ] Frontmatter
+[ ] Rinomina immagini
+[ ] Alt Text per immagini
+[ ] Grammatica
+[ ] Bold/Italics
+[ ] Nome cartella e slug devono combaciare
+[ ] Immagine di copertina
+[ ] Rimuovi secrets dalle immagini
+[ ] Pulizia formattazione
+[ ] Controlla se ASP.NET Core oppure .NET
+[ ] Metti la giusta OgTitle
+[ ] Fai resize della immagine di copertina
+
+ 
