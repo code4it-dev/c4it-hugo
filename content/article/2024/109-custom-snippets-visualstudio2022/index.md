@@ -4,18 +4,18 @@ date: 2024-01-25
 url: /blog/custom-snippets-visualstudio2022
 draft: false
 categories:
- - Blog
+  - Blog
 tags:
- - VisualStudio
+  - VisualStudio
 toc: true
 summary: "A simple way to improve efficiency is knowing your IDE shortcuts. Let's learn how to create custom ones to generate code automatically."
 images:
- - /blog/custom-snippets-visualstudio2022/featuredImage.png
+  - /blog/custom-snippets-visualstudio2022/featuredImage.png
 ---
 
 One of the best tricks to boost productivity is **knowing your tools**.
 
-I'm pretty sure you've already used some predefined snippets in Visual Studio. For example, when you type *ctor* and hit Tab twice, VS automatically creates an empty constructor for the current class.
+I'm pretty sure you've already used some predefined snippets in Visual Studio. For example, when you type _ctor_ and hit Tab twice, VS automatically creates an empty constructor for the current class.
 
 In this article, we will learn how to create custom snippets: in particular, we will design a snippet that automatically creates a C# Unit Test method with some placeholders and predefined Arrange-Act-Assert blocks.
 
@@ -23,7 +23,7 @@ In this article, we will learn how to create custom snippets: in particular, we 
 
 **Snippets are defined in XML-like files with `.snippet` extension**. But we all know that working with XMLs can be cumbersome, especially if you don't have a clear idea of the expected structure.
 
-Therefore, even if not strictly necessary, I suggest installing a VS2022 extension called *Snippet Designer 2022*.
+Therefore, even if not strictly necessary, I suggest installing a VS2022 extension called _Snippet Designer 2022_.
 
 ![Snippet Designer 2022 in VS2022](./snippet-designer-extension.png)
 
@@ -41,9 +41,9 @@ So, create an empty file, change its extension to `.snippet`, and save it to tha
 
 ![Save snippet file under the My Code Snippets folder in VS2022](./my-code-snippets-folder.png)
 
-Now, you can open Visual Studio (it's not necessary to open a project, but I'd recommend you to do so). Then, head to *File > Open*, and open the file you saved under the My Code Snippets directory.
+Now, you can open Visual Studio (it's not necessary to open a project, but I'd recommend you to do so). Then, head to _File > Open_, and open the file you saved under the My Code Snippets directory.
 
-Thanks to Snippet Designer, you will be able to see a nice UI instead of plain XML content. 
+Thanks to Snippet Designer, you will be able to see a nice UI instead of plain XML content.
 
 Have a look at how I filled in the several parts to create a snippet that generates a variable named `x`, assigns to it a value, and then calls `x++`;
 
@@ -98,11 +98,11 @@ It's time to import the snippet. Open the Tools menu item and click on Code Snip
 
 ![Code Snippets Manager menu item, under Tools](./code-snippets-manager-menu-item.png)
 
-From here, you can import a snippet by clicking the *Import...* button. Given that we've already saved our snippet in the correct folder, we'll find it under the My Code Snippets folder.
+From here, you can import a snippet by clicking the _Import..._ button. Given that we've already saved our snippet in the correct folder, we'll find it under the My Code Snippets folder.
 
 ![Code Snippets Manager tool](./code-snippets-manager.png)
 
-Now it's ready! Open a C# class, and start typing `int100`. You'll see our snippet in the autocomplete list. 
+Now it's ready! Open a C# class, and start typing `int100`. You'll see our snippet in the autocomplete list.
 
 ![Int100 snippet is now visible in Visual Studio](snippet-int100.png)
 
@@ -169,7 +169,7 @@ public void $TestMethod$_Should_$DoSomething$_When_$Condition$()
 
     // Act
 
-    // Assert 
+    // Assert
 
 }]]></Code>
     </Snippet>
@@ -187,7 +187,7 @@ Then, head to your code, start typing `testsync`, and you'll see the snippet com
 
 If you want to learn more about your IDE and the available snippets, you can have a look at the Snippet Explorer table.
 
-You can find it under *View* > *Tools* > *Snippet Explorer*.
+You can find it under _View_ > _Tools_ > _Snippet Explorer_.
 
 ![Snippet Explorer menu item](./snippet-explorer-menu-item.png)
 
@@ -215,14 +215,13 @@ There are some tips that may improve both the code quality and the developer pro
 
 If you want to enforce some structures or rules, add such snippets in your repository; when somebody joins your team, teach them how to import those snippets.
 
-
 I hope you enjoyed this article! Let's keep in touch on [Twitter](https://twitter.com/BelloneDavide) or [LinkedIn](https://www.linkedin.com/in/BelloneDavide/)! 🤜🤛
 
 Happy coding!
 
 🐧
 
-- [X] Bold/Italics
+- [x] Bold/Italics
 - [ ] Immagine di copertina
 - [ ] Pulizia formattazione
 - [ ] Fai resize della immagine di copertina

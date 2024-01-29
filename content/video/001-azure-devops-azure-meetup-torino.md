@@ -4,10 +4,9 @@ date: 2019-10-15
 draft: false
 url: /video/azure-devops-azure-meetup-torino
 categories:
-- Video
+  - Video
 tags:
- - Azure DevOps
+  - Azure DevOps
 
- 
-youtube: "hSCwzEm4M1A"    
+youtube: "hSCwzEm4M1A"
 ---

@@ -4,9 +4,9 @@ date: 2023-06-21
 draft: false
 url: /video/dotnet5-6-7-dotnet-sheff
 categories:
-- Video
+  - Video
 tags:
- - DotNet
- - CSharp
-youtube: "Wj_2g_P1lDw"      
+  - DotNet
+  - CSharp
+youtube: "Wj_2g_P1lDw"
 ---

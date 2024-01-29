@@ -4,9 +4,9 @@ date: 2023-11-21
 draft: false
 url: /video/dotnet5-6-7-8-dotnet-austria
 categories:
-- Video
+  - Video
 tags:
- - DotNet
- - CSharp
-youtube: "bMBMZOKInnE"       
+  - DotNet
+  - CSharp
+youtube: "bMBMZOKInnE"
 ---

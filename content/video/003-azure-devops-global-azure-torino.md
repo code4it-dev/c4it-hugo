@@ -4,9 +4,9 @@ date: 2021-04-15
 draft: false
 url: /video/azure-devops-global-azure-torino
 categories:
-- Video
+  - Video
 tags:
- - Azure DevOps
- 
-youtube: "QSm3zTCeOFo"     
+  - Azure DevOps
+
+youtube: "QSm3zTCeOFo"
 ---

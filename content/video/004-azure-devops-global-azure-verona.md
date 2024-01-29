@@ -4,9 +4,9 @@ date: 2021-04-17
 draft: false
 url: /video/azure-devops-global-azure-verona
 categories:
-- Video
+  - Video
 tags:
- - Azure DevOps
- 
-youtube: "HX1OVbPNR_I"      
+  - Azure DevOps
+
+youtube: "HX1OVbPNR_I"
 ---

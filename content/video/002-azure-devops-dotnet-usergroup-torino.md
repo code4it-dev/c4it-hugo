@@ -4,10 +4,9 @@ date: 2021-01-25
 draft: false
 url: /video/azure-devops-dotnet-usergroup-torino
 categories:
-- Video
+  - Video
 tags:
- - Azure DevOps
+  - Azure DevOps
 
- 
-youtube: "cszxbDQ7hfs"        
+youtube: "cszxbDQ7hfs"
 ---
