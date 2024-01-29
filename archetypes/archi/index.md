@@ -28,15 +28,16 @@ Happy coding!
 
 🐧
 
-[ ] Grammatica
-[ ] Titoli
-[ ] Frontmatter
-[ ] Immagine di copertina
-[ ] Fai resize della immagine di copertina
-[ ] Metti la giusta OgTitle
-[ ] Bold/Italics
-[ ] Nome cartella e slug devono combaciare
-[ ] Rinomina immagini
-[ ] Alt Text per immagini
-[ ] Rimuovi secrets dalle immagini 
-[ ] Pulizia formattazione
+- [ ] Grammatica
+- [ ] Titoli
+- [ ] Frontmatter
+- [ ] Immagine di copertina
+- [ ] Fai resize della immagine di copertina
+- [ ] Metti la giusta OgTitle
+- [ ] Bold/Italics
+- [ ] Nome cartella e slug devono combaciare
+- [ ] Rinomina immagini
+- [ ] Trim corretto per bordi delle immagini
+- [ ] Alt Text per immagini
+- [ ] Rimuovi secrets dalle immagini 
+- [ ] Pulizia formattazione

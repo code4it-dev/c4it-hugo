@@ -13,25 +13,25 @@ images:
  - /blog/custom-snippets-visualstudio2022/featuredImage.png
 ---
 
-One of the best tricks to boost productivity is knowing your tools.
+One of the best tricks to boost productivity is **knowing your tools**.
 
 I'm pretty sure you've already used some predefined snippets in Visual Studio. For example, when you type *ctor* and hit Tab twice, VS automatically creates an empty constructor for the current class.
 
 In this article, we will learn how to create custom snippets: in particular, we will design a snippet that automatically creates a C# Unit Test method with some placeholders and predefined Arrange-Act-Assert blocks.
 
-## Install Snippet Designer in Visual Studio 2022
+## Snippet Designer: a Visual Studio 2022 extension to add a UI to your placeholders
 
 **Snippets are defined in XML-like files with `.snippet` extension**. But we all know that working with XMLs can be cumbersome, especially if you don't have a clear idea of the expected structure.
 
 Therefore, even if not strictly necessary, I suggest installing a VS2022 extension called *Snippet Designer 2022*.
 
-![Snippet Designer 2022 in VS2022](snippet-designer-extension.png)
+![Snippet Designer 2022 in VS2022](./snippet-designer-extension.png)
 
 This extension, developed by Matthew Manela, can be found on [GitHub](https://github.com/mmanela/SnippetDesigner), where you can view the source code.
 
 This extension gives you a UI to customize the snippet instead of manually editing the XML nodes. It allows you to customize the snippet, the related metadata, and even the placeholders.
 
-## Create a basic snippet in VS2022
+## Create a basic snippet in VS2022 using a .snippet file
 
 As we saw, snippets are defined in a simple XML.
 
@@ -41,23 +41,23 @@ So, create an empty file, change its extension to `.snippet`, and save it to tha
 
 ![Save snippet file under the My Code Snippets folder in VS2022](./my-code-snippets-folder.png)
 
-Now, you can open Visual Studio (it's not necessary to open a project, but I'd recommend you to do so). Then, head to **File > Open**, and open the file you saved under the My Code Snippets directory.
+Now, you can open Visual Studio (it's not necessary to open a project, but I'd recommend you to do so). Then, head to *File > Open*, and open the file you saved under the My Code Snippets directory.
 
 Thanks to Snippet Designer, you will be able to see a nice UI instead of plain XML content. 
 
 Have a look at how I filled in the several parts to create a snippet that generates a variable named `x`, assigns to it a value, and then calls `x++`;
 
-![Nota anche la sidebar](./first-snippet-ui.png)
+![Simple snippet, with related metadata and annotations](./first-snippet-ui.png)
 
 Have a look at the main parts:
 
-- the body, which contains the snippet to be generated;
+- the **body**, which contains the snippet to be generated;
 - the top layer, where we specified:
   - the Snippet name: Int100; it's the display name of the shortcut
   - the code language: C#;
-  - the shortcut: int100; it's the string you'll type in that allows you to generate the expected snippet;
-- the bottom table, which contains the placeholders used in the snippet; more on this later;
-- the properties tab, on the sidebar: here is where you specify some additional metadata, such as:
+  - the **shortcut**: int100; it's the string you'll type in that allows you to generate the expected snippet;
+- the bottom table, which contains the **placeholders** used in the snippet; more on this later;
+- the **properties** tab, on the sidebar: here is where you specify some additional metadata, such as:
   - Author, Description, and Help Url of the snippet, in case you want to export it;
   - the kind of snippet: possible values are MethodBody, MethodDecl and TypeDecl. However, this value is supported only in Visual Basic.
 
@@ -90,9 +90,9 @@ x++;]]></Code>
 </CodeSnippets>
 ```
 
-Notice that the actual content of the snippet is defined in the `CDATA` block.
+Notice that **the actual content of the snippet is defined in the `CDATA` block**.
 
-## Import the snippet in VS2022
+## Import the snippet in Visual Studio
 
 It's time to import the snippet. Open the Tools menu item and click on Code Snippets Manager.
 
@@ -117,7 +117,7 @@ Let's see a real example: I want to create a snippet to create the structure of 
 - it already contains the AAA (Arrange, Act, Assert) sections;
 - the method name should follow the pattern "SOMETHING should DO STUFF when CONDITION". I want to be able to replace the different parts of the method name by using placeholders.
 
-You can define placeholders using the `$` symbol. You will then see the placeholders in the table at the bottom of the UI. In this example, the placeholders are `$TestMethod$`, `$DoSomething$`, and `$Condition$`. I also added a description to explain the purpose of each placeholder better.
+**You can define placeholders using the `$` symbol**. You will then see the placeholders in the table at the bottom of the UI. In this example, the placeholders are `$TestMethod$`, `$DoSomething$`, and `$Condition$`. I also added a description to explain the purpose of each placeholder better.
 
 ![TestSync snippet definition and metadata](./testsync-snippet.png)
 
@@ -179,7 +179,7 @@ public void $TestMethod$_Should_$DoSomething$_When_$Condition$()
 
 Now, import it as we already did before.
 
-Then, head to your code, start typing `testsync, ' and you'll see the snippet come to life. The placeholders we defined are highlighted. You can then fill in these placeholders, hit tab, and move to the next one.
+Then, head to your code, start typing `testsync`, and you'll see the snippet come to life. The placeholders we defined are highlighted. You can then fill in these placeholders, hit tab, and move to the next one.
 
 ![Test sync snippet usage](./testsync.gif)
 
@@ -189,7 +189,7 @@ If you want to learn more about your IDE and the available snippets, you can hav
 
 You can find it under *View* > *Tools* > *Snippet Explorer*.
 
-![Apri View>Tools>Snippet explorer](./snippet-explorer-menu-item.png)
+![Snippet Explorer menu item](./snippet-explorer-menu-item.png)
 
 Here, you can see all the snippets, their shortcuts, and the content of each snippet. You can also see the placeholders highlighted in green.
 
@@ -222,18 +222,7 @@ Happy coding!
 
 🐧
 
-
-[ ] Titoli
-[ ] Frontmatter
-[ ] Rinomina immagini
-[ ] Alt Text per immagini
-[ ] Bold/Italics
-[ ] Nome cartella e slug devono combaciare
-[ ] Immagine di copertina
-[ ] Rimuovi secrets dalle immagini
-[ ] Pulizia formattazione
-[ ] Controlla se ASP.NET Core oppure .NET
-[ ] Metti la giusta OgTitle
-[ ] Fai resize della immagine di copertina
-
- 
+- [X] Bold/Italics
+- [ ] Immagine di copertina
+- [ ] Pulizia formattazione
+- [ ] Fai resize della immagine di copertina
