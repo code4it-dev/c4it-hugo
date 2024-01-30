@@ -1,6 +1,6 @@
 ---
 title: "How to create custom snippets in Visual Studio 2022"
-date: 2024-01-25
+date: 2024-01-30
 url: /blog/custom-snippets-visualstudio2022
 draft: false
 categories:
@@ -220,8 +220,3 @@ I hope you enjoyed this article! Let's keep in touch on [Twitter](https://twitte
 Happy coding!
 
 🐧
-
-- [x] Bold/Italics
-- [ ] Immagine di copertina
-- [ ] Pulizia formattazione
-- [ ] Fai resize della immagine di copertina
