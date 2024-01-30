@@ -29,15 +29,17 @@ Happy coding!
 
 
 
-[ ] Titoli
-[ ] Frontmatter
-[ ] Rinomina immagini
-[ ] Alt Text per immagini
-[ ] Grammatica
-[ ] Bold/Italics
-[ ] Nome cartella e slug devono combaciare
-[ ] Immagine di copertina
-[ ] Rimuovi secrets dalle immagini
-[ ] Pulizia formattazione
-[ ] Metti la giusta OgTitle
-[ ] Fai resize della immagine di copertina
+- [ ] Grammatica
+- [ ] Titoli
+- [ ] Frontmatter
+- [ ] Immagine di copertina
+- [ ] Fai resize della immagine di copertina
+- [ ] Metti la giusta OgTitle
+- [ ] Bold/Italics
+- [ ] Nome cartella e slug devono combaciare
+- [ ] Rinomina immagini
+- [ ] Trim corretto per bordi delle immagini
+- [ ] Alt Text per immagini
+- [ ] Rimuovi secrets dalle immagini
+- [ ] Controlla se ASP.NET Core oppure .NET
+- [ ] Pulizia formattazione
