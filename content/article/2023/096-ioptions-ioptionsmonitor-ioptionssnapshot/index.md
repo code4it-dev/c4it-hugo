@@ -239,7 +239,7 @@ There is a lot more about how to inject configurations.
 
 For sure, one of the best resources is the official documentation:
 
-🔗 [Options pattern in ASP.NET Core | Microsoft docs](https://learn.microsoft.com/en-us/aspnet/core/fundamentals/configuration/options)
+🔗 [Options pattern in ASP.NET Core | Microsoft docs](https://learn.microsoft.com/en-us/aspnet/core/fundamentals/configuration/options?wt.mc_id=DT-MVP-5005077)
 
 I insisted on explaining that `IOptions` and `IOptionsMonitor` are _Singleton_, while `IOptionsSnapshot` is _Scoped_.
 If you don't know what they mean, here's a short but thorough explanation:

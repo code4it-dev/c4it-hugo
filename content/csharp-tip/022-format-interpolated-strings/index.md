@@ -41,7 +41,7 @@ Console.WriteLine($"The default version is {date}"); //The default version is 23
 
 Here we have `date:yyyy-MM-dd` which basically means "format the `date` variable using the `yyyy-MM-dd` format".
 
-There are, obviously, different ways to format dates, as described on the [official documentation](https://learn.microsoft.com/en-us/dotnet/standard/base-types/custom-date-and-time-format-strings). Some of the most useful are:
+There are, obviously, different ways to format dates, as described on the [official documentation](https://learn.microsoft.com/en-us/dotnet/standard/base-types/custom-date-and-time-format-strings?wt.mc_id=DT-MVP-5005077). Some of the most useful are:
 
 - `dd`: day of the month, in number (from 01 to 31);
 - `ddd`: abbreviated day name (eg: Mon)
@@ -79,11 +79,11 @@ There are too many formats that you can use to convert a value to a string, and 
 
 But still, you can have a look at several ways to format date and time in C#
 
-🔗 [Custom date and time format strings | Microsoft Docs](https://learn.microsoft.com/en-us/dotnet/standard/base-types/custom-date-and-time-format-strings)
+🔗 [Custom date and time format strings | Microsoft Docs](https://learn.microsoft.com/en-us/dotnet/standard/base-types/custom-date-and-time-format-strings?wt.mc_id=DT-MVP-5005077)
 
 and, obviously, to format numbers
 
-🔗 [Standard numeric format strings | Microsoft Docs](https://learn.microsoft.com/en-us/dotnet/standard/base-types/standard-numeric-format-strings)
+🔗 [Standard numeric format strings | Microsoft Docs](https://learn.microsoft.com/en-us/dotnet/standard/base-types/standard-numeric-format-strings?wt.mc_id=DT-MVP-5005077)
 
 _This article first appeared on [Code4IT 🐧](https://www.code4it.dev/)_
 

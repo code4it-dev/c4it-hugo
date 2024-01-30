@@ -91,7 +91,7 @@ This is the default option for .NET Core apps, since .NET Core was built with cr
 
 So, for applications running on a Windows machine, you should consider the _in-process_ hosting model and use IISHttpServer instead of Kestrel.
 
-You can have additional info [here](https://docs.microsoft.com/en-us/aspnet/core/host-and-deploy/iis "IIS documentation on Microsoft docs") and [here](https://docs.microsoft.com/en-us/aspnet/core/host-and-deploy/aspnet-core-module "ASP.NET documentation on Microsoft docs").
+You can have additional info [here](https://docs.microsoft.com/en-us/aspnet/core/host-and-deploy/iis?wt.mc_id=DT-MVP-5005077 "IIS documentation on Microsoft docs") and [here](https://docs.microsoft.com/en-us/aspnet/core/host-and-deploy/aspnet-core-module?wt.mc_id=DT-MVP-5005077 "ASP.NET documentation on Microsoft docs").
 
 ## MiniProfiler
 

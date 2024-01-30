@@ -16,7 +16,7 @@ images:
 
 Probably you have already heard of **extension methods**: those are C# methods used to add new functionalities to an existing class.
 
-This functionality is available since C# 3.0, so it's largely used and [well documented](https://docs.microsoft.com/en-us/dotnet/csharp/programming-guide/classes-and-structs/extension-methods).
+This functionality is available since C# 3.0, so it's largely used and [well documented](https://docs.microsoft.com/en-us/dotnet/csharp/programming-guide/classes-and-structs/extension-methods?wt.mc_id=DT-MVP-5005077).
 
 ## The basics of extension method
 

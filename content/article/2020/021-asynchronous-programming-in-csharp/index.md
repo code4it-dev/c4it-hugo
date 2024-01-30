@@ -68,7 +68,7 @@ If your method doesn't return anything, you must set `Task` as a return value in
 
 If you pay attention to memory allocation, remember that Task and Task<T> are referenced on the heap. If you have constraints on memory, you can use `ValueTask` and `ValueTask<T>` that are referenced on the stack.
 
-You can read more in the article [Understanding the Whys, Whats, and Whens of ValueTask](https://devblogs.microsoft.com/dotnet/understanding-the-whys-whats-and-whens-of-valuetask/ "Understanding the Whys, Whats, and Whens of ValueTask on .NET blog") on the .NET blog.
+You can read more in the article [Understanding the Whys, Whats, and Whens of ValueTask](https://devblogs.microsoft.com/dotnet/understanding-the-whys-whats-and-whens-of-valuetask?wt.mc_id=DT-MVP-5005077 "Understanding the Whys, Whats, and Whens of ValueTask on .NET blog") on the .NET blog.
 
 Have you noticed the return statement? The statement is `return content.Length`, so I'm returning an _int_ instead of _Task&lt;int&gt;_. This is done automatically for you!
 
@@ -86,7 +86,7 @@ static async Task Main(string[] args)
 }
 ```
 
-You can see more examples on [Microsoft Documentation](https://docs.microsoft.com/en-us/dotnet/csharp/programming-guide/main-and-command-args/main-return-values#async-main-return-values "Async main documentation").
+You can see more examples on [Microsoft Documentation](https://docs.microsoft.com/en-us/dotnet/csharp/programming-guide/main-and-command-args/main-return-values?wt.mc_id=DT-MVP-5005077#async-main-return-values "Async main documentation").
 
 ## Adding some logs and seeing what happens
 

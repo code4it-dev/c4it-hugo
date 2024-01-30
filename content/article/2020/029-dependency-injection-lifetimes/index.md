@@ -232,6 +232,6 @@ We've seen the available lifetimes for injected services. Here's a recap the dif
 
 If you want to try it, you can clone the project I used for this article on [this GitHub repository](https://github.com/code4it-dev/DependencyInjectionScopes "GitHub repository for this example").
 
-Finally, if you want to read more about DI in .NET Core, just head to the [Microsoft documentation](https://docs.microsoft.com/en-us/aspnet/core/fundamentals/dependency-injection?view=aspnetcore-3.1#service-lifetimes "Microsoft docs on Service Lifetimes") and, if you wanna read more about DI best practices, here's a great article by [Halil İbrahim Kalkan](https://medium.com/volosoft/asp-net-core-dependency-injection-best-practices-tips-tricks-c6e9c67f9d96 "DI best practices article").
+Finally, if you want to read more about DI in .NET Core, just head to the [Microsoft documentation](https://docs.microsoft.com/en-us/aspnet/core/fundamentals/dependency-injection?view=aspnetcore-3.1&wt.mc_id=DT-MVP-5005077#service-lifetimes "Microsoft docs on Service Lifetimes") and, if you wanna read more about DI best practices, here's a great article by [Halil İbrahim Kalkan](https://medium.com/volosoft/asp-net-core-dependency-injection-best-practices-tips-tricks-c6e9c67f9d96 "DI best practices article").
 
 Happy coding!

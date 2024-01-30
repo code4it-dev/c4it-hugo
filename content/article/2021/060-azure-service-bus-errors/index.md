@@ -188,6 +188,6 @@ Finally, we've seen what is a Dead Letter, and how you can recover messages move
 
 This is the last part of this series about Azure Service Bus and .NET: there's a lot more to talk about, like dive deeper into DLQ and understanding Retry Patterns.
 
-For more info, you can read [this article about retry mechanisms on the .NET SDK](https://docs.microsoft.com/en-us/azure/architecture/best-practices/retry-service-specific#service-bus "Retry mechanisms on the .NET SDK") available on Microsoft Docs, and have a look at [this article](https://medium.com/guidesmiths-dev/error-handling-on-a-service-bus-5c11e4c10bf0 "Error handling on a service bus") by Felipe Polo Ruiz.
+For more info, you can read [this article about retry mechanisms on the .NET SDK](https://docs.microsoft.com/en-us/azure/architecture/best-practices/retry-service-specific?wt.mc_id=DT-MVP-5005077#service-bus "Retry mechanisms on the .NET SDK") available on Microsoft Docs, and have a look at [this article](https://medium.com/guidesmiths-dev/error-handling-on-a-service-bus-5c11e4c10bf0 "Error handling on a service bus") by Felipe Polo Ruiz.
 
 Happy coding! 🐧

@@ -93,7 +93,7 @@ This means that you can't rely on the mouse cursor to point at a specific part o
 
 ![Where is the cursor?](https://media4.giphy.com/media/ToMjGpmQcblIGMmbJQI/giphy.gif "Cursors")
 
-A good idea is to use some kind of tools like [ZoomIt](https://docs.microsoft.com/it-it/sysinternals/downloads/zoomit "Zoomit link and documentation"): it allows you to zoom in a part of your screen and to draw lines in a virtual layer.
+A good idea is to use some kind of tools like [ZoomIt](https://docs.microsoft.com/it-it/sysinternals/downloads/zoomit?wt.mc_id=DT-MVP-5005077 "Zoomit link and documentation"): it allows you to zoom in a part of your screen and to draw lines in a virtual layer.
 
 So, instead of saying «now click this button - hey, can you see my cursor?», use Zoomit to zoom on that button or, even better, to draw a rectangle or an arrow to highlight it.
 

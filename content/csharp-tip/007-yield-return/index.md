@@ -179,7 +179,7 @@ The previous snippet is taken directly from NUnit's documentation for the `TestC
 
 Yes, `yield` is a quite difficult keyword to understand.
 
-To read more, head to [the official docs](https://docs.microsoft.com/en-us/dotnet/csharp/language-reference/keywords/yield "Yield documentation on Microsoft docs").
+To read more, head to [the official docs](https://docs.microsoft.com/en-us/dotnet/csharp/language-reference/keywords/yield?wt.mc_id=DT-MVP-5005077 "Yield documentation on Microsoft docs").
 
 Another good resource is ["C# – Use yield return to minimize memory usage"](https://makolyte.com/csharp-use-yield-return-to-minimize-memory-usage/ "Another article about yield return by Makolyte") by [Makolyte](https://twitter.com/makolyte). You should definitely check it out!
 

@@ -48,7 +48,7 @@ Note 1: the Assert class is not native of C#: its namespace is `Microsoft.Visual
 
 Note 2: you cannot create sub-classes since **this class is sealed**.
 
-This class provides the most general checks, those based on equality and general assertions. You can find the documentation [on this page](https://docs.microsoft.com/en-us/dotnet/api/microsoft.visualstudio.testtools.unittesting.assert "Unit testing page on Microsoft docs").
+This class provides the most general checks, those based on equality and general assertions. You can find the documentation [on this page](https://docs.microsoft.com/en-us/dotnet/api/microsoft.visualstudio.testtools.unittesting.assert?wt.mc_id=DT-MVP-5005077 "Unit testing page on Microsoft docs").
 
 For almost every method I'll show in this article there is a specular method that checks if the condition is not verified. For Assert.IsTrue there is Assert.IsFalse, for Assert.AreEqual there is Assert.AreNotEqual and so on. The only exception here is the *ThrowsException* method.
 

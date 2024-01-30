@@ -60,7 +60,7 @@ When the message is read from all the Subscribers, the message is removed from t
 
 ## Subscriptions
 
-As stated [on the official documentation](https://docs.microsoft.com/en-us/azure/service-bus-messaging/service-bus-queues-topics-subscriptions#topics-and-subscriptions "Topics and subscription explanation on Microsoft docs"):
+As stated [on the official documentation](https://docs.microsoft.com/en-us/azure/service-bus-messaging/service-bus-queues-topics-subscriptions?wt.mc_id=DT-MVP-5005077#topics-and-subscriptions "Topics and subscription explanation on Microsoft docs"):
 
 > A **topic subscription** resembles a virtual queue that receives copies of the messages that are sent to the topic. Consumers receive messages from a subscription identically to the way they receive messages from a queue.
 

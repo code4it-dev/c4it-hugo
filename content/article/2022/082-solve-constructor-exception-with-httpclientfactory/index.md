@@ -184,7 +184,7 @@ And, more in detail, I've also talked about one way to mock `HttpClientFactory` 
 
 Finally, why do we need to use HttpClientFactories instead of HttpClients?
 
-🔗 [Use IHttpClientFactory to implement resilient HTTP requests | Microsoft Docs](https://docs.microsoft.com/en-us/dotnet/architecture/microservices/implement-resilient-applications/use-httpclientfactory-to-implement-resilient-http-requests)
+🔗 [Use IHttpClientFactory to implement resilient HTTP requests | Microsoft Docs](https://docs.microsoft.com/en-us/dotnet/architecture/microservices/implement-resilient-applications/use-httpclientfactory-to-implement-resilient-http-requests?wt.mc_id=DT-MVP-5005077)
 
 _This article first appeared on [Code4IT](https://www.code4it.dev/)_
 

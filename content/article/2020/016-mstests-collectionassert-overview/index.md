@@ -20,7 +20,7 @@ Now we'll deep dive into the CollectionAssert class, that is a good fit for ensu
 
 ## Introduction to CollectionAssert
 
-[This class](https://docs.microsoft.com/en-us/dotnet/api/microsoft.visualstudio.testtools.unittesting.collectionassert "CollectionAssert class on Microsoft") tests various conditions associated with collections, like tests about the type of the elements. It is important to say that this class does not check if every element in the collection follows a certain rule (like "The ID must be greater than 0"), but it's more about **high level checks**.
+[This class](https://docs.microsoft.com/en-us/dotnet/api/microsoft.visualstudio.testtools.unittesting.collectionassert?wt.mc_id=DT-MVP-5005077 "CollectionAssert class on Microsoft") tests various conditions associated with collections, like tests about the type of the elements. It is important to say that this class does not check if every element in the collection follows a certain rule (like "The ID must be greater than 0"), but it's more about **high level checks**.
 
 For these examples I'll reuse two classes created for the first article of this series: _User_ and _AdminUser_: the second class extends the first one:
 

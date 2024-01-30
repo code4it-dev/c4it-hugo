@@ -214,13 +214,13 @@ string Classify(double measurement) => measurement switch
 
 but you can read more here:
 
-🔗 [Relational patterns | Microsoft Docs](https://learn.microsoft.com/en-us/dotnet/csharp/language-reference/operators/patterns#relational-patterns)
+🔗 [Relational patterns | Microsoft Docs](https://learn.microsoft.com/en-us/dotnet/csharp/language-reference/operators/patterns#relational-patterns?wt.mc_id=DT-MVP-5005077)
 
 _This article first appeared on [Code4IT 🐧](https://www.code4it.dev/)_
 
 There are also more ways to handle Switch Statements. To learn about more complex examples, here's the documentation:
 
-🔗 [The switch statement | Microsoft Docs](https://learn.microsoft.com/en-us/dotnet/csharp/language-reference/statements/selection-statements#the-switch-statement)
+🔗 [The switch statement | Microsoft Docs](https://learn.microsoft.com/en-us/dotnet/csharp/language-reference/statements/selection-statements?wt.mc_id=DT-MVP-5005077#the-switch-statement)
 
 Finally, in those examples, we used `records`. As you saw, I marked the `User` type as `abstract`.
 

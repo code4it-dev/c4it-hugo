@@ -167,7 +167,7 @@ action.ToString("x"); // "00000017"
 action.ToString("d"); // "23"
 ```
 
-You can read more details on those values on [Microsoft documentation](https://docs.microsoft.com/en-us/dotnet/api/system.enum.format?view=netcore-3.1#remarks "Formatting flags on Microsoft documentation").
+You can read more details on those values on [Microsoft documentation](https://docs.microsoft.com/en-us/dotnet/api/system.enum.format?view=netcore-3.1&wt.mc_id=DT-MVP-5005077#remarks "Formatting flags on Microsoft documentation").
 
 If you need the numeric value of the enum, you can simply cast it.
 
@@ -258,7 +258,7 @@ This is more performant than looping though a list of enums, since now we're wor
 
 ## #5: Enum best practices
 
-As always, there are some best practices to follow. The following ones are suggested directly on the [Microsoft documentation](https://docs.microsoft.com/en-us/dotnet/api/system.enum?view=netcore-3.1#enumeration-best-practices "Enums best practices on Microsoft documentation"):
+As always, there are some best practices to follow. The following ones are suggested directly on the [Microsoft documentation](https://docs.microsoft.com/en-us/dotnet/api/system.enum?view=netcore-3.1&wt.mc_id=DT-MVP-5005077#enumeration-best-practices "Enums best practices on Microsoft documentation"):
 
 1. If you have a default value for the enumeration, set its value to 0;
 2. If there isn't an obvious default value, create a value (set to 0) that represents the fallback case (for example, create a _None_ value and set it to 0);

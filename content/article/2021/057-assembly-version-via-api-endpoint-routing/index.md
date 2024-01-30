@@ -50,7 +50,7 @@ Lastly, we need the string that represents the assembly version:
 string assemblyVersion = versionAttribute.InformationalVersion;
 ```
 
-If you want to read more about Assembly versioning in .NET, just [head to the official documentation](https://docs.microsoft.com/en-us/dotnet/standard/assembly/versioning "Assemby versioning documentation on Microsoft Docs").
+If you want to read more about Assembly versioning in .NET, just [head to the official documentation](https://docs.microsoft.com/en-us/dotnet/standard/assembly/versioning?wt.mc_id=DT-MVP-5005077 "Assemby versioning documentation on Microsoft Docs").
 
 ## How to expose an endpoint with Endpoint Routing
 

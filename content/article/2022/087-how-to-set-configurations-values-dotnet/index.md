@@ -81,7 +81,7 @@ I then expose a single endpoint, _/config_, which returns the current configurat
 
 Where is the source of the application's configurations?
 
-As stated on the Microsoft docs website, [here 🔗](https://learn.microsoft.com/en-us/aspnet/core/fundamentals/host/web-host?view=aspnetcore-6.0#set-up-a-host), the `WebApplicationBuilder`...
+As stated on the Microsoft docs website, [here 🔗](https://learn.microsoft.com/en-us/aspnet/core/fundamentals/host/web-host?view=aspnetcore-6.0&wt.mc_id=DT-MVP-5005077#set-up-a-host), the `WebApplicationBuilder`...
 
 > Loads app configuration in the following order from:
 > appsettings.json.
@@ -294,7 +294,7 @@ As always, there's more!
 
 If you want to know more about how dotNET APIs load and start, you should have a look at this page:
 
-🔗 [ASP.NET Core Web Host | Microsoft Docs](https://learn.microsoft.com/en-us/aspnet/core/fundamentals/host/web-host?view=aspnetcore-6.0)
+🔗 [ASP.NET Core Web Host | Microsoft Docs](https://learn.microsoft.com/en-us/aspnet/core/fundamentals/host/web-host?view=aspnetcore-6.0&wt.mc_id=DT-MVP-5005077)
 
 Ok, now you know different approaches for setting configurations.
 How do you know the exact values that are set in your application?

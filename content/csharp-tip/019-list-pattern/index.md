@@ -119,7 +119,7 @@ public void can_use_list_patterns_with_condition()
 }
 ```
 
-To read more about List patterns, just head to the [official documentation 🔗](https://learn.microsoft.com/en-us/dotnet/csharp/language-reference/operators/patterns#list-patterns).
+To read more about List patterns, just head to the [official documentation 🔗](https://learn.microsoft.com/en-us/dotnet/csharp/language-reference/operators/patterns?wt.mc_id=DT-MVP-5005077#list-patterns).
 
 _This article first appeared on [Code4IT 🐧](https://www.code4it.dev/)_
 

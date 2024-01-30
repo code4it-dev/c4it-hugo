@@ -191,7 +191,7 @@ _This article first appeared on [Code4IT 🐧](https://www.code4it.dev/)_
 
 Also, handling config in a smart way is easy, if you know what to do. You can follow some best practices.
 
-🔗[Azure App Configuration best practices | Microsoft Docs](https://learn.microsoft.com/en-us/azure/azure-app-configuration/howto-best-practices)
+🔗[Azure App Configuration best practices | Microsoft Docs](https://learn.microsoft.com/en-us/azure/azure-app-configuration/howto-best-practices?wt.mc_id=DT-MVP-5005077)
 
 ## Wrapping up
 

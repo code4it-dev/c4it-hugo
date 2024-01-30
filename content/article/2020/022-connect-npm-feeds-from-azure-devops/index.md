@@ -128,4 +128,4 @@ _This article first appeared on [Code4IT](https://www.code4it.dev/)_
 
 Here I explained how to connect to npm feeds from Azure DevOps and how to solve problems with authorization.
 
-But, the future might bring something new: as you know, [GitHub has announced the acquisition of npm](https://github.blog/2020-03-16-npm-is-joining-github/ "GitHub acquires npm") in March 2020, and [Microsoft acquired GitHub](https://blogs.microsoft.com/blog/2018/10/26/microsoft-completes-github-acquisition/ "Microsoft acquires GitHub") in 2018. So probably we'll see a different way to integrate npm inside Azure DevOps. Who knows? 😊
+But, the future might bring something new: as you know, [GitHub has announced the acquisition of npm](https://github.blog/2020-03-16-npm-is-joining-github/ "GitHub acquires npm") in March 2020, and [Microsoft acquired GitHub](https://blogs.microsoft.com/blog/2018/10/26/microsoft-completes-github-acquisition?wt.mc_id=DT-MVP-5005077 "Microsoft acquires GitHub") in 2018. So probably we'll see a different way to integrate npm inside Azure DevOps. Who knows? 😊

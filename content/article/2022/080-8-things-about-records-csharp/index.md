@@ -289,7 +289,7 @@ As usual, a few links you might want to read to learn more about Records in C#.
 
 The first one is a tutorial from the Microsoft website that teaches you the basics of Records:
 
-🔗 [Create record types | Microsoft Docs](https://docs.microsoft.com/en-us/dotnet/csharp/whats-new/tutorials/records "Create record types tutorial on Microsoft website")
+🔗 [Create record types | Microsoft Docs](https://docs.microsoft.com/en-us/dotnet/csharp/whats-new/tutorials/records?wt.mc_id=DT-MVP-5005077 "Create record types tutorial on Microsoft website")
 
 The second one is a splendid article by Gary Woodfine where he explores the internals of C# Records, and more:
 

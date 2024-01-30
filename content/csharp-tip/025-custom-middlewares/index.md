@@ -90,11 +90,11 @@ Both are valid methods, but each of them performs well in specific cases.
 
 On Microsoft documentation you can find a well-explained introduction to Middlewares:
 
-🔗 [ASP.NET Core Middleware | Microsoft docs](https://learn.microsoft.com/en-us/aspnet/core/fundamentals/middleware)
+🔗 [ASP.NET Core Middleware | Microsoft docs](https://learn.microsoft.com/en-us/aspnet/core/fundamentals/middleware?wt.mc_id=DT-MVP-5005077)
 
 And some suggestions on how to write a custom middleware as standalone classes:
 
-🔗 [Write custom ASP.NET Core middleware | Microsoft docs](https://learn.microsoft.com/en-us/aspnet/core/fundamentals/middleware/write)
+🔗 [Write custom ASP.NET Core middleware | Microsoft docs](https://learn.microsoft.com/en-us/aspnet/core/fundamentals/middleware/write?wt.mc_id=DT-MVP-5005077)
 
 I hope you enjoyed this article! Let's keep in touch on [Twitter](https://twitter.com/BelloneDavide) or [LinkedIn](https://www.linkedin.com/in/BelloneDavide/)! 🤜🤛
 

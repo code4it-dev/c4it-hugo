@@ -147,7 +147,7 @@ _This article first appeared on [Code4IT 🐧](https://www.code4it.dev/)_
 
 If you want to learn more about `Sort`, the best place is the documentation:
 
-🔗 [List.Sort Method | Microsoft Docs](https://learn.microsoft.com/en-us/dotnet/api/system.collections.generic.list-1.sort?view=net-7.0)
+🔗 [List.Sort Method | Microsoft Docs](https://learn.microsoft.com/en-us/dotnet/api/system.collections.generic.list-1.sort?view=net-7.0&wt.mc_id=DT-MVP-5005077)
 
 ## Wrapping up
 

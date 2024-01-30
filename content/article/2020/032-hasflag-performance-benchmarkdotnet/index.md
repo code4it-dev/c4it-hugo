@@ -174,7 +174,7 @@ So, was everyone wrong about the performance issue?
 
 ## Testing multiple runtimes
 
-That's simple: it's an old problem, which has been fixed in 2017. That's one of the fixes [documented here](https://devblogs.microsoft.com/dotnet/ryujit-just-in-time-compiler-optimization-enhancements/ "2017 fix that addresses the performance issue").
+That's simple: it's an old problem, which has been fixed in 2017. That's one of the fixes [documented here](https://devblogs.microsoft.com/dotnet/ryujit-just-in-time-compiler-optimization-enhancements?wt.mc_id=DT-MVP-5005077 "2017 fix that addresses the performance issue").
 
 So the best way to try it is to try with different runtimes.
 

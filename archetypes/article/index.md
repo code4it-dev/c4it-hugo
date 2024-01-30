@@ -43,3 +43,4 @@ Happy coding!
 - [ ] Rimuovi secrets dalle immagini
 - [ ] Controlla se ASP.NET Core oppure .NET
 - [ ] Pulizia formattazione
+- [ ] Add wt.mc_id=DT-MVP-5005077 to links

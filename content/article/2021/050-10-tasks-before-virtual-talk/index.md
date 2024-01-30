@@ -86,7 +86,7 @@ How many times have you heard this phrase? It's not wrong to say so, but you can
 
 For Windows, you can install a small tool, **ZoomIt**, that allows you to draw lines, arrows, and shapes on your screen.
 
-You can read more [on this page](https://docs.microsoft.com/en-gb/sysinternals/downloads/zoomit) by Microsoft, where you can find the download file, some shortcuts, and more info.
+You can read more [on this page](https://docs.microsoft.com/en-gb/sysinternals/downloads/zoomit?wt.mc_id=DT-MVP-5005077) by Microsoft, where you can find the download file, some shortcuts, and more info.
 
 So, download it, try out some shortcuts (eg: _R_, _G_, _B_ to use a red, green, or blue pen, and _Hold Ctrl + Shift_ to draw an arrow) and use it to help your audience see what you're indicating with your mouse.
 

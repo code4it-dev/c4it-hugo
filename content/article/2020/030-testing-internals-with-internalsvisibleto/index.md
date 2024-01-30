@@ -14,7 +14,7 @@ images:
   - /blog/testing-internals-with-internalsvisibleto/featuredImage.png
 ---
 
-Do you remember the [**internal** access modifier](https://docs.microsoft.com/en-us/dotnet/csharp/language-reference/keywords/internal "Internal keyword reference")? It allows you to **access classes, methods and properties only within files in the same assembly**.
+Do you remember the [**internal** access modifier](https://docs.microsoft.com/en-us/dotnet/csharp/language-reference/keywords/internal?wt.mc_id=DT-MVP-5005077 "Internal keyword reference")? It allows you to **access classes, methods and properties only within files in the same assembly**.
 
 But sometimes you need to have info about the internal state of that class but within a different assembly. An example is tests: they live in a different project, so a different assembly, but sometimes they need to access the internal properties of a class.
 
@@ -116,7 +116,7 @@ _Wondering what the CollectionAssert class is? Check out the [third part of my s
 
 ## More about InternalsVisibleTo
 
-If you have a look at the [documentation for this attribute](https://docs.microsoft.com/en-us/dotnet/api/system.runtime.compilerservices.internalsvisibletoattribute "InternalsVisibleTo documentation"), you'll see some interesting things:
+If you have a look at the [documentation for this attribute](https://docs.microsoft.com/en-us/dotnet/api/system.runtime.compilerservices.internalsvisibletoattribute?wt.mc_id=DT-MVP-5005077 "InternalsVisibleTo documentation"), you'll see some interesting things:
 
 ```cs
 [System.AttributeUsage(System.AttributeTargets.Assembly, AllowMultiple=true, Inherited=false)]

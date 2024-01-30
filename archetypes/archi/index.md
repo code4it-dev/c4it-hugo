@@ -41,3 +41,4 @@ Happy coding!
 - [ ] Alt Text per immagini
 - [ ] Rimuovi secrets dalle immagini 
 - [ ] Pulizia formattazione
+- [ ] Add wt.mc_id=DT-MVP-5005077 to links

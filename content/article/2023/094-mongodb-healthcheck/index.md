@@ -256,7 +256,7 @@ But, yes, in general, you can simply use the NuGet package we used in the previo
 
 As usual, the best way to learn more about a topic is by reading the official documentation:
 
-🔗 [Health checks in ASP.NET Core | Microsoft Docs](https://learn.microsoft.com/en-us/aspnet/core/host-and-deploy/health-checks)
+🔗 [Health checks in ASP.NET Core | Microsoft Docs](https://learn.microsoft.com/en-us/aspnet/core/host-and-deploy/health-checks?wt.mc_id=DT-MVP-5005077)
 
 How can you use MongoDB locally? Well, easy: \*with Docker!
 
