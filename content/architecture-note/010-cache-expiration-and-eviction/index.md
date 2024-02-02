@@ -1,6 +1,6 @@
 ---
-title: "Davide's Code and Architecture Notes - Cache Expiration vs Eviction"
-date: 2024-01-30T09:53:01+01:00
+title: "Davide's Code and Architecture Notes - Cache Expiration, Cache Eviction, and Eviction Policies"
+date: 2024-01-30
 url: /architecture-notes/cache-expiration-and-eviction
 draft: false
 categories:
@@ -67,7 +67,7 @@ If the TTL value is excessively long, **the data being served can become stale o
 
 Also, suppose the cache item is accessed constantly, but the underneath value does not change. In that case, you'll end up in a loop of *cache expires* -> *access data on the db* -> *store the data in cache* -> *cache expires*, which does not add any value since the data is always the same.
 
-## Cache Eviction: items are removed based on usage policies
+## Cache Eviction: items are removed based on specific policies
 
 While cache expiration is done automatically based on the TTL, **cache eviction**  removes data from the cache to make room for new data. This may be necessary when the cache is full, and you need to find the items to sacrifice.
 
@@ -195,16 +195,6 @@ Alla prossima!
 
 🐧
 
-- [X] Grammatica
-- [ ] Titoli
-- [X] Frontmatter
-- [X] Immagine di copertina
-- [X] Fai resize della immagine di copertina
-- [X] Metti la giusta OgTitle
 - [ ] Bold/Italics
-- [ ] Nome cartella e slug devono combaciare
-- [ ] Rinomina immagini
-- [ ] Trim corretto per bordi delle immagini
-- [ ] Alt Text per immagini
 - [ ] Pulizia formattazione
   
