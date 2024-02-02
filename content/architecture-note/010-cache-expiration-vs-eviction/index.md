@@ -162,13 +162,12 @@ In this article, we learned some policies to remove items from the cache. What a
 
 🔗 [Server-side caching strategies: how do they work? | Code4IT](https://www.code4it.dev/architecture-notes/caching-strategies/)
 
-https://www.linkedin.com/pulse/unlocking-efficiency-exploring-cache-eviction-policies-baligh-mehrez/
-
 _This article first appeared on [Code4IT 🐧](https://www.code4it.dev/)_
 
-https://redis.com/blog/cache-eviction-strategies/
+You can find a more complete list of cache eviction policies in this Wikipedia page:
 
-https://en.wikipedia.org/wiki/Cache_replacement_policies
+🔗 [Cache replacement policies | Wikipedia](https://en.wikipedia.org/wiki/Cache_replacement_policies)
+
 
 ## Wrapping up
 
@@ -196,12 +195,12 @@ Alla prossima!
 
 🐧
 
-- [ ] Grammatica
+- [X] Grammatica
 - [ ] Titoli
-- [ ] Frontmatter
-- [ ] Immagine di copertina
-- [ ] Fai resize della immagine di copertina
-- [ ] Metti la giusta OgTitle
+- [X] Frontmatter
+- [X] Immagine di copertina
+- [X] Fai resize della immagine di copertina
+- [X] Metti la giusta OgTitle
 - [ ] Bold/Italics
 - [ ] Nome cartella e slug devono combaciare
 - [ ] Rinomina immagini
