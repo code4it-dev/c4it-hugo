@@ -66,7 +66,7 @@ Now we can move on and make configurations dynamic.
 
 ## Sentinel values: a guard value to monitor changes in the configurations
 
-On Azure App Configuration, you have to update the configurations manually one by one. Unfortunately, there is no way to update them in a single batch. You can [import them in a batch](https://learn.microsoft.com/en-us/azure/azure-app-configuration/concept-config-file), but you have to update them singularly.
+On Azure App Configuration, you have to update the configurations manually one by one. Unfortunately, there is no way to update them in a single batch. You can [import them in a batch](https://learn.microsoft.com/en-us/azure/azure-app-configuration/concept-config-file?wt.mc_id=DT-MVP-5005077), but you have to update them singularly.
 
 Imagine that you have a service that accesses an external API whose BaseUrl and API Key are stored on Az App Configuration. We now need to move to another API: we then have to update both BaseUrl and API Key. The application is running, and we want to update the info about the external API. If we updated the application configurations every time something is updated on Az App Configuration, we would end up with an invalid state - for example, we would have the new BaseUrl and the old API Key.
 
@@ -267,7 +267,7 @@ Also, we learned that using `IOptions` we are not getting the most updated value
 
 Finally, I briefly talked about pricing. As of July 2023, there are just 2 pricing tiers, with different limitations.
 
-🔗 [App Configuration pricing | Microsoft Learn](https://azure.microsoft.com/en-us/pricing/details/app-configuration/)
+🔗 [App Configuration pricing | Microsoft Learn](https://azure.microsoft.com/en-us/pricing/details/app-configuration?wt.mc_id=DT-MVP-5005077)
 
 ## Wrapping up
 

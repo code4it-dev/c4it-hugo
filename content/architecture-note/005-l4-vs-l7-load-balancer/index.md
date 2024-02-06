@@ -70,7 +70,7 @@ For instance, an L7 Load Balancer can handle:
 
 You can find a lot of Load Balancers that work at the Application layer, such as:
 
-- [Azure Application Gateway](https://learn.microsoft.com/en-us/azure/application-gateway/overview)
+- [Azure Application Gateway](https://learn.microsoft.com/en-us/azure/application-gateway/overview?wt.mc_id=DT-MVP-5005077)
 - [AWS Classic/Application Load Balancer](https://aws.amazon.com/elasticloadbalancing/features/)
 - [Traefik (Open Source)](https://traefik.io/)
 - [NGINX (Open Source)](https://github.com/nginx/nginx)
@@ -89,7 +89,7 @@ As you can imagine, many teams prefer an L7 Load Balancer over an L4 Load Balanc
 
 However, you can find some good L4 Load Balancers on the web:
 
-- [Azure Load Balancer](https://learn.microsoft.com/en-us/azure/load-balancer/load-balancer-overview)
+- [Azure Load Balancer](https://learn.microsoft.com/en-us/azure/load-balancer/load-balancer-overview?wt.mc_id=DT-MVP-5005077)
 - [AWS Network/Gateway/Classing Load Balancer](https://aws.amazon.com/elasticloadbalancing/features/)
 - [HAProxy Technologies](https://www.haproxy.com/solutions/load-balancing)
 - [VMWare](https://docs.vmware.com/en/VMware-Tanzu-Kubernetes-Grid-Integrated-Edition/1.16/tkgi/GUID-network-profiles-ncp-lb.html)

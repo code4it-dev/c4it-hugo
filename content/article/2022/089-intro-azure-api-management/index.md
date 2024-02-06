@@ -109,7 +109,7 @@ As usual, a bunch of interesting readings 📚
 
 In this article, we've only scratched the surface of Azure API Management. There's way lot - and you can read about it on the Microsoft Docs website:
 
-🔗 [What is Azure API Management? | Microsoft docs](https://learn.microsoft.com/en-us/azure/api-management/api-management-key-concepts)
+🔗 [What is Azure API Management? | Microsoft docs](https://learn.microsoft.com/en-us/azure/api-management/api-management-key-concepts?wt.mc_id=DT-MVP-5005077)
 
 To integrate Azure APIM, we used two simple dotNET 6 Web APIs deployed on Azure. If you wanna know how to set up GitHub Actions to build and deploy dotNET APIs, I recently published an article on that topic.
 

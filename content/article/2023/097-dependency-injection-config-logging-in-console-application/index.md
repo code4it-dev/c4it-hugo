@@ -260,7 +260,7 @@ As always, a few resources to learn more about the topics discussed in this arti
 
 First and foremost, have a look at this article with a full explanation of Generic Hosts in a .NET Core application:
 
-🔗 [.NET Generic Host in ASP.NET Core | Microsoft docs](https://learn.microsoft.com/en-us/aspnet/core/fundamentals/host/generic-host)
+🔗 [.NET Generic Host in ASP.NET Core | Microsoft docs](https://learn.microsoft.com/en-us/aspnet/core/fundamentals/host/generic-host?wt.mc_id=DT-MVP-5005077)
 
 Then, if you recall, we've already learned how to print Serilog logs to the Console:
 

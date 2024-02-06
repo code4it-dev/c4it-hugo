@@ -206,7 +206,7 @@ As always, there are some best practices you should follow. The following ones a
 3. In older versions of .NET, the HasFlag method was less efficient than a bitwise AND check. So, to check if a value contains _Beverage.Water_, you could do `((beverage & Beverage.Water) == Beverage.Water)`. With newer versions this problem has been fixed.
 4. As always, remember to validate input parameters, just like you [should do for simple enums](https://www.code4it.dev/blog/5-things-enums-csharp#5-enum-best-practices "Why you should validate inputs").
 
-For more, you can refer to [Microsoft documentation](https://docs.microsoft.com/en-us/dotnet/api/system.flagsattribute?view=netcore-3.1#guidelines-for-flagsattribute-and-enum "Microsoft best practices about Flags attribute").
+For more, you can refer to [Microsoft documentation](https://docs.microsoft.com/en-us/dotnet/api/system.flagsattribute?view=netcore-3.1&wt.mc_id=DT-MVP-5005077#guidelines-for-flagsattribute-and-enum "Microsoft best practices about Flags attribute").
 
 _This article first appeared on [Code4IT](https://www.code4it.dev/)_
 

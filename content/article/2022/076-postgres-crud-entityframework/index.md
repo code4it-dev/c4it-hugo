@@ -28,7 +28,7 @@ With Entity Framework you don't have to write SQL queries in plain text: you wri
 
 Entity Framework supports tons of database engines, such as SQL Server, MySQL, Azure CosmosDB, Oracle, and, of course, PostgreSQL.
 
-There are a lot of things you should know about EF if you're new to it. In this case, the best resource is its [official documentation](https://docs.microsoft.com/en-us/ef/core "Entity Framework documentation").
+There are a lot of things you should know about EF if you're new to it. In this case, the best resource is its [official documentation](https://docs.microsoft.com/en-us/ef/core?wt.mc_id=DT-MVP-5005077 "Entity Framework documentation").
 
 But the only way to learn it is by getting your hands dirty. Let's go!
 
@@ -362,7 +362,7 @@ public async Task Delete(int id)
 
 Entity Framework is impressive, and you can integrate it with tons of database vendors. In the link below you can find the full list. But pay attention that not all the libraries are implemented by the EF team, some are third-party libraries (like the one we used for Postgres):
 
-🔗 [Database Providers | Microsoft docs](https://docs.microsoft.com/en-us/ef/core/providers/?tabs=dotnet-core-cli "EF supported database providers")
+🔗 [Database Providers | Microsoft docs](https://docs.microsoft.com/en-us/ef/core/providers/?tabs=dotnet-core-cli?wt.mc_id=DT-MVP-5005077 "EF supported database providers")
 
 If you want to start working with PostgreSQL, a good way is to download it as a _Docker_ image:
 

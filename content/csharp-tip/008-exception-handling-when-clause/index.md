@@ -105,7 +105,7 @@ Quite interesting, uh? 😉
 
 _This article first appeared on [Code4IT](https://www.code4it.dev/)_
 
-To read more, you can head to [the official documentation](https://docs.microsoft.com/en-us/dotnet/csharp/language-reference/keywords/when), even though there's not so much.
+To read more, you can head to [the official documentation](https://docs.microsoft.com/en-us/dotnet/csharp/language-reference/keywords/when?wt.mc_id=DT-MVP-5005077), even though there's not so much.
 
 Happy coding!
 

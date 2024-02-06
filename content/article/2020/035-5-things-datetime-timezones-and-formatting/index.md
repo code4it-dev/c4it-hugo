@@ -84,7 +84,7 @@ Console.WriteLine (d.ToUniversalTime()); // 31-Dec-19 23:00:00
 
 ## #2: Format shorthands and localization
 
-Now you have your Date. It's time to convert it as a string for your users. As you know, you can format every part of the date: for this topic, you can refer directly to [the official documentation](https://docs.microsoft.com/en-us/dotnet/standard/base-types/custom-date-and-time-format-strings "Date and time formats documentation").
+Now you have your Date. It's time to convert it as a string for your users. As you know, you can format every part of the date: for this topic, you can refer directly to [the official documentation](https://docs.microsoft.com/en-us/dotnet/standard/base-types/custom-date-and-time-format-strings?wt.mc_id=DT-MVP-5005077 "Date and time formats documentation").
 
 Usually, you'll see something like this:
 
@@ -167,7 +167,7 @@ var d1 = DateTime.ParseExact(formattedDate, "O", CultureInfo.CurrentCulture);
 Console.WriteLine(d1 == d); // True
 ```
 
-Again, you can refer to the [Microsoft documentation](https://docs.microsoft.com/en-us/dotnet/standard/base-types/standard-date-and-time-format-strings#the-round-trip-o-o-format-specifier "Round-trip format documentation on Microsoft site").
+Again, you can refer to the [Microsoft documentation](https://docs.microsoft.com/en-us/dotnet/standard/base-types/standard-date-and-time-format-strings?wt.mc_id=DT-MVP-5005077#the-round-trip-o-o-format-specifier "Round-trip format documentation on Microsoft site").
 
 ## Wrapping up
 

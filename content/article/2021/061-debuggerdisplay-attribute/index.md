@@ -161,7 +161,7 @@ Notice that I added `nq` to every string I wanted to escape. This simple modifie
 
 ![DebuggerDisplay with nq: no-quotes](./inspect-debuggerdisplay-withNQ.png)
 
-There are other format specifiers, but not that useful. You can find the complete list [here](https://docs.microsoft.com/en-us/visualstudio/debugger/format-specifiers-in-csharp "Format specifiers in C# in the Visual Studio debugger").
+There are other format specifiers, but not that useful. You can find the complete list [here](https://docs.microsoft.com/en-us/visualstudio/debugger/format-specifiers-in-csharp?wt.mc_id=DT-MVP-5005077 "Format specifiers in C# in the Visual Studio debugger").
 
 ## How to access nested fields
 
@@ -241,11 +241,11 @@ That's why you should use the `DebuggerDisplay` attribute: it has no side effect
 
 ## Additional resources
 
-[🔗 DebuggerDisplay Attribute | Microsoft Docs](https://docs.microsoft.com/en-us/visualstudio/debugger/using-the-debuggerdisplay-attribute)
+[🔗 DebuggerDisplay Attribute | Microsoft Docs](https://docs.microsoft.com/en-us/visualstudio/debugger/using-the-debuggerdisplay-attribute?wt.mc_id=DT-MVP-5005077)
 
 [🔗 C# debugging: DebuggerDisplay or ToString()? | StackOverflow](https://stackoverflow.com/questions/3190987/c-sharp-debugging-debuggerdisplay-or-tostring)
 
-[🔗 DebuggerDisplay attribute best practices | Microsoft Docs](https://docs.microsoft.com/en-gb/archive/blogs/jaredpar/debuggerdisplay-attribute-best-practices)
+[🔗 DebuggerDisplay attribute best practices | Microsoft Docs](https://docs.microsoft.com/en-gb/archive/blogs/jaredpar/debuggerdisplay-attribute-best-practices?wt.mc_id=DT-MVP-5005077)
 
 ## Wrapping up
 

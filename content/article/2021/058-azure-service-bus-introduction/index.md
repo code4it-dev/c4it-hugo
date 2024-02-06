@@ -236,7 +236,7 @@ And that's it! Now the message is available on the PizzaOrders queue and can be 
 
 Here I serialized the PizzaOrder into a JSON string. This is not mandatory: **you can send messages in whichever format you want: JSON, XML, plain text, BinaryData**... It's up to you!
 
-Also, you can add lots of properties to each message. To read the full list, head to the [ServiceBusMessage Class documentation](https://docs.microsoft.com/en-us/dotnet/api/azure.messaging.servicebus.servicebusmessage?view=azure-dotnet).
+Also, you can add lots of properties to each message. To read the full list, head to the [ServiceBusMessage Class documentation](https://docs.microsoft.com/en-us/dotnet/api/azure.messaging.servicebus.servicebusmessage?view=azure-dotnet&wt.mc_id=DT-MVP-5005077).
 
 ### How to receive messages on Azure Service Bus
 

@@ -227,7 +227,7 @@ Talking about its design, **which approach would you suggest, and why?**
 
 As usual, the best way to learn about something is by reading its official documentation:
 
-🔗 [PriorityQueue documentation | Microsoft Learn](https://learn.microsoft.com/en-us/dotnet/api/system.collections.generic.priorityqueue-2)
+🔗 [PriorityQueue documentation | Microsoft Learn](https://learn.microsoft.com/en-us/dotnet/api/system.collections.generic.priorityqueue-2?wt.mc_id=DT-MVP-5005077)
 
 This article is part of the 2022 C# Advent (that's why I chose a Christmas-ish topic for this article),
 

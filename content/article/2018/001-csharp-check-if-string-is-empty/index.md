@@ -97,7 +97,7 @@ Fine. Too tricky, isn't it? And we just reinvented the wheel.
 
 ## .NET native methods: String.IsNullOrEmpty and String.IsNullOrWhitespace
 
-C# provides two methods to achieve this result, [String.IsNullOrEmpty](https://docs.microsoft.com/en-us/dotnet/api/system.string.isnullorempty "String.IsNullOrEmpty documentation") and  [String.IsNullOrWhiteSpace](https://docs.microsoft.com/en-us/dotnet/api/system.string.isnullorwhitespace "String.IsNullOrWhitespace documentation"), with a subtle difference.
+C# provides two methods to achieve this result, [String.IsNullOrEmpty](https://docs.microsoft.com/en-us/dotnet/api/system.string.isnullorempty?wt.mc_id=DT-MVP-5005077 "String.IsNullOrEmpty documentation") and  [String.IsNullOrWhiteSpace](https://docs.microsoft.com/en-us/dotnet/api/system.string.isnullorwhitespace?wt.mc_id=DT-MVP-5005077 "String.IsNullOrWhitespace documentation"), with a subtle difference.
 
 `String.IsNullOrEmpty` checks only if **the string passed as parameter has at least one symbol**, so it doesn't recognize strings composed by empty characters.
 

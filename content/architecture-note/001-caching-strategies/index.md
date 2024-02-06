@@ -158,7 +158,7 @@ AWS's caching functionality is called ElastiCache. They have published a nice gu
 
 Similarly, Azure gives you a Redis instance. And they have also published their set of best practices:
 
-🔗 [Caching guidance | Microsoft Docs](https://learn.microsoft.com/en-us/azure/architecture/best-practices/caching)
+🔗 [Caching guidance | Microsoft Docs](https://learn.microsoft.com/en-us/azure/architecture/best-practices/caching?wt.mc_id=DT-MVP-5005077)
 
 Then, Alachisoft, the creators of NCache, has a nice section you might want to read.
 

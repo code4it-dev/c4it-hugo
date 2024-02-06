@@ -188,7 +188,7 @@ Cons:
 
 I doubt anyone will use this tool daily; after all, if the OpenAPI file can be inspected through the Swagger UI, why not using it? On the other side, this is a nice tool that can come in handy if the targeted API doesn't expose a UI or if you are exploring the APIs from a system without a browser.
 
-If you want to know more about HttpRepl, you can have a look at [this article on the Microsoft blog](https://devblogs.microsoft.com/aspnet/httprepl-a-command-line-tool-for-interacting-with-restful-http-services/ "HttpRepl article on Microsoft blog") or you can refer to the [official documentation](https://docs.microsoft.com/en-gb/aspnet/core/web-api/http-repl "HttpRepl documentation on Microsoft Docs").
+If you want to know more about HttpRepl, you can have a look at [this article on the Microsoft blog](https://devblogs.microsoft.com/aspnet/httprepl-a-command-line-tool-for-interacting-with-restful-http-services?wt.mc_id=DT-MVP-5005077 "HttpRepl article on Microsoft blog") or you can refer to the [official documentation](https://docs.microsoft.com/en-gb/aspnet/core/web-api/http-repl?wt.mc_id=DT-MVP-5005077 "HttpRepl documentation on Microsoft Docs").
 
 If you're more interested in the code, you can see the [GitHub repository for HttpRepl](https://github.com/dotnet/HttpRepl "HttpRepl repo on GitHub").
 

@@ -154,7 +154,7 @@ Notice: _I have yet to try all these vendors_. The info in this list comes prima
   - Price: Zuul is free and open source.
   - Pros: Zuul is robust, reliable, and battle-tested by Netflix, and supports filters for request processing.
   - Cons: Zuul has limited documentation.
-- **[Azure API Management](https://azure.microsoft.com/en-us/pricing/details/api-management/)**: it offers features such as a developer portal, Gateway, policies, throttling, caching, and more.
+- **[Azure API Management](https://azure.microsoft.com/en-us/pricing/details/api-management?wt.mc_id=DT-MVP-5005077)**: it offers features such as a developer portal, Gateway, policies, throttling, caching, and more.
   - Price: Azure API Management offers a free tier and several paid tiers. The paid tiers start from $0.07 per hour for the Developer tier and go up to $3.83 per hour for the Premium tier.
   - Pros: Azure API Management is easy to integrate with other Azure services, supports multiple protocols and formats, and has a rich set of features and policies.
   - Cons: Azure API Management may have a complex pricing model, and it requires Azure Active Directory for authentication.

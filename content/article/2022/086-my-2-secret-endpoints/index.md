@@ -215,7 +215,7 @@ Now it's your turn to find an appropriate way to hide these endpoints. How would
 
 We've used a quite new way to build and develop APIs with .NET, called "Minimal APIs". You can read more here:
 
-🔗 [Minimal APIs | Microsoft Learn](https://learn.microsoft.com/en-us/aspnet/core/fundamentals/minimal-apis?view=aspnetcore-6.0)
+🔗 [Minimal APIs | Microsoft Learn](https://learn.microsoft.com/en-us/aspnet/core/fundamentals/minimal-apis?view=aspnetcore-6.0&wt.mc_id=DT-MVP-5005077)
 
 If you are not using Minimal APIs, you still might want to create such endpoints. We've talked about accessing the HttpContext to get info about the HTTP headers and query string. When using Controllers, accessing the `HttpContext` requires some more steps. Here's an article that you may find interesting:
 

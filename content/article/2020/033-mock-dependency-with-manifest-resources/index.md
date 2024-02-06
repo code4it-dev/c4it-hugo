@@ -180,7 +180,7 @@ Now that you have that object, you can update the test:
 
 That's it! You have created a fake object reading from a JSON file instead of populating all the object's fields manually.
 
-If you want to look at the documentation for the GetManifestResourceStream method, just [go to the Microsoft Docs website](https://docs.microsoft.com/en-us/dotnet/api/system.reflection.assembly.getmanifestresourcestream?view=netcore-3.1#System_Reflection_Assembly_GetManifestResourceStream_System_String_ "GetManifestResourceStream documentation").
+If you want to look at the documentation for the GetManifestResourceStream method, just [go to the Microsoft Docs website](https://docs.microsoft.com/en-us/dotnet/api/system.reflection.assembly.getmanifestresourcestream?view=netcore-3.1&wt.mc_id=DT-MVP-5005077#System_Reflection_Assembly_GetManifestResourceStream_System_String_ "GetManifestResourceStream documentation").
 
 ## Conclusion
 

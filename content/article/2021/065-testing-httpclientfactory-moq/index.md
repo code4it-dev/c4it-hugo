@@ -316,9 +316,9 @@ public async Task Method_Should_ReturnSomething_When_Condition()
 
 🔗 [Example repository | GitHub](https://github.com/code4it-dev/MockHttpClientFactory "Repository to run the code")
 
-🔗 [Why we need HttpClientFactory | Microsoft Docs](https://docs.microsoft.com/en-us/dotnet/architecture/microservices/implement-resilient-applications/use-httpclientfactory-to-implement-resilient-http-requests "Use IHttpClientFactory to implement resilient HTTP requests | Microsoft Docs")
+🔗 [Why we need HttpClientFactory | Microsoft Docs](https://docs.microsoft.com/en-us/dotnet/architecture/microservices/implement-resilient-applications/use-httpclientfactory-to-implement-resilient-http-requests?wt.mc_id=DT-MVP-5005077 "Use IHttpClientFactory to implement resilient HTTP requests | Microsoft Docs")
 
-🔗 [HttpMessageHandler class | Microsoft Docs](https://docs.microsoft.com/en-us/dotnet/api/system.net.http.httpmessagehandler?view=net-5.0 "HttpMessageHandler class documentation")
+🔗 [HttpMessageHandler class | Microsoft Docs](https://docs.microsoft.com/en-us/dotnet/api/system.net.http.httpmessagehandler?wt.mc_id=DT-MVP-5005077 "HttpMessageHandler class documentation")
 
 🔗 [Mock objects with static, complex data by using Manifest resources | Code4IT](https://www.code4it.dev/blog/mock-dependency-with-manifest-resources "How to use Manifest resources to mock objects")
 

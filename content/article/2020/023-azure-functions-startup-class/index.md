@@ -22,7 +22,7 @@ Azure Functions are event-driven applications that run serverless. Usually, they
 
 You can build Azure Functions with different languages, such as C#, Java, JavaScript and so on. One of the features that made the success of Azure Functions is the pricing: **you pay only for the time spent running your code**.
 
-If you want to know more about Azure Functions, you can refer to the official [Microsoft documentation](https://docs.microsoft.com/en-us/azure/azure-functions/functions-overview "Azure Functions overview").
+If you want to know more about Azure Functions, you can refer to the official [Microsoft documentation](https://docs.microsoft.com/en-us/azure/azure-functions/functions-overview?wt.mc_id=DT-MVP-5005077 "Azure Functions overview").
 
 When you create an Azure Function (version 2) following the Visual Studio wizard, the example code that you get is something like this:
 
@@ -187,7 +187,7 @@ These few steps allow us to do great things, like reading values from the config
 
 You can read a different point of view on this topic in [this article on Medium](https://medium.com/hitachisolutions-braintrust/azure-functions-v2-dependency-injection-using-net-core-fccd93b80c0).
 
-Also, if you want to learn even more, you can refer to the [Microsoft documentation](https://docs.microsoft.com/en-us/azure/azure-functions/functions-dotnet-dependency-injection). Pay attention that this is updated to Azure Functions v3 instead of v2.
+Also, if you want to learn even more, you can refer to the [Microsoft documentation](https://docs.microsoft.com/en-us/azure/azure-functions/functions-dotnet-dependency-injection?wt.mc_id=DT-MVP-5005077). Pay attention that this is updated to Azure Functions v3 instead of v2.
 
 Finally, you can see a working example on [my GitHub repository](https://github.com/code4it-dev/AzureFunctionV2Example).
 

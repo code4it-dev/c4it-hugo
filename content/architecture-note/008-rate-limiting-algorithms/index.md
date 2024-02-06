@@ -123,7 +123,7 @@ If you want to know more about the Leaky Bucket algorithm, here's a fantastic ar
 
 Finally, in 2022 Microsoft announced that they added Rate Limiting capabilities in .NET 7, available under the `System.Threading.RateLimiting` namespace:
 
-🔗 [Announcing Rate Limiting for .NET| DotNET blog](https://devblogs.microsoft.com/dotnet/announcing-rate-limiting-for-dotnet/)
+🔗 [Announcing Rate Limiting for .NET| DotNET blog](https://devblogs.microsoft.com/dotnet/announcing-rate-limiting-for-dotnet?wt.mc_id=DT-MVP-5005077)
 
 ## Wrapping up
 

@@ -124,7 +124,7 @@ with the message
 
 You can print numbers with lots of different formats, you know. Probably you've already done it with the `ToString` method. Well, here's almost the same.
 
-You can use all the [standard numeric formats](https://docs.microsoft.com/en-us/dotnet/standard/base-types/standard-numeric-format-strings "Standard numeric format strings documentation") as formatting parameters.
+You can use all the [standard numeric formats](https://docs.microsoft.com/en-us/dotnet/standard/base-types/standard-numeric-format-strings?wt.mc_id=DT-MVP-5005077 "Standard numeric format strings documentation") as formatting parameters.
 
 For example, you can **write a decimal as a currency** value by using `C` or `c`:
 
@@ -276,7 +276,7 @@ var actualString = DateTime.UtcNow.Ticks % 2 == 0 ? it : en;
 Console.WriteLine(string.Format(actualString, "Davide"));
 ```
 
-If you want to read more about `string.Format`, just head to the [Microsoft documentation](https://docs.microsoft.com/en-us/dotnet/api/system.string.format?view=netcore-3.1#get-started-with-the-stringformat-method "Get started with the String.Format method by Microsoft Docs"), where you can find lots of examples.
+If you want to read more about `string.Format`, just head to the [Microsoft documentation](https://docs.microsoft.com/en-us/dotnet/api/system.string.format?view=netcore-3.1&wt.mc_id=DT-MVP-5005077#get-started-with-the-stringformat-method "Get started with the String.Format method by Microsoft Docs"), where you can find lots of examples.
 
 In the end, here's the full code of the `Format` method for our `PokemonFormatter` class.
 

@@ -31,7 +31,7 @@ I only had my trekking poles, my camera, and a backpack with a clean t-shirt, so
 
 In the same way, if you're starting your career as a developer, don't use all the most expensive tools you can find on the Internet: they can be a waste of money.
 
-If you're a C# developer, just install Visual Studio. You don't need other IDEs with a 300€ license every year to be a good developer, you just need the [Community Edition of Visual Studio](https://visualstudio.microsoft.com/vs/community/ "Visual Studio Community"), which is free.
+If you're a C# developer, just install Visual Studio. You don't need other IDEs with a 300€ license every year to be a good developer, you just need the [Community Edition of Visual Studio](https://visualstudio.microsoft.com/vs/community?wt.mc_id=DT-MVP-5005077 "Visual Studio Community"), which is free.
 
 At the same time, don't use inadequate tools: programming on Notepad is free, but... maybe not the best choice.
 

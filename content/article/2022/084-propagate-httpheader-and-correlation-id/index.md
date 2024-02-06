@@ -20,7 +20,7 @@ A good idea is to use a **Correlation ID**: one common approach for HTTP-based s
 
 Now. How can we propagate an HTTP Header in .NET? I found [this solution on GitHub](https://gist.github.com/davidfowl/c34633f1ddc519f030a1c0c5abe8e867), provided by no less than David Fowler. In this article, I'm gonna dissect his code to see how he built this solution.
 
-**Important update**: there's a NuGet package that implements these functionalities: `Microsoft.AspNetCore.HeaderPropagation`. Consider this article as an excuse to understand what happens behind the scenes of an HTTP call, and use it to learn how to customize and extend those functionalities. [Here's](https://docs.microsoft.com/en-us/aspnet/core/fundamentals/http-requests?view=aspnetcore-6.0#header-propagation-middleware) how to integrate that package.
+**Important update**: there's a NuGet package that implements these functionalities: `Microsoft.AspNetCore.HeaderPropagation`. Consider this article as an excuse to understand what happens behind the scenes of an HTTP call, and use it to learn how to customize and extend those functionalities. [Here's](https://docs.microsoft.com/en-us/aspnet/core/fundamentals/http-requests?view=aspnetcore-6.0&wt.mc_id=DT-MVP-5005077#header-propagation-middleware) how to integrate that package.
 
 ## Just interested in the C# methods?
 
@@ -240,7 +240,6 @@ By having a look at the definition of `HttpMessageHandlerBuilder` you can grasp 
 ```cs
 namespace Microsoft.Extensions.Http
 {
-
     public abstract class HttpMessageHandlerBuilder
     {
         protected HttpMessageHandlerBuilder();
@@ -262,7 +261,7 @@ namespace Microsoft.Extensions.Http
 
 ````
 
-Ah, and remember the wise words you can read in the [docs of that class](https://docs.microsoft.com/en-us/dotnet/api/microsoft.extensions.http.httpmessagehandlerbuilder):
+Ah, and remember the wise words you can read in the [docs of that class](https://docs.microsoft.com/en-us/dotnet/api/microsoft.extensions.http.httpmessagehandlerbuilder?wt.mc_id=DT-MVP-5005077):
 
 > The Microsoft.Extensions.Http.HttpMessageHandlerBuilder is registered in the service collection as a transient service.
 
@@ -430,7 +429,7 @@ We heavily rely on HttpClient and HttpClientFactory. How can you test them? Well
 
 We've seen which is the role of `HttpMessageHandlerBuilder` when building `HttpClient`s. You can explore that class starting from the documentation.
 
-🔗 [HttpMessageHandlerBuilder Class | Microsoft Docs](https://docs.microsoft.com/en-us/dotnet/api/microsoft.extensions.http.httpmessagehandlerbuilder)
+🔗 [HttpMessageHandlerBuilder Class | Microsoft Docs](https://docs.microsoft.com/en-us/dotnet/api/microsoft.extensions.http.httpmessagehandlerbuilder?wt.mc_id=DT-MVP-5005077)
 
 We've already seen how to inject and use `HttpContext` in our applications:
 

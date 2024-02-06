@@ -286,7 +286,7 @@ Here, we focused on the Feature Flags. As we saw, most functionalities come out 
 
 In particular, we learned how to use the `<feature>` tag on a Razor page. You can read more on the official documentation (even though we already covered almost everything!):
 
-🔗[FeatureTagHelper Class | Microsoft Docs](https://learn.microsoft.com/en-us/dotnet/api/microsoft.featuremanagement.mvc.taghelpers.featuretaghelper)
+🔗[FeatureTagHelper Class | Microsoft Docs](https://learn.microsoft.com/en-us/dotnet/api/microsoft.featuremanagement.mvc.taghelpers.featuretaghelper?wt.mc_id=DT-MVP-5005077)
 
 _This article first appeared on [Code4IT 🐧](https://www.code4it.dev/)_
 

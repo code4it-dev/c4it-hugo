@@ -20,7 +20,7 @@ Also, for big organizations, it can happen that a team is used to working on the
 
 **API Gateways** allow you to create services with completely different technologies: since one of the best practices is to have all the APIs detached from the others, having **different stacks** is definitely not a problem. Considering that those services can live on their own, you can make them very small and provide **common functionalities at API Gateway level**: examples are documentation, error handling, authentication, and general logging.
 
-There are different services that provide different complexity at different prices, like [Azure API Management](https://azure.microsoft.com/en-us/services/api-management/ "Azure API Management reference"), [Amazon API Gateway](https://aws.amazon.com/api-gateway/ "Amazon AWS API Gateway reference"), and [Ocelot](https://github.com/ThreeMammals/Ocelot "Ocelot repository").
+There are different services that provide different complexity at different prices, like [Azure API Management](https://azure.microsoft.com/en-us/services/api-management?wt.mc_id=DT-MVP-5005077 "Azure API Management reference"), [Amazon API Gateway](https://aws.amazon.com/api-gateway/ "Amazon AWS API Gateway reference"), and [Ocelot](https://github.com/ThreeMammals/Ocelot "Ocelot repository").
 
 ## API Composition
 

@@ -493,7 +493,7 @@ As reported by the official documentation, there has been a huge improvement in 
 
 Those improvements are mainly about the usage of Garbage Collector, JIT optimization, and usage of strings and Regex-s.
 
-If you are interested, here's a [good article on Microsoft's blog](https://devblogs.microsoft.com/dotnet/performance-improvements-in-net-5 ".NET 5 performance improvements").
+If you are interested, here's a [good article on Microsoft's blog](https://devblogs.microsoft.com/dotnet/performance-improvements-in-net-5?wt.mc_id=DT-MVP-5005077 ".NET 5 performance improvements").
 
 So, did it really improved my application?
 

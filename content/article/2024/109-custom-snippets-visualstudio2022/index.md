@@ -201,7 +201,7 @@ It's always an excellent place to learn more about Visual Studio.
 
 As always, you can read more on Microsoft Docs. It's a valuable resource, although I find it difficult to follow.
 
-🔗 [Create a code snippet in Visual Studio | Microsoft docs](https://learn.microsoft.com/en-us/visualstudio/ide/walkthrough-creating-a-code-snippet?view=vs-2022)
+🔗 [Create a code snippet in Visual Studio | Microsoft docs](https://learn.microsoft.com/en-us/visualstudio/ide/walkthrough-creating-a-code-snippet?view=vs-2022&wt.mc_id=DT-MVP-5005077)
 
 I prefer working with the UI. If you want to have a look at the repo of the extension we used in this article, here's the link:
 

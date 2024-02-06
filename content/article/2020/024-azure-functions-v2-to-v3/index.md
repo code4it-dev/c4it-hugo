@@ -43,7 +43,7 @@ First of all, you must **update the csproj file**: under _PropertyGroup > AzureF
 
 ![csproj file after update](./csproj-update.png "csproj file example after the update")
 
-As you might have noticed, inside the solution folder there is a file called _host.json_, and that file contains a `"version": "2.0"`. This is **not** the Azure function version, but the version of the schema of that file. The host file is [meant to include](https://docs.microsoft.com/en-us/azure/azure-functions/functions-host-json) configurations for the function. So, you must not touch this file.
+As you might have noticed, inside the solution folder there is a file called _host.json_, and that file contains a `"version": "2.0"`. This is **not** the Azure function version, but the version of the schema of that file. The host file is [meant to include](https://docs.microsoft.com/en-us/azure/azure-functions/functions-host-json?wt.mc_id=DT-MVP-5005077) configurations for the function. So, you must not touch this file.
 
 ## Install the new SDK version
 
@@ -93,7 +93,7 @@ namespace MyNamespace
 
 ## Fix all the breaking changes
 
-If you are also updating the .NET version, remember that there are [some breaking changes](https://docs.microsoft.com/en-us/dotnet/core/compatibility/2.2-3.0) that you must consider. For example:
+If you are also updating the .NET version, remember that there are [some breaking changes](https://docs.microsoft.com/en-us/dotnet/core/compatibility/2.2-3.0?wt.mc_id=DT-MVP-5005077) that you must consider. For example:
 
 - Google+ authentication is now deprecated since the service shut down in 2019.
 
@@ -107,4 +107,4 @@ _This article first appeared on [Code4IT](https://www.code4it.dev/)_
 
 Here we've seen how to upgrade from Azure Functions v2 to v3. Staying up to date to the latest (stable) versions of such tools is important since performance and security issues would be fixed. So, take the time to update your functions.
 
-Since you've updated your versions, remember to [update also your runtime version on Azure](https://docs.microsoft.com/en-us/azure/azure-functions/functions-versions#changing-version-of-apps-in-azure) and, if you are using them, your [Azure DevOps pipelines](https://about-azure.com/how-and-why-you-should-upgrade-your-net-azure-functions-to-3-0/).
+Since you've updated your versions, remember to [update also your runtime version on Azure](https://docs.microsoft.com/en-us/azure/azure-functions/functions-versions?wt.mc_id=DT-MVP-5005077#changing-version-of-apps-in-azure) and, if you are using them, your [Azure DevOps pipelines](https://about-azure.com/how-and-why-you-should-upgrade-your-net-azure-functions-to-3-0/).

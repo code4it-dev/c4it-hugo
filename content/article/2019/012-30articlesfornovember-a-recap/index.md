@@ -78,10 +78,10 @@ you can see them all in action.
 
 Want performance? Want great work?
 
-Take care of [Garbage Collection](https://docs.microsoft.com/en-us/aspnet/core/performance/memory "Garbage collection introduction").
+Take care of [Garbage Collection](https://docs.microsoft.com/en-us/aspnet/core/performance/memory?wt.mc_id=DT-MVP-5005077 "Garbage collection introduction").
 
 <hr/>
-«I wanna all remote! Remote [work](https://doist.com/blog/mental-health-and-remote-work "Remote working downside"), remote [calls](https://devblogs.microsoft.com/aspnet/grpc-vs-http-apis/ "gRPC vs Rest APIs")!».
+«I wanna all remote! Remote [work](https://doist.com/blog/mental-health-and-remote-work "Remote working downside"), remote [calls](https://devblogs.microsoft.com/aspnet/grpc-vs-http-apis?wt.mc_id=DT-MVP-5005077 "gRPC vs Rest APIs")!».
 
 If your boss allows it, just say «Thanks!»
 
@@ -96,7 +96,7 @@ My [source code is not a book](https://dev.to/snj/learn-from-source-code-4d1o "S
 
 [TDD](https://techblog.holidaycheck.com/post/2018/01/02/testing-code-that-isnt-there-yet "TDD examples"), I had a look.
 
-But, [only positive effects](https://www.microsoft.com/en-us/research/blog/exploding-software-engineering-myths/ "Software engineering myths")??
+But, [only positive effects](https://www.microsoft.com/en-us/research/blog/exploding-software-engineering-myths?wt.mc_id=DT-MVP-5005077 "Software engineering myths")??
 
 <hr/>
 Doesn't care if frontend or backend,
