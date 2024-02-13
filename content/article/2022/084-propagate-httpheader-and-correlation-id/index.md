@@ -236,7 +236,9 @@ internal class HeaderPropagationMessageHandlerBuilderFilter : IHttpMessageHandle
 The `Configure` method allows you to customize how the `HttpMessageHandler` will be built: we are adding a new instance of the `HeaderPropagationMessageHandler` class we've seen before to the current `HttpMessageHandlerBuilder`'s `AdditionalHandlers` collection. All the handlers registered in the list will then be used to build the `HttpMessageHandler` object we'll use to send and receive requests.
 
 <div style="max-width:70%;height:0;padding-bottom:56%;position:relative;margin:auto;"><iframe src="https://giphy.com/embed/Yj6d4OMmDV3bnYtOow" width="100%" height="100%" style="position:absolute" frameBorder="0" class="giphy-embed" allowFullScreen></iframe></div><p><a href="https://giphy.com/gifs/CBeebiesHQ-painting-diy-Yj6d4OMmDV3bnYtOow">via GIPHY</a></p>
+
 By having a look at the definition of `HttpMessageHandlerBuilder` you can grasp a bit of what happens when we're creating HttpClients in .NET.
+
 ```cs
 namespace Microsoft.Extensions.Http
 {
@@ -378,7 +380,9 @@ The `HttpClient` is now ready: when we call `httpClient.PostAsJsonAsync("/", ite
 We will then see the same HTTP Header on the destination endpoint.
 
 <div style="max-width:70%;height:0;padding-bottom:60%;position:relative;margin:auto;"><iframe src="https://giphy.com/embed/8UF0EXzsc0Ckg" width="100%" height="100%" style="position:absolute" frameBorder="0" class="giphy-embed" allowFullScreen></iframe></div><p><a href="https://giphy.com/gifs/finally-atlast-itsover-8UF0EXzsc0Ckg"> We did it!</a></p>
+
 ## Propagating CorrelationId to a specific HttpClient
+
 You can also specify which headers need to be propagated on single HTTP Clients:
 
 ```cs

@@ -81,7 +81,7 @@ To get the connection string, click on that Policy and head to _Primary Connecti
 
 A connection string for the Service Bus looks like this:
 
-```
+```txt
 Endpoint=sb://c4it-testbus.servicebus.windows.net/;SharedAccessKeyName=RootManageSharedAccessKey;SharedAccessKey=my-secret-key
 ```
 
