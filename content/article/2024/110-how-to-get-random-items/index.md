@@ -1,16 +1,16 @@
 ---
 title: "Is Random.GetItems the best way to get random items in C# 12?"
-date: 2024-02-09
+date: 2024-02-13
 url: /blog/how-to-get-random-items
 draft: false
 categories:
- - Blog
+  - Blog
 tags:
- - CSharp
+  - CSharp
 toc: true
 summary: "You have a collection of items. You want to retrieve N elements randomly. Which alternatives do we have?"
 images:
- - /blog/how-to-get-random-items/featuredImage.png
+  - /blog/how-to-get-random-items/featuredImage.png
 ---
 
 One of the most common operations when dealing with collections of items is to retrieve a subset of these elements taken randomly.
@@ -27,7 +27,7 @@ For the sake of this article, I created a simple `record` type, `CustomRecord`, 
 public record CustomRecord(int Id, string Name);
 ```
 
-I then stored a collection of such elements in an array. This article's final goal is to find the *best* way to retrieve a random subset of such items. Spoiler alert: it all depends on your definition of *best*!
+I then stored a collection of such elements in an array. This article's final goal is to find the _best_ way to retrieve a random subset of such items. Spoiler alert: it all depends on your definition of _best_!
 
 ## Method #1: get random items with Random.GetItems
 
@@ -188,9 +188,8 @@ Notice: I marked the benchmark for the `GetItems` method as a baseline, using `[
 
 When we run the benchmark, we can see this final result (for simplicity, I removed the Error, StdDev, and Median columns):
 
-
-| Method             | Size    | Mean           | Ratio | Allocated  | Alloc Ratio |
-|------------------- |-------- |---------------:|------:|-----------:|------------:|
+| Method             | Size    |           Mean | Ratio |  Allocated | Alloc Ratio |
+| ------------------ | ------- | -------------: | ----: | ---------: | ----------: |
 | WithRandomGetItems | 100     |       6.442 us |  1.00 |      424 B |        1.00 |
 | WithRandomGuid     | 100     |      39.481 us |  6.64 |     3576 B |        8.43 |
 | WithRandomNumber   | 100     |      22.219 us |  3.67 |     2256 B |        5.32 |
@@ -209,13 +208,12 @@ When we run the benchmark, we can see this final result (for simplicity, I remov
 | WithShuffle        | 1000000 |  48,533.527 us |  6.44 | 11575304 B |        2.64 |
 | WithShuffleNoCopy  | 1000000 |  37,166.068 us |  4.57 |  6881080 B |        1.57 |
 
-
 By looking at the numbers, we can notice that:
 
-* `GetItems` is the most performant method, both for time and memory allocation;
-* using `Guid.NewGuid` is the worse approach: it's 10 to 60 times slower than `GetItems`, and it allocates, on average, 4x the memory;
-* sorting by random number is a bit better: it's 30 times slower than `GetItems`, and it allocates around three times more memory;
-* shuffling the array in place and taking the first N elements is 4x slower than GetItems; if you also have to preserve the original array, notice that you'll lose some memory allocation performance because you must allocate more memory to create the cloned array.
+- `GetItems` is the most performant method, both for time and memory allocation;
+- using `Guid.NewGuid` is the worse approach: it's 10 to 60 times slower than `GetItems`, and it allocates, on average, 4x the memory;
+- sorting by random number is a bit better: it's 30 times slower than `GetItems`, and it allocates around three times more memory;
+- shuffling the array in place and taking the first N elements is 4x slower than GetItems; if you also have to preserve the original array, notice that you'll lose some memory allocation performance because you must allocate more memory to create the cloned array.
 
 Here's the chart with the performance values. **Notice that, for better readability, I used a Log10 scale**.
 
@@ -265,7 +263,7 @@ As you can see, **on average, we have 65% of unique items and 35% of duplicate i
 
 ## Further readings
 
-I used the `Enumerable.Range` method to generate the initial items. 
+I used the `Enumerable.Range` method to generate the initial items.
 
 I wrote an article to explain how to use it, which are some parts to consider when using it, and more.
 
@@ -273,7 +271,6 @@ I wrote an article to explain how to use it, which are some parts to consider wh
 ](https://www.code4it.dev/csharptips/enumerable-range/)
 
 _This article first appeared on [Code4IT 🐧](https://www.code4it.dev/)_
-
 
 ## Wrapping up
 
@@ -288,7 +285,3 @@ I hope you enjoyed this article! Let's keep in touch on [Twitter](https://twitte
 Happy coding!
 
 🐧
-
-- [ ] Immagine di copertina
-- [ ] Fai resize della immagine di copertina
-- [ ] Pulizia formattazione

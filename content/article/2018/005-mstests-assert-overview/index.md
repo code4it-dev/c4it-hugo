@@ -169,16 +169,16 @@ So when comparing strings you should keep this problem in mind.
 
 ```cs
 [TestMethod]
- public void TestOnTurkishI()
- {
-     var turkishCulture = CultureInfo.CreateSpecificCulture("tr-TR");
-     var baseString = "i love you";
-     var turkishToUpperString = baseString.ToUpper(turkishCulture);
-     var turkishUpperString = "İ LOVE YOU";
-     var baseToUpperString = baseString.ToUpper();
-     Assert.AreEqual(turkishToUpperString, turkishUpperString, false, turkishCulture); //OK
-     Assert.AreEqual(baseToUpperString, turkishToUpperString); //KO
- }
+public void TestOnTurkishI()
+{
+    var turkishCulture = CultureInfo.CreateSpecificCulture("tr-TR");
+    var baseString = "i love you";
+    var turkishToUpperString = baseString.ToUpper(turkishCulture);
+    var turkishUpperString = "İ LOVE YOU";
+    var baseToUpperString = baseString.ToUpper();
+    Assert.AreEqual(turkishToUpperString, turkishUpperString, false, turkishCulture); //OK
+    Assert.AreEqual(baseToUpperString, turkishToUpperString); //KO
+}
 ```
 
 ### Assert.AreEqual with Objects
