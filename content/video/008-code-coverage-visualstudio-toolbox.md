@@ -9,4 +9,5 @@ tags:
   - Visual Studio
   - Tests
 youtube: "R80G3LJ6ZWc"
+readingTime: 0
 ---

@@ -9,4 +9,5 @@ tags:
   - DotNet
   - CSharp
 youtube: "Wj_2g_P1lDw"
+readingTime: 0
 ---
