@@ -6,7 +6,7 @@ draft: false
 categories:
   - Blog
 tags:
-  - VisualStudio
+  - Visual Studio
 toc: true
 summary: "A simple way to improve efficiency is knowing your IDE shortcuts. Let's learn how to create custom ones to generate code automatically."
 images:
