@@ -13,6 +13,12 @@ That's why I also decided to give a try to tech conferences.
 
 👉 Check out my [Sessionize profile](https://sessionize.com/davide-bellone/)! 👈
 
+## 2024
+
+| Title                            | Event                                   | Date       | Duration | Level        |                                                   |
+| -------------------------------- | --------------------------------------- | ---------- | -------- | ------------ | ------------------------------------------------- |
+| Improving Your **Code Coverage** | Microsoft Visual Studio Youtube channel | 2024-02-16 | 24m      | Intermediate | [🎥](https://www.youtube.com/watch?v=R80G3LJ6ZWc) |
+
 ## 2023
 
 | Title                                       | Event                                      | Date       | Duration | Level        |                                                                                                                                                                              |

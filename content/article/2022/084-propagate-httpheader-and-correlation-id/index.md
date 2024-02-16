@@ -261,7 +261,7 @@ namespace Microsoft.Extensions.Http
 
 }
 
-````
+```
 
 Ah, and remember the wise words you can read in the [docs of that class](https://docs.microsoft.com/en-us/dotnet/api/microsoft.extensions.http.httpmessagehandlerbuilder?wt.mc_id=DT-MVP-5005077):
 
@@ -281,7 +281,7 @@ public static IServiceCollection AddHeaderPropagation(this IServiceCollection se
     services.TryAddEnumerable(ServiceDescriptor.Singleton<IHttpMessageHandlerBuilderFilter, HeaderPropagationMessageHandlerBuilderFilter>());
     return services;
 }
-````
+```
 
 Here, we're gonna extend the `IServiceCollection` with those functionalities. At first, we're adding `AddHttpContextAccessor`, which allows us to access the current HTTP Context (the one we've used in the `HeaderPropagationMessageHandler` class).
 
