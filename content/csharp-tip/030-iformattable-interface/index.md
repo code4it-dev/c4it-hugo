@@ -1,6 +1,6 @@
 ---
 title: "C# Tip: IFormattable interface, to define different string formats for the same object"
-date: 2024-02-26
+date: 2024-02-27
 url: /csharptips/iformattable-interface
 draft: false
 categories:
