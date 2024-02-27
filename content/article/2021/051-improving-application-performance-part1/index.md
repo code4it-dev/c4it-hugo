@@ -58,7 +58,7 @@ So, when a client calls our API, we perform the following steps:
 
 As you can see, there are lots of sequential calls to compose just one object.
 
-Another problem: the whole project was a mess. **Not a single test, a huge amount of technical debt**; it was a managers' choice: they needed to integrate the API as soon as possible, without worrying about maintainability, performance, and so on. In my opinion, not the best choice; but if they took this decision, \__they surely had a reason to choose this path_.: I trust my team and the management: they generally crave good quality software.
+Another problem: the whole project was a mess. **Not a single test, a huge amount of technical debt**; it was a managers' choice: they needed to integrate the API as soon as possible, without worrying about maintainability, performance, and so on. In my opinion, not the best choice; but if they took this decision, _they surely had a reason to choose this path_.: I trust my team and the management: they generally crave good quality software.
 
 So, how did I approach the problem?
 
