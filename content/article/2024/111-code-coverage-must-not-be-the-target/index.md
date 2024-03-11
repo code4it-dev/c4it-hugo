@@ -4,18 +4,18 @@ date: 2024-03-04
 url: /blog/code-coverage-must-not-be-the-target
 draft: false
 categories:
- - Blog
+  - Blog
 tags:
- - CSharp
- - Test
+  - CSharp
+  - Test
 toc: true
 summary: "Average teams aim at 100% Code Coverage just to reach the number. Great teams don't. Why?"
 images:
- - /blog/code-coverage-must-not-be-the-target/featuredImage.png
+  - /blog/code-coverage-must-not-be-the-target/featuredImage.png
 ---
 
-Code Coverage is a valuable metric in software development, especially when it comes to testing. It provides insights into how much of your codebase is exercised by your test suite. 
- 
+Code Coverage is a valuable metric in software development, especially when it comes to testing. It provides insights into how much of your codebase is exercised by your test suite.
+
 However, we must recognize that Code Coverage alone should not be the ultimate goal of your testing strategy. It has some known limitations, and 100% Code Coverage does not guarantee your code to be bug-free.
 
 In this article, we'll explore why Code Coverage matters, its limitations, and how to balance achieving high coverage and effective testing. We'll use C# to demonstrate when Code Coverage works well and how you can cheat on the result.
@@ -34,13 +34,13 @@ You may be tempted to think that the higher the coverage, the better the quality
 
 ## Why Code Coverage Matters
 
-Clearly, **if you write valuable tests**, Code Coverage is a great ally. 
+Clearly, **if you write valuable tests**, Code Coverage is a great ally.
 
 A high value of Code Coverage helps you with:
 
 1. **Risk mitigation**: High Code Coverage reduces the risk of undiscovered defects. If a piece of code isn't covered, it will likely contain bugs.
-2. **Preventing regressions**: code is destined to evolve over time. If you ensure that most of your code is covered by tests, whenever you'll add some more code you will discover which parts of the existing system are impacted by your changes. If you update the production code and no test fails, it might be a *bad* sign: you probably need to cover the code you are modifying with enough tests.
-3. **Quality assurance**: Code Coverage ensures that critical parts of your application are tested thoroughly. Good tests focus on the functional aspects of the code (*what*) rather than on the technical aspects (*how*). A good test suite is a safety net against regressions.
+2. **Preventing regressions**: code is destined to evolve over time. If you ensure that most of your code is covered by tests, whenever you'll add some more code you will discover which parts of the existing system are impacted by your changes. If you update the production code and no test fails, it might be a _bad_ sign: you probably need to cover the code you are modifying with enough tests.
+3. **Quality assurance**: Code Coverage ensures that critical parts of your application are tested thoroughly. Good tests focus on the functional aspects of the code (_what_) rather than on the technical aspects (_how_). A good test suite is a safety net against regressions.
 4. **Guidance for Testing Efforts**: Code Coverage highlights areas that need more attention. It guides developers in writing additional tests where necessary.
 
 ## The Limitations of Code Coverage
@@ -149,13 +149,13 @@ public class WeatherServiceTests
     public void Teardown() =>_mockRepository.Reset();
 
     // Tests
-    
+
 }
 ```
 
 This class covers two cases, both related to the `ForecastsByLocation` method of the Service.
 
-*Case 1*: when the location exists in the repository, this method must return the related info.
+_Case 1_: when the location exists in the repository, this method must return the related info.
 
 ```cs
 [Test]
@@ -187,7 +187,7 @@ public void ForecastByLocation_Should_ReturnForecast_When_LocationExists()
 }
 ```
 
-*Case 2*: when the location does not exist in the repository, the method should throw a `LocationNotFoundException`.
+_Case 2_: when the location does not exist in the repository, the method should throw a `LocationNotFoundException`.
 
 ```cs
 [Test]
@@ -315,7 +315,7 @@ You can then add the same attribute to all the other classes - even the `Program
 
 ![100% Code Coverage, but without any test ](./code-coverage-with-everything-excluded.png)
 
-*Note: to reach 100% I had to exclude everything but the tests on the Repository: otherwise, if I had exactly zero methods under tests, the final Code Coverage would've been 0.*
+_Note: to reach 100% I had to exclude everything but the tests on the Repository: otherwise, if I had exactly zero methods under tests, the final Code Coverage would've been 0._
 
 ## Beyond Code Coverage: Effective Testing Strategies
 
@@ -335,7 +335,7 @@ To generate Code Coverage reports, I used Coverlet, as I explained in this artic
 
 🔗 [How to view Code Coverage with Coverlet and Visual Studio | Code4IT](https://www.code4it.dev/blog/code-coverage-vs-2019-coverlet/)
 
-In my opinion, we should not focus all our efforts on Unit Tests. On the contrary, we should write more Integration Tests to ensure that the functionality, as a whole, works correctly. 
+In my opinion, we should not focus all our efforts on Unit Tests. On the contrary, we should write more Integration Tests to ensure that the functionality, as a whole, works correctly.
 
 This way of defining tests is called Testing Diamond, and I explained it here:
 
