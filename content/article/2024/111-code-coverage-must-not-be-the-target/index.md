@@ -1,6 +1,6 @@
 ---
 title: "Why reaching 100% Code Coverage must NOT be your testing goal (with examples in C#)"
-date: 2024-03-04
+date: 2024-03-12
 url: /blog/code-coverage-must-not-be-the-target
 draft: false
 categories:
@@ -357,6 +357,3 @@ Happy coding!
 
 🐧
 
-- [ ] Immagine di copertina
-- [ ] Fai resize della immagine di copertina
-- [ ] Pulizia formattazione
