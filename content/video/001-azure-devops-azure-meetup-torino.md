@@ -9,4 +9,5 @@ tags:
   - Azure DevOps
 youtube: "hSCwzEm4M1A"
 readingTime: 0
+hideAdsMessage: true
 ---

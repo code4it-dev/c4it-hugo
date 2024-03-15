@@ -1,11 +1,12 @@
 ---
-title: Public speaking
+title: "Public speaking 🧑‍🏫"
 url: "/talks"
 date: 2019-10-01
 excludeFromTopNav: false
 showDate: false
 showComments: false
 toc: false
+hideAdsMessage: true
 ---
 
 I love sharing knowledge with my peers. May it be in person, with this blog, or with online discussions.

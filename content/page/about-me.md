@@ -1,11 +1,12 @@
 ---
-title: About Me
+title: "About Me 🧑"
 url: "/about-me"
 date: 2021-11-01
 excludeFromTopNav: false
 showDate: false
 showComments: false
 featuredImage: "/img/personal-cover-image.png"
+hideAdsMessage: true
 ---
 
 Ciao, I'm **Davide Bellone**!

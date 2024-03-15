@@ -6,6 +6,6 @@ date: 2023/06/01
 link: "https://bellons91.github.io/personal-notes"
 # set the html target parameter if you want to change default behavior
 target: "_blank"
-excludeFromTopNav: false
+excludeFromTopNav: true
 showDate: false
 ---

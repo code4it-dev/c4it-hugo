@@ -10,4 +10,5 @@ tags:
   - CSharp
 youtube: "bMBMZOKInnE"
 readingTime: 0
+hideAdsMessage: true
 ---
