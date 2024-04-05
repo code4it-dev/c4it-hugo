@@ -17,7 +17,7 @@ images:
 It's time to review this book!
 
 - **Book title**: C# 11 and .NET 7 - Modern Cross-Platform Development Fundamentals
-- **Author(s)**: Mark J. Price ([LinkedIn](https://www.linkedin.com/in/markjamesprice/), [Twitter](https://twitter.com/markjprice) )
+- **Author(s)**: Mark J. Price ([LinkedIn](https://www.linkedin.com/in/markjamesprice/), [Twitter](https://twitter.com/markjprice))
 - **Published year**: 2022
 - **Publisher**: Packt
 - **Links**: [Amazon](https://www.amazon.com/11-NET-Cross-Platform-Development-Fundamentals/dp/1803237805), [Packt](https://www.packtpub.com/product/c-11-and-net-7-modern-cross-platform-development-fundamentals-seventh-edition/9781803237800)
