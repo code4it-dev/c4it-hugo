@@ -22,6 +22,12 @@ Articolo:
 npm run archi --slug="mio-slug"
 ```
 
+Libro:
+
+```plaintext
+npm run book --slug="mio-slug"
+```
+
 ### Tramite Hugo
 
 Articolo:
@@ -40,6 +46,12 @@ C#:
 
 ```plaintext
 hugo new --kind cstip csharp-tip/01-article/index.md
+```
+
+Book:
+
+```plaintext
+hugo new --kind book book-review/01-article/index.md
 ```
 
 ## Lanciare in locale
