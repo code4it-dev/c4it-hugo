@@ -8,6 +8,7 @@
     "article": "node article.js",
     "archi": "node architecture.js",
     "cstip": "node cstip.js",
+    "book": "node book.js",
     "format": "prettier --write \"**/*.md\""
   },
   "repository": {
