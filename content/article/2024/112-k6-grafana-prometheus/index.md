@@ -36,32 +36,58 @@ For the sake of this article, I created a simple .NET API project: it exposes ju
 
 ```cs
 int requestCount = 0;
+int concurrentExecutions = 0;
+object _lock = new();
 
 app.MapGet("/randombook", async (CancellationToken ct) =>
 {
-    Book thisBook = default;
-    requestCount++;
+    Book? thisBook = default;
     var delayMs = Random.Shared.Next(10, 10000);
-
-    app.Logger.LogInformation($"Request {requestCount} with delay set to {delayMs}ms");
-
-    using (ApiContext context = new ApiContext())
+    try
     {
-        var allbooks = await context.Books.ToArrayAsync();
-        await Task.Delay(delayMs);
-        if (ct.IsCancellationRequested)
+        lock (_lock)
         {
-            app.Logger.LogWarning("Cancellation requested");
-            return null;
+            requestCount++;
+            concurrentExecutions++;
+            app.Logger.LogInformation("Request {Count}. Concurrent Executions {Executions}. Delay: {DelayMs}ms",
+                requestCount,
+                concurrentExecutions,
+                delayMs
+                );
         }
-        thisBook = Random.Shared.GetItems(allbooks, 1).First();
+
+        using (ApiContext context = new ApiContext())
+        {
+            var allbooks = await context.Books.ToArrayAsync(ct);
+            await Task.Delay(delayMs);
+            if (ct.IsCancellationRequested)
+            {
+                app.Logger.LogWarning("Cancellation requested");
+                throw new OperationCanceledException();
+            }
+            thisBook = Random.Shared.GetItems(allbooks, 1).First();
+        }
+    }
+    catch (Exception ex)
+    {
+        app.Logger.LogError(ex, "An error occurred");
+        return Results.Problem(ex.Message);
+    }
+    finally
+    {
+        lock (_lock)
+        {
+            concurrentExecutions--;
+        }
     }
 
     return TypedResults.Ok(thisBook);
 });
 ```
 
-As you can see, I added this part:
+There are some details that I want to highlight before moving on with the demo.
+
+As you can see, **I added a random delay** to simulate a random RTT for accessing the database:
 
 ```cs
 var delayMs = Random.Shared.Next(10, 10000);
@@ -69,15 +95,36 @@ var delayMs = Random.Shared.Next(10, 10000);
 await Task.Delay(delayMs);
 ```
 
-In this way, I can simulated a random RTT for accessing the database.
+Also, I added a **thread-safe counter** to keep track of the active operations. I increase the value when the request begins, and decrease it when the request completes. The log message is defined in the `lock` section to avoid concurrency issues. 
 
+```cs
+lock (_lock)
+{
+    requestCount++;
+    concurrentExecutions++;
+
+    app.Logger.LogInformation("Request {Count}. Concurrent Executions {Executions}. Delay: {DelayMs}ms",
+        requestCount,
+        concurrentExecutions,
+        delayMs
+        );
+}
+
+// and then
+
+lock (_lock)
+{
+    concurrentExecutions--;
+}
+```
 
 ## Install and configure K6
 
 The first tool we are going to use is [K6](https://k6.io/).
+
 With K6 you can run the Load Tests by defining the endpoint to call, the number of requests per minute, and some other configurations.
 
-It's a free tool, and you can install it using Winget:
+It's a free tool, and you can install it using *Winget*:
 
 ```bash
 winget install k6 --source winget
@@ -169,6 +216,36 @@ Let's see what happens:
 ![alt text](image-1.png)
 
 ![alt text](image.png)
+
+```txt
+execution: local
+      script: script.js
+      output: -
+
+    scenarios: (100.00%) 1 scenario, 1 max VUs, 1m0s max duration (incl. graceful stop):
+            * default: 1 looping VUs for 30s (gracefulStop: 30s)
+
+
+    data_received..................: 2.8 kB 93 B/s
+    data_sent......................: 824 B  27 B/s
+    http_req_blocked...............: avg=13.67ms  min=0s   med=0s    max=68.38ms p(90)=41.03ms  p(95)=54.71ms
+    http_req_connecting............: avg=220.48µs min=0s   med=0s    max=1.1ms   p(90)=661.44µs p(95)=881.91µs
+    http_req_duration..............: avg=5.05s    min=3.9s med=4.25s max=7.18s   p(90)=6.67s    p(95)=6.92s
+      { expected_response:true }...: avg=5.05s    min=3.9s med=4.25s max=7.18s   p(90)=6.67s    p(95)=6.92s
+    http_req_failed................: 0.00%  ✓ 0        ✗ 5
+    http_req_receiving.............: avg=222.48µs min=0s   med=0s    max=987.5µs p(90)=642.46µs p(95)=814.97µs
+    http_req_sending...............: avg=210.16µs min=0s   med=0s    max=1.05ms  p(90)=630.48µs p(95)=840.63µs
+    http_req_tls_handshaking.......: avg=9.63ms   min=0s   med=0s    max=48.18ms p(90)=28.91ms  p(95)=38.54ms
+    http_req_waiting...............: avg=5.05s    min=3.9s med=4.25s max=7.18s   p(90)=6.67s    p(95)=6.92s
+    http_reqs......................: 5      0.164479/s
+    iteration_duration.............: avg=6.07s    min=4.9s med=5.27s max=8.26s   p(90)=7.72s    p(95)=7.99s
+    iterations.....................: 5      0.164479/s
+    vus............................: 1      min=1      max=1
+    vus_max........................: 1      min=1      max=1
+
+
+running (0m30.4s), 0/1 VUs, 5 complete and 0 interrupted iterations
+```
 
 ## Install Prometheus
 
