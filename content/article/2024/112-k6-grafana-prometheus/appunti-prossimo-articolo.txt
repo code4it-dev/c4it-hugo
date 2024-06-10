@@ -1,0 +1,50 @@
+
+===== Installa Prometheus =====
+
+https://prometheus.io/download/#prometheus
+
+scarica zip e lancia exe con .\prometheus.exe --web.enable-remote-write-receiver per abilitare l'endpoint di receiver
+
+Accedi a prometheus sotto http://localhost:9090/
+
+
+======= Installa K6 ======
+ 
+winget install k6 --source winget
+
+======= Inizializza K6 ========
+
+Crea file di config, in una cartella (usando CMD, non Powershell, a meno che non setti il comando globalmente) lanciando
+
+k6 new
+
+Di default, ci sono 10 VU (virtual user) e lo script dura 30 secondi
+
+====== Lancia k6 ======
+
+k6 run script.js
+
+questo poi mostra i risultati a console, in maniera testuale
+https://k6.io/docs/get-started/results-output/
+
+aggiungi i custom metric per capire meglio il dettaglio:
+
+https://k6.io/docs/using-k6/metrics/reference/
+
+====== 
+
+
+https://stackoverflow.com/questions/76679217/how-to-configure-grafana-agent
+ 
+
+
+
+===== Installa Grafana ======
+
+installa pacchetto msi
+Disponibile sotto http://localhost:3000/, accedi con admin - admin.
+
+Sotto Connections, aggiungi Prometheus come data source, specificando Localhost:9090
+
+Sotto dashboards, crea quella di default di Prometheus
+
