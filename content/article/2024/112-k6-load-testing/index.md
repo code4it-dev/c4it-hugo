@@ -1,6 +1,6 @@
 ---
 title: "Getting started with Load testing with K6 on Windows 11"
-date: 2024-03-26
+date: 2024-06-18
 url: /blog/k6-load-testing
 draft: false
 categories:
@@ -362,5 +362,3 @@ I hope you enjoyed this article! Let's keep in touch on [LinkedIn](https://www.l
 
 Happy coding!
 
-- [ ] Immagine di copertina
-- [ ] Fai resize della immagine di copertina
