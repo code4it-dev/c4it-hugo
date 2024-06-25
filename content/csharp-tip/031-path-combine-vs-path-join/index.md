@@ -1,6 +1,6 @@
 ---
 title: "C# Tip: Path.Combine and Path.Join are similar but way different."
-date: 2024-06-21
+date: 2024-06-25
 url: /csharptips/path-combine-vs-path-join
 draft: false
 categories:
