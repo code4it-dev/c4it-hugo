@@ -62,7 +62,7 @@ As you can see, the behaviour is slightly different.
 
 Let's see a table where we call the two methods using the same input strings:
 
-| | `Path.Combine` | `Path.Join` |
+| | **Path.Combine** | **Path.Join** |
 |--|--|--|
 | `["singlestring"]` | `singlestring` | `singlestring` |
 | `["foo", "bar", "baz"]` | `foo\bar\baz` | `foo\bar\baz` |
@@ -98,10 +98,3 @@ I hope you enjoyed this article! Let's keep in touch on [Twitter](https://twitte
 Happy coding!
 
 🐧
-
-- [ ] Frontmatter
-- [ ] Immagine di copertina
-- [ ] Fai resize della immagine di copertina
-- [ ] Nome cartella e slug devono combaciare
-- [ ] Pulizia formattazione
-- [ ] Add wt.mc_id=DT-MVP-5005077 to links
