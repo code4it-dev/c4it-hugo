@@ -4,19 +4,19 @@ date: 2024-07-02
 url: /architecture-notes/arc42-documentation
 draft: false
 categories:
- - Code and Architecture Notes
+  - Code and Architecture Notes
 tags:
- - Software Architecture
- - Documentation
+  - Software Architecture
+  - Documentation
 toc: true
 summary: "How is your project structured? What are the driving forces? If you don't know how to express this info, you should try the Arc42 template to create a strong foundation for your documentation."
 images:
- - /architecture-notes/arc42-documentation/featuredImage.png
+  - /architecture-notes/arc42-documentation/featuredImage.png
 ---
 
 When dealing with big projects, one of the most critical parts is writing the proper documentation.
 
-Yes, building the project is undoubtedly difficult. But once it's online and you have ensured it works, you can feel safe. 
+Yes, building the project is undoubtedly difficult. But once it's online and you have ensured it works, you can feel safe.
 Unless, months later, you have to modify it and remember how it works, why it's structured that way, and so on.
 
 There are several ways to document a software project. In this article, we will discuss Arc42, a structured template that allows you to detail all the necessary information related to the hows and whys.
@@ -37,7 +37,7 @@ Each section focuses on one particular aspect; since this is incremental documen
 
 ### Introduction & Goals
 
-The *Introduction and Goals section* is a top-level description of the project. It aims to specify why this system was created and what the development team must consider when working with it.
+The _Introduction and Goals section_ is a top-level description of the project. It aims to specify why this system was created and what the development team must consider when working with it.
 
 In this section, you should include:
 
@@ -49,7 +49,7 @@ In this section, you should include:
 
 ### Architecture Constraints
 
-The *Architecture Constraint section* lists all the constraints to be considered when designing the architecture.
+The _Architecture Constraint section_ lists all the constraints to be considered when designing the architecture.
 
 These constraints can be related to costs, security, internal policies, laws, etc.
 
@@ -57,9 +57,9 @@ You can group these constraints by area (technical limitations, business constra
 
 ### Context & Scope
 
-The *Context and Scope section* details your system's scope to clarify what your company's responsibilities are and what is delegated to third parties.
+The _Context and Scope section_ details your system's scope to clarify what your company's responsibilities are and what is delegated to third parties.
 
-In this section, you can **specify the external interfaces** to describe how other systems can communicate with yours. 
+In this section, you can **specify the external interfaces** to describe how other systems can communicate with yours.
 
 Enlisting all your external interfaces allows you to make sure you are exposing the right operations and that these operations are coherent with the business domain.
 
@@ -69,7 +69,7 @@ It's important to **specify the data types in input and output**. One common mis
 
 ### Solution Strategy
 
-The *Solution Strategy section* is a short description of the fundamental choices made to define the system's architecture. 
+The _Solution Strategy section_ is a short description of the fundamental choices made to define the system's architecture.
 
 This section is less related to business scenarios, but it's focused on the technological aspects, such as:
 
@@ -82,7 +82,7 @@ This section provides a high-level view of these aspects: you can describe them 
 
 ### Building Block View
 
-The *Building Block View section* shows the different blocks that build up the system.
+The _Building Block View section_ shows the different blocks that build up the system.
 
 There is no specific definition of a building block: it can be a class, a module, or a library — whatever is useful for understanding how your architecture is structured.
 
@@ -100,7 +100,7 @@ Then, for each block, you should also declare:
 
 ### Runtime View
 
-The *Runtime View section* describes how the building blocks communicate and interact.
+The _Runtime View section_ describes how the building blocks communicate and interact.
 
 In this section, **you should not describe every single scenario** - otherwise, you will lose time and focus on useless details - but rather, you should pick the most architecturally relevant to showcase how such components communicate.
 
@@ -108,7 +108,7 @@ There are many ways to describe how components interact: flow charts, sequence d
 
 ### Deployment View
 
-The *Deployment View section* describes everthing necessary to understand how the infrastructure is defined.
+The _Deployment View section_ describes everthing necessary to understand how the infrastructure is defined.
 
 Here you should list information about:
 
@@ -124,7 +124,7 @@ Again, there are no strict rules for designing the Deployment View. You can use,
 
 ### Crosscutting Concepts
 
-In the *Crosscutting Concepts section*, you should — obviously — list and explain the crosscutting concerns, which are all the parts that are not related to a single module but are shared across the whole system.
+In the _Crosscutting Concepts section_, you should — obviously — list and explain the crosscutting concerns, which are all the parts that are not related to a single module but are shared across the whole system.
 
 Examples are:
 
@@ -143,7 +143,7 @@ Some practical examples of things you should describe in this section are:
 
 ### Architectural Decisions
 
-In the *Architectural Decisions section*, you should describe the most relevant decisions you've taken that have shaped the current architecture.
+In the _Architectural Decisions section_, you should describe the most relevant decisions you've taken that have shaped the current architecture.
 
 Other than just the decisions, you should also explain why you made this choice, and what are the consequences.
 
@@ -151,7 +151,7 @@ You can **structure this section using the [ADR](https://www.code4it.dev/archite
 
 ### Quality Requirements
 
-The *Quality Requirements section* contains a description of the quality requirements to be considered for this project.
+The _Quality Requirements section_ contains a description of the quality requirements to be considered for this project.
 
 While in the Introduction & Goals section, we've described the most important requirements, here we can list all of them by also specifying, when possible, the concrete requirements in terms of performance, response times, and so on.
 
@@ -159,7 +159,7 @@ You can **use a quality attribute utility tree**, as defined in the [Architectur
 
 ### Risks & Technical Debt
 
-In the *Risks & Technical Debt section*, you must list all the known technical risks, ordered by priority.
+In the _Risks & Technical Debt section_, you must list all the known technical risks, ordered by priority.
 
 Having risks and technical debt **listed in order of priority** allows you to always be aware of potential risks and, as a consequence, plan fixes and operations accordingly.
 
@@ -169,7 +169,7 @@ For each identified risk, you should also provide a Risk Level (Critical, High, 
 
 ### Glossary
 
-The *Glossary section* may be often overlooked, but it's one of the most important ones.
+The _Glossary section_ may be often overlooked, but it's one of the most important ones.
 
 In the Glossary you share common terms, explaining their meaning and, when possible, their **synonyms**.
 
@@ -183,7 +183,6 @@ An Arc42 is a generic guideline — you can create it yourself without the need 
 
 However, at the [Download page](https://arc42.org/download) of the Arc42 website you can find some handy templates for Microsoft Word, Markdown files, Confluence, and more.
 
-
 ## Further readings
 
 In this article, we've mentioned that one of the most important parts is to define why some choices were made to better express the rationale behind the choice.
@@ -192,14 +191,11 @@ There is a practical way to keep track of decisions, reasons, and updates: Archi
 
 🔗 [Tracking decision with Architecture Decision Records (ADRs) | Code4IT](https://www.code4it.dev/architecture-notes/architecture-decision-records/)
 
-
 Some of your constraints can be defined by a legal document you've signed with third parties. You must then keep an eye on SLI, SLO, and SLA. What are they?
 
 🔗 [Introducing SLI, SLO, and SLA | Code4IT](https://www.code4it.dev/architecture-notes/sli-vs-slo-vs-sla/)
 
-
 _This article first appeared on [Code4IT 🐧](https://www.code4it.dev/)_
-
 
 ## Wrapping up
 

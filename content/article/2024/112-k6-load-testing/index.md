@@ -4,21 +4,21 @@ date: 2024-06-18
 url: /blog/k6-load-testing
 draft: false
 categories:
- - Blog
+  - Blog
 tags:
- - Performance
- - Load Testing
- - Tests
- - K6 
+  - Performance
+  - Load Testing
+  - Tests
+  - K6
 toc: true
 summary: "Can your system withstand heavy loads? You can answer this question by running Load Tests. Maybe, using K6 as a free tool."
 images:
- - /blog/k6-load-testing/featuredImage.png
+  - /blog/k6-load-testing/featuredImage.png
 ---
 
 Understanding how your system reacts to incoming network traffic is crucial to determining whether it's stable, able to meet the expected [SLO](https://www.code4it.dev/architecture-notes/sli-vs-slo-vs-sla/), and if the underlying infrastructure and architecture are fine.
 
-How can we simulate many incoming requests? How can we *harvest* the results of our API calls?
+How can we simulate many incoming requests? How can we _harvest_ the results of our API calls?
 
 In this article, we will learn how to use K6 to run load tests and display the final result locally in Windows 11.
 
@@ -26,14 +26,13 @@ This article will be the foundation of future content, in which I'll explore mor
 
 ## What is Load Testing?
 
-Load testing simulates real-world usage conditions to ensure the software can handle high traffic without compromising performance or user experience. 
+Load testing simulates real-world usage conditions to ensure the software can handle high traffic without compromising performance or user experience.
 
-The importance of load testing lies in its ability to **identify bottlenecks and weak points** in the system that could lead to slow response times, errors, or crashes when under stress. 
+The importance of load testing lies in its ability to **identify bottlenecks and weak points** in the system that could lead to slow response times, errors, or crashes when under stress.
 
-By conducting load testing, developers can make necessary optimizations and improvements, ensuring the software is robust, reliable, and scalable. It's an essential step in delivering a quality product that meets user expectations and maintains business continuity during peak usage times. If you think of it, a system unable to handle the incoming traffic may entirely or partially fail, leading to **user dissatisfaction, loss of revenue, and damage to the company's reputation**. 
+By conducting load testing, developers can make necessary optimizations and improvements, ensuring the software is robust, reliable, and scalable. It's an essential step in delivering a quality product that meets user expectations and maintains business continuity during peak usage times. If you think of it, a system unable to handle the incoming traffic may entirely or partially fail, leading to **user dissatisfaction, loss of revenue, and damage to the company's reputation**.
 
 **Ideally, you should plan to have automatic load tests in place in your Continuous Delivery pipelines**, or, at least, ensure that you run Load tests in your production environment now and then. You then want to compare the test results with the previous ones to ensure that you haven't introduced bottlenecks in the last releases.
-
 
 ## The demo project
 
@@ -100,7 +99,7 @@ var delayMs = Random.Shared.Next(10, 10000);
 await Task.Delay(delayMs);
 ```
 
-I then added a **thread-safe counter** to keep track of the active operations. I increase the value when the request begins, and decrease it when the request completes. The log message is defined in the `lock` section to avoid concurrency issues. 
+I then added a **thread-safe counter** to keep track of the active operations. I increase the value when the request begins, and decrease it when the request completes. The log message is defined in the `lock` section to avoid concurrency issues.
 
 ```cs
 lock (_lock)
@@ -129,7 +128,7 @@ Of course, it's not a perfect solution: it just fits my need for this article.
 
 With [K6](https://k6.io/), you can run the Load Tests by defining the endpoint to call, the number of requests per minute, and some other configurations.
 
-It's a free tool, and you can install it using *Winget*:
+It's a free tool, and you can install it using _Winget_:
 
 ```bash
 winget install k6 --source winget
@@ -141,9 +140,9 @@ You can ensure that you have installed it correctly by opening a Bash (and not a
 k6 --version
 ```
 
-*Note: You can actually use PowerShell, but you have to modify some system keys to make K6 recognizable as a command.*
+_Note: You can actually use PowerShell, but you have to modify some system keys to make K6 recognizable as a command._
 
-The `--version` prints the version installed and the id of the latest GIT commit belonging to the installed package. For example, you will see *k6.exe v0.50.0 (commit/f18209a5e3, go1.21.8, windows/amd64)*.
+The `--version` prints the version installed and the id of the latest GIT commit belonging to the installed package. For example, you will see _k6.exe v0.50.0 (commit/f18209a5e3, go1.21.8, windows/amd64)_.
 
 Now, we can initialize the tool. Open a **Bash** and run the following command:
 
@@ -151,24 +150,23 @@ Now, we can initialize the tool. Open a **Bash** and run the following command:
 k6 new
 ```
 
-**This command generates a *script.js* file**, which you will need to configure in order to set up the Load Testing configurations.
+**This command generates a _script.js_ file**, which you will need to configure in order to set up the Load Testing configurations.
 
 Here's the scaffolded file (I removed the comments that refer to parts we are not going to cover in this article):
 
 ```js
-import http from 'k6/http';
-import { sleep } from 'k6';
+import http from "k6/http"
+import { sleep } from "k6"
 
 export const options = {
-  // A number specifying the number of VUs to run concurrently.
-  vus: 10,
-  // A string specifying the total duration of the test run.
-  duration: '30s',
-};
+  // A number specifying the number of VUs to run concurrently.
+  vus: 10, // A string specifying the total duration of the test run.
+  duration: "30s",
+}
 
-export default function() {
-  http.get('https://test.k6.io');
-  sleep(1);
+export default function () {
+  http.get("https://test.k6.io")
+  sleep(1)
 }
 ```
 
@@ -189,22 +187,22 @@ k6 run script.js
 
 VUs, Iterations, Sleep time... how do they work together?
 
-I updated the *script.js* file to clarify how K6 works, and how it affects the API calls.
+I updated the _script.js_ file to clarify how K6 works, and how it affects the API calls.
 
 The new version of the file is this:
 
 ```js
-import http from 'k6/http';
-import { sleep } from 'k6';
+import http from "k6/http"
+import { sleep } from "k6"
 
 export const options = {
-  vus: 1,
-  duration: '30s',  
-};
+  vus: 1,
+  duration: "30s",
+}
 
-export default function() {
-  http.get('https://localhost:7261/randombook');
-  sleep(1);
+export default function () {
+  http.get("https://localhost:7261/randombook")
+  sleep(1)
 }
 ```
 
@@ -262,9 +260,9 @@ Now, let me run the same script but update the VUs. We are going to run this con
 
 ```js
 export const options = {
-  vus: 3,
-  duration: '30s',
-};
+  vus: 3,
+  duration: "30s",
+}
 ```
 
 The result is similar, but this time we had performed 16 requests instead of 6. That's because, as you can see, there were up to 3 concurrent users accessing our APIs.
@@ -281,31 +279,29 @@ We have just covered the surface of what K6 can do. Of course, there are many re
 
 There are some parts, though, that I want to showcase here (so that you can deep dive into the ones you need).
 
-
 ### HTTP verbs
 
 In the previous examples, we used the `post` HTTP method. As you can imagine, there are [other methods](https://grafana.com/docs/k6/latest/javascript-api/k6-http/) that you can use.
 
-Each HTTP method has a corresponding Javascript function. For example, we have 
+Each HTTP method has a corresponding Javascript function. For example, we have
 
 - `get()` for the GET method
 - `post()` for the POST method
 - `put()` for the PUT method
 - `del()` for the DELETE method.
 
-
-### Stages 
+### Stages
 
 You can **create stages to define the different parts of the execution**:
 
 ```js
 export const options = {
-  stages: [
- { duration: '30s', target: 20 },
- { duration: '1m30s', target: 10 },
- { duration: '20s', target: 0 },
- ],
-};
+  stages: [
+    { duration: "30s", target: 20 },
+    { duration: "1m30s", target: 10 },
+    { duration: "20s", target: 0 },
+  ],
+}
 ```
 
 With the previous example, I defined three stages:
@@ -326,7 +322,7 @@ We always use a [scenario](https://grafana.com/docs/k6/latest/using-k6/scenarios
 
 We can define custom scenarios to tweak the different parameters used to define how the test should act.
 
-A scenario is nothing but a JSON element where you define arguments like duration, VUs, and so on. 
+A scenario is nothing but a JSON element where you define arguments like duration, VUs, and so on.
 
 By defining a scenario, you can also decide to run tests on the same endpoint but using different behaviours: you can create a scenario for a gradual growth of users, one for an immediate peak, and so on.
 
@@ -340,7 +336,7 @@ Let's use again the image we saw after running the script with the complex stage
 
 We can see lots of values whose names are mostly self-explaining.
 
-We can see, for example, `data_received` and `data_sent`, which tell you the size of the data sent and received. 
+We can see, for example, `data_received` and `data_sent`, which tell you the size of the data sent and received.
 
 We have information about the duration and response of HTTP requests (`http_req_duration`, `http_req_sending`, `http_reqs`), as well as information about the several phases of an HTTP connection, like `http_req_tls_handshaking`.
 
@@ -350,15 +346,14 @@ You can see the average value, the min and max, and some percentiles for most of
 
 ## Wrapping up
 
-K6 is a nice tool for getting started with load testing. 
+K6 is a nice tool for getting started with load testing.
 
 You can see more examples in the [official documentation](https://grafana.com/docs/k6/latest/examples/). I suggest to take some time and explore all the possibilities provided by K6.
 
 _This article first appeared on [Code4IT 🐧](https://www.code4it.dev/)_
 
-As I said before, this is just the beginning: in future articles, we will use K6 to understand how some technical choices impact the performance of the whole application. 
+As I said before, this is just the beginning: in future articles, we will use K6 to understand how some technical choices impact the performance of the whole application.
 
 I hope you enjoyed this article! Let's keep in touch on [LinkedIn](https://www.linkedin.com/in/BelloneDavide/) or [Twitter](https://twitter.com/BelloneDavide)! 🤜🤛
 
 Happy coding!
-
