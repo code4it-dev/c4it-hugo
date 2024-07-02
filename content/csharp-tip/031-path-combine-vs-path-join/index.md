@@ -4,15 +4,14 @@ date: 2024-06-25
 url: /csharptips/path-combine-vs-path-join
 draft: false
 categories:
- - CSharp Tips
-tags: 
- - CSharp
+  - CSharp Tips
+tags:
+  - CSharp
 toc: false
 summary: "When composing the path to a folder or file location, the `Path` class can come in handy. `Path.Join` and `Path.Combine` may look similar, but their behavior differ in an unexpected way."
 images:
- - /csharptips/path-combine-vs-path-join/featuredImage.png
+  - /csharptips/path-combine-vs-path-join/featuredImage.png
 ---
-
 
 When you need to compose the path to a folder or file location, you can rely on the `Path` class. It provides several static methods to create, analyze and modify strings that represent a file system.
 
@@ -37,7 +36,7 @@ Path.Combine("foo", "C:bar", "baz", "D:we", "ranl");
 // D:we\ranl
 ```
 
-## Path.Join: take everything 
+## Path.Join: take everything
 
 `Path.Join` does not try to return an absolute path, but it just joins the string using the OS path separator:
 
@@ -58,22 +57,22 @@ Path.Join("foo", "C:bar", "baz", "D:we", "ranl");
 
 ## Final comparison
 
-As you can see, the behaviour is slightly different. 
+As you can see, the behaviour is slightly different.
 
 Let's see a table where we call the two methods using the same input strings:
 
-| | **Path.Combine** | **Path.Join** |
-|--|--|--|
-| `["singlestring"]` | `singlestring` | `singlestring` |
-| `["foo", "bar", "baz"]` | `foo\bar\baz` | `foo\bar\baz` |
-| `["foo", " bar ", "baz"]` | `foo\ bar \baz` | `foo\ bar \baz` |
-| `["C:", "users", "davide"]` | `C:\users\davide` | `C:\users\davide` |
-| `["foo", "  ", "baz"]` | `foo\  \baz` | `foo\  \baz` |
-| `["foo", "C:bar", "baz"]` | `C:bar\baz` | `foo\C:bar\baz` |
-| `["foo", "C:bar", "baz", "D:we", "ranl"]` | `D:we\ranl` | `foo\C:bar\baz\D:we\ranl` |
-| `["C:", "/users", "/davide"]` | `/davide` | `C:/users/davide` |
-| `["C:", "users/", "/davide"]` | `/davide` | `C:\users//davide` |
-| `["C:", "\users", "\davide"]` | `\davide` | `C:\users\davide` |
+|                                           | **Path.Combine**  | **Path.Join**             |
+| ----------------------------------------- | ----------------- | ------------------------- |
+| `["singlestring"]`                        | `singlestring`    | `singlestring`            |
+| `["foo", "bar", "baz"]`                   | `foo\bar\baz`     | `foo\bar\baz`             |
+| `["foo", " bar ", "baz"]`                 | `foo\ bar \baz`   | `foo\ bar \baz`           |
+| `["C:", "users", "davide"]`               | `C:\users\davide` | `C:\users\davide`         |
+| `["foo", "  ", "baz"]`                    | `foo\  \baz`      | `foo\  \baz`              |
+| `["foo", "C:bar", "baz"]`                 | `C:bar\baz`       | `foo\C:bar\baz`           |
+| `["foo", "C:bar", "baz", "D:we", "ranl"]` | `D:we\ranl`       | `foo\C:bar\baz\D:we\ranl` |
+| `["C:", "/users", "/davide"]`             | `/davide`         | `C:/users/davide`         |
+| `["C:", "users/", "/davide"]`             | `/davide`         | `C:\users//davide`        |
+| `["C:", "\users", "\davide"]`             | `\davide`         | `C:\users\davide`         |
 
 Have a look at some specific cases:
 
