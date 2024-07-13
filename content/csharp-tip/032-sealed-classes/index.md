@@ -4,13 +4,13 @@ date: 2024-07-16
 url: /csharptips/sealed-classes
 draft: false
 categories:
- - CSharp Tips
-tags: 
- - CSharp
+  - CSharp Tips
+tags:
+  - CSharp
 toc: false
 summary: "The sealed keyword is often ignored, yet it can be important to define a proper class design."
 images:
- - /csharptips/sealed-classes/featuredImage.png
+  - /csharptips/sealed-classes/featuredImage.png
 ---
 
 The O in SOLID stands for the Open-closed principle: according to the official definition, "software entities (classes, modules, functions, etc.) should be open for extension, but closed for modification."
@@ -104,7 +104,6 @@ Marking a C# class as `sealed` can be beneficial for several reasons:
 _This article first appeared on [Code4IT 🐧](https://www.code4it.dev/)_
 
 ## Wrapping up
-
 
 I hope you enjoyed this article! Let's keep in touch on [Twitter](https://twitter.com/BelloneDavide) or [LinkedIn](https://www.linkedin.com/in/BelloneDavide/)! 🤜🤛
 
