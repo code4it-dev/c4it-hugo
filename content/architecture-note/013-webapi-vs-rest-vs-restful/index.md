@@ -4,14 +4,14 @@ date: 2024-07-23
 url: /architecture-notes/webapi-vs-rest-vs-restful
 draft: false
 categories:
- - Code and Architecture Notes
+  - Code and Architecture Notes
 tags:
- - Software Architecture
- - API
+  - Software Architecture
+  - API
 toc: true
 summary: "When describing a web service, people often use the wrong terms. Are you really creating a REST API if all your operations are executed via POST?"
 images:
- - /architecture-notes/webapi-vs-rest-vs-restful/featuredImage.png
+  - /architecture-notes/webapi-vs-rest-vs-restful/featuredImage.png
 ---
 
 In a world full of acronyms and terms, some nuances can get lost.
@@ -32,7 +32,7 @@ A specific type of API is the Web API: a **Web API** is an interface that allows
 
 ## What are REST APIs?
 
-In REST APIs, **everything revolves around the idea of a *resource***: your APIs do not expose endpoints that represent generic operations (`/getItem`), but using a combination of URL and HTTP method, you can define everything you can do _with a resource_.
+In REST APIs, **everything revolves around the idea of a _resource_**: your APIs do not expose endpoints that represent generic operations (`/getItem`), but using a combination of URL and HTTP method, you can define everything you can do _with a resource_.
 
 A REST API is a specific type of Web API that adheres to some guidelines, such as:
 
@@ -51,34 +51,35 @@ A **RESTful API** is a type of REST API that if **fully compliant with the REST 
 
 So, we can say that a RESTful API has the following characteristics:
 
-- **Use all the HTTP Methods**: They use ALL the standard HTTP methods (GET, POST, PUT, PATCH, DELETE, HEAD, OPTIONS) to manipulate resources. Yes, even HEAD and OPTIONS. 
+- **Use all the HTTP Methods**: They use ALL the standard HTTP methods (GET, POST, PUT, PATCH, DELETE, HEAD, OPTIONS) to manipulate resources. Yes, even HEAD and OPTIONS.
 - **Resource-Oriented**: RESTful APIs focus on resources (entities) and their representations. You never expose a, for example `/update-address`, but you use the proper HTTP Method to manipulate the address value.
 - **Self-Descriptive**: Responses include metadata to describe the data. Such metadata can be about the media type, the ETag, and similar information that describe the operation and the resource referenced.
-- **HATEOAS**: Some RESTful APIs also include HATEOAS (*Hypermedia as the Engine of Application State*), allowing clients to navigate the API dynamically.
-  
+- **HATEOAS**: Some RESTful APIs also include HATEOAS (_Hypermedia as the Engine of Application State_), allowing clients to navigate the API dynamically.
+
+
 
 ## Finding the differences between Web, REST, and RESTful APIs
 
 Here's a table to highlight the key differences between Web APIs, REST APIs, and RESTful APIs:
 
-| Aspect                | Web API                                     | REST API                                    | RESTful API                                |
-|-----------------------|---------------------------------------------|---------------------------------------------|--------------------------------------------|
-| **Protocol** | Typically uses HTTP or other protocols     | Specifically uses HTTP/HTTPS                       | Specifically uses HTTP/HTTPS                      |
-| **Formats** | Supports various data formats (e.g., JSON, XML) | Primarily uses JSON or XML                   | Primarily uses JSON or XML                  |
-| **Design** | Flexible design; not strictly adherent to REST principles | Adheres to REST architectural constraints | Adheres to all REST architectural constraints |
-| **Customization** | Provides a more customized experience. You can define any kind of operation needed.       | Lightweight and interchangeable in many situations | Lightweight and interchangeable in many situations |
-| **Complex Interactions** | Supports complex interactions with binary data | Focused on simplicity and uniformity         | Focused on simplicity and uniformity        |
-| **Available operations** | Custom operations based on path name (or whatever is wanted) | Operations depend on the HTTP Method         | Operations depend on the HTTP Method        |
+| Aspect                   | Web API                                                                                   | REST API                                           | RESTful API                                        |
+| ------------------------ | ----------------------------------------------------------------------------------------- | -------------------------------------------------- | -------------------------------------------------- |
+| **Protocol**             | Typically uses HTTP or other protocols                                                    | Specifically uses HTTP/HTTPS                       | Specifically uses HTTP/HTTPS                       |
+| **Formats**              | Supports various data formats (e.g., JSON, XML)                                           | Primarily uses JSON or XML                         | Primarily uses JSON or XML                         |
+| **Design**               | Flexible design; not strictly adherent to REST principles                                 | Adheres to REST architectural constraints          | Adheres to all REST architectural constraints      |
+| **Customization**        | Provides a more customized experience. You can define any kind of operation needed.       | Lightweight and interchangeable in many situations | Lightweight and interchangeable in many situations |
+| **Complex Interactions** | Supports complex interactions with binary data                                            | Focused on simplicity and uniformity               | Focused on simplicity and uniformity               |
+| **Available operations** | Custom operations based on path name (or whatever is wanted)                              | Operations depend on the HTTP Method               | Operations depend on the HTTP Method               |
 
 In short, you'd better remember the following diagram:
 
-
 ![Web vs REST vs RESTful](./web-vs-rest-vs-restful.png)
- 
+
+
+
 ## Further readings
 
 REST APIs were first described by Dr Roy Fielding in his doctorial dissertation. The original paper is available online:
-
 
 🔗 [Architectural Styles and the Design of Network-based Software Architectures | Roy Thomas Fielding](https://ics.uci.edu/~fielding/pubs/dissertation/fielding_dissertation.pdf)
 
@@ -90,8 +91,7 @@ When you create a resource using RESTful APIs you should also return the referen
 
 ## Wrapping up
 
-
-Understanding the correct terminology helps us use a shared language, avoiding misunderstandings. 
+Understanding the correct terminology helps us use a shared language, avoiding misunderstandings.
 
 Even if you don't need to know all the details of the REST principles, it's important to at least know that not all Web APIs are REST APIs.
 

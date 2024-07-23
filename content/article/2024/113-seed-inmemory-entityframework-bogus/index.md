@@ -4,24 +4,24 @@ date: 2024-07-09
 url: /blog/seed-inmemory-entityframework-bogus
 draft: false
 categories:
- - Blog
+  - Blog
 tags:
- - CSharp
- - Database
- - Entity Framework
+  - CSharp
+  - Database
+  - Entity Framework
 toc: true
 summary: "You don't need a physical database to experiment with ORMs. You can use an in-memory DB and seed the database with realistic data generated with Bogus."
 images:
- - /blog/seed-inmemory-entityframework-bogus/featuredImage.png
+  - /blog/seed-inmemory-entityframework-bogus/featuredImage.png
 ---
 
-Sometimes, you want to experiment with some features or create a demo project, but you don't want to instantiate a real database instance. 
+Sometimes, you want to experiment with some features or create a demo project, but you don't want to instantiate a real database instance.
 
 Also, you might want to use some realistic data - not just "test1", 123, and so on. These values are easy to set but not very practical when demonstrating functionalities.
 
 In this article, we're going to solve this problem by using Bogus and Entity Framework: you will learn how to generate realistic data and how to store them in an in-memory database.
 
-## Bogus, a C# library for generating realistic data 
+## Bogus, a C# library for generating realistic data
 
 [Bogus](https://github.com/bchavez/Bogus) is a popular library for **generating realistic data** for your tests. It allows you to choose the category of dummy data that best suits your needs.
 
@@ -49,7 +49,7 @@ public enum Genre
 }
 ```
 
-*Note: for the sake of simplicity, I used a dumb approach: author's first and last name are part of the Book info itself, and the Genres property is treated as an array of enums and not as a [flagged enum](https://www.code4it.dev/blog/5-things-enums-csharp/#4-flagged-enums).*
+_Note: for the sake of simplicity, I used a dumb approach: author's first and last name are part of the Book info itself, and the Genres property is treated as an array of enums and not as a [flagged enum](https://www.code4it.dev/blog/5-things-enums-csharp/#4-flagged-enums)._
 
 From here, we can start creating our `Faker` by specifying the referenced type:
 
@@ -57,7 +57,7 @@ From here, we can start creating our `Faker` by specifying the referenced type:
 Faker<Book> bookFaker = new Faker<Book>();
 ```
 
-We can add one or more `RuleFor` methods to create rules used to generate each property. 
+We can add one or more `RuleFor` methods to create rules used to generate each property.
 
 The simplest approach is to use the overload where the first parameter is a Function pointing to the property to be populated, and the second is a Function that calls the methods provided by Bogus to create dummy data.
 
@@ -78,6 +78,7 @@ A third approach is to define a generator for a specific type, saying "every tim
 ```cs
 bookFaker.RuleForType(typeof(DateOnly), f => f.Date.PastDateOnly());
 ```
+
 Let's dive deeper into Bogus, generating data for common types.
 
 ### Generate random IDs with Bogus
@@ -88,7 +89,7 @@ We can generate random GUIDs like this:
 bookFaker.RuleFor(b => b.Id, f => f.Random.Guid());
 ```
 
-In a similar way, you can generate *Uuid* by calling `f.Random.Uuid()`.
+In a similar way, you can generate _Uuid_ by calling `f.Random.Uuid()`.
 
 ### Generate random text with Bogus
 
@@ -146,7 +147,6 @@ List<Book> books = bookFaker.GenerateBetween(2, 5);
 ### Wrapping up the Faker example
 
 Now that we've learned how to generate a Faker, we can refactor the code to make it easier to read:
-
 
 ```cs
 private List<Book> GenerateBooks(int count)
@@ -272,4 +272,3 @@ I hope you enjoyed this article! Let's keep in touch on [Twitter](https://twitte
 Happy coding!
 
 🐧
-
