@@ -16,9 +16,10 @@ That's why I also decided to give a try to tech conferences.
 
 ## 2024
 
-| Title                            | Event                                   | Date       | Duration | Level        |                                                   |
-| -------------------------------- | --------------------------------------- | ---------- | -------- | ------------ | ------------------------------------------------- |
-| Improving Your **Code Coverage** | Microsoft Visual Studio Youtube channel | 2024-02-16 | 24m      | Intermediate | [🎥](https://www.youtube.com/watch?v=R80G3LJ6ZWc) |
+| Title                                                                          | Event                                   | Date       | Duration | Level        |                                                                                                                          |
+| ------------------------------------------------------------------------------ | --------------------------------------- | ---------- | -------- | ------------ | ------------------------------------------------------------------------------------------------------------------------ |
+| Zero to Hero: How to master Configurations and Feature Flags on .NET and Azure | WeAreDevelopers World Congress 2024     | 2024-07-18 | 35m      | Intermediate | [🎥](https://worldcongress.app.swapcard.com/event/wearedevelopers-world-congress-2024/planning/UGxhbm5pbmdfMjAxNzE0NA==) |
+| Improving Your **Code Coverage**                                               | Microsoft Visual Studio Youtube channel | 2024-02-16 | 24m      | Intermediate | [🎥](https://www.youtube.com/watch?v=R80G3LJ6ZWc)                                                                        |
 
 ## 2023
 
