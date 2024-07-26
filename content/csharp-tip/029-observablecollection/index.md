@@ -69,7 +69,7 @@ You can **simplify the initialization by passing a collection in the constructor
 
 ## How to intercept changes to the underlying collection
 
-As we said, this data type implements `INotifyCollectionChanged`. Thanks to this interface, we can add **events handlers** to the `CollectionChanged` event and see what happens.
+As we said, this data type implements `INotifyCollectionChanged`. Thanks to this interface, we can add **event handlers** to the `CollectionChanged` event and see what happens.
 
 ```cs
 var collection = new ObservableCollection<string>(new string[] { "Mario", "Luigi", "Peach" });
