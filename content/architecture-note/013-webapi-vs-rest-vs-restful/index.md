@@ -81,6 +81,12 @@ This list of endpoints stored in the `links` section allows clients to navigate 
 
 HATEOAS is a fundamental part of REST, since it allows clients to access the state of the resource (remember the "S" in "REST"?).
 
+It's worth noting that HATEOAS should start from the root. Just by providing the root URL, the client should be able to understand which entities are available, and be able to navigate the hierachy of resouces dynamically.
+
+As stated by Roy Fielding, the creator of REST, [in an article on his blog](https://roy.gbiv.com/untangled/2008/rest-apis-must-be-hypertext-driven):
+
+>  A REST API should be entered with no prior knowledge beyond the initial URI (bookmark) and set of standardized media types that are appropriate for the intended audience (i.e., expected to be understood by any client that might use the API). From that point on, all application state transitions must be driven by client selection of server-provided choices that are present in the received representations or implied by the user’s manipulation of those representations. 
+
 ## What are pseudo-REST APIs?
 
 The harsh reality is that **most of us write pseudo-REST APIs**.
