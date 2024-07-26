@@ -332,7 +332,7 @@ It's not difficult to guess what this method checks...
 
 ## Assert.ThrowsException
 
-Until now we assumed that all our methods return a value, and that we should just check if that value is correct. But some times methods throw exceptions, and we have to handle them.   
+Until now we assumed that all our methods return a value, and that we should just check if that value is correct. But some times methods throw exceptions, and we have to handle them.   
 That's why this method comes handy.
 
 Suppose you have a simple method like this one:

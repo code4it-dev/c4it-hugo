@@ -24,12 +24,12 @@ The most common way to extend a class is to mark it as `abstract` :
 ```cs
 public abstract class MyBaseClass
 {
-    public DateOnly Date { get; init; }
-    public string Title { get; init; }
+  public DateOnly Date { get; init; }
+  public string Title { get; init; }
 
-    public abstract string GetFormattedString();
+  public abstract string GetFormattedString();
 
-    public virtual string FormatDate() => Date.ToString("yyyy-MM-dd");
+  public virtual string FormatDate() => Date.ToString("yyyy-MM-dd");
 }
 ```
 
@@ -38,7 +38,7 @@ Then, to extend it you create a subclass and define the internal implementations
 ```cs
 public class ConcreteClass : MyBaseClass
 {
-    public override string GetFormattedString() => $"{Title} | {FormatDate()}";
+  public override string GetFormattedString() => $"{Title} | {FormatDate()}";
 }
 ```
 
@@ -49,17 +49,17 @@ You can override methods from a concrete class:
 ```cs
 public class MyBaseClass2
 {
-    public DateOnly Date { get; init; }
-    public string Title { get; init; }
+  public DateOnly Date { get; init; }
+  public string Title { get; init; }
 
-    public string GetFormattedString() => $"{Title} ( {FormatDate()} )";
+  public string GetFormattedString() => $"{Title} ( {FormatDate()} )";
 
-    public string FormatDate() => Date.ToString("yyyy-MM-dd");
+  public string FormatDate() => Date.ToString("yyyy-MM-dd");
 }
 
 public class ConcreteClass2 : MyBaseClass2
 {
-    public new string GetFormattedString() => $"{Title} | {FormatDate()}";
+  public new string GetFormattedString() => $"{Title} | {FormatDate()}";
 }
 ```
 
@@ -74,12 +74,12 @@ To prevent classes from being extended, you must mark your class as `sealed`:
 ```cs
 public sealed class MyBaseClass3
 {
-    public DateOnly Date { get; init; }
-    public string Title { get; init; }
+  public DateOnly Date { get; init; }
+  public string Title { get; init; }
 
-    public string GetFormattedString() => $"{Title} ( {FormatDate()} )";
+  public string GetFormattedString() => $"{Title} ( {FormatDate()} )";
 
-    public string FormatDate() => Date.ToString("yyyy-MM-dd");
+  public string FormatDate() => Date.ToString("yyyy-MM-dd");
 }
 
 public class ConcreteClass3 : MyBaseClass3
