@@ -42,49 +42,43 @@ For the sake of this article, I created a simple .NET API project: it exposes ju
 int requestCount = 0;
 int concurrentExecutions = 0;
 object _lock = new();
-
 app.MapGet("/randombook", async (CancellationToken ct) =>
 {
-    Book? thisBook = default;
+    Book ? thisBook =
+        default;
     var delayMs = Random.Shared.Next(10, 10000);
     try
- {
-        lock (_lock)
- {
+    {
+        lock(_lock)
+        {
             requestCount++;
             concurrentExecutions++;
-            app.Logger.LogInformation("Request {Count}. Concurrent Executions {Executions}. Delay: {DelayMs}ms",
-                requestCount,
-                concurrentExecutions,
-                delayMs
- );
- }
-
-        using (ApiContext context = new ApiContext())
- {
+            app.Logger.LogInformation("Request {Count}. Concurrent Executions {Executions}. Delay: {DelayMs}ms", requestCount, concurrentExecutions, delayMs);
+        }
+        using(ApiContext context = new ApiContext())
+        {
             await Task.Delay(delayMs);
             if (ct.IsCancellationRequested)
- {
+            {
                 app.Logger.LogWarning("Cancellation requested");
                 throw new OperationCanceledException();
- }
+            }
             var allbooks = await context.Books.ToArrayAsync(ct);
             thisBook = Random.Shared.GetItems(allbooks, 1).First();
- }
- }
+        }
+    }
     catch (Exception ex)
- {
+    {
         app.Logger.LogError(ex, "An error occurred");
         return Results.Problem(ex.Message);
- }
+    }
     finally
- {
-        lock (_lock)
- {
+    {
+        lock(_lock)
+        {
             concurrentExecutions--;
- }
- }
-
+        }
+    }
     return TypedResults.Ok(thisBook);
 });
 ```
