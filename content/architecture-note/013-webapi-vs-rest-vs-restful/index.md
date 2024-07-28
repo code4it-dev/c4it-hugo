@@ -1,6 +1,6 @@
 ---
 title: "Davide's Code and Architecture Notes - Web APIs vs REST APIs vs pseudo-REST APIs"
-date: 2024-07-26
+date: 2024-07-23
 url: /architecture-notes/webapi-vs-rest-vs-pseudo-rest
 draft: false
 categories:
@@ -21,7 +21,7 @@ In a world full of acronyms and terms, some nuances can get lost.
 
 People claim they're developing REST APIs even though their APIs do not follow the REST principles. Maybe their APIs are inspired by REST principles, but they are still not REST APIs.
 
-In this article, we will explain the differences and similarities between the three approaches to exposing services and data over the network.
+In this article, we will explain the differences and similarities between "simple" WEB APIs, REST APIs, and pseudo-REST APIS, and you will learn that most probably you are not exposing "real" REST APIs.
 
 ## What are Web APIs?
 
@@ -41,10 +41,9 @@ REST is an **architectural pattern** that, to be followed, requires you to follo
 
 - **Statelessness**: Each request from the client must contain all necessary information; **the server doesn't store the client state**. There is no context shared across different requests, making the system easier to scale and maintain.
 - **Cacheability**: Responses can be cached to improve performance. You can use the ETag header to understand whether the cache is valid.
-- **Resource-Based**: REST APIs expose resource operations via URL, and clients interact with these resources using standard HTTP methods. Each HTTP method has a specific meaning (so, put short, if you are using a POST to retrieve an entity's information, you are not adhering to the REST specification)
+- **Resource-Based**: REST APIs expose resource operations via URL, and clients interact with these resources using standard HTTP methods. Each HTTP method has a specific meaning (so, put short, if you are using a POST to retrieve an entity's information, you are not adhering to the REST guidelines)
 - **Uniform Interface**: Resources are exposed via a consistent representation (using URLs). In general, you want your URLs to be structured like `/{resource-type}/{id}`; for example, information about the book with ID 555 should be retrieved at the URL `/book/555` (notice that it's `book`, singular, and not `books`).
-- **Operations via HTTP methods**: You must use standard HTTP methods (GET, POST, PUT, DELETE) to represent the operations on a resource. For example, GET must retrieve information, while DELETE must be used delete an entity. You must not use GET to delete a resource.
-- **Scalability**: REST APIs are lightweight and scalable.
+- **Operations via HTTP methods**: You must use standard HTTP methods (GET, POST, PUT, DELETE) to represent the operations on a resource. For example, with GET you retrieve information, while with DELETE you only delete an entity. You must not use GET to delete a resource.
 
 **REST is an acronym that means "REpresentational State Transfer"**. Let's focus on each word of the acronym. 
 
@@ -55,25 +54,25 @@ REST is an **architectural pattern** that, to be followed, requires you to follo
 
 ```json
 {
-  "id": 42,
-  "title": "The Hitchhiker's Guide to the Galaxy",
-  "authorName": "Douglas Adams",
-  "publicationYear": 1979,
-  "genre": "comedy",
-  "links": [
-    {
-      "href": "https://api.mylibrary.com/book/42",
-      "rel": "self"
-    },
-    {
-      "href": "https://api.mylibrary.com/author/123",
-      "rel": "author"
-    },
-    {
-      "href": "https://api.mylibrary.com/genres/861",
-      "rel": "genre"
-    }
-  ]
+  "id": 42,
+  "title": "The Hitchhiker's Guide to the Galaxy",
+  "authorName": "Douglas Adams",
+  "publicationYear": 1979,
+  "genre": "comedy",
+  "links": [
+ {
+      "href": "https://api.mylibrary.com/book/42",
+      "rel": "self"
+ },
+ {
+      "href": "https://api.mylibrary.com/author/123",
+      "rel": "author"
+ },
+ {
+      "href": "https://api.mylibrary.com/genres/861",
+      "rel": "genre"
+ }
+ ]
 }
 ```
 
@@ -81,11 +80,14 @@ This list of endpoints stored in the `links` section allows clients to navigate 
 
 HATEOAS is a fundamental part of REST, since it allows clients to access the state of the resource (remember the "S" in "REST"?).
 
-It's worth noting that HATEOAS should start from the root. Just by providing the root URL, the client should be able to understand which entities are available, and be able to navigate the hierachy of resouces dynamically.
+It's worth noting that HATEOAS should start from the root. Just by providing the root URL, the client should be able to understand which entities are available and navigate the hierarchy of resources dynamically. 
+
+For example, by accessing the root URL of the system (for example, `https://api.mylibrary.com`) you should be able to retrieve the list of the available types of entity (book, author, genres), making your clients able to know everything they need just by accessing the root URL.
+
 
 As stated by Roy Fielding, the creator of REST, [in an article on his blog](https://roy.gbiv.com/untangled/2008/rest-apis-must-be-hypertext-driven):
 
->  A REST API should be entered with no prior knowledge beyond the initial URI (bookmark) and set of standardized media types that are appropriate for the intended audience (i.e., expected to be understood by any client that might use the API). From that point on, all application state transitions must be driven by client selection of server-provided choices that are present in the received representations or implied by the user’s manipulation of those representations. 
+> A REST API should be entered with no prior knowledge beyond the initial URI (bookmark) and set of standardized media types that are appropriate for the intended audience (i.e., expected to be understood by any client that might use the API). From that point on, all application state transitions must be driven by client selection of server-provided choices that are present in the received representations or implied by the user’s manipulation of those representations. 
 
 ## What are pseudo-REST APIs?
 
@@ -95,9 +97,9 @@ Most teams develop the usual type of APIs using some REST practices but do not t
 
 I bet most of you use HTTP Verbs to perform CRUD operations on your entity. 
 
-But I can also imagine that you don't implement HATEOAS and don't provide **content negotiation**.
+But I can also imagine that you don't implement HATEOAS and don't provide **[content negotiation](https://developer.mozilla.org/en-US/docs/Web/HTTP/Content_negotiation)**.
 
-The truth is that you either create a REST API or you don't. There is no such thing as REST-ish API.
+The truth is that you create a REST API, or you don't. There is no such thing as REST-ish API.
 
 ![There is no such thing as pseudo-REST](yoda.png)
 
@@ -109,7 +111,7 @@ REST APIs were first described by Dr Roy Fielding in his doctorial dissertation.
 
 _This article first appeared on [Code4IT 🐧](https://www.code4it.dev/)_
 
-When you create a resource using REST APIs you should also return the reference to the details of the newly created resource. In ASP.NET, it's easy: you can use `CreatedAtAction` and `CreatedAtRoute`.
+When you create a resource using REST APIs, you should also return the reference to the details of the newly created resource. In ASP.NET, it's easy: you can use `CreatedAtAction` and `CreatedAtRoute`.
 
 🔗 [Getting resource location with CreatedAtAction and CreatedAtRoute action results | Code4IT](https://www.code4it.dev/blog/createdatroute-createdataction/)
 
