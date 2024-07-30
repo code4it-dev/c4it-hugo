@@ -1,6 +1,6 @@
 ---
 title: "Davide's Code and Architecture Notes - Web APIs vs REST APIs vs pseudo-REST APIs"
-date: 2024-07-23
+date: 2024-07-30
 url: /architecture-notes/webapi-vs-rest-vs-pseudo-rest
 draft: false
 categories:
@@ -115,9 +115,9 @@ When you create a resource using REST APIs, you should also return the reference
 
 🔗 [Getting resource location with CreatedAtAction and CreatedAtRoute action results | Code4IT](https://www.code4it.dev/blog/createdatroute-createdataction/)
 
-[Andrea Chiarelli](https://www.linkedin.com/in/andreachiarelli/), who helped me understand that the first version of this article was wrong and misleading, wrote a great article explaining what REST really means. It's written in Italian, but I'm sure you'll be able to translate it using an online tool.
+[Andrea Chiarelli](https://www.linkedin.com/in/andreachiarelli/), who helped me understand that the first version of this article was wrong and misleading, wrote a great article explaining what REST really means.
 
-🔗 [Tutti quanti voglion fare REST | Andrea Chiarelli](https://www.html.it/articoli/cos-e-rest-caratteristiche/)
+🔗 [Please, don’t call them RESTful | Andrea Chiarelli](https://medium.com/@andrea.chiarelli/please-dont-call-them-restful-d2465527b5c)
 
 
 ## Wrapping up
