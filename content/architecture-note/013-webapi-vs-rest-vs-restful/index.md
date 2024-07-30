@@ -54,23 +54,23 @@ REST is an **architectural pattern** that, to be followed, requires you to follo
 
 ```json
 {
-  "id": 42,
-  "title": "The Hitchhiker's Guide to the Galaxy",
-  "authorName": "Douglas Adams",
-  "publicationYear": 1979,
-  "genre": "comedy",
-  "links": [
+   "id": 42,
+   "title": "The Hitchhiker's Guide to the Galaxy",
+   "authorName": "Douglas Adams",
+   "publicationYear": 1979,
+   "genre": "comedy",
+   "links": [
  {
-      "href": "https://api.mylibrary.com/book/42",
-      "rel": "self"
+         "href": "https://api.mylibrary.com/book/42",
+         "rel": "self"
  },
  {
-      "href": "https://api.mylibrary.com/author/123",
-      "rel": "author"
+         "href": "https://api.mylibrary.com/author/123",
+         "rel": "author"
  },
  {
-      "href": "https://api.mylibrary.com/genres/861",
-      "rel": "genre"
+         "href": "https://api.mylibrary.com/genres/861",
+         "rel": "genre"
  }
  ]
 }

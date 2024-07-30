@@ -23,7 +23,7 @@ Let's make it clear!
 
 ## Node.js
 
-Node.js is a **server environment** based on JavaScript. You can download it from the [official site](https://nodejs.org/ "Node.js website") and run it on Windows, Linux, Mac, etc.
+Node.js is a **server environment** based on JavaScript. You can download it from the [official site](https://nodejs.org/ "Node.js website")  and run it on Windows, Linux, Mac, etc.
 
 **Node.js uses asynchronous programming**: while a typical server handles one request per time (thus creating overhead while waiting for the request completion), Node.js accepts all the requests and handles them one by one in a manner that does not block other requests. This is obviously very efficient.
 

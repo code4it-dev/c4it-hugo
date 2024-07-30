@@ -229,25 +229,25 @@ scenarios: (100.00%) 1 scenario, 1 max VUs, 1m0s max duration (incl. graceful st
 
 
 data_received..................: 2.8 kB 77 B/s
-data_sent......................: 867 B  24 B/s
-http_req_blocked...............: avg=20.62ms  min=0s       med=0s    max=123.77ms p(90)=61.88ms  p(95)=92.83ms
-http_req_connecting............: avg=316.64µs min=0s       med=0s    max=1.89ms   p(90)=949.95µs p(95)=1.42ms
-http_req_duration..............: avg=4.92s    min=125.65ms med=5.37s max=9.27s    p(90)=8.04s    p(95)=8.66s
-{ expected_response:true }...: avg=4.92s    min=125.65ms med=5.37s max=9.27s    p(90)=8.04s    p(95)=8.66s
-http_req_failed................: 0.00%  ✓ 0        ✗ 6
-http_req_receiving.............: avg=1.12ms   min=0s       med=0s    max=6.76ms   p(90)=3.38ms   p(95)=5.07ms
-http_req_sending...............: avg=721.55µs min=0s       med=0s    max=4.32ms   p(90)=2.16ms   p(95)=3.24ms
-http_req_tls_handshaking.......: avg=13.52ms  min=0s       med=0s    max=81.12ms  p(90)=40.56ms  p(95)=60.84ms
-http_req_waiting...............: avg=4.92s    min=125.65ms med=5.37s max=9.27s    p(90)=8.03s    p(95)=8.65s
-http_reqs......................: 6      0.167939/s
-iteration_duration.............: avg=5.95s    min=1.13s    med=6.38s max=10.29s   p(90)=9.11s    p(95)=9.7s
-iterations.....................: 6      0.167939/s
-vus............................: 1      min=1      max=1
-vus_max........................: 1      min=1      max=1
+data_sent......................: 867 B   24 B/s
+http_req_blocked...............: avg=20.62ms   min=0s       med=0s     max=123.77ms p(90)=61.88ms   p(95)=92.83ms
+http_req_connecting............: avg=316.64µs min=0s       med=0s     max=1.89ms   p(90)=949.95µs p(95)=1.42ms
+http_req_duration..............: avg=4.92s     min=125.65ms med=5.37s max=9.27s     p(90)=8.04s     p(95)=8.66s
+{ expected_response:true }...: avg=4.92s     min=125.65ms med=5.37s max=9.27s     p(90)=8.04s     p(95)=8.66s
+http_req_failed................: 0.00%   ✓ 0         ✗ 6
+http_req_receiving.............: avg=1.12ms   min=0s       med=0s     max=6.76ms   p(90)=3.38ms   p(95)=5.07ms
+http_req_sending...............: avg=721.55µs min=0s       med=0s     max=4.32ms   p(90)=2.16ms   p(95)=3.24ms
+http_req_tls_handshaking.......: avg=13.52ms   min=0s       med=0s     max=81.12ms   p(90)=40.56ms   p(95)=60.84ms
+http_req_waiting...............: avg=4.92s     min=125.65ms med=5.37s max=9.27s     p(90)=8.03s     p(95)=8.65s
+http_reqs......................: 6       0.167939/s
+iteration_duration.............: avg=5.95s     min=1.13s     med=6.38s max=10.29s   p(90)=9.11s     p(95)=9.7s
+iterations.....................: 6       0.167939/s
+vus............................: 1       min=1       max=1
+vus_max........................: 1       min=1       max=1
 
 
 running (0m35.7s), 0/1 VUs, 6 complete and 0 interrupted iterations
-default ✓ [======================================] 1 VUs  30s
+default ✓ [======================================] 1 VUs   30s
 ```
 
 Now, let me run the same script but update the VUs. We are going to run this configuration:

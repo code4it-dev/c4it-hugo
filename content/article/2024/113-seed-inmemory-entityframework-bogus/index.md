@@ -224,7 +224,7 @@ public class BooksDbContext : DbContext
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     {
-     optionsBuilder.UseInMemoryDatabase("BooksDatabase");
+      optionsBuilder.UseInMemoryDatabase("BooksDatabase");
     }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
