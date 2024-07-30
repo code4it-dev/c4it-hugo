@@ -67,7 +67,7 @@ Let's see a table where we call the two methods using the same input strings:
 | `["foo", "bar", "baz"]`                   | `foo\bar\baz`     | `foo\bar\baz`             |
 | `["foo", " bar ", "baz"]`                 | `foo\ bar \baz`   | `foo\ bar \baz`           |
 | `["C:", "users", "davide"]`               | `C:\users\davide` | `C:\users\davide`         |
-| `["foo", "  ", "baz"]`                    | `foo\  \baz`      | `foo\  \baz`              |
+| `["foo", "   ", "baz"]`                   | `foo\   \baz`     | `foo\   \baz`             |
 | `["foo", "C:bar", "baz"]`                 | `C:bar\baz`       | `foo\C:bar\baz`           |
 | `["foo", "C:bar", "baz", "D:we", "ranl"]` | `D:we\ranl`       | `foo\C:bar\baz\D:we\ranl` |
 | `["C:", "/users", "/davide"]`             | `/davide`         | `C:/users/davide`         |
@@ -76,7 +76,7 @@ Let's see a table where we call the two methods using the same input strings:
 
 Have a look at some specific cases:
 
-- neither methods handle white and empty spaces: `["foo", "  ", "baz"]` are transformed to `foo\  \baz`. Similarly, `["foo", " bar ", "baz"]` are combined into `foo\ bar \baz`, without removing the head and trail whitespaces. So, **always remove white spaces and empty values!**
+- neither methods handle white and empty spaces: `["foo", "   ", "baz"]` are transformed to `foo\   \baz`. Similarly, `["foo", " bar  ", "baz"]` are combined into `foo\ bar  \baz`, without removing the head and trail whitespaces. So, **always remove white spaces and empty values!**
 - `Path.Join` handles in a not-so-obvious way the case of a path starting with `/` or `\`: if a part starts with `\`, it is included in the final path; if it starts with `/`, it is escaped as `//`. This behaviour depends on the path separator used by the OS: in my case, I'm running these methods using Windows 11.
 
 Finally, always remember that **the path separator depends on the Operating System** that is running the code. Don't assume that it will always be `/`: this assumption may be correct for one OS but wrong for another one.

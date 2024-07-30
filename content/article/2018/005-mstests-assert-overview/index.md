@@ -50,7 +50,7 @@ Note 2: you cannot create sub-classes since **this class is sealed**.
 
 This class provides the most general checks, those based on equality and general assertions. You can find the documentation [on this page](https://docs.microsoft.com/en-us/dotnet/api/microsoft.visualstudio.testtools.unittesting.assert?wt.mc_id=DT-MVP-5005077 "Unit testing page on Microsoft docs").
 
-For almost every method I'll show in this article there is a specular method that checks if the condition is not verified. For Assert.IsTrue there is Assert.IsFalse, for Assert.AreEqual there is Assert.AreNotEqual and so on. The only exception here is the *ThrowsException* method.
+For almost every method I'll show in this article there is a specular method that checks if the condition is not verified. For Assert.IsTrue there is Assert.IsFalse, for Assert.AreEqual there is Assert.AreNotEqual and so on. The only exception here is the _ThrowsException_ method.
 
 Every method has two overrides that allow you to add an error message as a string and to provide custom parameters to pass to the string, in order to format it as you do with `String.Format()`.
 
@@ -157,13 +157,13 @@ With a Boolean flag you can specify whether the comparison must ignore case.
 
 #### CultureInfo
 
-Sometimes you need to check if two strings are equals according to a specific culture. Well, you can add a *CultureInfo* parameter to the method to achieve the result.
+Sometimes you need to check if two strings are equals according to a specific culture. Well, you can add a _CultureInfo_ parameter to the method to achieve the result.
 
 You might think "Do I really need to check for the culture?". Usually not, unless you are Turkish.
 
-#### The Turkish i problem
+#### The Turkish i problem
 
-Have you ever heard of the *Turkish I problem*? In short, for the Turkish alphabet **the uppercase _i_ is not _I_, but _İ_**. You can see a more detailed article [here](https://haacked.com/archive/2012/07/05/turkish-i-problem-and-why-you-should-care.aspx "Turkish I problem article").
+Have you ever heard of the _Turkish I problem_? In short, for the Turkish alphabet **the uppercase _i_ is not _I_, but _İ_**. You can see a more detailed article [here](https://haacked.com/archive/2012/07/05/turkish-i-problem-and-why-you-should-care.aspx "Turkish I problem article").
 
 So when comparing strings you should keep this problem in mind.
 
@@ -183,7 +183,7 @@ public void TestOnTurkishI()
 
 ### Assert.AreEqual with Objects
 
-With objects things get a bit more complicated. Let's say we have this class:
+With objects things get a bit more complicated. Let's say we have this class:
 
 ```cs
 class User
@@ -213,7 +213,7 @@ So... How can we pass the test?
 
 #### Override Equals
 
-The solution is to override the `Equals()` method of the *Object* class. This will let you specify a custom way to compare two objects without comparing the object reference.  
+The solution is to override the `Equals()` method of the _Object_ class. This will let you specify a custom way to compare two objects without comparing the object reference.  
 First of all, I've created a new class, UpdatedUser, that is similar to the User class seen before but with an override of the _Equals_ method.
 
 ```cs
@@ -272,7 +272,7 @@ This method checks if **the references of the two values** are the same.
  }
 ```
 
-As you can see, *a* and *b* are exactly the same struct, so the override of the *Equals* method is not necessary. With this method you can verify by yourself that when adding an element in a List you are adding a reference to an object, not cloning that one:
+As you can see, _a_ and _b_ are exactly the same struct, so the override of the _Equals_ method is not necessary. With this method you can verify by yourself that when adding an element in a List you are adding a reference to an object, not cloning that one:
 
 ```cs
 [TestMethod]
@@ -288,7 +288,7 @@ As you can see, *a* and *b* are exactly the same struct, so the override of 
 
 ## Assert.IsInstanceOfType
 
-Well, you can imagine what this method does... In the examples below I'll show you also the IsNotInstanceOfType method, just to have a countercheck on what is inheritance. In fact, in this example I created the *AdminUser* class that extends the *User* class seen before.
+Well, you can imagine what this method does... In the examples below I'll show you also the IsNotInstanceOfType method, just to have a countercheck on what is inheritance. In fact, in this example I created the _AdminUser_ class that extends the _User_ class seen before.
 
 ```cs
 private class AdminUser : User
@@ -332,7 +332,7 @@ It's not difficult to guess what this method checks...
 
 ## Assert.ThrowsException
 
-Until now we assumed that all our methods return a value, and that we should just check if that value is correct. But some times methods throw exceptions, and we have to handle them.   
+Until now we assumed that all our methods return a value, and that we should just check if that value is correct. But some times methods throw exceptions, and we have to handle them.  
 That's why this method comes handy.
 
 Suppose you have a simple method like this one:
@@ -375,12 +375,12 @@ public bool IsAuthorized(string username)
  }
 ```
 
-This way we are giving more information on why the method fails. But the test seen before will fail, because that's not the exception expected (we are expecting an *Exception* but we receive an *ArgumentNullException*).
+This way we are giving more information on why the method fails. But the test seen before will fail, because that's not the exception expected (we are expecting an _Exception_ but we receive an _ArgumentNullException_).
 
 Is there a way to create generic tests?  
 Well... no.
 
-Just look at what happens in the *ThrowsException* method and find out why.
+Just look at what happens in the _ThrowsException_ method and find out why.
 
 ```cs
 public static T ThrowsException(Action action, string message, params object[] parameters) where T : Exception
@@ -423,4 +423,4 @@ _This article first appeared on [Code4IT](https://www.code4it.dev/)_
 
 This was a long article, I know. But here I have listed a few methods I don't see used as much as they should. As I said before, nearly every method has its negative counterpart, so you have a rich set of checks to use.
 
-In the next article we'll have a look at the StringAssert class, that's -obviously- specific for strings.
+In the next article we'll have a look at the StringAssert class, that's -obviously- specific for strings.

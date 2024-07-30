@@ -42,7 +42,7 @@ return myString==null || myString == String.Empty || myString.Length == 0;
 
 Ok, we should be fine. But, what if the string contains only whitespaces?
 
-I mean, the string `" "`, passed to the `IsStringEmpty` method, will return true.
+I mean, the string `" "`, passed to the `IsStringEmpty` method, will return true.
 
 If that's not what we want, we should include this check on the method.  
 Of course, this implies a bit of complexity to check null values.
@@ -97,11 +97,11 @@ Fine. Too tricky, isn't it? And we just reinvented the wheel.
 
 ## .NET native methods: String.IsNullOrEmpty and String.IsNullOrWhitespace
 
-C# provides two methods to achieve this result, [String.IsNullOrEmpty](https://docs.microsoft.com/en-us/dotnet/api/system.string.isnullorempty?wt.mc_id=DT-MVP-5005077 "String.IsNullOrEmpty documentation") and  [String.IsNullOrWhiteSpace](https://docs.microsoft.com/en-us/dotnet/api/system.string.isnullorwhitespace?wt.mc_id=DT-MVP-5005077 "String.IsNullOrWhitespace documentation"), with a subtle difference.
+C# provides two methods to achieve this result, [String.IsNullOrEmpty](https://docs.microsoft.com/en-us/dotnet/api/system.string.isnullorempty?wt.mc_id=DT-MVP-5005077 "String.IsNullOrEmpty documentation") and [String.IsNullOrWhiteSpace](https://docs.microsoft.com/en-us/dotnet/api/system.string.isnullorwhitespace?wt.mc_id=DT-MVP-5005077 "String.IsNullOrWhitespace documentation"), with a subtle difference.
 
 `String.IsNullOrEmpty` checks only if **the string passed as parameter has at least one symbol**, so it doesn't recognize strings composed by empty characters.
 
-`String.IsNullOrWhitespace` covers the scenario described in this post. It checks **both empty characters and for escape characters**.
+`String.IsNullOrWhitespace` covers the scenario described in this post. It checks **both empty characters and for escape characters**.
 
 ```cs
 string str1 = "hello";

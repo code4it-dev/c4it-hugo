@@ -57,7 +57,7 @@ Well, I used to agree with this argument. I was used to mocking interfaces by us
 
 It's still a valid way, but my point here is that that's not the only one!
 
-One of the simplest trick is to mark your classes as `abstract`. But... this means you'll end up with every single class marked as abstract. Not the best idea.
+One of the simplest tricks is to mark your classes as `abstract`. But... this means you'll end up with every single class marked as abstract. Not the best idea.
 
 We have other tools in our belt!
 
@@ -137,7 +137,7 @@ public class NumbersRepository
 }
 ```
 
-Yes: **we can mark a method as `virtual` even if the class is concrete!**
+Yes, **we can mark a method as `virtual` even if the class is concrete!**
 
 Now, in our Unit Tests, we can create a subtype of `NumbersRepository` to have complete control of the `GetNumbers` method:
 

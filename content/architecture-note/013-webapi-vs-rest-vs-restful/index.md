@@ -1,24 +1,27 @@
 ---
-title: "Davide's Code and Architecture Notes - Web APIs vs REST APIs vs RESTful APIs"
-date: 2024-07-23
-url: /architecture-notes/webapi-vs-rest-vs-restful
+title: "Davide's Code and Architecture Notes - Web APIs vs REST APIs vs pseudo-REST APIs"
+date: 2024-07-30
+url: /architecture-notes/webapi-vs-rest-vs-pseudo-rest
 draft: false
 categories:
   - Code and Architecture Notes
 tags:
   - Software Architecture
   - API
+  - REST
 toc: true
-summary: "When describing a web service, people often use the wrong terms. Are you really creating a REST API if all your operations are executed via POST?"
+summary: "When describing a web service, people often use the wrong terms. Are you really creating a REST API, or is it some sort of pseudo-REST? "
 images:
-  - /architecture-notes/webapi-vs-rest-vs-restful/featuredImage.png
+  - /architecture-notes/webapi-vs-rest-vs-pseudo-rest/featuredImage.png
 ---
+
+_The first version of this article contained a lot of misinterpretations of what REST means, including the fact that REST and RESTful are separate things. A huge thanks to [Andrea Chiarelli](https://www.linkedin.com/in/andreachiarelli/) for pointing it out. I had to rewrite the article almost thoroughly in order to remove all the confusion I tried to clear out, but instead, I helped spread._
 
 In a world full of acronyms and terms, some nuances can get lost.
 
-People claim they're developing REST APIs even though their APIs do not follow the REST principles. In the same way, people confuse RESTful APIs with plain REST APIs.
+People claim they're developing REST APIs even though their APIs do not follow the REST principles. Maybe their APIs are inspired by REST principles, but they are still not REST APIs.
 
-In this article, we will explain the differences and similarities between the three approaches to exposing services and data over the network.
+In this article, we will explain the differences and similarities between "simple" WEB APIs, REST APIs, and pseudo-REST APIS, and you will learn that most probably you are not exposing "real" REST APIs.
 
 ## What are Web APIs?
 
@@ -34,48 +37,69 @@ A specific type of API is the Web API: a **Web API** is an interface that allows
 
 In REST APIs, **everything revolves around the idea of a _resource_**: your APIs do not expose endpoints that represent generic operations (`/getItem`), but using a combination of URL and HTTP method, you can define everything you can do _with a resource_.
 
-A REST API is a specific type of Web API that adheres to some guidelines, such as:
+REST is an **architectural pattern** that, to be followed, requires you to follow some principles:
 
 - **Statelessness**: Each request from the client must contain all necessary information; **the server doesn't store the client state**. There is no context shared across different requests, making the system easier to scale and maintain.
 - **Cacheability**: Responses can be cached to improve performance. You can use the ETag header to understand whether the cache is valid.
-- **Resource-Based**: REST APIs expose resource operations via URL, and clients interact with these resources using standard HTTP methods. Each HTTP method has a specific meaning (so, put short, if you are using a POST to retrieve an entity's information, you are not adhering to the REST specification)
+- **Resource-Based**: REST APIs expose resource operations via URL, and clients interact with these resources using standard HTTP methods. Each HTTP method has a specific meaning (so, put short, if you are using a POST to retrieve an entity's information, you are not adhering to the REST guidelines)
 - **Uniform Interface**: Resources are exposed via a consistent representation (using URLs). In general, you want your URLs to be structured like `/{resource-type}/{id}`; for example, information about the book with ID 555 should be retrieved at the URL `/book/555` (notice that it's `book`, singular, and not `books`).
-- **Operations via HTTP methods**: You must standard HTTP methods (GET, POST, PUT, DELETE) to represent the operations on a resource. For example, GET must be used to retrieve information, while DELETE to delete an entity. You must not use GET to delete a resource.
-- **Scalability**: REST APIs are lightweight and scalable.
+- **Operations via HTTP methods**: You must use standard HTTP methods (GET, POST, PUT, DELETE) to represent the operations on a resource. For example, with GET you retrieve information, while with DELETE you only delete an entity. You must not use GET to delete a resource.
 
-REST is a guideline: you may then create a set of APIs that even partially follow these principles. Not the best idea, though.
+**REST is an acronym that means "REpresentational State Transfer"**. Let's focus on each word of the acronym.
 
-## What are RESTful APIs?
+**"RE" stands for REpresentational**: this means that you are not accessing the resources directly, but you are referring to a **representation** of such entities. Working with representations and not with direct access allows you to decouple client and server, bringing also the benefit of scalability.
 
-A **RESTful API** is a type of REST API that if **fully compliant with the REST principles**.
+**"ST" stands for State Transfer**: your APIs must include all the information to retrieve everything correlated to the resource in a self-explaining way. For example, suppose that you have a `GET /book/42`. This endpoint should return something like:
 
-So, we can say that a RESTful API has the following characteristics:
+```json
+{
+  "id": 42,
+  "title": "The Hitchhiker's Guide to the Galaxy",
+  "authorName": "Douglas Adams",
+  "publicationYear": 1979,
+  "genre": "comedy",
+  "links": [
+    {
+      "href": "https://api.mylibrary.com/book/42",
+      "rel": "self"
+    },
+    {
+      "href": "https://api.mylibrary.com/author/123",
+      "rel": "author"
+    },
+    {
+      "href": "https://api.mylibrary.com/genres/861",
+      "rel": "genre"
+    }
+  ]
+}
+```
 
-- **Use all the HTTP Methods**: They use ALL the standard HTTP methods (GET, POST, PUT, PATCH, DELETE, HEAD, OPTIONS) to manipulate resources. Yes, even HEAD and OPTIONS.
-- **Resource-Oriented**: RESTful APIs focus on resources (entities) and their representations. You never expose a, for example `/update-address`, but you use the proper HTTP Method to manipulate the address value.
-- **Self-Descriptive**: Responses include metadata to describe the data. Such metadata can be about the media type, the ETag, and similar information that describe the operation and the resource referenced.
-- **HATEOAS**: Some RESTful APIs also include HATEOAS (_Hypermedia as the Engine of Application State_), allowing clients to navigate the API dynamically.
+This list of endpoints stored in the `links` section allows clients to navigate to the details of the entities related to this book. These links form the so-called **HATEOAS** (_Hypermedia as the Engine of Application State_), and allow clients to navigate to all the entities related to the retrieved one without having previous knowledge of the other endpoints exposed by the system.
 
+HATEOAS is a fundamental part of REST, since it allows clients to access the state of the resource (remember the "S" in "REST"?).
 
+It's worth noting that HATEOAS should start from the root. Just by providing the root URL, the client should be able to understand which entities are available and navigate the hierarchy of resources dynamically.
 
-## Finding the differences between Web, REST, and RESTful APIs
+For example, by accessing the root URL of the system (for example, `https://api.mylibrary.com`) you should be able to retrieve the list of the available types of entity (book, author, genres), making your clients able to know everything they need just by accessing the root URL.
 
-Here's a table to highlight the key differences between Web APIs, REST APIs, and RESTful APIs:
+As stated by Roy Fielding, the creator of REST, [in an article on his blog](https://roy.gbiv.com/untangled/2008/rest-apis-must-be-hypertext-driven):
 
-| Aspect                   | Web API                                                                                   | REST API                                           | RESTful API                                        |
-| ------------------------ | ----------------------------------------------------------------------------------------- | -------------------------------------------------- | -------------------------------------------------- |
-| **Protocol**             | Typically uses HTTP or other protocols                                                    | Specifically uses HTTP/HTTPS                       | Specifically uses HTTP/HTTPS                       |
-| **Formats**              | Supports various data formats (e.g., JSON, XML)                                           | Primarily uses JSON or XML                         | Primarily uses JSON or XML                         |
-| **Design**               | Flexible design; not strictly adherent to REST principles                                 | Adheres to REST architectural constraints          | Adheres to all REST architectural constraints      |
-| **Customization**        | Provides a more customized experience. You can define any kind of operation needed.       | Lightweight and interchangeable in many situations | Lightweight and interchangeable in many situations |
-| **Complex Interactions** | Supports complex interactions with binary data                                            | Focused on simplicity and uniformity               | Focused on simplicity and uniformity               |
-| **Available operations** | Custom operations based on path name (or whatever is wanted)                              | Operations depend on the HTTP Method               | Operations depend on the HTTP Method               |
+> A REST API should be entered with no prior knowledge beyond the initial URI (bookmark) and set of standardized media types that are appropriate for the intended audience (i.e., expected to be understood by any client that might use the API). From that point on, all application state transitions must be driven by client selection of server-provided choices that are present in the received representations or implied by the user’s manipulation of those representations.
 
-In short, you'd better remember the following diagram:
+## What are pseudo-REST APIs?
 
-![Web vs REST vs RESTful](./web-vs-rest-vs-restful.png)
+The harsh reality is that **most of us write pseudo-REST APIs**.
 
+Most teams develop the usual type of APIs using some REST practices but do not thoroughly implement the architectural pattern.
 
+I bet most of you use HTTP Verbs to perform CRUD operations on your entity.
+
+But I can also imagine that you don't implement HATEOAS and don't provide **[content negotiation](https://developer.mozilla.org/en-US/docs/Web/HTTP/Content_negotiation)**.
+
+The truth is that you create a REST API, or you don't. There is no such thing as REST-ish API.
+
+![There is no such thing as pseudo-REST](yoda.png)
 
 ## Further readings
 
@@ -85,9 +109,13 @@ REST APIs were first described by Dr Roy Fielding in his doctorial dissertation.
 
 _This article first appeared on [Code4IT 🐧](https://www.code4it.dev/)_
 
-When you create a resource using RESTful APIs you should also return the reference to the details of the newly created resource. In ASP.NET, it's easy: you can use `CreatedAtAction` and `CreatedAtRoute`.
+When you create a resource using REST APIs, you should also return the reference to the details of the newly created resource. In ASP.NET, it's easy: you can use `CreatedAtAction` and `CreatedAtRoute`.
 
 🔗 [Getting resource location with CreatedAtAction and CreatedAtRoute action results | Code4IT](https://www.code4it.dev/blog/createdatroute-createdataction/)
+
+[Andrea Chiarelli](https://www.linkedin.com/in/andreachiarelli/), who helped me understand that the first version of this article was wrong and misleading, wrote a great article explaining what REST really means.
+
+🔗 [Please, don’t call them RESTful | Andrea Chiarelli](https://medium.com/@andrea.chiarelli/please-dont-call-them-restful-d2465527b5c)
 
 ## Wrapping up
 
@@ -100,3 +128,16 @@ I hope you enjoyed this article! Let's keep in touch on [Twitter](https://twitte
 Happy coding!
 
 🐧
+
+## A final personal note
+
+As I wrote at the beginning of this article, the first version of this blog post, instead of clarifying what is and what is not REST, helped spread misinformation.
+
+Unfortunately, online, there is so much content that explains that REST and RESTful APIs are separate things, some sort of "RESTful is a REST API with all the parts implemented", that I fell into the trap as well.
+
+**I apologize to all of you, my dear readers.** I will do my best to avoid a situation like this will happen again, studying even more before writing my articles.
+
+Again, a huge thank you to Andrea. I invite you to comment on my (and others') articles and videos to tell when we are wrong - one of the reasons I write is to clear my mind around certain topics, and having people correcting you is a great way to learn.
+
+Sorry again,
+Davide

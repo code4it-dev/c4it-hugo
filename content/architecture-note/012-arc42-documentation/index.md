@@ -139,7 +139,7 @@ Some practical examples of things you should describe in this section are:
 
 - logs format and libraries (for example: are you using [Serilog](https://www.code4it.dev/blog/logging-with-serilog-and-seq/) as a logging library?)
 - common data format (for instance: [how do you format dates and GUIDs](https://www.code4it.dev/blog/5-things-about-guid-in-csharp/#4-a-guid-has-multiple-formats)?)
-- are you using Correlation IDs? If so, [how do you propagate Correlation IDs](https://www.code4it.dev/blog/propagate-httpheader-and-correlation-id/)  through your applications?
+- are you using Correlation IDs? If so, [how do you propagate Correlation IDs](https://www.code4it.dev/blog/propagate-httpheader-and-correlation-id/) through your applications?
 
 ### Architectural Decisions
 
@@ -206,6 +206,3 @@ I hope you enjoyed this article! Let's keep in touch on [Twitter](https://twitte
 Happy coding!
 
 🐧
-
-- [ ] Nome cartella e slug devono combaciare
-- [ ] Pulizia formattazione

@@ -15,7 +15,7 @@ images:
   - /blog/dotnet-conference-italia-2018/featuredImage.png
 ---
 
-Friday, October 26th, 2018 I attended the .NET Conference in Milan, Italy. It was an event organized by [ASP Italia](http://www.aspitalia.com "ASP Italia website"), with the sponsorship of Microsoft and [Icubed](https://icubed.it/ "Icubed website").
+Friday, October 26th, 2018 I attended the .NET Conference in Milan, Italy. It was an event organized by [ASP Italia](http://www.aspitalia.com "ASP Italia website"), with the sponsorship of Microsoft and [Icubed](https://icubed.it/ "Icubed website").
 
 The conference was about the news in the .NET world: .NET Core 2.x, Azure, C# 8 and Blazor and so on.
 
@@ -23,7 +23,7 @@ I'm not going to talk about everything we discussed - of course, I cannot write 
 
 ## Interfaces are abstract classes
 
-I always thought that interfaces and abstract classes were totally different things. Using the [Sharplab](https://sharplab.io "Sharplab website") online tool, that shows the IL result of a C# snippet, they highlighted that **internally an interface is also an abstract class**.
+I always thought that interfaces and abstract classes were totally different things. Using the [Sharplab](https://sharplab.io "Sharplab website") online tool, that shows the IL result of a C# snippet, they highlighted that **internally an interface is also an abstract class**.
 
 ![Interface as Abstract class](./interface-as-abstract-class.png "IL of interface definition")
 
