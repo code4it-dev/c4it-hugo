@@ -67,7 +67,7 @@ Let's see a table where we call the two methods using the same input strings:
 | `["foo", "bar", "baz"]`                   | `foo\bar\baz`     | `foo\bar\baz`             |
 | `["foo", " bar ", "baz"]`                 | `foo\ bar \baz`   | `foo\ bar \baz`           |
 | `["C:", "users", "davide"]`               | `C:\users\davide` | `C:\users\davide`         |
-| `["foo", "   ", "baz"]`                    | `foo\   \baz`      | `foo\   \baz`              |
+| `["foo", "   ", "baz"]`                   | `foo\   \baz`     | `foo\   \baz`             |
 | `["foo", "C:bar", "baz"]`                 | `C:bar\baz`       | `foo\C:bar\baz`           |
 | `["foo", "C:bar", "baz", "D:we", "ranl"]` | `D:we\ranl`       | `foo\C:bar\baz\D:we\ranl` |
 | `["C:", "/users", "/davide"]`             | `/davide`         | `C:/users/davide`         |
