@@ -249,4 +249,3 @@ Happy coding!
 
 - [ ] Immagine di copertina
 - [ ] Fai resize della immagine di copertina
-- [ ] Nome cartella e slug devono combaciare
