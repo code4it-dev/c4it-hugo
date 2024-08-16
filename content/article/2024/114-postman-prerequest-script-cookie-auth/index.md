@@ -1,6 +1,6 @@
 ---
 title: "Postman's pre-request scripts: how to perform HTTP POST requests (with JSON body) and how to set Cookie authentication."
-date: 2024-08-12
+date: 2024-08-20
 url: /blog/postman-prerequest-script-cookie-auth
 draft: false
 categories:
@@ -246,6 +246,3 @@ I hope you enjoyed this article! Let's keep in touch on [Twitter](https://twitte
 Happy coding!
 
 🐧
-
-- [ ] Immagine di copertina
-- [ ] Fai resize della immagine di copertina
