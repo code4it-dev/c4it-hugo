@@ -1,17 +1,17 @@
 ---
 title: "Postman's pre-request scripts: how to perform HTTP POST requests (with JSON body) and how to set Cookie authentication."
-date: 2024-08-12 
+date: 2024-08-12
 url: /blog/postman-prerequest-script-cookie-auth
 draft: false
 categories:
- - Blog
+  - Blog
 tags:
- - MISC
- - Postman
+  - MISC
+  - Postman
 toc: true
 summary: "In Postman, you can define scripts to be executed before the beginning of a request. Can we use them to work with endpoints using Cookie Authentication?"
 images:
- - /blog/postman-prerequest-script-cookie-auth/featuredImage.png
+  - /blog/postman-prerequest-script-cookie-auth/featuredImage.png
 ---
 
 Nowadays, it's rare to find services that use Cookie Authentication, yet they still exist. How can we configure Cookie Authentication with Postman? How can we centralize the definition using pre-request scripts?
@@ -39,8 +39,8 @@ Here, you can either use the standard JavaScript code—like the dear old `conso
 For example, you can print the value of a Postman variable by using:
 
 ```javascript
-const tokenUrl = pm.variables.get("TokenUrl");
-console.log(tokenUrl);
+const tokenUrl = pm.variables.get("TokenUrl")
+console.log(tokenUrl)
 ```
 
 ## How to send a POST request with JSON body in Postman pre-request scripts
@@ -51,64 +51,55 @@ Postman's `pm` object, along with some other methods, exposes the `sendRequest` 
 
 ```javascript
 pm.sendRequest(request, (errorResponse, successfulResponse) => {
-    // do something here
-});
+  // do something here
+})
 ```
 
 You have to carefully craft the `request`, by specifying the HTTP method, the body, and the content type:
 
 ```javascript
 var authenticationBody = {
-    'UserName': username,
-    'Password': password
-};
+  UserName: username,
+  Password: password,
+}
 
 const request = {
-    method: 'POST',
-    url: tokenUrl,
-    body:
-    {
-        mode: 'raw',
-        raw: JSON.stringify(authenticationBody),
-        options:
-        {
-            raw:
-            {
-                language: "json"
-            }
-        }
-    }
-};
+  method: "POST",
+  url: tokenUrl,
+  body: {
+    mode: "raw",
+    raw: JSON.stringify(authenticationBody),
+    options: {
+      raw: {
+        language: "json",
+      },
+    },
+  },
+}
 ```
 
 **Pay particular attention to the `options` node**: it tells Postman how to treat the body content and what the content type is. Because I was missing this node, I spent too many minutes trying to figure out why this call was badly formed.
 
 ```javascript
-options:
-{
-    raw:
-    {
-        language: "json"
-    }
+options: {
+  raw: {
+    language: "json"
+  }
 }
 ```
 
 Now, the result of the operation is used to execute the callback function. Generally, you want it to be structured like this:
 
 ```javascript
-pm.sendRequest(request, (err, response) =>
-{
-    if (err)
-    {
-        // handle error
-    }
-    if (response)
-    {
-        // handle success
-    }
-});
+pm.sendRequest(request, (err, response) => {
+  if (err) {
+    // handle error
+  }
+  if (response) {
+    // handle success
+  }
+})
 ```
-
 
 ## Storing Cookies in Postman (using a Jar)
 
@@ -116,10 +107,10 @@ You have received the response with the token, and you have parsed the response 
 
 **You cannot store Cookies directly as it they were simple variables**. Instead, **you must store Cookies in a Jar**.
 
-Postman allows you to programmatically operate with cookies only by accessing them via a *Jar* (yup, pun intended!), that can be initialized like this:
+Postman allows you to programmatically operate with cookies only by accessing them via a _Jar_ (yup, pun intended!), that can be initialized like this:
 
 ```js
-const jar = pm.cookies.jar();
+const jar = pm.cookies.jar()
 ```
 
 From here, you can add, remove or retrieve cookies by working with the `jar` object.
@@ -127,19 +118,20 @@ From here, you can add, remove or retrieve cookies by working with the `jar` obj
 **To add a new cookie, you must use the `set()` method of the `jar` object**, specifying the domain the cookie belongs to, its name, its value, and the callback to execute when the operation completes.
 
 ```javascript
-const jar = pm.cookies.jar();
+const jar = pm.cookies.jar()
 
-jar.set("add-your-domain-here.com", "MyCustomCookieName", newToken, (error, cookie) =>
-{
-    if (error)
-    {
-        console.error(`An error occurred: ${error}`);
+jar.set(
+  "add-your-domain-here.com",
+  "MyCustomCookieName",
+  newToken,
+  (error, cookie) => {
+    if (error) {
+      console.error(`An error occurred: ${error}`)
+    } else {
+      console.log(`Cookie saved: ${cookie}`)
     }
-    else
-    {
-        console.log(`Cookie saved: ${cookie}`);
-    }
-});
+  }
+)
 ```
 
 You can try it now: execute a request, have a look at the console logs, and...
@@ -152,7 +144,7 @@ We've received a strange error:
 
 Wait, what? What does "programmatic access to X is denied" mean, and how can we solve this error?
 
-**For security reasons, you cannot handle cookies *via code* without letting Postman know that you explicitly want to operate on the specified domain**. To overcome this limitation, you need to **whitelist the domain associated with the cookie** so that Postman will accept that the operation you're trying to achieve via code is legit.
+**For security reasons, you cannot handle cookies _via code_ without letting Postman know that you explicitly want to operate on the specified domain**. To overcome this limitation, you need to **whitelist the domain associated with the cookie** so that Postman will accept that the operation you're trying to achieve via code is legit.
 
 To enable a domain for cookies operations, you first have to **navigate to the headers section** of any request under the collection and **click the Cookies button**.
 
@@ -184,7 +176,6 @@ If you want to learn more about how to use the Jar object and what operations ar
 
 🔗 [Scripting with request cookie | Postman docs](https://learning.postman.com/docs/tests-and-scripts/write-scripts/postman-sandbox-api-reference/#scripting-with-request-cookies)
 
-
 ## Wrapping up (with complete example)
 
 In this article, we learned what pre-request scripts are, how to execute a POST request passing a JSON object as a body, and how to programmatically add a Cookie in Postman by operating on the Jar object.
@@ -192,73 +183,63 @@ In this article, we learned what pre-request scripts are, how to execute a POST 
 For clarity, here's the complete code I used in my pre-request script.
 
 ```javascript
-const tokenUrl = pm.variables.get("TokenUrl");
-const username = pm.variables.get("ClientID");
-const password = pm.variables.get("ClientSecret");
+const tokenUrl = pm.variables.get("TokenUrl")
+const username = pm.variables.get("ClientID")
+const password = pm.variables.get("ClientSecret")
 
 var authBody = {
-    'UserName': username,
-    'Password': password,
-};
+  UserName: username,
+  Password: password
+}
 
 const getTokenRequest = {
-    method: 'POST',
-    url: tokenUrl,
-    body:
-    {
-        mode: 'raw',
-        raw: JSON.stringify(authBody),
-        options:
-        {
-            raw:
-            {
-                language: "json"
-            }
+  method: "POST",
+  url: tokenUrl,
+  body: {
+    mode: "raw",
+    raw: JSON.stringify(authBody),
+    options: {
+      raw: {
+        language: "json",
+      },
+    },
+  },
+}
+
+pm.sendRequest(getTokenRequest, (err, response) => {
+  if (err) {
+    throw new Error(err)
+  }
+  if (response) {
+    var jresponse = response.json()
+
+    var newToken = jresponse["Token"]
+
+    console.log("token: ", newToken)
+
+    if (newToken) {
+      const jar = pm.cookies.jar()
+
+      jar.set(
+        "add-your-domain-here.com",
+        "MyCustomCookieName",
+        newToken,
+        (error, cookie) => {
+          if (error) {
+            console.error(`An error occurred: ${error}`)
+          } else {
+            console.log(`Cookie saved: ${cookie}`)
+          }
         }
+      )
+    } else {
+      throw new Error("Token not available")
     }
-};
-
-pm.sendRequest(getTokenRequest, (err, response) =>
-{
-    if (err)
-    {
-        throw new Error(err);
-    }
-    if (response)
-    {
-        var jresponse = response.json();
-
-        var newToken = jresponse["Token"];
-
-        console.log("token: ", newToken);
-
-        if (newToken)
-        {
-            const jar = pm.cookies.jar();
-
-            jar.set("add-your-domain-here.com", "MyCustomCookieName", newToken, (error, cookie) =>
-            {
-                if (error)
-                {
-                    console.error(`An error occurred: ${error}`);
-                }
-                else
-                {
-                    console.log(`Cookie saved: ${cookie}`);
-                }
-            });
-
-        }
-        else
-        {
-            throw new Error("Token not available");
-        }
-    }
-});
+  }
+})
 ```
 
 Notice that to parse the response from the authentication endpoint I used the `.json()` method, that allows me to access the internal values using the property name, as in `jresponse["Token"]`.
-
 
 I hope you enjoyed this article! Let's keep in touch on [Twitter](https://twitter.com/BelloneDavide) or [LinkedIn](https://www.linkedin.com/in/BelloneDavide/)! 🤜🤛
 
@@ -269,4 +250,3 @@ Happy coding!
 - [ ] Immagine di copertina
 - [ ] Fai resize della immagine di copertina
 - [ ] Nome cartella e slug devono combaciare
-- [ ] Pulizia formattazione
