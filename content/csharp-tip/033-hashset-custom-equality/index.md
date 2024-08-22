@@ -1,6 +1,6 @@
 ---
 title: "C# Tip: 2 ways to use custom equality rules in a HashSet"
-date: 2024-08-22
+date: 2024-08-27
 url: /csharptips/hashset-custom-equality
 draft: false
 categories:
@@ -13,7 +13,7 @@ images:
   - /csharptips/hashset-custom-equality/featuredImage.png
 ---
 
-Sometimes, object instances can be considered equal even though some of their properties are different. Consider a movie translated into different languages: the Italian and French versions are different, but the movie is the same. 
+Sometimes, object instances can be considered equal even though some of their properties are different. Consider a movie translated into different languages: the Italian and French versions are different, but the movie is the same.
 
 If we want to store unique values in a collection, we can use a `HashSet<T>`. But how can we store items in a `HashSet` when we must follow a custom rule to define if two objects are equal?
 
@@ -62,13 +62,13 @@ foreach (var pirate in mugiwara)
 _output.WriteAsTable(hashSet);
 ```
 
-(I *really* hope you'll get the reference 😂)
+(I _really_ hope you'll get the reference 😂)
 
 Now, what will we print on the console? (ps: `output` is just a wrapper around some functionalities provided by [Spectre.Console](https://spectreconsole.net/), that I used here to print a table)
 
 ![HashSet result when no equality rule is defined](hashset-no-equality.png)
 
-As you can see, we have both Sanji and Duval: even though their Ids are the same, those are two distinct objects. 
+As you can see, we have both Sanji and Duval: even though their Ids are the same, those are two distinct objects.
 
 Also, we haven't told `HashSet` that the `Id` property must be used as a discriminator.
 
@@ -126,11 +126,11 @@ Every time we insert an item, we call the `GetHashCode` method to generate an in
 
 As stated by [Microsoft's documentation](https://learn.microsoft.com/en-us/dotnet/fundamentals/runtime-libraries/system-object-gethashcode?wt.mc_id=DT-MVP-5005077),
 
-> Two objects that are equal return hash codes that are equal. However, the reverse is not true: **equal hash codes do not imply object equality**, because different (unequal) objects can have identical hash codes. 
+> Two objects that are equal return hash codes that are equal. However, the reverse is not true: **equal hash codes do not imply object equality**, because different (unequal) objects can have identical hash codes.
 
 This means that if the Hash Code is already used, it's not guaranteed that the objects are equal. That's why we need to implement the `Equals` method (hint: **do not just compare the HashCode of the two objects**!).
 
-Is implementing a custom `IEqualityComparer` the best choice? 
+Is implementing a custom `IEqualityComparer` the best choice?
 
 As always, it depends.
 
@@ -184,7 +184,7 @@ Let's see what happens in the next screenshot:
 
 ![HashSet result with a class that implements IEquatable](result-with-iequatable.png)
 
-As you could've imagined, the Equals method called in this case is the one needed to implement the IEquatable interface. 
+As you could've imagined, the Equals method called in this case is the one needed to implement the IEquatable interface.
 
 Please note that, as we don't need to use the custom comparer, the HashSet initialization becomes:
 
@@ -279,16 +279,13 @@ Can you foresee what will happen?
 
 The checks on the ID are totally ignored: in fact, the final result contains both Sanji and Duval, even if their IDs are the same. **The custom `IEqualityComparer` has the precedence over the `IEquatable` interface**.
 
-
 _This article first appeared on [Code4IT 🐧](https://www.code4it.dev/)_
-
 
 ## Wrapping up
 
 This started as a short article but turned out to be a more complex topic.
 
 There is actually more to discuss, like performance considerations, code readability, and more. Maybe we'll tackle those topics in a future article.
-
 
 I hope you enjoyed this article! Let's keep in touch on [LinkedIn](https://www.linkedin.com/in/BelloneDavide/) or [Twitter](https://twitter.com/BelloneDavide)! 🤜🤛
 
