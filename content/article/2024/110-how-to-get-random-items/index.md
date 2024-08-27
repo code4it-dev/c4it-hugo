@@ -211,7 +211,7 @@ When we run the benchmark, we can see this final result (for simplicity, I remov
 By looking at the numbers, we can notice that:
 
 - `GetItems` is the most performant method, both for time and memory allocation;
-- using `Guid.NewGuid` is the worse approach: it's 10 to 60 times slower than `GetItems`, and it allocates, on average, 4x the memory;
+- using `Guid.NewGuid` is the worst approach: it's 10 to 60 times slower than `GetItems`, and it allocates, on average, 4x the memory;
 - sorting by random number is a bit better: it's 30 times slower than `GetItems`, and it allocates around three times more memory;
 - shuffling the array in place and taking the first N elements is 4x slower than GetItems; if you also have to preserve the original array, notice that you'll lose some memory allocation performance because you must allocate more memory to create the cloned array.
 
