@@ -7,6 +7,7 @@ showDate: false
 showComments: false
 toc: false
 hideAdsMessage: true
+hideMyDescription: true
 ---
 
 I love sharing knowledge with my peers. May it be in person, with this blog, or with online discussions.

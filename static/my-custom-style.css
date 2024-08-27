@@ -1,0 +1,26 @@
+
+#aboutTheAuthor {
+    display: flex;
+    flex-wrap: wrap;
+color: brown;
+align-items: center;
+
+}
+
+#textContainer {
+    flex: 1 1 70%;
+    padding: 10px;
+    box-sizing: border-box;
+}
+
+#imageContainer {
+    flex: 1 1 30%;
+    padding: 10px;
+    box-sizing: border-box;
+}
+
+#imageContainer img {
+    width: 100%;
+    height: auto;
+     border-radius: 50%  ;
+}

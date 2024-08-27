@@ -71,8 +71,34 @@
                 Thank you for your understanding. <br/>- <i>Davide</i>
             </blockquote>
             {{ end }}
-
+            
         {{ .ctx.Content }}
+
+        {{ if  (.ctx.Params.hideMyDescription | default  false) }}
+        {{ else }}
+        <blockquote id="aboutTheAuthor"  >
+           
+           
+            <div id="textContainer"><b>ABOUT THE AUTHOR</b>
+                <br/><br/>
+               <b>Davide Bellone</b> is a software developer with more than 10 years of professional experience with Microsoft platforms and frameworks.
+               <br/><br/>
+                He loves learning new things and sharing these learnings with others: that’s why he writes on this blog and is involved as speaker at tech conferences.
+                <br/><br/>
+                He's a <b>Microsoft MVP 🏆 and content creator <a href="https://www.linkedin.com/in/bellonedavide/" target="_blank"> on LinkedIn🔗</a></b>.
+                
+            <div>
+
+            </div>
+            </div> 
+            <div id="imageContainer">
+                <img src="/img/personal/high-res-transparent-face-mini.png"/ >
+
+            
+            </div>
+           </blockquote>
+           {{ end }}
+
     {{ else }}
         {{ .ctx.Summary }}
 
