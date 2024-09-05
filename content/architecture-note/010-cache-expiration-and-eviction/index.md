@@ -22,9 +22,9 @@ Similarly, if you have to perform some heavy calculations, doing them over and o
 
 With caching, you save the data that is heavy to read or generate in a specific storage with one important characteristic: it has fast access. **Caching can be done in-memory or by using an external system**; the critical part is that you must be able to quickly retrieve a specific using a unique key.
 
-But storage is limited, and **you cannot store everything in the cache**.
+However, storage is limited, and **you cannot store everything in the cache**.
 
-In this article, we will learn how to free up some memory by using Cache Expiration and Cache Eviction; we will then see the most used Cache Eviction Policies to define how and when we should delete items from the cache.
+In this article, we will learn how to free up some memory by using Cache Expiration and Cache Eviction; we will then examine the most used Cache Eviction Policies to define how and when we should delete items from the cache.
 
 ## Cache Expiration: items are removed based on the TTL
 
@@ -126,7 +126,7 @@ Let's see a practical example:
 
 However, **what happens if you now need to load a new item, _Item5_?** Due to LFU, you'll have to remove _Item4_, even though it has just been added to the cache. Well, you've just seen a limitation to this algorithm.
 
-### First in, First Out (FIFO) Policy
+### First In, First Out (FIFO) Policy
 
 If you think that older items can be removed to make some space for newer items, then the **First in First out (FIFO)** policy is best.
 

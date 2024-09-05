@@ -151,16 +151,15 @@ Console.WriteLine($"I am not {person:Full}"); //I am not Albert Einstein (Friday
 Not only that, but **now the result can also depend on the Culture related to the current thread**:
 
 ```cs
-       using (new TemporaryThreadCulture(italianCulture))
-        {
-            Console.WriteLine(person.ToString(Person.StringFormats.Full, CultureInfo.CurrentCulture)); // Albert Einstein (venerdì 14 marzo 1879)
-        }
+using (new TemporaryThreadCulture(italianCulture))
+{
+    Console.WriteLine(person.ToString(Person.StringFormats.Full, CultureInfo.CurrentCulture)); // Albert Einstein (venerdì 14 marzo 1879)
+}
 
-        using (new TemporaryThreadCulture(germanCulture))
-        {
-            Console.WriteLine(person.ToString(Person.StringFormats.Full, CultureInfo.CurrentCulture)); //Albert Einstein (Freitag, 14. März 1879)
-        }
-
+using (new TemporaryThreadCulture(germanCulture))
+{
+    Console.WriteLine(person.ToString(Person.StringFormats.Full, CultureInfo.CurrentCulture)); //Albert Einstein (Freitag, 14. März 1879)
+}
 ```
 
 (note: `TemporaryThreadCulture` is a custom class that I explained in a previous article - see below)
