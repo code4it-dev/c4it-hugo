@@ -270,8 +270,11 @@ Now that we have seen how to create the basic structure of a C4 Model with Struc
 - **Split the diagram into different parts, and join them using "includes"**: when the application grows in a way that it becomes difficult to read and manage, you can create separate sub-diagrams and join them using the [includes operator](https://docs.structurizr.com/dsl/includes). For example, if you have a solution with 15 projects, you can create one diagram inside each of the 15 projects and join them all in a root diagram.
 - **Configure your CI pipeline to generate the diagram images using Puppeteer**:  https://github.com/structurizr/puppeteer
 - **Export the diagrams to other formats**: Structurizr is not the only tool you can use to analyze the structure of your system. You can export the diagram as different formats using [Mermaid](https://docs.structurizr.com/export/mermaid) or [Ilograph](https://docs.structurizr.com/export/ilograph).  
+- **Install the Structurizr extension on VSCode**: since Structurizr DSL is a custom language, it is not natively supported by the most popular IDEs. To have a nice syntax highlighting, you can install the Structuriz extension for VSCode, as seen below.
 
 ![alt text](image-4.png)
+
+![Structurizr VSCode](image-1.png)
 
 ## Further readings
 
@@ -307,5 +310,3 @@ Happy coding!
 
 https://www.structurizr.com/
 IloGraph: https://www.structurizr.com/dsl?example=big-bank-plc&view=Containers&renderer=ilograph
-
-![Structurizr VSCode](image-1.png)
