@@ -1,5 +1,5 @@
 ---
-title: "Davide's Code and Architecture Notes - Practical tips for using C4 Model"
+title: "Davide's Code and Architecture Notes - Practical tips for managing C4 Model with Structurizr on Windows11"
 date: 2024-08-27T12:33:31+02:00
 url: /architecture-notes/post-slug
 draft: false
@@ -25,43 +25,254 @@ The C4 Model is a framework, created by [Simon Brown](https://x.com/simonbrown),
 
 By generating diagrams with different levels of abstractions, it provides users different ways to look at how components are organized, how they communicate, and so on.
 
-It consists of four levels of abstraction: Context, Containers, Components, and Code, each serving a distinct purpose.
-
-1. **Context**: This is the highest level of the model and provides a **full-system view**, showing how the software system interacts with external entities such as users, systems, and external services. Just by looking at this level, readers can see what are the external parts that communicate with the software system.
-
-2. **Containers**: The Container level breaks down the system into its major modules, which are typically applications, data stores, microservices, etc. This level outlines the high-level technology choices and how these containers interact with one another.
-
-3. **Components**: The Component level dissects **each container** further to reveal the components within. These components represent the various modules or parts of the container, detailing their responsibilities, interactions, and how they work together to fulfill the container's purpose.
-
-4. **Code**: The most granular level of the C4 Model, the Code level, is sometimes optional but can be incredibly informative. It provides the implementation details of the system's components, often visualized through class or interface diagrams that show the code structure and dependencies. From my experience, since the code changes frequently, this level risks to be outdated; since **wrong info is worse than no info**, I generally choose not to include this level.
-
 ![C4 levels | C4Model.org](https://c4model.com/img/c4-overview.png)
 
+It consists of four levels of abstraction: Context, Containers, Components, and Code, each serving a distinct purpose.
+
+
+
+### Context 
+
+This is the highest level of the model and provides a **full-system view**, showing how the software system interacts with external entities such as users, systems, and external services. Just by looking at this level, readers can see what are the external parts that communicate with the software system.
+
+### Containers
+
+The Container level breaks down the system into its major modules, which are typically applications, data stores, microservices, etc. This level outlines the high-level technology choices and how these containers interact with one another.
+
+### Components 
+
+The Component level dissects **each container** further to reveal the components within. These components represent the various modules or parts of the container, detailing their responsibilities, interactions, and how they work together to fulfill the container's purpose.
+
+### Code
+
+The most granular level of the C4 Model, the Code level, is sometimes optional but can be incredibly informative. It provides the implementation details of the system's components, often visualized through class or interface diagrams that show the code structure and dependencies. From my experience, since the code changes frequently, this level risks to be outdated; since **wrong info is worse than no info**, I generally choose not to include this level.
+
+
+
+## What is (and what is NOT) the C4 Model
+ 
 The C4 Model is particularly beneficial for several reasons. It helps in creating a common language for team members to discuss architecture, facilitates the onboarding of new developers by providing them with a clear map of the system, and aids in risk identification and threat modeling. 
 
 Moreover, it's flexible enough to be used at various stages of development, from initial design to documenting existing systems. 
 
 The C4 Model's focus on abstraction-first diagramming aligns with how architects and developers conceptualize and build software, making it an intuitive and practical tool in the realm of software architecture.
 
-## Generate diagrams using Structurizr
 
-C4 Model is a way of describing software. But it's not a Language, nor a Tool.
+It's important to remember that **C4 Model is a way of describing software. But it's not a Language, nor a Tool**. 
 
-To generate a C4 Model you can use many tools, like [Structurizr](https://structurizr.com/) (created by Simon Brown, the creator of the C4 Model).
+To generate a C4 Model you can use many tools, like [Structurizr](https://structurizr.com/) (created by Simon Brown, the creator of the C4 Model). Structurizr has it own DSL (Domain Specific Language), but nothing stops you from creating C4 Models using any tool - even a simple handwritten sketch can be fine.
+
+Let's create the diagrams for a realistic application: a Web UI that shows the latest articles from a website. This project is composed of two main parts: a job (say an Azure Function) that accesses a RSS feed and stores the published articles data on a DB. A UI, accessed by users, that reads the articles info on the DB and shows them on screen. 
+
+**INSERIRE DISEGNO A MANO QUI! **
+
+
+## Step-by-step diagrams with Structurizr
+
+For the sake of this article, we're gonna use Structurizr. So, to use this tool, we have to use its specific syntax.
+
+I have my project saved on a Desktop folder. Aside with the production code, I have a folder named "documentation" that stores everything related to - guess what? - docs. Within that folder, I have a "c4-diagrams" directory that will contain the diagrams and for the C4 Model.   
+
+
+### File structure for Structurizr 
+
+Every "project" is described by its own workspace, that contains everything needed to describe the different levels and modules.
+
+A workspace is nothing but a text file with the .dsl extension. You can create a workspace.dsl file in any directory (though I suggest you to do that in a specific "documentation" folder).
+
+Since it's a plain text file, you can add it to source control - this simple tip allows your colleagues to collaborate with the diagram creation.
+ 
+![alt text](image-2.png)
+
+
+To start with a very basic example, create a `workspace` node within the workspace.dsl file.
+
+```text
+workspace {
+  model {
+        mainSystem = softwareSystem "Latest Articles software system" {
+        }
+    }
+}
+```
+
+This workspace contains a `model` node, that it used to list all the components and modules that are part of the workspace.
+
+In this case, we have only one item: `mainSystem`, that is an object of type `softwareSystem`, whose label is "Latest Articles software system".
+
+We will add some real items soon.
+
+### Install Structurizr on Windows 11
 
 You can use Structurizr on cloud or locally. I generally prefer having Structurizr Lite installed on my machine, so that I can generate the diagrams locally and, in case, modify them before saving the changes.
 
-Once you have downloaded 
+To use it, have two ways:
+
+- Install it as a Java application (it requires Java 17+) runnin on a UNIX-based system: you must be able to run a Bash script to make it work;
+- Install it via Docker: pull and run the application to have it locally. 
+
+Since I work with Windows, I prefer using Docker. 
+
+To pull the image, you have to run the following command.
+
+```powershell
+docker pull structurizr/lite
+```
+
+### Run Structurizr locally with Docker
+
+Once you have pulled its Docker image, you can run it specifying the path to the Workspace file:
+
+```docker
+docker run -it --rm -p 8080:8080 -v C:/Users/d.bellone/Desktop/ProvaStructurizr/documentation/c4-diagrams:/usr/local/structurizr structurizr/lite
+```
+
+There are some important thigns to notice:
+
+- you have to use the full path to the dsl file.
+- the path separator must be `/`.
+- if the workspace file does not exist, it will be created automatically with a default template.
 
 
-## Store diagram in source control
+Now, if everything goes well, you will be able to see the empty diagram on *localhost:8080*.
+
+![alt text](image-3.png)
+
+### Set up the Context elements
+
+The first level of the C4 Model is the Context: here you list all the top-level parts that are involved with the software systems, like external dependencies and users.
+
+First, we have the user that interacts with our system. We can call it "Reader".
+
+Then we have the RSS feed that we are integrating, that we can call "RSS Feed".
+
+```text
+workspace {
+  model {
+        reader = person "Reader"
+        mainSystem = softwareSystem "Latest Articles software system"
+        rssFeed = softwareSystem "RSS Feed"
+    }
+}
+```
+
+Now we can see the result on Structurizr:
+
+![](./structurizr-onlyContext.png)
+
+
+Please note that the order in which the elements appear is the same of the order in which the elements are listed in the `model` node.
+
+### Describe Containers and their interatction
+
+The Containers level describes the different modules that are part of the software system.
+
+In our specific example, we have the following modules:
+
+- The Web Application, accessed by the user
+- The "FetchJob" job application, that reads the content from the RSS Feed, 
+- The internal Database, that contains the data stored by the FetchJob and read by the Web Application
+
+All these items are part of the "Latest Articles software system", so they need to be included as children of that node:
+
+```text
+workspace {
+  model {
+        reader = person "Reader"
+        rssFeed = softwareSystem "RSS Feed"
+        mainSystem = softwareSystem "Latest Articles software system" {
+            webapplication = container "Web Application" {
+                reader -> this "Reads Articles info"
+            }
+            fetchJob = container "FetchJob" {
+                this -> rssFeed "Fetches RSS Feed"
+            }
+            database = container "Internal Database"            {
+                webapplication -> this "Reads articles info"
+                fetchJob -> this "Stores articles info"
+            }
+        }
+    }
+}
+```
+
+Notice that you can use the `this` keyword to refer the the active element.
+
+Another imporant part to consider **is that you cannot reference an element that isn't already declared**. That's why, compared with the previous example, I had to move the `rssFeed` item before the `mainSystem`.
+
+Now that we have all the components and their interactions, we can see that the Context layer also shows the inbound and outbound interactions with the external systesm.
+
+![](./structurizr-contextWithInteractions.png)
+
+And that, if we look into the Components layer, we can see how the different components interact with each other and with the external sources.
+
+
+![](./structurizr-componentsWithInteraction.png)
+
+Even with just these two levels we have enough info to understand how the system behaves and what are the main moving parts.
+
+
+### Components
+
+Each container is made of one or more components.
+
+In our example, the Web Application is made of two components: the Web UI and the Backend Application, that interacts with the database.
+
+```text
+workspace {
+  model {
+        reader = person "Reader"
+        rssFeed = softwareSystem "RSS Feed"
+        mainSystem = softwareSystem "Latest Articles software system" {
+            webapplication = container "Web Application" {
+                # reader -> this "Reads Articles info"
+                ui = component "Web UI" {
+                    reader -> this "Reads Articles info"
+                }
+                backend = component "Backend" {
+                    ui -> this "Asks for data"
+                }
+            }
+            fetchJob = container "FetchJob" {
+                this -> rssFeed "Fetches RSS Feed"
+            }
+            database = container "Internal Database"            {
+                backend -> this "Reads articles info"
+                fetchJob -> this "Stores articles info"
+            }
+        }
+    }
+}
+```
+
+We have now the UI and Backend components. Of course, since they describe with better details the components within the Web Application, they replace the content within the `webapplication` node.
+
+Also, now the `backend` node is referenced within the `database` container.
+
+![](./structurizr-WebApplicationContainersWithComponents.png)
+
+### Code
+
+The Code level is used so rarely that the Structurizr DSL does not even include it.
+
+But you can use other tools to generate the Code diagrams and then reference those diagrams in the C4 Model.
+
+
+
+## Practical tips for working with Structurizr
+
+Pay attention to the DLS structure. OGNI TIPO ACCETTA UNA SERIE DI FIGLI.
+https://docs.structurizr.com/dsl/language#model
+
+### Store diagram in source control
 
 - gitignore
+- 
+## Themes
+https://docs.structurizr.com/ui/diagrams/themes
 
-## Problems with structurizr
-
-- immagini con nomi non customizzabili
-- immagini non navigabili quando diventano png
+## Includes
+Usa Includes per aumetnare riutilizzo https://docs.structurizr.com/dsl/includes
 
 
 ## Further readings
@@ -70,7 +281,7 @@ _This article first appeared on [Code4IT 🐧](https://www.code4it.dev/)_
 
 https://c4model.com/
 
-
+https://dev.to/simonbrown/getting-started-with-structurizr-lite-27d0
 
 ## Wrapping up
 
@@ -105,7 +316,9 @@ Appunti:
 - spiega che alle immagini generate con structurizr non puoi dare un nome specifico
 - mostra che le immagini generate non sono navigabili, essendo dei PNG
 - mostra altri tool con cui mostrare c4 (eg: https://mermaid.js.org/syntax/c4.html)
-- richiede Java 17+
+- richiede o Docker
 
 https://www.structurizr.com/
 IloGraph: https://www.structurizr.com/dsl?example=big-bank-plc&view=Containers&renderer=ilograph
+
+![Structurizr VSCode](image-1.png)
