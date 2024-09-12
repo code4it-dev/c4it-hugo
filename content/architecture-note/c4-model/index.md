@@ -1,6 +1,6 @@
 ---
-title: "Davide's Code and Architecture Notes - Practical tips for managing C4 Model with Structurizr on Windows11"
-date: 2024-08-27T12:33:31+02:00
+title: "Davide's Code and Architecture Notes - Practical creation of C4 Model diagrams with Structurizr on Windows11"
+date: 2024-08-27
 url: /architecture-notes/post-slug
 draft: false
 categories:
@@ -257,23 +257,21 @@ The Code level is used so rarely that the Structurizr DSL does not even include 
 
 But you can use other tools to generate the Code diagrams and then reference those diagrams in the C4 Model.
 
-
-
 ## Practical tips for working with Structurizr
 
-Pay attention to the DLS structure. OGNI TIPO ACCETTA UNA SERIE DI FIGLI.
-https://docs.structurizr.com/dsl/language#model
+Now that we have seen how to create the basic structure of a C4 Model with Structurizer, let's have a look at some practical tips that I found useful (of course, if you know some others, let me know in the comments section!).
 
-### Store diagram in source control
+- **Remember to follow the DSL grammar**: while C4 Model is an abstract way to represent a software system, if you want to use Structurizr to generate such model you have to [follow its DSL](https://docs.structurizr.com/dsl/language). It's a strict grammar, with some rules that you'll get to know while working on it (like the fact that you cannot reference an item before it has referenced).
+- **Use verbs in the active form**: instead of "Is called by", use "Calls", following the arrow direction.
+- **Use tags and colors to mark external and internal components**: each element can be represented with a specific colour and can be tagged with custom values. Make use of these capabilities to help readers identify internal and external components.
+- **Use themes to customize how the diagram is rendered**: https://docs.structurizr.com/ui/diagrams/themes
+- **Save your diagrams in GIT, and remember to update the gitignore file**: you want to keep track of the changes to your diagrams, ensuring that the description matches the actual structure of the system.
+- **Update the gitignore file**: even if you just update the workspace.dsl file, Structurizr creates some temporary files (metadata, thumbnails, and so on), as you can see in the screenshot below. These files are stored in the `.structurizr` folder. So, remember to add the `.structuriz` folder to your gitignore.
+- **Split the diagram into different parts, and join them using "includes"**: when the application grows in a way that it becomes difficult to read and manage, you can create separate sub-diagrams and join them using the [includes operator](https://docs.structurizr.com/dsl/includes). For example, if you have a solution with 15 projects, you can create one diagram inside each of the 15 projects and join them all in a root diagram.
+- **Configure your CI pipeline to generate the diagram images using Puppeteer**:  https://github.com/structurizr/puppeteer
+- **Export the diagrams to other formats**: Structurizr is not the only tool you can use to analyze the structure of your system. You can export the diagram as different formats using [Mermaid](https://docs.structurizr.com/export/mermaid) or [Ilograph](https://docs.structurizr.com/export/ilograph).  
 
-- gitignore
-- 
-## Themes
-https://docs.structurizr.com/ui/diagrams/themes
-
-## Includes
-Usa Includes per aumetnare riutilizzo https://docs.structurizr.com/dsl/includes
-
+![alt text](image-4.png)
 
 ## Further readings
 
@@ -306,17 +304,6 @@ Happy coding!
 - [ ] Rimuovi secrets dalle immagini 
 - [ ] Pulizia formattazione
 - [ ] Add wt.mc_id=DT-MVP-5005077 to links
-
-Appunti:
-
-- Mostra esempio
-- installa in locale
-- aggiungi a repo, con gitignore
-- spiega che è scomodo far rigenerare le immagini
-- spiega che alle immagini generate con structurizr non puoi dare un nome specifico
-- mostra che le immagini generate non sono navigabili, essendo dei PNG
-- mostra altri tool con cui mostrare c4 (eg: https://mermaid.js.org/syntax/c4.html)
-- richiede o Docker
 
 https://www.structurizr.com/
 IloGraph: https://www.structurizr.com/dsl?example=big-bank-plc&view=Containers&renderer=ilograph
