@@ -1,5 +1,5 @@
 ---
-title: "Davide's Code and Architecture Notes - Practical creation of C4 Model diagrams with Structurizr on Windows11"
+title: "Davide's Code and Architecture Notes - Practical creation of C4 Model diagrams with Structurizr"
 date: 2024-08-27
 url: /architecture-notes/post-slug
 draft: false
@@ -13,11 +13,13 @@ images:
  - /architecture-notes/post-slug/featuredImage.png
 ---
 
-C4 is a renomated way of representing software architectures, describing the different parts via code.
+The C4 Model is a renomated way of representing software architectures, describing the different parts via code in a hierarchical way: you start from the high-level view, and gradually describe the details of each component and their interactions. 
 
 I'm sure you've already have heard of it. But have you ever used it in a real project?
 
-In this article, I will share my experience with it, as well as some practical tips to use it.
+I have used the C4 Model to describe the architecture of a project, and I decided to use Structurizr as a tool to generate such diagrams. 
+
+In this article, I will share my experience with it, as well as some practical tips to use it. I have used Windows 11, but almost everything I share here can be used with other Operating Systems as well.
 
 ## An overview of the C4 Model
 
@@ -27,44 +29,56 @@ By generating diagrams with different levels of abstractions, it provides users 
 
 ![C4 levels | C4Model.org](https://c4model.com/img/c4-overview.png)
 
-It consists of four levels of abstraction: Context, Containers, Components, and Code, each serving a distinct purpose.
+It consists of **four levels of abstraction**: Context, Containers, Components, and Code, each serving a distinct purpose.
 
 
+### Context: a high-level view, with external dependencies
 
-### Context 
+This is the highest level of the model and provides a **full-system view**, showing how the software system interacts with **external entities** such as users, systems, and external services. 
 
-This is the highest level of the model and provides a **full-system view**, showing how the software system interacts with external entities such as users, systems, and external services. Just by looking at this level, readers can see what are the external parts that communicate with the software system.
+Just by looking at this level, readers can see what are the external parts that communicate with the software system.
 
-### Containers
+In general, here is where you want to **describe the parts that are *not* under your control**: if you store data in a database managed by somebody else, you can show it here. If the database is managed by you (even if in cloud - as long as you have some kind of control on it), you should list it in a lower level, like Containers.
 
-The Container level breaks down the system into its major modules, which are typically applications, data stores, microservices, etc. This level outlines the high-level technology choices and how these containers interact with one another.
+### Containers: the internal architecture's main modules
 
-### Components 
+The Container level breaks down the system into its **major modules**, which are typically applications, data stores, microservices, etc. 
 
-The Component level dissects **each container** further to reveal the components within. These components represent the various modules or parts of the container, detailing their responsibilities, interactions, and how they work together to fulfill the container's purpose.
+This level outlines the high-level technology choices and how these containers interact with one another.
 
-### Code
+Here, for example, you can describe all your micorservices listing the dependencies, the frameworks used to implemnt them, and so on.
 
-The most granular level of the C4 Model, the Code level, is sometimes optional but can be incredibly informative. It provides the implementation details of the system's components, often visualized through class or interface diagrams that show the code structure and dependencies. From my experience, since the code changes frequently, this level risks to be outdated; since **wrong info is worse than no info**, I generally choose not to include this level.
+### Components: the main parts within a Container
+
+The Component level describes **the various modules and parts that are part of the parent Container**.
+
+These components are detailed in a way that shows their responsibilities, interactions, and how they work together to fulfill the container's purpose.
+
+In the case of an application based on .NET, you can think of components as the different class libraries within the solution. However, **this level works better if you think of the logical separation of the components, not the physical separation**.
+
+### Code: the UML view of the code
+
+The most granular level of the C4 Model, the Code level, is often optional but, in some specific cases, it can be incredibly informative. 
+
+It provides the **implementation details of the system's components**, often visualized through class or interface diagrams that show the code structure and dependencies. 
+
+From my experience, since the code changes frequently, this level risks to be outdated; since **wrong info is worse than no info**, I generally choose not to include this level.
 
 
 
 ## What is (and what is NOT) the C4 Model
  
-The C4 Model is particularly beneficial for several reasons. It helps in creating a common language for team members to discuss architecture, facilitates the onboarding of new developers by providing them with a clear map of the system, and aids in risk identification and threat modeling. 
+The C4 Model is particularly beneficial for several reasons. It helps in creating a common language for team members to discuss architecture, **facilitates the onboarding of new developers** by providing them with a clear map of the system, and helps in risk identification and threat modeling. 
 
-Moreover, it's flexible enough to be used at various stages of development, from initial design to documenting existing systems. 
-
-The C4 Model's focus on abstraction-first diagramming aligns with how architects and developers conceptualize and build software, making it an intuitive and practical tool in the realm of software architecture.
-
+Moreover, since it's based on abstractions, it's flexible enough to be used at various stages of development, from initial design to documenting existing systems. 
 
 It's important to remember that **C4 Model is a way of describing software. But it's not a Language, nor a Tool**. 
 
 To generate a C4 Model you can use many tools, like [Structurizr](https://structurizr.com/) (created by Simon Brown, the creator of the C4 Model). Structurizr has it own DSL (Domain Specific Language), but nothing stops you from creating C4 Models using any tool - even a simple handwritten sketch can be fine.
 
-Let's create the diagrams for a realistic application: a Web UI that shows the latest articles from a website. This project is composed of two main parts: a job (say an Azure Function) that accesses a RSS feed and stores the published articles data on a DB. A UI, accessed by users, that reads the articles info on the DB and shows them on screen. 
+Let's create the diagrams for a realistic application: a Web UI that shows the latest articles from a website. This project is composed of two main parts: a job (something like an Azure Function) that accesses a RSS feed and stores the published articles data on a DB. A UI, accessed by users, that reads the articles info on the DB and shows them on screen. 
 
-**INSERIRE DISEGNO A MANO QUI! **
+![](./architecutral-structure.png)
 
 
 ## Step-by-step diagrams with Structurizr
@@ -263,6 +277,7 @@ Now that we have seen how to create the basic structure of a C4 Model with Struc
 
 - **Remember to follow the DSL grammar**: while C4 Model is an abstract way to represent a software system, if you want to use Structurizr to generate such model you have to [follow its DSL](https://docs.structurizr.com/dsl/language). It's a strict grammar, with some rules that you'll get to know while working on it (like the fact that you cannot reference an item before it has referenced).
 - **Use verbs in the active form**: instead of "Is called by", use "Calls", following the arrow direction.
+- **Separate by logical meaning, not phisical meaning**: 
 - **Use tags and colors to mark external and internal components**: each element can be represented with a specific colour and can be tagged with custom values. Make use of these capabilities to help readers identify internal and external components.
 - **Use themes to customize how the diagram is rendered**: https://docs.structurizr.com/ui/diagrams/themes
 - **Save your diagrams in GIT, and remember to update the gitignore file**: you want to keep track of the changes to your diagrams, ensuring that the description matches the actual structure of the system.
