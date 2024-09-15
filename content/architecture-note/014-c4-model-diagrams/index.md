@@ -336,7 +336,6 @@ Happy coding!
 - [ ] Immagine di copertina
 - [ ] Fai resize della immagine di copertina
 - [ ] Bold/Italics
-- [ ] Nome cartella e slug devono combaciare
 - [ ] Rinomina immagini
 - [ ] Trim corretto per bordi delle immagini
 - [ ] Alt Text per immagini
