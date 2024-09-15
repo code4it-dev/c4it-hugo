@@ -83,16 +83,18 @@ Let's create the diagrams for a realistic application: a Web UI that shows the l
 
 ## Step-by-step diagrams with Structurizr
 
-For the sake of this article, we're gonna use Structurizr. So, to use this tool, we have to use its specific syntax.
+As we saw before, C4 Model is not a language or a tool, but a type of visual representation.
+
+In this article, we will use Structurizr. To generate diagrams with it, we have to use its specific syntax and have access to it (either in cloud or locally).
 
 I have my project saved on a Desktop folder. Aside with the production code, I have a folder named "documentation" that stores everything related to - guess what? - docs. Within that folder, I have a "c4-diagrams" directory that will contain the diagrams and for the C4 Model.   
 
 
 ### File structure for Structurizr 
 
-Every "project" is described by its own workspace, that contains everything needed to describe the different levels and modules.
+**Every "project" is described by its own workspace**, that contains everything needed to describe the different levels and modules.
 
-A workspace is nothing but a text file with the .dsl extension. You can create a workspace.dsl file in any directory (though I suggest you to do that in a specific "documentation" folder).
+**A workspace is nothing but a text file with the .dsl extension**. You can create a workspace.dsl file in any directory (though I suggest you to do that in a specific "documentation" folder).
 
 Since it's a plain text file, you can add it to source control - this simple tip allows your colleagues to collaborate with the diagram creation.
  
@@ -118,11 +120,11 @@ We will add some real items soon.
 
 ### Install Structurizr on Windows 11
 
-You can use Structurizr on cloud or locally. I generally prefer having Structurizr Lite installed on my machine, so that I can generate the diagrams locally and, in case, modify them before saving the changes.
+**You can use Structurizr on cloud or locally**. I generally prefer having Structurizr Lite installed on my machine, so that I can generate the diagrams locally and, in case, modify them before saving the changes.
 
 To use it, have two ways:
 
-- Install it as a Java application (it requires Java 17+) runnin on a UNIX-based system: you must be able to run a Bash script to make it work;
+- Install it as a Java application (it requires Java 17+) running on a UNIX-based system: you must be able to run a Bash script to make it work;
 - Install it via Docker: pull and run the application to have it locally. 
 
 Since I work with Windows, I prefer using Docker. 
@@ -132,6 +134,8 @@ To pull the image, you have to run the following command.
 ```powershell
 docker pull structurizr/lite
 ```
+
+If you are an absolute beginner with Docker, [I published a short article](https://www.code4it.dev/blog/run-mongodb-on-docker/) that explains the main concepts without all the fuzz around it.
 
 ### Run Structurizr locally with Docker
 
@@ -147,6 +151,7 @@ There are some important thigns to notice:
 - the path separator must be `/`.
 - if the workspace file does not exist, it will be created automatically with a default template.
 
+Needless to say it, replace the local path with your own one.
 
 Now, if everything goes well, you will be able to see the empty diagram on *localhost:8080*.
 
@@ -177,15 +182,21 @@ Now we can see the result on Structurizr:
 
 Please note that the order in which the elements appear is the same of the order in which the elements are listed in the `model` node.
 
+Also, note that each element is characterized by three parts:
+
+- the variable name, `reader`, that allows us to reference to this element in other parts of the diagram;
+- the type of element, `person`;
+- the label associate to the element, `Reader`, that is shown as box title.
+
 ### Describe Containers and their interatction
 
 The Containers level describes the different modules that are part of the software system.
 
 In our specific example, we have the following modules:
 
-- The Web Application, accessed by the user
-- The "FetchJob" job application, that reads the content from the RSS Feed, 
-- The internal Database, that contains the data stored by the FetchJob and read by the Web Application
+- The *Web Application*, accessed by the user;
+- The "*FetchJob*" job application, that reads the content from the RSS Feed;
+- The *internal Database*, that contains the data stored by the FetchJob and read by the Web Application;
 
 All these items are part of the "Latest Articles software system", so they need to be included as children of that node:
 
@@ -230,7 +241,7 @@ Even with just these two levels we have enough info to understand how the system
 
 Each container is made of one or more components.
 
-In our example, the Web Application is made of two components: the Web UI and the Backend Application, that interacts with the database.
+In our example, the Web Application is made of two components: the *Web UI* and the *Backend Application*, that interacts with the database.
 
 ```text
 workspace {
@@ -239,7 +250,6 @@ workspace {
         rssFeed = softwareSystem "RSS Feed"
         mainSystem = softwareSystem "Latest Articles software system" {
             webapplication = container "Web Application" {
-                # reader -> this "Reads Articles info"
                 ui = component "Web UI" {
                     reader -> this "Reads Articles info"
                 }
@@ -273,34 +283,47 @@ But you can use other tools to generate the Code diagrams and then reference tho
 
 ## Practical tips for working with Structurizr
 
-Now that we have seen how to create the basic structure of a C4 Model with Structurizer, let's have a look at some practical tips that I found useful (of course, if you know some others, let me know in the comments section!).
+Now that we have seen how to create the basic structure of a C4 Model with Structurizer, let's have a look at some practical tips that I found useful when describing the application I was working on. Of course, if you know some others, let me know in the comments section!
 
+- **Store all the documentation in a single folder**: the more scattered is the documentation across your systems, the harder it become to find what you are looking for and remember to keep everything up-to-date. 
 - **Remember to follow the DSL grammar**: while C4 Model is an abstract way to represent a software system, if you want to use Structurizr to generate such model you have to [follow its DSL](https://docs.structurizr.com/dsl/language). It's a strict grammar, with some rules that you'll get to know while working on it (like the fact that you cannot reference an item before it has referenced).
 - **Use verbs in the active form**: instead of "Is called by", use "Calls", following the arrow direction.
-- **Separate by logical meaning, not phisical meaning**: 
+- **Separate by logical meaning, not phisical meaning**: using an example .NET applications, even if two functionalities (aka: Modules) are stored in the same Class Library, represent them as separate entities.
 - **Use tags and colors to mark external and internal components**: each element can be represented with a specific colour and can be tagged with custom values. Make use of these capabilities to help readers identify internal and external components.
-- **Use themes to customize how the diagram is rendered**: https://docs.structurizr.com/ui/diagrams/themes
-- **Save your diagrams in GIT, and remember to update the gitignore file**: you want to keep track of the changes to your diagrams, ensuring that the description matches the actual structure of the system.
+- **Use themes to customize how the diagram is rendered**: Structurizr allows you to [apply themes](https://docs.structurizr.com/ui/diagrams/themes) to your diagram to change how the rendering looks like. For example, you can configure it to use Azure icons.
+- **Save your diagrams in GIT**: you want to keep track of the changes to your diagrams, ensuring that the description matches the actual structure of the system.
 - **Update the gitignore file**: even if you just update the workspace.dsl file, Structurizr creates some temporary files (metadata, thumbnails, and so on), as you can see in the screenshot below. These files are stored in the `.structurizr` folder. So, remember to add the `.structuriz` folder to your gitignore.
+![alt text](image-4.png)
 - **Split the diagram into different parts, and join them using "includes"**: when the application grows in a way that it becomes difficult to read and manage, you can create separate sub-diagrams and join them using the [includes operator](https://docs.structurizr.com/dsl/includes). For example, if you have a solution with 15 projects, you can create one diagram inside each of the 15 projects and join them all in a root diagram.
-- **Configure your CI pipeline to generate the diagram images using Puppeteer**:  https://github.com/structurizr/puppeteer
 - **Export the diagrams to other formats**: Structurizr is not the only tool you can use to analyze the structure of your system. You can export the diagram as different formats using [Mermaid](https://docs.structurizr.com/export/mermaid) or [Ilograph](https://docs.structurizr.com/export/ilograph).  
 - **Install the Structurizr extension on VSCode**: since Structurizr DSL is a custom language, it is not natively supported by the most popular IDEs. To have a nice syntax highlighting, you can install the Structuriz extension for VSCode, as seen below.
-
-![alt text](image-4.png)
-
 ![Structurizr VSCode](image-1.png)
 
 ## Further readings
 
+As always, the best way to learn how something works is by trying it. 
+
+You may want to reference the official documentation, provided by Simon Brown:
+
+🔗 [C4 Model website](https://c4model.com/)
+
+
 _This article first appeared on [Code4IT 🐧](https://www.code4it.dev/)_
 
-https://c4model.com/
+Simon himself wrote an article that explains how to get started with it. It does not go in details like the one you've just read, but since it's written by the tool author I think it's a valuable read
 
-https://dev.to/simonbrown/getting-started-with-structurizr-lite-27d0
+🔗 [Getting started with Structurizr Lite | Dev.TO](https://dev.to/simonbrown/getting-started-with-structurizr-lite-27d0)
+
+Another cool part about Structurizr is that you can use it to generate ADRs. You don't know that ADRs are? I've got you covered!
+
+🔗 [Tracking decision with Architecture Decision Records (ADRs)](https://www.code4it.dev/architecture-notes/architecture-decision-records/)
+
 
 ## Wrapping up
 
+It's not necessary to use Structurizr to generate such C4 Model diagrams. However, it's probably one of the most complete tools you can find online.
+
+Remember, you should describe the architecture to the best level of details: not too many details (or you'll lose time descrbing stuff with little to no value) nor too few (or you won't get the sense of the architecture).
 
 I hope you enjoyed this article! Let's keep in touch on [LinkedIn](https://www.linkedin.com/in/BelloneDavide/) or [Twitter](https://twitter.com/BelloneDavide)! 🤜🤛
 
