@@ -57,7 +57,7 @@ These components are detailed in a way that shows their responsibilities, intera
 
 In the case of an application based on .NET, you can think of components as the different class libraries within the solution. However, **this level works better if you think of the logical separation of the components, not the physical separation**.
 
-### Code: the UML view of the code
+### Code: the low-level view of the code
 
 The most granular level of the C4 Model, the Code level, is often optional but, in some specific cases, it can be incredibly informative. 
 
@@ -66,7 +66,7 @@ It provides the **implementation details of the system's components**, often vis
 From my experience, since the code changes frequently, the Code level risks being outdated; and since **wrong info is worse than no info**, I generally choose not to include this level.
 
 
-## What is (and what is NOT) the C4 Model
+## What is (and what is not) the C4 Model
  
 The C4 Model is particularly beneficial for several reasons. It helps create a common language for team members to discuss architecture, **facilitates the onboarding of new developers** by providing them with a clear system map, and helps in risk identification and threat modelling. 
 
@@ -86,7 +86,7 @@ A web UI, accessed by users, that reads the info of the articles on the DB and s
 ![](./architecutral-structure.png)
 
 
-## Step-by-step diagrams with Structurizr
+## Step-by-step C4 diagrams with Structurizr
 
 As we have seen before, the C4 Model is not a language or tool but a type of visual representation.
 
@@ -122,7 +122,7 @@ In this case, we have only one item: `mainSystem`, which is an object of type `s
 
 We will add some real items soon.
 
-### Install Structurizr on Windows 11
+### 2 ways to install Structurizr locally (on Windows 11)
 
 **You can use Structurizr on the cloud or locally**. I generally prefer having Structurizr Lite installed on my local machine so that I can generate the diagrams locally and, when necessary, modify them before saving the changes.
 
@@ -238,7 +238,7 @@ If we look into the Components layer, we can see how the different components in
 
 Even with just these two levels, we have enough info to understand how the system behaves and what are the main moving parts.
 
-### Components
+### Define Components
 
 Each container is made of one or more components.
 
@@ -276,7 +276,7 @@ Also, the `backend` node is now referenced within the `database` container.
 
 ![](./structurizr-WebApplicationContainersWithComponents.png)
 
-### Code
+### Code level 
 
 The Code level is used so rarely that the Structurizr DSL does not even include it.
 
@@ -332,7 +332,6 @@ Happy coding!
 
 🐧
 
-- [ ] Titoli
 - [ ] Immagine di copertina
 - [ ] Fai resize della immagine di copertina
 - [ ] Bold/Italics
@@ -340,7 +339,5 @@ Happy coding!
 - [ ] Trim corretto per bordi delle immagini
 - [ ] Alt Text per immagini
 - [ ] Pulizia formattazione
-- aggiungi Documentation agli altri articoli
 
-https://www.structurizr.com/
-IloGraph: https://www.structurizr.com/dsl?example=big-bank-plc&view=Containers&renderer=ilograph
+ 
