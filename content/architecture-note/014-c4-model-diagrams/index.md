@@ -1,6 +1,6 @@
 ---
 title: "Davide's Code and Architecture Notes - Practical creation of C4 Model diagrams with Structurizr"
-date: 2024-08-27
+date: 2024-09-17
 url: /architecture-notes/c4-model-diagrams
 draft: false
 categories:
@@ -83,7 +83,7 @@ This project is composed of two main parts:
 A background job (something like an Azure Function) that accesses an RSS feed and stores the published articles' data on a DB. 
 A web UI, accessed by users, that reads the info of the articles on the DB and shows them on screen. 
 
-![](./architecutral-structure.png)
+![Dummy system architectural structure](./architecutral-structure.png)
 
 
 ## Step-by-step C4 diagrams with Structurizr
@@ -92,7 +92,7 @@ As we have seen before, the C4 Model is not a language or tool but a type of vis
 
 In this article, we will use Structurizr. To generate diagrams with it, we have to use its specific syntax and have access to it (either in the cloud or locally).
 
-I have my project saved in a Desktop folder. Alongside the production code, I have a folder named "documentation" that stores everything related to - guess what? - docs. Within that folder, I have a "c4-diagrams" directory containing the diagrams and the C4 Model.   
+I have my project saved in a Desktop folder. Alongside the production code, I have a folder named "documentation" that stores everything related to - guess what? - docs. Within that folder, I have a "c4-diagrams" directory containing the diagrams and the C4 Model.   
 
 ### File structure for Structurizr 
 
@@ -102,17 +102,17 @@ I have my project saved in a Desktop folder. Alongside the production code, I ha
 
 Since it's a plain text file, you can add it to source control - this simple tip allows your colleagues to collaborate with the diagram creation.
  
-![alt text](image-2.png)
+![Example of how to store documentation on your file system](simple-filesystem.png)
 
 
 To start with a very basic example, create a `workspace` node within the *workspace.dsl* file.
 
 ```text
 workspace {
- model {
- mainSystem = softwareSystem "Latest Articles software system" {
- }
- }
+    model {
+        mainSystem = softwareSystem "Latest Articles software system" {
+        }
+    }
 }
 ```
 
@@ -159,7 +159,7 @@ Of course, replace the local path with your own one.
 
 Now, if everything goes well, you will be able to see the empty diagram on *localhost:8080*.
 
-![alt text](image-3.png)
+![Structurizr UI accessible on Localhost](default-view-on-strucutrizr.png)
 
 ### Set up the Context elements
 
@@ -171,17 +171,17 @@ Then we have the RSS feed that we are integrating, which we can call "RSS Feed".
 
 ```text
 workspace {
- model {
- reader = person "Reader"
- mainSystem = softwareSystem "Latest Articles software system"
- rssFeed = softwareSystem "RSS Feed"
- }
+    model {
+        reader = person "Reader"
+        mainSystem = softwareSystem "Latest Articles software system"
+        rssFeed = softwareSystem "RSS Feed"
+    }
 }
 ```
 
 Now we can see the result on Structurizr:
 
-![](./structurizr-onlyContext.png)
+![System level with main actors](./structurizr-onlyContext.png)
 
 Please note that the order in which the elements appear is the same as the order in which the elements are listed in the `model` node.
 
@@ -205,22 +205,22 @@ All these items are part of the "Latest Articles software system", so they need 
 
 ```text
 workspace {
- model {
- reader = person "Reader"
- rssFeed = softwareSystem "RSS Feed"
- mainSystem = softwareSystem "Latest Articles software system" {
- webapplication = container "Web Application" {
- reader -> this "Reads Articles info"
- }
- fetchJob = container "FetchJob" {
- this -> rssFeed "Fetches RSS Feed"
- }
- database = container "Internal Database"            {
- webapplication -> this "Reads articles info"
- fetchJob -> this "Stores articles info"
- }
- }
- }
+    model {
+        reader = person "Reader"
+        rssFeed = softwareSystem "RSS Feed"
+        mainSystem = softwareSystem "Latest Articles software system" {
+            webapplication = container "Web Application" {
+            reader -> this "Reads Articles info"
+            }
+            fetchJob = container "FetchJob" {
+                this -> rssFeed "Fetches RSS Feed"
+            }
+            database = container "Internal Database" {
+                webapplication -> this "Reads articles info"
+                fetchJob -> this "Stores articles info"
+            }
+        }
+    }
 }
 ```
 
@@ -230,11 +230,11 @@ Another important part to consider **is that you cannot reference an element tha
 
 Now that we have all the components and their interactions, we can see that the Context layer also shows the inbound and outbound interactions with the external systems.
 
-![](./structurizr-contextWithInteractions.png)
+![Context level with components interactions](./structurizr-contextWithInteractions.png)
 
 If we look into the Components layer, we can see how the different components interact with each other and with the external sources.
 
-![](./structurizr-componentsWithInteraction.png)
+![Components level with interactions](./structurizr-componentsWithInteraction.png)
 
 Even with just these two levels, we have enough info to understand how the system behaves and what are the main moving parts.
 
@@ -246,27 +246,27 @@ In our example, the Web Application is made of two components: the *Web UI* and 
 
 ```text
 workspace {
- model {
- reader = person "Reader"
- rssFeed = softwareSystem "RSS Feed"
- mainSystem = softwareSystem "Latest Articles software system" {
- webapplication = container "Web Application" {
- ui = component "Web UI" {
- reader -> this "Reads Articles info"
- }
- backend = component "Backend" {
- ui -> this "Asks for data"
- }
- }
- fetchJob = container "FetchJob" {
- this -> rssFeed "Fetches RSS Feed"
- }
- database = container "Internal Database"            {
- backend -> this "Reads articles info"
- fetchJob -> this "Stores articles info"
- }
- }
- }
+    model {
+        reader = person "Reader"
+        rssFeed = softwareSystem "RSS Feed"
+        mainSystem = softwareSystem "Latest Articles software system" {
+            webapplication = container "Web Application" {
+                ui = component "Web UI" {
+                    reader -> this "Reads Articles info"
+                }
+                backend = component "Backend" {
+                    ui -> this "Asks for data"
+                }
+            }
+            fetchJob = container "FetchJob" {
+                this -> rssFeed "Fetches RSS Feed"
+            }
+            database = container "Internal Database"{
+            backend -> this "Reads articles info"
+            fetchJob -> this "Stores articles info"
+            }
+        }
+    }
 }
 ```
 
@@ -274,7 +274,7 @@ We now have the UI and Backend components. Of course, since they describe the co
 
 Also, the `backend` node is now referenced within the `database` container.
 
-![](./structurizr-WebApplicationContainersWithComponents.png)
+![Detailed components level with interaction](./structurizr-WebApplicationContainersWithComponents.png)
 
 ### Code level 
 
@@ -294,11 +294,14 @@ Now that we have seen how to create the basic structure of a C4 Model with Struc
 - **Use themes to customize how the diagram is rendered**: Structurizr allows you to [apply themes](https://docs.structurizr.com/ui/diagrams/themes) to your diagram to change how the rendering looks like. For example, you can configure it to use Azure icons.
 - **Save your diagrams in GIT**: you want to keep track of the changes to your diagrams, ensuring that the description matches the actual structure of the system.
 - **Update the .gitignore file**: even if you just update the *workspace.dsl* file, Structurizr creates some temporary files (metadata, thumbnails, and so on), as you can see in the screenshot below. These files are stored in the `.structurizr` folder. So, remember to add the `.structuriz` folder to your gitignore file.
-![alt text](image-4.png)
+
+![Dynamically modified files on local file system](metadata-files-modified.png)
+
 - **Split the diagram into different parts, and join them using "includes"**: when the application grows in a way that it becomes difficult to read and manage, you can create separate sub-diagrams and join them using the [includes operator](https://docs.structurizr.com/dsl/includes). For example, if you have a solution with 15 projects, you can create one diagram inside each of the 15 projects and join them all in a root diagram.
 - **Export the diagrams to other formats**: Structurizr is not the only tool you can use to analyze the structure of your system. You can export the diagram in different formats using [Mermaid](https://docs.structurizr.com/export/mermaid) or [Ilograph](https://docs.structurizr.com/export/ilograph).  
 - **Install the Structurizr extension on VSCode**: since Structurizr DSL is a custom language, it is not natively supported by the most popular IDEs. To have a nice syntax highlighting, you can install the Structurizr extension for VSCode, as seen below.
-![Structurizr VSCode](image-1.png)
+
+![Structurizr extension on VSCode](structurizr-vscode-extension.png)
 
 ## Further readings
 
@@ -332,9 +335,5 @@ Happy coding!
 
 🐧
 
-- [ ] Fai resize della immagine di copertina
-- [ ] Rinomina immagini
-- [ ] Alt Text per immagini
-- [ ] Pulizia formattazione
 
  
