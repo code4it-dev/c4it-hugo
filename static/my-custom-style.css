@@ -2,9 +2,8 @@
 #aboutTheAuthor {
     display: flex;
     flex-wrap: wrap;
-color: brown;
-align-items: center;
-
+    color: #006400;
+    align-items: center;
 }
 
 #textContainer {
@@ -23,4 +22,5 @@ align-items: center;
     width: 100%;
     height: auto;
      border-radius: 50%  ;
+     box-shadow: #006400;
 }
