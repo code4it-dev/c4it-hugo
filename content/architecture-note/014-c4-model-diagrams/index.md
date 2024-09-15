@@ -332,11 +332,8 @@ Happy coding!
 
 🐧
 
-- [ ] Immagine di copertina
 - [ ] Fai resize della immagine di copertina
-- [ ] Bold/Italics
 - [ ] Rinomina immagini
-- [ ] Trim corretto per bordi delle immagini
 - [ ] Alt Text per immagini
 - [ ] Pulizia formattazione
 
