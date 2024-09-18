@@ -7,6 +7,7 @@ showDate: false
 showComments: false
 featuredImage: "/img/personal-cover-image.png"
 hideAdsMessage: true
+hideMyDescription: true
 ---
 
 Ciao, I'm **Davide Bellone**!

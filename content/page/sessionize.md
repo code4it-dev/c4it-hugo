@@ -8,4 +8,5 @@ link: "https://sessionize.com/davide-bellone/"
 target: "_blank"
 excludeFromTopNav: true
 showDate: false
+hideMyDescription: true
 ---
