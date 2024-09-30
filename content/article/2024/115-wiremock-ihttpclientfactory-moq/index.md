@@ -256,6 +256,5 @@ Happy coding!
 
 - [ ] Immagine di copertina
 - [ ] Fai resize della immagine di copertina
-- [ ] Pulizia formattazione
 
  
