@@ -1,6 +1,6 @@
 ---
 title: "How to use IHttpClientFactory and WireMock.NET together using Moq"
-date: 2024-09-23
+date: 2024-10-01
 url: /blog/wiremock-ihttpclientfactory-moq
 draft: false
 categories:
@@ -253,8 +253,5 @@ Happy coding!
 
 🐧
 
-
-- [ ] Immagine di copertina
-- [ ] Fai resize della immagine di copertina
 
  
