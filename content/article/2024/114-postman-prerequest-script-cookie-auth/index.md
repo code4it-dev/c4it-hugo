@@ -189,7 +189,7 @@ const password = pm.variables.get("ClientSecret")
 
 var authBody = {
   UserName: username,
-  Password: password
+  Password: password,
 }
 
 const getTokenRequest = {

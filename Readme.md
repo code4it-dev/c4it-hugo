@@ -65,7 +65,7 @@ hugo server
 1. Clona sia questo repository che [quello del tema](https://github.com/code4it-dev/bilberry-hugo-theme) nella stessa cartella;
 2. Nella cartella del blog, inizializza le dipendenze di npm usando `npm i`;
 3. Assicurati che [Hugo sia installato](https://gohugo.io/installation/windows/); se non lo e', apri un Terminale **come admin** e lancia `choco install hugo-extended`;
-4. se sia il tema che il blog sono nella stessa directory, **apri un terminale nella cartella parent** e lancia `cp -r bilberry-hugo-theme c4it-hugo/themes` per copiare il tema nella cartella `/themes` del blog. 
+4. se sia il tema che il blog sono nella stessa directory, **apri un terminale nella cartella parent** e lancia `cp -r bilberry-hugo-theme c4it-hugo/themes` per copiare il tema nella cartella `/themes` del blog.
 5. controlla che sotto la cartella `/themes` ci sia una sola cartella `bilberry-hugo-theme`, e che non sia duplicata su piu' livelli.
 
 ## Come modificare tema
