@@ -114,8 +114,8 @@ public class WireMockTests
         _server.Reset();
     }
 
-    [TearDown]
-    public void TearDown()
+    [OneTimeTearDown]
+    public void OneTimeTearDown()
     {
         _server.Stop();
     }
@@ -126,7 +126,7 @@ You can instantiate a new instance of `WireMockServer` in the `OneTimeSetUp` ste
 
 Before each test run, you can **reset the internal status of the mock server** by running the `Reset()` method. I'd suggest you reset the server to avoid unintentional internal status, but it all depends on what you want to do with the server instance.
 
-Finally, remember to free up resources by calling the `Stop()` method in the `TearDown` phase.
+Finally, remember to free up resources by calling the `Stop()` method in the `OneTimeTearDown` phase (but not during the `TearDown` phase: you still need the server to be on while running your tests!).
 
 ## Basic configuration of HTTP requests and responses with WireMock.NET
 
@@ -214,6 +214,26 @@ In the meanwhile, we define how the mock server must behave when an HTTP call to
 Finally, we can pass the instance of the mock `IHttpClientFactory` to the `BookService`.
 
 So, the key part to remember is that you can simply access the `Url` property (or, if you have configured it to handle many URLs, you can access the `Urls` property, that is an array of strings).
+
+## Let WireMock.NET create the HttpClient for you
+
+As suggested by [Stef](https://github.com/StefH) in the comments to this post, there's actually another way to generate the HttpClient with the correct URL: let WireMock.NET do it for you.
+
+Instead of doing
+
+```cs
+string baseUrl = _server.Url;
+
+HttpClient myHttpClient = new HttpClient() { BaseAddress = new Uri(baseUrl) };
+```
+
+you can simplify the process by calling the `CreateClient` method:
+
+```cs
+HttpClient myHttpClient = _server.CreateClient();
+```
+
+Of course, you will still have to pass the instance to the mock of `IHttpClientFactory`.
 
 ## Further readings
 
