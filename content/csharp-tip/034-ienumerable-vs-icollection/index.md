@@ -1,6 +1,6 @@
 ---
 title: "C# Tip: IEnumerable vs ICollection, and why it matters"
-date: 2024-10-14
+date: 2024-10-15
 url: /csharptips/ienumerable-vs-icollection
 draft: false
 categories:
