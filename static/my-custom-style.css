@@ -2,8 +2,11 @@
 #aboutTheAuthor {
     display: flex;
     flex-wrap: wrap;
-    color: #006400;
+    /* color: #006400; */
     align-items: center;
+    font-size: 1.05em;
+    margin: 1.5em 0;
+    padding: 2em;
 }
 
 #textContainer {
