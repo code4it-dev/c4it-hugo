@@ -6,4 +6,12 @@
     {{ partial "featured-image.html" .ctx }}
     {{ partial "default-content.html" (dict "ctx" .ctx "template_type" .template_type) }}
     {{ partial "article-footer.html" .ctx }}
+
+    {{ if or (eq .template_type "single") (.ctx.Params.noSummary)  }}
+    {{ if  (.ctx.Params.hideMyDescription | default  false) }}
+    {{ else }}
+        {{ partial "about-the-author.html" .ctx }}
+    {{ end }}
+{{ end }}
+
 </article>

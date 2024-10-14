@@ -1,0 +1,13 @@
+{{ if  (.ctx.Params.hideAdsMessage | default  false) }}
+{{ else }}
+
+    <blockquote style="text-align: center; border: dashed 5px;border-color:#dbae58;">
+        <b>   Just a second! 🫷</b> <br/> If you are here, it means that you are a software developer. 
+        So, you know that <u> storage, networking, and domain management have a cost </u>.
+        <br/><br/>   If you want to support this blog, please ensure that you have disabled the adblocker for this site.
+        <b>I configured Google AdSense to show as few ADS as possible</b> - I don't want to bother you with lots of ads, but I still need to add some to pay for the resources for my site.
+        <br/><br/>
+        Thank you for your understanding. <br/>- <i>Davide</i>
+    </blockquote>
+{{ end }}
+        
