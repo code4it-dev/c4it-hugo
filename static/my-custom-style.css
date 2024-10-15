@@ -9,6 +9,10 @@
     padding: 2em;
 }
 
+#aboutTheAuthor a {
+  text-decoration: underline;
+}
+
 #textContainer {
     flex: 1 1 70%;
     padding: 10px;
@@ -33,4 +37,10 @@ section#sessionize-embed ul {
 }
 section#sessionize-embed a {
     color: #488a99;
+}
+
+@media (max-width: 600px) {
+    #aboutTheAuthor {
+      flex-direction: column;
+    }
 }
