@@ -2,8 +2,15 @@
 #aboutTheAuthor {
     display: flex;
     flex-wrap: wrap;
-    color: #006400;
+    /* color: #006400; */
     align-items: center;
+    font-size: 1.05em;
+    margin: 1.5em 0;
+    padding: 2em;
+}
+
+#aboutTheAuthor a {
+  text-decoration: underline;
 }
 
 #textContainer {
@@ -23,4 +30,17 @@
     height: auto;
      border-radius: 50%  ;
      box-shadow: #006400;
+}
+
+section#sessionize-embed ul {
+    list-style: none;
+}
+section#sessionize-embed a {
+    color: #488a99;
+}
+
+@media (max-width: 600px) {
+    #aboutTheAuthor {
+      flex-direction: column;
+    }
 }

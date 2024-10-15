@@ -59,40 +59,12 @@
             {{ .ctx.TableOfContents }}
 
             {{ end }}
-        {{ if  (.ctx.Params.hideAdsMessage | default  false) }}
-        {{ else }}
+            
+            {{ partial "ad-request-banner.html" . }}
 
-            <blockquote style="text-align: center; border: dashed 5px;border-color:#dbae58;">
-             <b>   Just a second! 🫷</b> <br/> If you are here, it means that you are a software developer. 
-                So, you know that <u> storage, networking, and domain management have a cost </u>.
-                <br/><br/>   If you want to support this blog, please ensure that you have disabled the adblocker for this site.
-                <b>I configured Google AdSense to show as few ADS as possible</b> - I don't want to bother you with lots of ads, but I still need to add some to pay for the resources for my site.
-                <br/><br/>
-                Thank you for your understanding. <br/>- <i>Davide</i>
-            </blockquote>
-            {{ end }}
             
         {{ .ctx.Content }}
-
-        {{ if  (.ctx.Params.hideMyDescription | default  false) }}
-        {{ else }}
-        <blockquote id="aboutTheAuthor"  >
-           
-           
-            <div id="textContainer"><b>ABOUT THE AUTHOR</b>
-                <br/><br/>
-               <b>Davide Bellone</b> is a software developer with more than 10 years of professional experience with Microsoft platforms and frameworks.
-               <br/><br/>
-                He loves learning new things and sharing these learnings with others: that’s why he writes on this blog and is involved as speaker at tech conferences.
-                <br/><br/>
-                He's a <b>Microsoft MVP 🏆 and content creator <a href="https://www.linkedin.com/in/bellonedavide/" target="_blank"> on LinkedIn🔗</a></b>.
-            </div> 
-            <div id="imageContainer">
-                <img src="/img/personal/high-res-transparent-face-mini.png"/ >          
-            </div>
-           </blockquote>
-           {{ end }}
-
+ 
     {{ else }}
         {{ .ctx.Summary }}
 

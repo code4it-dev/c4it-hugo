@@ -54,4 +54,6 @@ That's why I also decided to give a try to tech conferences.
 | ------------------------------------------------ | --------------------------------------- | ---------- | -------- | --------- | ------------------------------------------------------------------------------------------------------------------ |
 | **Azure DevOps**: release faster, release better | Azure Meetup Torino (in-person, Torino) | 2019-10-15 | 90m      | Beginners | [🎥](https://www.youtube.com/watch?v=hSCwzEm4M1A) [🔗](https://www.meetup.com/it-IT/Meetup-Microsoft-Azure-Torino) |
 
-<script type="text/javascript" src="https://sessionize.com/api/speaker/sessions/663ad0ce-b9ce-48f5-8d11-a7bab1a6f946/0x1x3fb393x"></script>
+<section id="sessionize-embed">
+    <script type="text/javascript" src="https://sessionize.com/api/speaker/sessions/663ad0ce-b9ce-48f5-8d11-a7bab1a6f946/0x1x3fb393x"></script>
+</section>
