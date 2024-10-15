@@ -27,3 +27,10 @@
      border-radius: 50%  ;
      box-shadow: #006400;
 }
+
+section#sessionize-embed ul {
+    list-style: none;
+}
+section#sessionize-embed a {
+    color: #488a99;
+}
