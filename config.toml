@@ -195,3 +195,25 @@ disqusShortname = ""
 [outputs]
   home = [ "HTML", "JSON", "RSS" ]
   page = [ "HTML" ]
+
+
+[related]
+  includeNewer = true
+  threshold = 80
+  toLower = true
+  [[related.indices]]
+    applyFilter = false
+    cardinalityThreshold = 0
+    name = 'keywords'
+    pattern = ''
+    toLower = true
+    type = 'basic'
+    weight = 100
+  [[related.indices]]
+    applyFilter = false
+    cardinalityThreshold = 0
+    name = 'categories'
+    pattern = ''
+    toLower = true
+    type = 'basic'
+    weight = 80
