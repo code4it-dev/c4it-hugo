@@ -208,7 +208,7 @@ disqusShortname = ""
     pattern = ''
     toLower = true
     type = 'basic'
-    weight = 100
+    weight = 80
   [[related.indices]]
     applyFilter = false
     cardinalityThreshold = 0
@@ -216,4 +216,4 @@ disqusShortname = ""
     pattern = ''
     toLower = true
     type = 'basic'
-    weight = 80
+    weight = 50

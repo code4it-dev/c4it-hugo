@@ -10,6 +10,15 @@ tags:
   - dotNET
 toc: true
 summary: "Customizing the behavior of an HTTP request is easy: you can use a middleware defined as a delegate or as a class."
+keywords:
+  - csharp
+  - dotnet
+  - aspnet
+  - middleware
+  - http
+  - httpcontext
+  - httprequest
+  - httpresponse
 images:
   - /csharptips/custom-middleware/featuredImage.png
 ---

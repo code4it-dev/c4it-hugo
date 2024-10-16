@@ -9,6 +9,14 @@ tags:
   - CSharp
 toc: true
 summary: We all use `switch` statements in our code. Do you use them at their full potential?
+keywords:
+  - csharp
+  - dotnet
+  - keyword
+  - switch
+  - syntax
+  - when
+  - pattern-matching
 images:
   - /csharptips/switch-expressions-and-statements/featuredImage.png
 ---

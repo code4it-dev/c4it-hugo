@@ -9,6 +9,17 @@ tags:
   - CSharp
 toc: true
 summary: "With HashSet, you can get a list of different items in a performant way. What if you need a custom way to define when two objects are equal?"
+keywords:
+  - csharp
+  - dotnet
+  - hashset
+  - performance
+  - comparer
+  - generics
+  - iequalitycomparer
+  - iequatable
+  - gethashcode
+  - hashcode
 images:
   - /csharptips/hashset-custom-equality/featuredImage.png
 ---
