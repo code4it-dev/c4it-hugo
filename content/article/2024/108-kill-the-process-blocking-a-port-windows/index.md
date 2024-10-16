@@ -12,6 +12,11 @@ toc: true
 summary: "Now you can't run your application because another process already uses the port. How can you find that process? How to kill it?"
 images:
   - /blog/kill-the-process-blocking-a-port-windows/featuredImage.png
+keywords:
+  - windows11
+  - windows
+  - powershell
+  - process
 ---
 
 Sometimes, when trying to run your ASP.NET application, there's something stopping you.

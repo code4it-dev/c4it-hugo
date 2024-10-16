@@ -13,6 +13,14 @@ toc: true
 summary: "You don't need a physical database to experiment with ORMs. You can use an in-memory DB and seed the database with realistic data generated with Bogus."
 images:
   - /blog/seed-inmemory-entityframework-bogus/featuredImage.png
+keywords:
+  - bogus
+  - entity-framework
+  - dotnet
+  - csharp
+  - data
+  - dbcontext
+  - database
 ---
 
 Sometimes, you want to experiment with some features or create a demo project, but you don't want to instantiate a real database instance.
