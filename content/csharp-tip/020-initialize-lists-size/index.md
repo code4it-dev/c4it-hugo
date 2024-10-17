@@ -9,6 +9,13 @@ tags:
   - CSharp
 toc: true
 summary: Lists have an inner capacity. Every time you add more items than the current Capacity, you add performance overhead. How to prevent it?
+keywords:
+  - csharp
+  - dotnet
+  - collections
+  - list
+  - performance
+  - generics
 images:
   - /csharptips/initialize-lists-size/featuredImage.png
 ---

@@ -9,6 +9,13 @@ tags:
   - CSharp
 toc: true
 summary: Sometimes you need to ping some endpoints. Don't rely on HttpClient, but use the native Ping class.
+keywords:
+  - csharp
+  - dotnet
+  - ping
+  - http
+  - httpclient
+  - network
 images:
   - /csharptips/ping-endpoint/featuredImage.png
 ---

@@ -7,8 +7,15 @@ categories:
   - CSharp Tips
 tags:
   - CSharp
+  - Linq
 toc: true
 summary: SelectMany is one of the LINQ methods I've used the least. I couldn't get it! Turns out it was actually incredibly simple.
+keywords:
+  - csharp
+  - dotnet
+  - linq
+  - selectmany
+  - code-quality
 images:
   - /csharptips/linq-selectmany/featuredImage.png
 ---

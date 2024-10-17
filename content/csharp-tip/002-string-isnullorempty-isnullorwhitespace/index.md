@@ -9,6 +9,12 @@ tags:
   - CSharp
 toc: true
 summary: Is your string really empty, or has it hidden characters? With String.IsNullOrEmpty and String.IsNullOrWhiteSpace you can find it
+keywords:
+  - csharp
+  - dotnet
+  - string
+  - performance
+  - empty
 images:
   - /csharptips/string-isnullorempty-isnullorwhitespace/featuredImage.png
 ---

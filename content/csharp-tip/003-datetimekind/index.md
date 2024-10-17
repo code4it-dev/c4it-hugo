@@ -9,6 +9,15 @@ tags:
   - CSharp
 toc: true
 summary: Creating simple DateTimes creates issues when handling timezones. You can solve some issues by using DateTimeKind
+keywords:
+  - csharp
+  - dotnet
+  - date
+  - time
+  - datetime
+  - datetimekind
+  - utc
+  - timezone
 images:
   - /csharptips/datetimekind/featuredImage.png
 ---

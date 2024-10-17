@@ -9,6 +9,12 @@ tags:
   - CSharp
 toc: true
 summary: "When you need to fire synchronous events, don't use a while(true) loop: use a Timer!"
+keywords:
+  - csharp
+  - dotnet
+  - timer
+  - trigger
+  - event
 images:
   - /csharptips/timer-to-trigger-synchronous-events/featuredImage.png
 ---

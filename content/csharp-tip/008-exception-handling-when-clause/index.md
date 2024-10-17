@@ -9,6 +9,15 @@ tags:
   - CSharp
 toc: true
 summary: Instead of using if-else or switch blocks to handle exceptions, you can do it gracefully using the 'when' keyword.
+keywords:
+  - csharp
+  - dotnet
+  - exception
+  - code-quality
+  - keyword
+  - when
+  - exception-handling
+  - http
 images:
   - /csharptips/exception-handling-when-clause/featuredImage.png
 ---
