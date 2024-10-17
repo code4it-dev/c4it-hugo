@@ -10,6 +10,16 @@ tags:
   - API
 toc: true
 summary: "A system should be **robust**: it should be able to resist change and, well, not generate regressions. Postel's law helps define a mindset to create robust APIs."
+keywords:
+  - softwarearchitecture
+  - systemdesign
+  - architecture
+  - theory
+  - postel-law
+  - quality-attribute
+  - api
+  - maintainability
+  - extensibility
 images:
   - /architecture-notes/postel-law-for-api-robustness/featuredImage.png
 ---

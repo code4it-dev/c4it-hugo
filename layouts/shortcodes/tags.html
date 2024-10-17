@@ -1,0 +1,44 @@
+<table>
+    <thead>
+        <tr>
+            <th>Tag</th>
+            <th>Count</th>
+            <th>Links</th>
+        </tr>
+    </thead>
+    <tbody>
+        {{ $pages := .Site.Pages }}
+        {{ $tags := slice }}
+        {{ range $pages }}
+            {{ range .Params.Tags }}
+                {{ $tags = $tags | append . }}
+            {{ end }}
+        {{ end }}
+        {{ $tags = $tags | uniq | sort }}
+        {{ range $tag := $tags }}
+            {{ $count := 0 }}
+            {{ range $pages }}
+                {{ if in .Params.Tags $tag }}
+                    {{ $count = add $count 1 }}
+                {{ end }}
+            {{ end }}
+            <tr>
+                <td>{{ $tag }}</td>
+                <td>{{ $count }}</td>
+                <td>
+                    <ul>
+                        {{ range $pages }}
+                        {{ if in .Params.Tags $tag }}
+                           <li>
+                            <a href="{{ .RelPermalink }}">
+                                 {{ .LinkTitle }} 
+                            </a>
+                           </li>
+                        {{ end }}
+                    {{ end }}
+                    </ul>
+                </td>
+            </tr>
+        {{ end }}
+    </tbody>
+</table>

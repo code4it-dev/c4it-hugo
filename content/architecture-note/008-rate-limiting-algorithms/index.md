@@ -9,6 +9,16 @@ tags:
   - Software Architecture
 toc: true
 summary: "You should always put a limit to the number of incoming requests. Otherwise, you can have your systems exposed to malicious attackers. Let's see the four main algorithms to implement Rate Limit."
+keywords:
+  - softwarearchitecture
+  - systemdesign
+  - architecture
+  - rate-limit
+  - fixed-window
+  - leaky-bucket
+  - sliding-window
+  - token-bucket
+  - performance
 images:
   - /architecture-notes/rate-limiting-algorithms/featuredImage.png
 ---

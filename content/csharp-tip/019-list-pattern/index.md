@@ -9,6 +9,12 @@ tags:
   - CSharp
 toc: true
 summary: By using list patterns on an array or a list you can check whether a it contains the values you expect in a specific position.
+keywords:
+  - csharp
+  - dotnet
+  - keyword
+  - array
+  - pattern-matching
 images:
   - /csharptips/list-pattern/featuredImage.png
 ---

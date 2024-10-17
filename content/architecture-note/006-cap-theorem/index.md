@@ -10,6 +10,19 @@ tags:
   - Distributed systems
 toc: true
 summary: «Consistency, Availability, and Partition tolerance. Pick two». Is it really THAT simple? Let's learn a bit more about the CAP theorem.
+keywords:
+  - softwarearchitecture
+  - systemdesign
+  - architecture
+  - cap
+  - cap-theorem
+  - theory
+  - consistency
+  - availability
+  - partition
+  - network
+  - distributed-system
+  - 
 images:
   - /architecture-notes/cap-theorem/featuredImage.png
 ---
@@ -44,7 +57,7 @@ We are going to explain what each letter means in this context.
 
 ### C: (strong) Consistency
 
-The C in CAP stands for _Consistency_, meaning that every read either returns the latest data or, in case it is not possible, returns an error. As a matter of fact, this is called \*Strong Consistency\*\*, as opposed to Weak Consistency or Eventual Consistency.
+The C in CAP stands for _Consistency_, meaning that every read either returns the latest data or, in case it is not possible, returns an error. As a matter of fact, this is called **Strong Consistency**, as opposed to Weak Consistency or Eventual Consistency.
 
 **If possible, you will always receive the latest data.**
 

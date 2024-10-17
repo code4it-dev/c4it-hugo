@@ -9,6 +9,16 @@ tags:
   - CSharp
 toc: true
 summary: Do you need the index of the current item in a foreach loop with C#? Here you'll see two approaches.
+keywords:
+  - csharp
+  - dotnet
+  - keyword
+  - performance
+  - foreach
+  - loop
+  - linq
+  - benchmark
+  - benchmarkdotnet
 images:
   - /csharptips/how-to-get-item-index-in-foreach/featuredImage.png
 ---

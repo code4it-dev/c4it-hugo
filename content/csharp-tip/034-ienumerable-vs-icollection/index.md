@@ -11,6 +11,14 @@ toc: false
 summary: "When working with Lists in C#, you are working on a data structure that implements both ICollection and IEnumerable. What's the difference between ICollection and IEnumerable? Why should you care about them, especially when exposing functionalities to external clients?"
 images:
  - /csharptips/ienumerable-vs-icollection/featuredImage.png
+keywords:
+  - csharp
+  - dotnet
+  - collections
+  - ienumerable
+  - icollection
+  - generics
+  - extensibility
 ---
 
 Defining the best return type is crucial to creating a shared library whose behaviour is totally under your control.

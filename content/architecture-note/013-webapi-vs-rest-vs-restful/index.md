@@ -11,6 +11,13 @@ tags:
   - REST
 toc: true
 summary: "When describing a web service, people often use the wrong terms. Are you really creating a REST API, or is it some sort of pseudo-REST? "
+keywords:
+  - softwarearchitecture
+  - http
+  - api
+  - rest
+  - restful
+  - webapi
 images:
   - /architecture-notes/webapi-vs-rest-vs-pseudo-rest/featuredImage.png
 ---

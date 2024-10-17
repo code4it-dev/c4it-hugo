@@ -11,6 +11,8 @@ toc: false
 summary: "A summary"
 images:
  - /csharptips/post-slug/featuredImage.png
+keywords:
+ - csharp
 ---
 
 ## Further readings

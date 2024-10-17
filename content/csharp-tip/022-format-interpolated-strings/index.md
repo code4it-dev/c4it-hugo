@@ -9,6 +9,15 @@ tags:
   - CSharp
 toc: true
 summary: Interpolated strings are those built with the `$` symbol, that you can use to create strings using existing variables or properties. Did you know that you can apply custom formattings to such values?
+keywords:
+  - csharp
+  - dotnet
+  - keyword
+  - string
+  - formattable
+  - interpolation
+  - cultureinfo
+  - culture
 images:
   - /csharptips/format-interpolated-strings/featuredImage.png
 ---

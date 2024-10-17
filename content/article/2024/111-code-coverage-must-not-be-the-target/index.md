@@ -12,6 +12,16 @@ toc: true
 summary: "Average teams aim at 100% Code Coverage just to reach the number. Great teams don't. Why?"
 images:
   - /blog/code-coverage-must-not-be-the-target/featuredImage.png
+keywords:
+  - csharp
+  - dotnet
+  - testing
+  - code-coverage
+  - code-quality
+  - unit-tests
+  - integration-tests
+  - testing-diamond
+  - testing-pyramid
 ---
 
 Code Coverage is a valuable metric in software development, especially when it comes to testing. It provides insights into how much of your codebase is exercised by your test suite.

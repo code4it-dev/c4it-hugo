@@ -9,6 +9,13 @@ tags:
   - CSharp
 toc: true
 summary: In C#, nameof can be quite useful. But it has some drawbacks, if used the wrong way.
+keywords:
+  - csharp
+  - dotnet
+  - keyword
+  - code-quality
+  - nameof
+  - maintainability
 images:
   - /csharptips/do-not-use-nameof-for-constants/featuredImage.png
 ---

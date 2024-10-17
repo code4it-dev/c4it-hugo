@@ -9,6 +9,12 @@ tags:
   - CSharp
 toc: true
 summary: What can you do if you need to temporarily change the CurrentCulture in C#?
+keywords:
+  - csharp
+  - dotnet
+  - culture
+  - cultureinfo
+  - thread
 images:
   - /csharptips/change-current-culture-in-using-block/featuredImage.png
 ---

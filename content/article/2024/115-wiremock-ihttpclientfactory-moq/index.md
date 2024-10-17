@@ -12,6 +12,17 @@ toc: true
 summary: "WireMock.NET is a popular library used to simulate network communication through HTTP. But there is no simple way to integrate the generated in-memory server with an instance of IHttpClientFactory injected via constructor. Right? Wrong!"
 images:
   - /blog/wiremock-ihttpclientfactory-moq/featuredImage.png
+keywords:
+  - http
+  - moq
+  - httpclient
+  - httpclientfactory
+  - csharp
+  - dotnet
+  - testing
+  - unit-test
+  - integration-test
+  - wiremock
 ---
 
 Testing the integration with external HTTP clients can be a cumbersome task, but most of the time, it is necessary to ensure that a method is able to perform correct operations - not only sending the right information but also ensuring that we are able to read the content returned from the called API.

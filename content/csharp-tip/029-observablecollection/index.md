@@ -9,6 +9,15 @@ tags:
   - CSharp
 toc: false
 summary: "`ObservableCollection<T>` is a data type that allows you to react when an item is added or removed from the collection. Let's learn more!"
+keywords:
+  - csharp
+  - dotnet
+  - collections
+  - generics
+  - observablecollection
+  - reactive-programming
+  - icollection
+  - events
 images:
   - /csharptips/observablecollection/featuredImage.png
 ---

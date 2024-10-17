@@ -9,6 +9,13 @@ tags:
   - CSharp
 toc: true
 summary: Miniprofiler is a nice tool to profile your code in a smart way.
+keywords:
+  - csharp
+  - dotnet
+  - performance
+  - profiling
+  - miniprofiler
+  - library
 images:
   - /csharptips/profile-code-with-miniprofiler/featuredImage.png
 ---

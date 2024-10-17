@@ -14,6 +14,12 @@ toc: true
 summary: "Can your system withstand heavy loads? You can answer this question by running Load Tests. Maybe, using K6 as a free tool."
 images:
   - /blog/k6-load-testing/featuredImage.png
+keywords:
+  - k6
+  - testing
+  - load-testing
+  - performance
+  - windows11
 ---
 
 Understanding how your system reacts to incoming network traffic is crucial to determining whether it's stable, able to meet the expected [SLO](https://www.code4it.dev/architecture-notes/sli-vs-slo-vs-sla/), and if the underlying infrastructure and architecture are fine.

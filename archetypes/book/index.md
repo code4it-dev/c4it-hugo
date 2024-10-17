@@ -12,6 +12,8 @@ toc: false
 hideAdsMessage: true
 images:
  - /book-review/post-slug/featuredImage.png
+keywords:
+ - book
 ---
 
 It's time to review this book!

@@ -11,6 +11,13 @@ tags:
   - Documentation
 toc: true
 summary: "When designing a system's architecture, you have many choices to make. How can you track them? ADRs are formal documents to track the reasons behind your decisions, giving context and info about the consequences of each choice."
+keywords:
+  - softwarearchitecture
+  - systemdesign
+  - architecture
+  - documentation
+  - adr
+  - constraints
 images:
   - /architecture-notes/architecture-decision-records/featuredImage.png
 ---

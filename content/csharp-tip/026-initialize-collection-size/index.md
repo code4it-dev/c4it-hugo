@@ -10,6 +10,18 @@ tags:
   - dotNET
 toc: true
 summary: "Sometimes just a minor change can affect performance. Here's a simple trick: initialize your collections by specifying the initial size!"
+keywords:
+  - csharp
+  - dotnet
+  - generics
+  - collection
+  - performance
+  - memory
+  - allocation
+  - list
+  - initialization
+  - benchmark
+  - benchmarkdotnet
 images:
   - /csharptips/initialize-collection-size/featuredImage.png
 ---

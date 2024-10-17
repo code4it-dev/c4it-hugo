@@ -9,6 +9,11 @@ tags:
   - CSharp
 toc: true
 summary: Shorter code is often easier to read. Not always, but often. And the `^` operator can make your code easier to read and less error-prone
+keywords:
+  - csharp
+  - dotnet
+  - keyword
+  - array
 images:
   - /csharptips/access-items-from-end-of-array/featuredImage.png
 ---

@@ -9,6 +9,11 @@ tags:
   - CSharp
 toc: true
 summary: "If you need a sequence of numbers, you can pick two ways: use a While loop, or use Enumerable.Range"
+keywords:
+  - csharp
+  - dotnet
+  - enumerable
+  - range
 images:
   - /csharptips/enumerable-range/featuredImage.png
 ---

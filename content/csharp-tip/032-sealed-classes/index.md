@@ -9,6 +9,14 @@ tags:
   - CSharp
 toc: false
 summary: "The sealed keyword is often ignored, yet it can be important to define a proper class design."
+keywords:
+  - csharp
+  - dotnet
+  - sealed
+  - keywords
+  - class
+  - design
+  - extensibility
 images:
   - /csharptips/sealed-classes/featuredImage.png
 ---

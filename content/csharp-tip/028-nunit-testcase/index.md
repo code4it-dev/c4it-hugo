@@ -10,6 +10,13 @@ tags:
   - Tests
 toc: false
 summary: "Learn how to organize similar unit tests using the `TestCase` attribute in NUnit!"
+keywords:
+  - csharp
+  - dotnet
+  - testing 
+  - unit-tests
+  - nunit
+  - testcase
 images:
   - /csharptips/nunit-testcase/featuredImage.png
 ---

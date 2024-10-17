@@ -9,4 +9,5 @@ target: "_blank"
 excludeFromTopNav: true
 showDate: false
 hideMyDescription: true
+hideRelatedContent: true
 ---

@@ -9,6 +9,14 @@ tags:
   - CSharp
 toc: false
 summary: "Same object, different string representations. How do we achieve it in a standardised way?"
+keywords:
+  - csharp
+  - dotnet
+  - string
+  - iformattable
+  - tostring
+  - cultureinfo
+  - iformatprovider
 images:
   - /csharptips/iformattable-interface/featuredImage.png
 ---

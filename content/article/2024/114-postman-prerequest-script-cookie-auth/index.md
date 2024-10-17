@@ -12,6 +12,11 @@ toc: true
 summary: "In Postman, you can define scripts to be executed before the beginning of a request. Can we use them to work with endpoints using Cookie Authentication?"
 images:
   - /blog/postman-prerequest-script-cookie-auth/featuredImage.png
+keywords:
+  - postman
+  - cookie-authentication
+  - http
+  - authentication
 ---
 
 Nowadays, it's rare to find services that use Cookie Authentication, yet they still exist. How can we configure Cookie Authentication with Postman? How can we centralize the definition using pre-request scripts?

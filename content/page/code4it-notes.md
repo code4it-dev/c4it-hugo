@@ -8,4 +8,5 @@ link: "https://bellons91.github.io/personal-notes"
 target: "_blank"
 excludeFromTopNav: true
 showDate: false
+hideRelatedContent: true
 ---
