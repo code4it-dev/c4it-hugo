@@ -1,0 +1,30 @@
+<table>
+    <thead>
+        <tr>
+            <th>Keyword</th>
+            <th>Count</th>
+        </tr>
+    </thead>
+    <tbody>
+        {{ $pages := .Site.Pages }}
+        {{ $keywords := slice }}
+        {{ range $pages }}
+            {{ range .Params.keywords }}
+                {{ $keywords = $keywords | append . }}
+            {{ end }}
+        {{ end }}
+        {{ $keywords = $keywords | uniq | sort }}
+        {{ range $keyword := $keywords }}
+            {{ $count := 0 }}
+            {{ range $pages }}
+                {{ if in .Params.keywords $keyword }}
+                    {{ $count = add $count 1 }}
+                {{ end }}
+            {{ end }}
+            <tr>
+                <td>{{ $keyword }}</td>
+                <td>{{ $count }}</td>
+            </tr>
+        {{ end }}
+    </tbody>
+</table>
