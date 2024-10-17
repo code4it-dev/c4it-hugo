@@ -10,6 +10,13 @@ tags:
   - Documentation
 toc: true
 summary: "How is your project structured? What are the driving forces? If you don't know how to express this info, you should try the Arc42 template to create a strong foundation for your documentation."
+keywords:
+  - softwarearchitecture
+  - systemdesign
+  - documentation
+  - architecture
+  - arc42
+  - c4model
 images:
   - /architecture-notes/arc42-documentation/featuredImage.png
 ---

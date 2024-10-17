@@ -9,6 +9,15 @@ tags:
   - Software Architecture
 toc: true
 summary: "Elasticity and Scalability: two important Architectural attributes, similar but quite different"
+keywords:
+  - softwarearchitecture
+  - systemdesign
+  - architecture
+  - theory
+  - quality-attribute
+  - elasticity
+  - scalability
+  - performance
 images:
   - /architecture-notes/elasticity-vs-scalability/featuredImage.png
 ---
