@@ -9,6 +9,12 @@ tags:
   - CSharp
 toc: true
 summary: C#, as every other language, has several reserved keywords. Did you know that you can use them if you use the `@` prefix?
+keywords:
+  - csharp
+  - dotnet
+  - keyword
+  - syntax
+  - code-quality
 images:
   - /csharptips/use-at-symbol-prefix/featuredImage.png
 ---
@@ -21,13 +27,13 @@ What to do, now?
 
 There are tons of reserved keywords in C#. Some of these are
 
-- int
-- interface
-- else
-- null
-- short
-- event
-- params
+- `int`
+- `interface`
+- `else`
+- `null`
+- `short`
+- `event`
+- `params`
 
 Some of these names may be a good fit for describing your domain objects or your variables.
 

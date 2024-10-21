@@ -11,6 +11,8 @@ toc: true
 summary: "A summary"
 images:
  - /blog/post-slug/featuredImage.png
+keywords:
+ - dotnet
 ---
 
 

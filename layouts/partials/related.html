@@ -1,0 +1,17 @@
+<div id="related-articles-wrapper">
+    {{ $related := .Site.RegularPages.Related . | first 4 }}
+    {{ with $related }}
+    <h3>Related articles</h3>
+    
+    <section class="tiles-container">
+        {{ range .}}
+            <div class="tile">
+                <a href="{{ .RelPermalink }}">
+                <b>{{ .LinkTitle }}</b>
+                <p>{{ .Params.Summary }}</p>
+            </a>
+            </div>
+        {{end}}
+    </section>
+    {{ end }}
+</div>

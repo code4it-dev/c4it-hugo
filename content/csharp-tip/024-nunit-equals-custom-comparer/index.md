@@ -10,6 +10,16 @@ tags:
   - Tests
 toc: true
 summary: When writing unit tests, there are smarter ways to check if two objects are equal than just comparing every field one by one.
+keywords:
+  - csharp
+  - dotnet
+  - testing
+  - code-quality
+  - unit-tests
+  - nunit
+  - equality
+  - equalitycomparer
+  - generics
 images:
   - /csharptips/nunit-equals-custom-comparer/featuredImage.png
 ---

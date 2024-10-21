@@ -9,6 +9,16 @@ tags:
   - CSharp
 toc: true
 summary: "Yield is a keyword that allows you to return an item at the time instead of creating a full list and returning it as a whole. "
+keywords:
+  - csharp
+  - dotnet
+  - keyword
+  - ienumerable
+  - generics
+  - yield
+  - performance
+  - nunit
+  - testcasesource
 images:
   - /csharptips/yield-return/featuredImage.png
 ---

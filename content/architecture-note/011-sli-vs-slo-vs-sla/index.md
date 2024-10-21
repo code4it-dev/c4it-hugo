@@ -9,6 +9,17 @@ tags:
   - Software Architecture
 toc: true
 summary: "Non-functional requirements. How can you ensure you meet them? Let's understand SLO, SLA, and SLI, and how they affect your SDLC."
+keywords:
+  - softwarearchitecture
+  - systemdesign
+  - architecture
+  - slo
+  - sla
+  - sli
+  - performance
+  - documentation
+  - constraint
+  - architectural-characteristics
 images:
   - /architecture-notes/sli-vs-slo-vs-sla/featuredImage.png
 ---

@@ -9,6 +9,15 @@ tags:
   - CSharp
 toc: true
 summary: How to get all the keys of an ExpandoObject? Convert it to Dictionary!
+keywords:
+  - csharp
+  - dotnet
+  - expandoobject
+  - dynamic
+  - class
+  - idictionary
+  - dictionary
+  - generics
 images:
   - /csharptips/expandoobject-to-dictionary/featuredImage.png
 ---

@@ -10,6 +10,14 @@ tags:
   - Tests
 toc: true
 summary: Testing Pyramid and Testing Diamond are two ways of managing automated tests. We're going to learn what they are and how they are built in relation to Unit Tests, Integration Tests, and End-to-end Tests.
+keywords:
+  - testing
+  - test
+  - integration-tests
+  - unit-tests
+  - testing-diamond
+  - testing-pyramid
+  - code-quality
 images:
   - /architecture-notes/testing-pyramid-vs-testing-diamond/featuredImage.png
 ---

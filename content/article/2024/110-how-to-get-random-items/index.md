@@ -11,6 +11,11 @@ toc: true
 summary: "You have a collection of items. You want to retrieve N elements randomly. Which alternatives do we have?"
 images:
   - /blog/how-to-get-random-items/featuredImage.png
+keywords:
+  - csharp
+  - dotnet
+  - random
+  - performance
 ---
 
 One of the most common operations when dealing with collections of items is to retrieve a subset of these elements taken randomly.

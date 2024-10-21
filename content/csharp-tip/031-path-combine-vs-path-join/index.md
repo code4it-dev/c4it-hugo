@@ -9,6 +9,13 @@ tags:
   - CSharp
 toc: false
 summary: "When composing the path to a folder or file location, the `Path` class can come in handy. `Path.Join` and `Path.Combine` may look similar, but their behavior differ in an unexpected way."
+keywords:
+  - csharp
+  - dotnet
+  - file-system
+  - path
+  - string
+  - concatenation
 images:
   - /csharptips/path-combine-vs-path-join/featuredImage.png
 ---

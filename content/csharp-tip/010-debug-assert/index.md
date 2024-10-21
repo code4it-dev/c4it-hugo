@@ -9,6 +9,11 @@ tags:
   - CSharp
 toc: true
 summary: It would be great if we could break the debugging flow if a condition is (not) met. Can we? Of course!
+keywords:
+  - csharp
+  - dotnet
+  - debug
+  - visualstudio
 images:
   - /csharptips/debug-assert/featuredImage.png
 ---

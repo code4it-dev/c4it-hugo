@@ -10,6 +10,16 @@ tags:
   - API Gateway
 toc: true
 summary: "API Gateways are often a component of a microservices architecture. But they are not a silver bullet - they have some downsides to consider!"
+keywords:
+  - softwarearchitecture
+  - systemdesign
+  - architecture
+  - api
+  - api-gateway
+  - rate-limit
+  - throttling
+  - acl
+  - api-composition
 images:
   - /architecture-notes/api-gateway-pros-and-cons/featuredImage.png
 ---

@@ -11,6 +11,10 @@ toc: true
 summary: "A simple way to improve efficiency is knowing your IDE shortcuts. Let's learn how to create custom ones to generate code automatically."
 images:
   - /blog/custom-snippets-visualstudio2022/featuredImage.png
+keywords:
+  - visualstudio
+  - productivity
+  - snippet
 ---
 
 One of the best tricks to boost productivity is **knowing your tools**.
