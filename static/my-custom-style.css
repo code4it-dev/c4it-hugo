@@ -38,12 +38,7 @@ section#sessionize-embed ul {
 section#sessionize-embed a {
     color: #488a99;
 }
-
-@media (max-width: 600px) {
-    #aboutTheAuthor {
-      flex-direction: column;
-    }
-}
+ 
 
 #related-articles-wrapper {
     padding: 2em;
@@ -66,4 +61,16 @@ section#sessionize-embed a {
 }
 .tile p{
     margin-bottom: 0 ;
+}
+
+
+@media (max-width: 600px) {
+    #aboutTheAuthor {
+        flex-direction: column;
+      }
+
+    .tile {
+        
+        max-width: fit-content;
+    }
 }
