@@ -30,7 +30,7 @@ You should carefully define and design how to handle errors: depending on the us
 
 In this article, we'll explore the three main categories of errors that we must always remember to address; for each type of error, we will showcase how addressing it can impact the software architecture differently.
 
-## A system with only the happy path
+## An ideal system with only the happy path
 
 To use a realistic example, let's design a simple system with a single module named *MainApplication*: this module reads data from an external API, manipulates the data, and stores the result on the DB.
 
@@ -60,6 +60,8 @@ Transient errors occur when the application's overall status or its dependencies
 Faults are errors that take down the whole application, and you cannot recover immediately.
 
 The Trio does not take into account "errors" that are not properly errors: null values, queries that do not return any value, and so on. These are all legitimate statuses that represent that lack of values but are not errors that have architectural relevance.
+
+![The Error Management Trio schema](./error-management-trio.png)
 
 ## Data Validation: the first defence against invalid status
 
@@ -98,7 +100,7 @@ As you can see, even for the simple input validation, the choices we make can ha
 
 Suppose that you choose option #4: you will need to implement a brand new service (let's call it *ValidationFixesManager*), configure a new queue, and keep track of the attempts to fix the message. 
 
-![Architecture with ValidationFixesManager](./with-validationFixesManager.png)
+![Example of Architecture with ValidationFixesManager component](./with-validationFixesManager.png)
 
 All of this only when considering the static validation. **How would you validate your business rules?** How would you ensure that, for instance, the Username is valid and the user is still active on the system?
 
@@ -142,11 +144,11 @@ These are just two of the different solutions. But, as you can see, this choice 
 
 Below is how the structure changes if we decide to send the failed messages back in the queue with some delay.
 
-![MainApplication now sends messages back on the queue](./with-messages-sent-with-delay.png)
+![The MainApplication now sends messages back on the queue](./with-messages-sent-with-delay.png)
 
 In both cases, we must remember that trying to call a service that is temporarily down is useless: maybe it's time to use a Circuit Breaker?
 
-## Fatal Errors: when everything goes does
+## Fatal Errors: when everything goes wrong
 
 There is one type of error that is often neglected but that may deeply influence how your system behaves: fatal errors.
 
@@ -220,6 +222,10 @@ In this article, we used a Queue to trigger the beginning of the operation. When
 🔗 [Azure Service Bus: Queues vs Topics | Code4IT](https://www.code4it.dev/blog/azure-service-bus-queue-vs-topic/)
 
 
+Whichever the way you chose to solve manage an error, always remember to write down the reasons that guided you to use that specific solution. An incredibly helpful way is by using ADRs.
+
+🔗 [Tracking decision with Architecture Decision Records (ADRs) | CodeIT](https://www.code4it.dev/architecture-notes/architecture-decision-records/)
+
 ## Wrapping up
 
 This article highlights the importance of error management and the fact that even if we all want to avoid and prevent errors in our systems, we still have to take care of them and plan according to our needs.
@@ -230,18 +236,5 @@ Happy coding!
 
 🐧
 
-- [ ] Grammatica
-- [ ] Titoli
-- [ ] Frontmatter
-- [ ] Immagine di copertina
 - [ ] Fai resize della immagine di copertina
-- [ ] Metti la giusta OgTitle
 - [ ] Bold/Italics
-- [ ] Nome cartella e slug devono combaciare
-- [ ] Rinomina immagini
-- [ ] Trim corretto per bordi delle immagini
-- [ ] Alt Text per immagini 
-- [ ] Pulizia formattazione 
-- [ ] crea immagine finale con Triad e alcuni esempi
-- [ ] Link ad ADR per dire che il come gestisci gli errori ha impatto sull'architettura
-- [ ] Trova una alternativa a Validation per indicare la gestione dei dati, che comprende sia Validation che Business Rules
