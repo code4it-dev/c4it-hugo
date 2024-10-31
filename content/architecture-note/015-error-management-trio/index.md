@@ -1,6 +1,6 @@
 ---
 title: "Davide's Code and Architecture Notes - the Error Management Trio, and how it affects your software architecture"
-date: 2024-10-21
+date: 2024-11-05
 url: /architecture-notes/error-management-trio
 draft: false
 categories:
@@ -26,7 +26,7 @@ keywords:
 
 When designing a new software system, it's easy to focus mainly on the happy flow and forget that you must also handle errors.
 
-You should carefully define and design how to handle errors: depending on the use case, error handling can have a huge impact on the architecture of your software system.
+You should carefully define and design how to handle errors: **depending on the use case, error handling can have a huge impact on the architecture of your software system**.
 
 In this article, we'll explore the three main categories of errors that we must always remember to address; for each type of error, we will showcase how addressing it can impact the software architecture differently.
 
@@ -53,21 +53,21 @@ Now, the happy flow is simple. But we should have covered what to do in case of 
 
 In general, errors that need to be handled fall into three categories (that I decided to call "the Error Management Trio"): data validation, transient errors, and faults.
 
-Data validation focuses on the data used across the system, particularly the data you don't control.
+**Data Validation** focuses on the data used across the system, particularly the **data you don't control**.
 
-Transient errors occur when the application's overall status or its dependencies temporarily change to an invalid state.
+**Transient Errors** occur when the application's overall status or its dependencies **temporarily** change to an invalid state.
 
-Faults are errors that take down the whole application, and you cannot recover immediately.
+**Faults** are errors that take down the whole application, and you cannot recover immediately.
 
-The Trio does not take into account "errors" that are not properly errors: null values, queries that do not return any value, and so on. These are all legitimate statuses that represent that lack of values but are not errors that have architectural relevance.
+The Trio does not take into account "errors" that are not properly errors: null values, queries that do not return any value, and so on. These, in my opinion, are all legitimate statuses that represent that lack of values but are not errors that have architectural relevance.
 
 ![The Error Management Trio schema](./error-management-trio.png)
 
 ## Data Validation: the first defence against invalid status
 
-The Data Validation category focuses on ensuring that relevant data is in a valid status.
+The Data Validation category focuses on **ensuring that relevant data is in a valid status**.
 
-In particular, it aims at ensuring that data coming from external sources (for example, from the Body in an incoming HTTP request or from the result of a query on the database) is both syntactically and logically valid.
+In particular, it aims at ensuring that data coming **from external sources** (for example, from the Body in an incoming HTTP request or from the result of a query on the database) is both syntactically and logically valid.
 
 Suppose that the messages we receive from the queue are in the following format:
 
@@ -107,15 +107,16 @@ All of this only when considering the static validation. **How would you validat
 Maybe you discover that the data stored on the database in incomplete or stale. Then you have to work out a way to handle such type of data.
 
 For example, you can:
-run a background job that ensures that all the data is always valid;
-enrich the data from the DB with newer data only when it is actually needed;
-fine-tune the database consistency level.
 
-We have just demonstrated a simple but important fact: data validation *looks* trivial, but depending on the needs of your system, it may impact how you design your system.
+- run a background job that ensures that all the data is always valid;
+- enrich the data from the DB with newer data only when it is actually needed;
+- fine-tune the database consistency level.
+
+We have just demonstrated a simple but important fact: **data validation *looks* trivial**, but depending on the needs of your system, it may impact how you design your system.
 
 ## Transient Errors: temporary errors that may randomly occur
 
-Even if the validation passes, temporary issues may prevent your operations from completing.
+Even if the validation passes, **temporary issues** may prevent your operations from completing.
 
 In the previous example, there are some possible cases to consider:
 
@@ -125,7 +126,7 @@ In the previous example, there are some possible cases to consider:
 
 These kinds of issues are due to a temporary status of the system or of one of its dependencies.
 
-Sure, you may add automatic retries: for instance, you can use Polly to automatically retry access the API. But what if it's not enough?
+Sure, you may **add automatic retries**: for instance, you can use Polly to automatically retry access the API. But what if it's not enough?
 
 Again, depending on your application's requirements and the overall structure you started designing, solving this problem may bring you to unexpected paths.
 
@@ -146,7 +147,7 @@ Below is how the structure changes if we decide to send the failed messages back
 
 ![The MainApplication now sends messages back on the queue](./with-messages-sent-with-delay.png)
 
-In both cases, we must remember that trying to call a service that is temporarily down is useless: maybe it's time to use a Circuit Breaker?
+In both cases, we must remember that trying to call a service that is temporarily down is useless: maybe it's time to **use a Circuit Breaker**?
 
 ## Fatal Errors: when everything goes wrong
 
@@ -164,7 +165,7 @@ This kind of error cannot be directly managed via application code, but you need
 
 For example, to make sure you won't consume all the available RAM, you should plan for autoscaling of your resources. So you have to design the system with autoscaling in mind: this means, for example, that the system must be stateless and the application must run on infrastructure objects that can be configured to automatically manage resources (like Azure Functions, Kubernetes, and Azure App Services). Also: do you need horizontal or vertical scaling?
 
-And, talking about the integrity of the system, how do you ensure that operations that were ongoing when the fatal error occurred can be completed? 
+And, talking about **the integrity of the system**, how do you ensure that operations that were ongoing when the fatal error occurred can be completed? 
 
 One possible solution is to use a database table to keep track of the status of each operation, so that when the application restarts, it first completes pending operations, and then starts working on new operations.
 
@@ -174,13 +175,13 @@ One possible solution is to use a database table to keep track of the status of 
 
 There are too many errors to manage and too much effort to cover everything!
 
-How can we cover everything? Well, it's impossible: for every action we take to prevent an error, a new one may occur. 
+How can we cover everything? Well, it's impossible: **for every action we take to prevent an error, a new one may occur**. 
 
-Let's jump back to the example we saw for handling validation errors (using a new service that tries to fix the message). What if the ValidationFixesManager service is down or the message queue is unreachable? We tried to solve a problem, but we ended up with two more to be managed!
+Let's jump back to the example we saw for handling validation errors (using a new service that tries to fix the message). What if the *ValidationFixesManager* service is down or the message queue is unreachable? We tried to solve a problem, but we ended up with two more to be managed!
 
 Let me introduce a practical approach to help you decide what needs to be addressed.
 
-Step 1: list all the errors you can think of. Create a table to list all the possible errors that you expect they can happen. 
+**Step 1: list all the errors you can think of**. Create a table to list all the possible errors that you expect they can happen. 
 
 You can add a column to describe the category the error falls into, as well as a Probability and Impact on the system column with a value (in this example, Low, Medium and High) that represents the probability that this error occurs and the impact it has on the overall application.
 
@@ -196,15 +197,17 @@ You can add a column to describe the category the error falls into, as well as a
 
 From here, you can pick the most urgent elements to be addressed.
 
-Step 2: evaluate alternatives. Every error can be addressed in several ways (ignoring the error is also a valid alternative!). Take some time to explore all the alternatives.
+**Step 2: evaluate alternatives**. Every error can be addressed in several ways (**ignoring the error IS a valid alternative!**). Take some time to explore all the alternatives.
 
 Again, a table can be a good companion for this step. You can describe, for example:
 the effort required to solve the error (Low, Medium, High)
 the positive and negative consequences in terms (also) of quality attributes (aka: "-ilities"). Maybe a solution works fine for data integrity but has a negative impact on maintainability.
 
-Step 3: use ADRs to describe how (and why) you will handle that specific error.
+**Step 3: use ADRs to describe how (and why) you will handle that specific error**.
 
-Take your time to thoroughly describe, using ADR documents, the problems you are trying to solve, the solutions taken into consideration, and the final choice. Having everything written down in a shared file is fundamental for ensuring that, in the future, the present choices and necessities are taken into account, before saying "meh, that's garbage!"
+Take your time to thoroughly describe, using ADR documents, the problems you are trying to solve, the solutions taken into consideration, and the final choice. 
+
+Having everything written down in a shared file is fundamental for ensuring that, in the future, the present choices and necessities are taken into account, before saying "meh, that's garbage!"
  
 
 ## Further readings
@@ -235,6 +238,3 @@ I hope you enjoyed this article! Let's keep in touch on [LinkedIn](https://www.l
 Happy coding!
 
 🐧
-
-- [ ] Fai resize della immagine di copertina
-- [ ] Bold/Italics
