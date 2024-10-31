@@ -12,8 +12,8 @@ summary: "A summary"
 images:
  - /architecture-notes/post-slug/featuredImage.png
 keywords:
- - softwarearchitecture
- - sytemdesign
+ - software-architecture
+ - systemdesign
  - error-handling
  - validation
  - transient-errors

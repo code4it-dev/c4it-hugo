@@ -10,7 +10,7 @@ tags:
 toc: true
 summary: "If you need to handle lots of incoming requests, you should manage the incoming traffic by balancing the load across different servers. You should consider adding a Load Balancer: it's a layer of abstraction that handles requests, availability, and security in a centralized place."
 keywords:
-  - softwarearchitecture
+  - software-architecture
   - systemdesign
   - architecture
   - api

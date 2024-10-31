@@ -12,7 +12,7 @@ tags:
 toc: true
 summary: "When describing a web service, people often use the wrong terms. Are you really creating a REST API, or is it some sort of pseudo-REST? "
 keywords:
-  - softwarearchitecture
+  - software-architecture
   - http
   - api
   - rest

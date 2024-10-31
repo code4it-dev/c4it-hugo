@@ -11,7 +11,7 @@ tags:
 toc: true
 summary: "A system should be **robust**: it should be able to resist change and, well, not generate regressions. Postel's law helps define a mindset to create robust APIs."
 keywords:
-  - softwarearchitecture
+  - software-architecture
   - systemdesign
   - architecture
   - theory
