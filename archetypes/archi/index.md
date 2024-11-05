@@ -12,7 +12,7 @@ summary: "A summary"
 images:
  - /architecture-notes/post-slug/featuredImage.png
 keywords:
- - softwarearchitecture
+ - software-architecture
 ---
 
 

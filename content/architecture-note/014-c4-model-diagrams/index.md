@@ -12,7 +12,7 @@ tags:
 toc: true
 summary: "The C4 Model is one of the most famous ways to describe software architectures. Let's see some practical usage with Strucutrizr."
 keywords:
-  - softwarearchitecture
+  - software-architecture
   - systemdesign
   - c4
   - c4model

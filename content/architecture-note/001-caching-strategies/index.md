@@ -10,7 +10,7 @@ tags:
 toc: true
 summary: "Cache-aside, Read-through, Write-through, Write-behind: quite easy on the surface, but let's go a little deeper!"
 keywords:
-  - softwarearchitecture
+  - software-architecture
   - systemdesign
   - architecture
   - caching

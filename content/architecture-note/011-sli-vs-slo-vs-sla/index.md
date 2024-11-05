@@ -10,7 +10,7 @@ tags:
 toc: true
 summary: "Non-functional requirements. How can you ensure you meet them? Let's understand SLO, SLA, and SLI, and how they affect your SDLC."
 keywords:
-  - softwarearchitecture
+  - software-architecture
   - systemdesign
   - architecture
   - slo
