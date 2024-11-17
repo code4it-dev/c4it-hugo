@@ -12,6 +12,16 @@ tags:
   - Feature Flags
 toc: true
 summary: Feature Flags are a technique that allows you to control the visibility and functionality of features in your software without changing the code. They enable you to experiment with new features, perform gradual rollouts, and revert changes quickly if needed.
+keywords:
+  - dotnet
+  - csharp
+  - configuration
+  - featureflags
+  - appsettings
+  - featuremanager
+  - featuregate
+  - razor
+  - featurefilter
 images:
   - /blog/feature-flags-dotnet/featuredImage.png
 ---

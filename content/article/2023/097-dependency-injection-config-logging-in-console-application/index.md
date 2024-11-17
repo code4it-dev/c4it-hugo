@@ -10,6 +10,16 @@ tags:
   - dotnet
 toc: true
 summary: By default, you cannot use Dependency Injection, custom logging, and configurations from settings in a Console Application. Unless you create a custom `Host`!
+keywords:
+  - dotnet
+  - csharp
+  - dependencyinjection
+  - logging
+  - configuration
+  - consoleapplication
+  - appsettings
+  - ihost
+  - serilog
 images:
   - /blog/dependency-injection-config-logging-in-console-application/featuredImage.png
 ---

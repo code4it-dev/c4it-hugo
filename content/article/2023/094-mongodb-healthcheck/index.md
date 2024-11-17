@@ -10,6 +10,11 @@ tags:
   - MongoDB
 toc: true
 summary: Health Checks are fundamental to keep track of the health of a system. How can we check if MongoDB is healthy?
+keywords:
+  - dotnet
+  - mongodb
+  - healthcheck
+  - csharp
 images:
   - /blog/mongodb-healthcheck/featuredImage.png
 ---
@@ -258,9 +263,7 @@ As usual, the best way to learn more about a topic is by reading the official do
 
 🔗 [Health checks in ASP.NET Core | Microsoft Docs](https://learn.microsoft.com/en-us/aspnet/core/host-and-deploy/health-checks?wt.mc_id=DT-MVP-5005077)
 
-How can you use MongoDB locally? Well, easy: \*with Docker!
-
--
+How can you use MongoDB locally? Well, easy: with Docker!
 
 🔗 [First steps with Docker: download and run MongoDB locally | Code4IT](https://www.code4it.dev/blog/run-mongodb-on-docker)
 
