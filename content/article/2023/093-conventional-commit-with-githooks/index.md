@@ -19,7 +19,7 @@ keywords:
   - npm
   - husky
   - git-hook
-  - lin
+  - lint
 images:
   - /blog/conventional-commit-with-githooks/featuredImage.png
 ---

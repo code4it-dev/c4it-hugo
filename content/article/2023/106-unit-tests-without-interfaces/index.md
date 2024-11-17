@@ -17,11 +17,11 @@ keywords:
   - testing
   - mock
   - interfaces
-  - unittests
+  - unit-tests
   - tests
   - virtual
   - stub
-  - dependencyinjection
+  - dependency-injection
 images:
   - /blog/unit-tests-without-interfaces/featuredImage.png
 ---

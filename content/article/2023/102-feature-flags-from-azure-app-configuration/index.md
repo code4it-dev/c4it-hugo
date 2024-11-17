@@ -16,11 +16,12 @@ summary: Learn how to use Feature Flags in ASP.NET Core apps and read values fro
 keywords:
   - dotnet
   - csharp
-  - featureflags
-  - featuremanagement
+  - feature-flags
+  - feature-management
   - azure
   - azureappconfiguration
-  - featurefilter
+  - feature-filter
+  - configurations
 images:
   - /blog/feature-flags-from-azure-app-configuration/featuredImage.png
 ---

@@ -13,9 +13,9 @@ summary: By default, you cannot use Dependency Injection, custom logging, and co
 keywords:
   - dotnet
   - csharp
-  - dependencyinjection
+  - dependency-injection
   - logging
-  - configuration
+  - configurations
   - consoleapplication
   - appsettings
   - ihost

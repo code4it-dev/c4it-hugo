@@ -11,7 +11,7 @@ toc: true
 summary: "You should always put a limit to the number of incoming requests. Otherwise, you can have your systems exposed to malicious attackers. Let's see the four main algorithms to implement Rate Limit."
 keywords:
   - software-architecture
-  - systemdesign
+  - system-design
   - architecture
   - rate-limit
   - fixed-window

@@ -12,7 +12,7 @@ summary: "A simple way to improve efficiency is knowing your IDE shortcuts. Let'
 images:
   - /blog/custom-snippets-visualstudio2022/featuredImage.png
 keywords:
-  - visualstudio
+  - visual-studio
   - productivity
   - snippet
 ---

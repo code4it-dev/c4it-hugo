@@ -13,7 +13,7 @@ summary: Health Checks are fundamental to keep track of the health of a system. 
 keywords:
   - dotnet
   - mongodb
-  - healthcheck
+  - health-check
   - csharp
 images:
   - /blog/mongodb-healthcheck/featuredImage.png

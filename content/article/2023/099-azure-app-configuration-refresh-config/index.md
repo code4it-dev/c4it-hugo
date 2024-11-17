@@ -17,7 +17,7 @@ keywords:
   - dotnet
   - csharp
   - azure
-  - configuration
+  - configurations
   - ioptionsmonitor
   - azureappconfiguration
 images:

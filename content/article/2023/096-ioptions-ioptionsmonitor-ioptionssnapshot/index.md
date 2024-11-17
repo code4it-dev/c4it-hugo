@@ -19,7 +19,7 @@ keywords:
   - iconfiguration
   - ioptionsmonitor
   - ioptionssnapshot
-  - dependencyinjection
+  - dependency-injection
 images:
   - /blog/ioptions-ioptionsmonitor-ioptionssnapshot/featuredImage.png
 ---

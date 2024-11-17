@@ -15,12 +15,12 @@ summary: "Integration Tests are incredibly useful: a few Integration Tests are o
 keywords:
   - dotnet
   - csharp
-  - integrationtests
+  - integration-tests
   - tests
   - webapplicationfactory
   - nunit
   - configurations
-  - dependencyinjection
+  - dependency-injection
 images:
   - /blog/advanced-integration-tests-webapplicationfactory/featuredImage.png
 ---

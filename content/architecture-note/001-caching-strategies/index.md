@@ -11,7 +11,7 @@ toc: true
 summary: "Cache-aside, Read-through, Write-through, Write-behind: quite easy on the surface, but let's go a little deeper!"
 keywords:
   - software-architecture
-  - systemdesign
+  - system-design
   - architecture
   - caching
   - performance
@@ -19,7 +19,6 @@ keywords:
   - read-through
   - write-behind
   - write-through
-  - cache
 images:
   - /architecture-notes/caching-strategies/featuredImage.png
 ---

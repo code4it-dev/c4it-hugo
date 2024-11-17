@@ -12,10 +12,9 @@ toc: true
 summary: "Caching helps your applications be more performant. However, depending on the cache size, you'll need to sacrifice some items to make space for others. Let's see some strategies."
 keywords:
   - software-architecture
-  - systemdesign
+  - system-design
   - architecture
   - caching
-  - cache
   - performance
   - cache-expiration
   - cache-eviction

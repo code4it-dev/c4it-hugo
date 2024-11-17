@@ -13,7 +13,7 @@ images:
  - /architecture-notes/error-management-trio/featuredImage.png
 keywords:
  - software-architecture
- - systemdesign
+ - system-design
  - error-handling
  - validation
  - transient-errors

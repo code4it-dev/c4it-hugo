@@ -16,8 +16,8 @@ keywords:
   - huskydotnet
   - husky
   - commit
-  - conventionalcommit
-  - githooks
+  - conventional-commit
+  - git-hook
   - precommit
 images:
   - /blog/husky-dotnet-precommit-hooks/featuredImage.png

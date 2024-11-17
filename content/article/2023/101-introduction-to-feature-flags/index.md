@@ -15,13 +15,13 @@ summary: Feature Flags are a technique that allows you to control the visibility
 keywords:
   - dotnet
   - csharp
-  - configuration
-  - featureflags
+  - configurations
+  - feature-flags
   - appsettings
   - featuremanager
-  - featuregate
+  - feature-gate
   - razor
-  - featurefilter
+  - feature-filter
 images:
   - /blog/feature-flags-dotnet/featuredImage.png
 ---
