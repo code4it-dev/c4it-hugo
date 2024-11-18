@@ -11,13 +11,20 @@ tags:
   - Azure API Management
 toc: true
 summary: In a microservices architecture, an API Gateway hides your real endpoints. We will create one using Azure API Management
+keywords:
+  - azure
+  - api
+  - azure-api-management
+  - api-gateway
+  - microservices
+  - swagger
 images:
   - /blog/intro-azure-api-management/featuredImage.png
 ---
 
 If you're building an application that exposes several services you might not want to expose them on different hosts. Consumers will have a hard time configuring their application with all the different hostnames, and you will be forced to maintain the same URLs even if you need to move to other platforms or, for instance, you want to transform a REST endpoint into an Azure Function.
 
-In this case, you should mask the real endpoints beneath a _facade_: maybe... an A**PI Gateway**? 🙂
+In this case, you should mask the real endpoints beneath a _facade_: maybe... an **API Gateway**? 🙂
 
 In this article, we will learn how to configure Azure API Management (from now on: _APIM_) service to create an API Gateway and "hide" our real services.
 

@@ -9,6 +9,13 @@ tags:
   - dotnet
 toc: true
 summary: In this article, I will show you two simple tricks that help me understand the deployment status of my .NET APIs
+keywords:
+  - azure
+  - dotnet
+  - api
+  - csharp
+  - devops
+  - environment-variables
 images:
   - /blog/my-2-secret-endpoints/featuredImage.png
 ---

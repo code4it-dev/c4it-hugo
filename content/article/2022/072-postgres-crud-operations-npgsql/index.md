@@ -12,6 +12,13 @@ tags:
   - PostgreSQL
 toc: true
 summary: Once we have a Postgres instance running, we can perform operations on it. We will use Npgsql to query a Postgres instance with C#
+keywords:
+  - dotnet
+  - csharp
+  - database
+  - postgresql
+  - sql
+  - npgsql
 images:
   - /blog/postgres-crud-operations-npgsql/featuredImage.png
 ---

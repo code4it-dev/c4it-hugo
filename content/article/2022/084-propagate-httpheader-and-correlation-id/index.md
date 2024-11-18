@@ -10,6 +10,16 @@ tags:
   - dotnet
 toc: true
 summary: Propagating HTTP Headers can be useful, especially when dealing with Correlation IDs. It's time to customize our HttpClients!
+keywords:
+  - dotnet
+  - csharp
+  - correlation-id
+  - http
+  - http-header
+  - api
+  - microservices
+  - httpclient
+  - httpcontext
 images:
   - /blog/propagate-httpheader-and-correlation-id/featuredImage.png
 ---

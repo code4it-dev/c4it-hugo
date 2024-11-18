@@ -9,6 +9,12 @@ tags:
   - dotnet
 toc: true
 summary: A PriorityQueue represents a collection of items that have a value and a priority. Now this data structure is built-in in dotNET!
+keywords:
+  - csharp
+  - dotnet
+  - priority-queue
+  - generics
+  - queue
 images:
   - /blog/intro-priority-queue/featuredImage.png
 ---

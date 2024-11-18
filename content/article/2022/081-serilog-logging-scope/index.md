@@ -10,6 +10,15 @@ tags:
   - CSharp
 toc: true
 summary: Logs are important. Properly structured logs can be the key to resolving some critical issues. With Serilog's Scopes, you can enrich your logs with info about the context where they happened.
+keywords:
+  - dotnet
+  - csharp
+  - logging
+  - logs
+  - serilog
+  - scope
+  - ilogger
+  - seq
 images:
   - /blog/serilog-logging-scope/featuredImage.png
 ---

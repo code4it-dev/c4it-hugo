@@ -11,6 +11,11 @@ tags:
   - Database
 toc: true
 summary: PostgreSQL is a famous relational database. In this article, we will learn how to run it locally using Docker.
+keywords:
+  - sql
+  - database
+  - postgresql
+  - docker
 images:
   - /blog/run-postgresql-with-docker/featuredImage.png
 ---
@@ -47,7 +52,7 @@ Now that we have the image in our local environment, we can spin up a container 
 
 Below, you can see the full command.
 
-```
+```powershell
 docker run
     --name myPostgresDb
     -p 5455:5432

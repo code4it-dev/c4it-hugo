@@ -10,6 +10,12 @@ tags:
   - CSharp
 toc: true
 summary: If your application is exposed on the Web, I guess that you get some values from the HTTP Requests, don't you?
+keywords:
+  - dotnet
+  - csharp
+  - http
+  - httpcontext
+  - api
 images:
   - /blog/inject-httpcontext/featuredImage.png
 ---

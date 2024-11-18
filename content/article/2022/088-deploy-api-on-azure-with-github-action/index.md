@@ -11,6 +11,16 @@ tags:
   - GitHub
 toc: true
 summary: Building APIs with .NET is easy. Deploying them on Azure is easy too, with GitHub Actions!
+keywords:
+  - azure
+  - dotnet
+  - github
+  - github-action
+  - git
+  - ci-cd
+  - devops
+  - azure-app-service
+  - yaml
 images:
   - /blog/deploy-api-on-azure-with-github-action/featuredImage.png
 ---

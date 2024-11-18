@@ -13,6 +13,13 @@ tags:
   - Entity Framework
 toc: true
 summary: With Entity Framework you can perform operations on relational databases without writing a single line of SQL. We will use EF to integrate PostgreSQL in our application
+keywords:
+  - csharp
+  - entity-framework
+  - postgresql
+  - entity-framework
+  - database
+  - sql
 images:
   - /blog/postgres-crud-entityframework/featuredImage.png
 ---
