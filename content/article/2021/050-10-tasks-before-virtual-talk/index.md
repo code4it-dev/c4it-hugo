@@ -10,6 +10,11 @@ tags:
   - Career
 toc: true
 summary: When performing a talk, the audience experience is as important as the content. They must be focused on what you say, and not get distracted by external outputs. So, here's 10 tips to rock your next virtual talk.
+keywords:
+  - career
+  - talks
+  - public-speaking
+  - communication
 images:
   - /blog/10-tasks-before-virtual-talk/featuredImage.png
 ---

@@ -10,6 +10,11 @@ tags:
   - dotnet
 toc: true
 summary: Is your application slow? How to find bottlenecks? If so, you can use MiniProfiler to profile a .NET API application and analyze the timings of the different operations.
+keywords:
+  - dotnet
+  - csharp
+  - miniprofiler
+  - performance
 images:
   - /blog/miniprofiler/featuredImage.png
 ---

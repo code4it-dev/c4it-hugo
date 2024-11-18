@@ -10,6 +10,15 @@ tags:
   - dotnet
 toc: true
 summary: Moq and NSubstitute are two of the most used library to mock dependencies on your Unit Tests. How do they differ? How can we move from one library to the other?
+keywords:
+  - dotnet
+  - csharp
+  - tests
+  - unit-tests
+  - moq
+  - nsubstitute
+  - syntax
+  - mock
 images:
   - /blog/moq-vs-nsubstitute-syntax/featuredImage.png
 ---

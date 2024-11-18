@@ -10,6 +10,17 @@ tags:
   - Tests
 toc: true
 summary: Mocking IHttpClientFactory is hard, but luckily we can use some advanced features of Moq to write better tests.
+keywords:
+  - dotnet
+  - csharp
+  - mock
+  - moq
+  - httpclientfactory
+  - httpclient
+  - unit-tests
+  - tests
+  - testing
+  - httpmessagehandler
 images:
   - /blog/testing-httpclientfactory-moq/featuredImage.png
 ---

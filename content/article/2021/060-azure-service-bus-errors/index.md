@@ -12,6 +12,13 @@ tags:
   - Azure Service Bus
 toc: true
 summary: Senders and Receivers handle errors on Azure Service Bus differently. We'll see how to catch them, what they mean and how to fix them. We'll also introduce Dead Letters.
+keywords:
+  - dotnet
+  - azure
+  - azure-service-bus
+  - microservices
+  - dead-letters
+  - queue
 images:
   - /blog/azure-service-bus-errors/featuredImage.png
 ---

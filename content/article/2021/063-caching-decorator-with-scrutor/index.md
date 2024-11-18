@@ -9,6 +9,13 @@ tags:
   - dotnet
 toc: true
 summary: "You should not add the caching logic in the same component used for retrieving data from external sources: you'd better use the Decorator Pattern. We'll see how to use it, what benefits it brings to your application, and how to use Scrutor to add it to your .NET projects."
+keywords:
+  - dotnet
+  - csharp
+  - dependency-injection
+  - scrutor
+  - design-pattern
+  - decorator
 images:
   - /blog/caching-decorator-with-scrutor/featuredImage.png
 ---

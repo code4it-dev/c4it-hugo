@@ -10,6 +10,13 @@ tags:
   - CSharp
 toc: true
 summary: Did you know that in .NET you can resolve specific dependencies using Factories? We'll use them to switch between concrete classes based on the current HTTP Request
+keywords:
+  - dotnet
+  - csharp
+  - dependency-injection
+  - http
+  - httprequest
+  - httpcontext
 images:
   - /blog/resolving-dependencies-depending-on-httprequest/featuredImage.png
 ---

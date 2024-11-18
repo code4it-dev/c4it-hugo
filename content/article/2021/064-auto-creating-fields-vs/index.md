@@ -9,14 +9,19 @@ tags:
   - Visual Studio
   - dotnet
 toc: true
-summary: Every time you ask Visual Studio to generate properties for you, it creates them with a simple,default format. But we can customize them by updating some options on our IDE. Let's learn how!
+summary: Every time you ask Visual Studio to generate properties for you, it creates them with a simple, default format. But we can customize them by updating some options on our IDE. Let's learn how!
+keywords:
+  - dotnet
+  - csharp
+  - visual-studio
+  - tools
 images:
   - /blog/auto-creating-fields-vs/featuredImage.png
 ---
 
 We, as developers, **hate** repetitive tasks, isn't it? In fact, we often auto-generate code by using our IDE's capabilities. Yet, sometimes the auto-generated code does not follow our team rules or our personal taste, so we have to rename stuff every single time.
 
-For instance, say that your golden rule is to have your `readonly` properties named with a **\_** prefix: `private readonly IService _myService` instead of `private readonly IService myService`. Renaming the properties every time is... boring!
+For instance, say that your golden rule is to have your `readonly` properties named with a `_` prefix: `private readonly IService _myService` instead of `private readonly IService myService`. Renaming the properties every time is... boring!
 
 In this article, you will learn how to customize Visual Studio 2019 to get the most out of the auto-generated code. In particular, we will customize the names of the `readonly` properties generated when we add a dependency in a class constructor.
 

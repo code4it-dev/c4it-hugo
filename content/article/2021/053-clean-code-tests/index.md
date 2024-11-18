@@ -9,6 +9,11 @@ tags:
   - Clean Code
 toc: true
 summary: Tests are as important as production code. Well, they are even more important! So writing them well brings lots of benefits to your projects.
+keywords:
+  - dotnet
+  - csharp
+  - tests
+  - clean-code
 images:
   - /blog/clean-code-tests/featuredImage.png
 ---

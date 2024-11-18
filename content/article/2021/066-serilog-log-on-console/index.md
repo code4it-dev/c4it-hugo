@@ -9,6 +9,13 @@ tags:
   - dotnet
 toc: true
 summary: Serilog is a famous logger for .NET projects. In this article, we will learn how to integrate it in a .NET API project and output the logs on a Console.
+keywords:
+  - dotnet
+  - csharp
+  - serilog
+  - logging
+  - console-application
+  - dependency-injection
 images:
   - /blog/serilog-log-on-console/featuredImage.png
 ---
