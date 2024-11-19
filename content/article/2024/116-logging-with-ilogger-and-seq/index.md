@@ -255,12 +255,10 @@ I usually add it to my private projects, especially when the operations I run ar
 
 Given how it's easy to install, sometimes I use it for my work projects too: when I have to fix a bug, but I don't want to use the centralized logging platform (since it's quite complex to use), I add Seq as a destination sink, run the application, and analyze the logs in my local machine. Then, of course, I remove its reference, as I want it to be just a discardable piece of configuration.
 
-I hope you enjoyed this article! Let's keep in touch on [LinkedIn](https://www.linkedin.com/in/BelloneDavide/) or [Twitter](https://twitter.com/BelloneDavide)! 🤜🤛
+I hope you enjoyed this article! Let's keep in touch on [LinkedIn](https://www.linkedin.com/in/BelloneDavide/), [Twitter](https://twitter.com/BelloneDavide) or [BlueSky](https://bsky.app/profile/bellonedavide.bsky.social)! 🤜🤛
 
 Happy coding!
 
 🐧
 
  
-- [ ] Immagine di copertina
-- [ ] Fai resize della immagine di copertina
