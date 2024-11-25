@@ -10,6 +10,13 @@ tags:
   - Ocelot
 toc: true
 summary: API Gateways can help you create microservices and micro frontends, and expose rich APIs to your customers while keeping things simple on your company.
+keywords:
+  - api
+  - api-gateway
+  - microfrontend
+  - api-composition
+  - ocelot
+  - ssl-termination
 images:
   - /blog/overview-api-gateways/featuredImage.png
 ---

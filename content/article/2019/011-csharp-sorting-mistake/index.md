@@ -10,6 +10,9 @@ tags:
   - dotnet
 toc: true
 summary: Is it true that the inverse of a negative number is always a positive number? If you think it's true, you might get a subtle error while implementing comparison.
+keywords:
+  - csharp
+  - sorting
 images:
   - /blog/csharp-sorting-mistake/featuredImage.png
 ---

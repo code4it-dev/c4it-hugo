@@ -11,6 +11,15 @@ tags:
   - MISC
 toc: true
 summary: "Some of the things I learned at .NET Conf Italia: interfaces and abstract classes, Blazor, C# default interfaces and .NET Core on Samsung TV"
+keywords:
+  - dotnet
+  - csharp
+  - interfaces
+  - abstract-class
+  - blazor
+  - intermediate-language
+  - il
+  - webassembly
 images:
   - /blog/dotnet-conference-italia-2018/featuredImage.png
 ---

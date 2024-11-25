@@ -10,6 +10,9 @@ tags:
   - Career
 toc: true
 summary: Having a public speech seems easy. In some ways, it really is. But the first time can be hard. Here's my thought after my first experience in public speaking.
+keywords:
+  - public-speaking
+  - career
 images:
   - /blog/thoughts-after-my-first-public-speech/featuredImage.png
 ---
