@@ -12,6 +12,11 @@ tags:
   - Serverless
 toc: true
 summary: Do you have an Azure Function that you want to upgrade from v2 to v3? Don't panic, it's just a matter of few steps!
+keywords:
+  - dotnet
+  - azure
+  - azure-functions
+  - migration
 images:
   - /blog/azure-functions-v2-to-v3/featuredImage.png
 ---

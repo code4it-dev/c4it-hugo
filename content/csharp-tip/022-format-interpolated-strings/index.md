@@ -15,6 +15,7 @@ keywords:
   - keyword
   - string
   - formattable
+  - formatting
   - interpolation
   - cultureinfo
   - culture

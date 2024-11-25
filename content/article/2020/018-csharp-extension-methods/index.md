@@ -11,6 +11,11 @@ tags:
   - YouTube
 toc: true
 summary: YouTube provides some APIs for getting info about a channel videos. But they also provide .NET libraries to achieve the same result with C#. Let's have a try!
+keywords:
+  - dotnet
+  - csharp
+  - youtube
+  - youtube-api
 images:
   - /blog/csharp-extension-methods/featuredImage.png
 ---

@@ -9,6 +9,13 @@ tags:
   - dotnet
 toc: true
 summary: "Exposing Swagger UI is a good way to help developers consume your APIs. But don't be boring: customize your UI with some fancy CSS"
+keywords:
+  - csharp
+  - dotnet
+  - swagger
+  - customization
+  - api
+  - openapi
 images:
   - /blog/customize-swagger-ui-with-css/featuredImage.png
 ---

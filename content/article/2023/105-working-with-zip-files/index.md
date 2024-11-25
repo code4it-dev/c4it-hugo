@@ -10,6 +10,15 @@ tags:
   - Zip
 toc: true
 summary: "Learn how to zip and unzip compressed files with C#. Beware: it's not as obvious as it might seem!"
+keywords:
+  - dotnet
+  - csharp
+  - file
+  - filesystem
+  - zip
+  - unzip
+  - compression
+  - performance
 images:
   - /blog/working-with-zip-files/featuredImage.png
 ---

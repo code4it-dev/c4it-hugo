@@ -11,6 +11,13 @@ tags:
   - Tests
 toc: true
 summary: Sometimes on your tests you need to access test files, for example for mocking external data. With manifest resources you can easily reference files for your tests.
+keywords:
+  - dotnet
+  - csharp
+  - testing
+  - mocking
+  - manifest-file
+  - embedded-resource
 images:
   - /blog/mock-dependency-with-manifest-resources/featuredImage.png
 ---

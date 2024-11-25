@@ -9,6 +9,11 @@ tags:
   - Clean Code
 toc: true
 summary: Are Getters and Setters the correct way to think of abstraction? What are pro and cons of OOP and Procedural programming? And, in the OOP world, how can you define objects?
+keywords:
+  - clean-code
+  - csharp
+  - abstraction
+  - oop
 images:
   - /blog/clean-code-abstraction-and-objects/featuredImage.png
 ---

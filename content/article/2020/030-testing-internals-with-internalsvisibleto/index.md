@@ -10,6 +10,12 @@ tags:
   - dotnet
 toc: true
 summary: Internal members can be accessed only within the same assembly. And for different assemblies? Here's for you the InternalsVisibleTo attribute!
+keywords:
+  - dotnet
+  - internalsvisibleto
+  - assembly
+  - internal
+  - keyword
 images:
   - /blog/testing-internals-with-internalsvisibleto/featuredImage.png
 ---

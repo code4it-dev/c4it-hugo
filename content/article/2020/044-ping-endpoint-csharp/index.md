@@ -9,6 +9,13 @@ tags:
   - CSharp
 toc: true
 summary: How to effectively ping an endpoint in C#? Don't use the HttpClient, when .NET provides a Ping class to perform all these operations.
+keywords:
+  - dotnet
+  - csharp
+  - ping
+  - http
+  - httpclient
+  - network
 images:
   - /blog/ping-endpoint-csharp/featuredImage.png
 ---

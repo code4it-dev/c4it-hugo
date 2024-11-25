@@ -10,6 +10,10 @@ tags:
   - MongoDB
 toc: true
 summary: Docker is a project that allows you to create and run applications in an isolated environment. Let's try it to run MongoDB on your machine!
+keywords:
+  - docker
+  - mongodb
+  - database
 images:
   - /blog/run-mongodb-on-docker/featuredImage.png
 ---

@@ -9,6 +9,12 @@ tags:
   - CSharp
 toc: true
 summary: "JSONL is JSON's less famous sibling: it allows you to store JSON objects separating them with new line. We will learn how to parse a JSONL string with C#."
+keywords:
+  - dotnet
+  - csharp
+  - jsonl
+  - parsing
+  - json
 images:
   - /blog/parse-jsonlines/featuredImage.png
 ---

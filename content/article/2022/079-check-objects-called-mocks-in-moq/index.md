@@ -10,6 +10,13 @@ tags:
   - Tests
 toc: true
 summary: In unit tests, sometimes you need to perform deep checks on the object passed to the mocked service. We will learn 3 ways to do that with Moq and C#
+keywords:
+  - dotnet
+  - csharp
+  - testing
+  - tests
+  - unit-tests
+  - moq
 images:
   - /blog/check-objects-called-mocks-in-moq/featuredImage.png
 ---

@@ -12,6 +12,13 @@ tags:
   - Azure Service Bus
 toc: true
 summary: Azure Service bus is a message broker generally used for sharing messages between applications. In this article, we're gonna see an introduction to Azure Service Bus, and how to work with it with .NET and C#
+keywords:
+  - dotnet
+  - csharp
+  - azure
+  - azure-service-bus
+  - queues
+  - asynchronous-communication
 images:
   - /blog/azure-service-bus-introduction/featuredImage.png
 ---

@@ -10,6 +10,15 @@ tags:
   - dotnet
 toc: true
 summary: "A Git commit represents the status of a system. Learn how to validate that your code builds, is well-formatted, and all the tests pass by adding a Git hook!"
+keywords:
+  - dotnet
+  - git
+  - huskydotnet
+  - husky
+  - commit
+  - conventional-commit
+  - git-hook
+  - precommit
 images:
   - /blog/husky-dotnet-precommit-hooks/featuredImage.png
 ---

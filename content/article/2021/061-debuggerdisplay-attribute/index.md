@@ -11,6 +11,12 @@ tags:
   - Visual Studio
 toc: true
 summary: Debugging our .NET applications can be cumbersome. With the DebuggerDisplay attribute we can simplify it by displaying custom messages.
+keywords:
+  - dotnet
+  - debuggerdisplay
+  - visual-studio
+  - debug
+  - csharp
 images:
   - /blog/debuggerdisplay-attribute/featuredImage.png
 ---

@@ -10,6 +10,11 @@ tags:
   - Career
 toc: true
 summary: Doing a tech talk is easy. Doing a *good* talk is harder. We're going to see some tips to improve the delivery of your conferences.
+keywords:
+  - career
+  - talks
+  - communication
+  - public-speaking
 images:
   - /blog/tech-talk-13-tips/featuredImage.png
 ---

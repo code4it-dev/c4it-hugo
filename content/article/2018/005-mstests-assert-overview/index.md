@@ -10,6 +10,14 @@ tags:
   - Tests
 toc: true
 summary: The Assert class is the first step you'll probably take into unit testing. But do you know that there's more than the IsTrue() method?
+keywords:
+  - dotnet
+  - csharp
+  - mstests
+  - tests
+  - unit-tests
+  - assertions
+  - assert
 images:
   - /blog/mstests-assert-overview/featuredImage.png
 ---

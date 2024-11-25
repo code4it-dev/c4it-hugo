@@ -12,6 +12,15 @@ tags:
   - CSharp
 toc: true
 summary: "Integration Tests are incredibly useful: a few Integration Tests are often more useful than lots of Unit Tests. Let's learn some advanced capabilities of `WebApplicationFactory`."
+keywords:
+  - dotnet
+  - csharp
+  - integration-tests
+  - tests
+  - webapplicationfactory
+  - nunit
+  - configurations
+  - dependency-injection
 images:
   - /blog/advanced-integration-tests-webapplicationfactory/featuredImage.png
 ---

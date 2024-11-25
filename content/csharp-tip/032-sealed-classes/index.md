@@ -13,8 +13,7 @@ keywords:
   - csharp
   - dotnet
   - sealed
-  - keywords
-  - class
+  - keyword
   - design
   - extensibility
 images:

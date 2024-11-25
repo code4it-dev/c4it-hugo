@@ -9,6 +9,13 @@ tags:
   - Azure
 toc: true
 summary: "Maybe you are used to ping services to check whether they respond or not. It works well using a local console, but within the Azure portal you must use another command: tcpping."
+keywords:
+  - azure
+  - ping
+  - tcp
+  - network
+  - tcpping
+  - icmp
 images:
   - /blog/tcpping-azure-portal/featuredImage.png
 ---

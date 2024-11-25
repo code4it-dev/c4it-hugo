@@ -10,6 +10,12 @@ tags:
   - NPM
 toc: true
 summary: Azure DevOps, among its capabilities, allows you to store NPM packages in their system. Here we'll see how to connect to an NPM feed and how to solve the 401-unauthorized error.
+keywords:
+  - azure-devops
+  - npmrc
+  - npm
+  - authentication
+  - artifact
 images:
   - /blog/connect-npm-feeds-from-azure-devops/featuredImage.png
 ---

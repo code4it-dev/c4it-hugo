@@ -10,6 +10,11 @@ tags:
   - Performance
 toc: true
 summary: In any application, writing code that is clean and performant is crucial. But we often can't have both. What to choose?
+keywords:
+  - opinion
+  - code-quality
+  - performance
+  - clean-code
 images:
   - /blog/clean-code-vs-performance/featuredImage.png
 ---

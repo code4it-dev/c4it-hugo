@@ -10,7 +10,10 @@ tags:
   - MISC
   - Programming
 toc: true
-summary: During this holiday I hiked for the first time. I found some lessons that hiking can teach junior devs
+summary: During this holiday I hiked for the first time. I found some lessons that hiking can teach to junior devs.
+keywords:
+  - career
+  - opinion
 images:
   - /blog/what-hiking-can-teach/featuredImage.png
 ---

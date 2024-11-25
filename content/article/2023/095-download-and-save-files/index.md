@@ -9,6 +9,13 @@ tags:
   - CSharp
 toc: true
 summary: "Downloading a file from a remote resource seems an easy task: download the byte stream and copy it to a local file. Beware of edge cases!"
+keywords:
+  - dotnet
+  - csharp
+  - file
+  - filesystem
+  - httpclient
+  - stream
 images:
   - /blog/download-and-save-files/featuredImage.png
 ---

@@ -12,7 +12,7 @@ summary: "When composing the path to a folder or file location, the `Path` class
 keywords:
   - csharp
   - dotnet
-  - file-system
+  - filesystem
   - path
   - string
   - concatenation

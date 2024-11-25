@@ -9,6 +9,16 @@ tags:
   - CSharp
 toc: true
 summary: You're using DateTime.Now, aren't you? Be careful, because it may bring some troubles to your application. Here I'll explain why and I'll talk about time zones and formatting in C# DateTime.
+keywords:
+  - dotnet
+  - csharp
+  - datetime
+  - timezone
+  - formatting
+  - culture
+  - datetimekind
+  - localization
+  - date
 images:
   - /blog/5-things-datetime-timezones-and-formatting/featuredImage.png
 ---

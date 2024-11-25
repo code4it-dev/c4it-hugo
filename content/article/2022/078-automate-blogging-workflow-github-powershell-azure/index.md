@@ -9,6 +9,11 @@ tags:
   - Career
 toc: true
 summary: After 100 articles, I've found some neat ways to automate my blogging workflow. I will share my experience and the tools I use from the very beginning to the very end.
+keywords:
+  - github
+  - azure
+  - powershell
+  - tools
 images:
   - /blog/automate-blogging-workflow-github-powershell-azure/featuredImage.png
 ---

@@ -13,7 +13,7 @@ keywords:
   - csharp
   - dotnet
   - debug
-  - visualstudio
+  - visual-studio
 images:
   - /csharptips/debug-assert/featuredImage.png
 ---

@@ -11,6 +11,14 @@ tags:
   - CSharp
 toc: true
 summary: Language details may impact application performance. In this article we'll see some of the C# tips that brought me to improve my application. Singleton creation, StringBuilder and more!
+keywords:
+  - dotnet
+  - csharp
+  - performance
+  - stringbuilder
+  - dependency-injection
+  - data-types
+  - asynchronous-programming
 images:
   - /blog/improving-application-performance-part2/featuredImage.png
 ---

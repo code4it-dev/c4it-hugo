@@ -12,7 +12,7 @@ toc: true
 summary: "How is your project structured? What are the driving forces? If you don't know how to express this info, you should try the Arc42 template to create a strong foundation for your documentation."
 keywords:
   - software-architecture
-  - systemdesign
+  - system-design
   - documentation
   - architecture
   - arc42

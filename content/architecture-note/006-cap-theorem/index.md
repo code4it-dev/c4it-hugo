@@ -12,9 +12,8 @@ toc: true
 summary: «Consistency, Availability, and Partition tolerance. Pick two». Is it really THAT simple? Let's learn a bit more about the CAP theorem.
 keywords:
   - software-architecture
-  - systemdesign
+  - system-design
   - architecture
-  - cap
   - cap-theorem
   - theory
   - consistency
@@ -22,7 +21,6 @@ keywords:
   - partition
   - network
   - distributed-system
-  - 
 images:
   - /architecture-notes/cap-theorem/featuredImage.png
 ---
