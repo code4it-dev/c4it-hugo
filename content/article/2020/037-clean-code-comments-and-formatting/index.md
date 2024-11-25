@@ -9,6 +9,11 @@ tags:
   - Clean Code
 toc: true
 summary: Are all comments bad? When they are necessary? Why formatting is so important? Writing clean code does not only refer to the executed code, but also to everything around.
+keywords:
+  - clean-code
+  - formatting
+  - comments
+  - maintainability
 images:
   - /blog/clean-code-comments-and-formatting/featuredImage.png
 ---

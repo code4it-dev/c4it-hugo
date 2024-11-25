@@ -9,6 +9,12 @@ tags:
   - Clean Code
 toc: true
 summary: The way you handle errors on your code can have a huge impact on the maintainability of your projects. Don't underestimate the power of clean error handling.
+keywords:
+  - clean-code
+  - csharp
+  - maintainability
+  - error-handling
+  - errors
 images:
   - /blog/clean-code-error-handling/featuredImage.png
 ---

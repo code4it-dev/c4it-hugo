@@ -11,6 +11,12 @@ tags:
   - Visual Studio
 toc: true
 summary: Wouldn't it be nice if Visual Studio could autogenerate clients for external API? It is actually possible, if they expose an OpenAPI file. Let's see how!
+keywords:
+  - api
+  - openapi
+  - visualstudio
+  - swagger
+  - code-generation
 images:
   - /blog/openapi-code-generation-vs2019/featuredImage.png
 ---

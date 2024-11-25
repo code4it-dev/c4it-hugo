@@ -11,6 +11,13 @@ tags:
   - Performance
 toc: true
 summary: Asynchronous programming is often seen as something cumbersome, so many developers avoid it. What, why and how to use it? Here are the first steps you can take to approach async programming.
+keywords:
+  - dotnet
+  - csharp
+  - async
+  - await
+  - asynchronous-programming
+  - keyword
 images:
   - /blog/asynchronous-programming-in-csharp/featuredImage.png
 ---

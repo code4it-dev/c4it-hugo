@@ -10,6 +10,14 @@ tags:
   - Tests
 toc: true
 summary: The CollectionAssert class if fine for basic tests on collections in C#. We will have a look at the methods exposed by this class.
+keywords:
+  - dotnet
+  - csharp
+  - mstest
+  - collectionassert
+  - tests
+  - unit-tests
+  - assert
 images:
   - /blog/mstests-collectionassert-overview/featuredImage.png
 ---

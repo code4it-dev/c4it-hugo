@@ -10,6 +10,14 @@ tags:
   - Tests
 toc: true
 summary: Code coverage is an indicator of the quality of your code. With Coverlet and VS2019 you can have a human readable report to see where to improve your code.
+keywords:
+  - dotnet
+  - csharp
+  - code-coverage
+  - coverlet
+  - code-quality
+  - visualstudio
+  - tests
 images:
   - /blog/code-coverage-vs-2019-coverlet/featuredImage.png
 ---

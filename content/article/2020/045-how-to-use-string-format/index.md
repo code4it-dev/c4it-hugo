@@ -9,6 +9,13 @@ tags:
   - CSharp
 toc: true
 summary: Is string.Format obsolete? Not at all, it still has cards to play! Let's see how we can customize format and create custom formatters.
+keywords:
+  - dotnet
+  - csharp
+  - string
+  - cultureinfo
+  - culture
+  - string-format
 images:
   - /blog/how-to-use-string-format/featuredImage.png
 ---
