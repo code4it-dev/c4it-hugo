@@ -18,7 +18,7 @@ keywords:
   - moq
   - nsubstitute
   - syntax
-  - mock
+  - mocking
 images:
   - /blog/moq-vs-nsubstitute-syntax/featuredImage.png
 ---

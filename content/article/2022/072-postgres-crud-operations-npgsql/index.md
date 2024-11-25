@@ -19,6 +19,7 @@ keywords:
   - postgresql
   - sql
   - npgsql
+  - crud
 images:
   - /blog/postgres-crud-operations-npgsql/featuredImage.png
 ---

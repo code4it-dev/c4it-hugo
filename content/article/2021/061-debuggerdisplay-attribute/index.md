@@ -15,7 +15,7 @@ keywords:
   - dotnet
   - debuggerdisplay
   - visual-studio
-  - debugging
+  - debug
   - csharp
 images:
   - /blog/debuggerdisplay-attribute/featuredImage.png

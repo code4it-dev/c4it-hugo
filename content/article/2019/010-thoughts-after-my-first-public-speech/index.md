@@ -13,6 +13,8 @@ summary: Having a public speech seems easy. In some ways, it really is. But the 
 keywords:
   - public-speaking
   - career
+  - communication
+  - talks
 images:
   - /blog/thoughts-after-my-first-public-speech/featuredImage.png
 ---

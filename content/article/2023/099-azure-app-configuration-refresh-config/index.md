@@ -19,7 +19,7 @@ keywords:
   - azure
   - configurations
   - ioptionsmonitor
-  - azureappconfiguration
+  - azure-app-configuration
 images:
   - /blog/azure-app-configuration-refresh-config/featuredImage.png
 ---

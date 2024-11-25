@@ -14,7 +14,8 @@ keywords:
   - dotnet
   - string
   - performance
-  - empty
+  - string-isnullorempty
+  - string-isnullorwhitespace
 images:
   - /csharptips/string-isnullorempty-isnullorwhitespace/featuredImage.png
 ---

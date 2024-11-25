@@ -20,6 +20,7 @@ keywords:
   - entity-framework
   - database
   - sql
+  - crud
 images:
   - /blog/postgres-crud-entityframework/featuredImage.png
 ---

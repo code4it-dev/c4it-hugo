@@ -13,10 +13,11 @@ summary: The CollectionAssert class if fine for basic tests on collections in C#
 keywords:
   - dotnet
   - csharp
-  - mstest
+  - mstests
   - collectionassert
   - tests
   - unit-tests
+  - assertions
   - assert
 images:
   - /blog/mstests-collectionassert-overview/featuredImage.png

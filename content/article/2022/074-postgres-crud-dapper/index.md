@@ -19,6 +19,7 @@ keywords:
   - dapper
   - postgresql
   - sql
+  - crud
 images:
   - /blog/postgres-crud-dapper/featuredImage.png
 ---

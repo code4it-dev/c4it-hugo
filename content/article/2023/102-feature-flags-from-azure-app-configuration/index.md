@@ -19,7 +19,7 @@ keywords:
   - feature-flags
   - feature-management
   - azure
-  - azureappconfiguration
+  - azure-app-configuration
   - feature-filter
   - configurations
 images:

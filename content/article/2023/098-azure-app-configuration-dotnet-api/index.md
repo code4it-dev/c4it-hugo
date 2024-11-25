@@ -18,7 +18,7 @@ keywords:
   - csharp
   - azure
   - configurations
-  - azureappconfiguration
+  - azure-app-configuration
   - ioptions
 images:
   - /blog/azure-app-configuration-dotnet-api/featuredImage.png

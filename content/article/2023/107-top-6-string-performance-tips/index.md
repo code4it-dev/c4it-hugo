@@ -25,6 +25,8 @@ keywords:
   - concatenation
   - isnullorempty
   - isnullorwhitespace
+  - string-isnullorempty
+  - string-isnullorwhitespace
   - trim
   - endswith
   - tolower

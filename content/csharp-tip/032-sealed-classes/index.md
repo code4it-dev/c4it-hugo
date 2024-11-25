@@ -14,7 +14,6 @@ keywords:
   - dotnet
   - sealed
   - keyword
-  - class
   - design
   - extensibility
 images:

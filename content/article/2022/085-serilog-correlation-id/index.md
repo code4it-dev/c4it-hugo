@@ -13,7 +13,6 @@ summary: APIs often call other APIs to perform operations. If an error occurs in
 keywords:
   - csharp
   - logging
-  - logs
   - serilog
   - correlation-id
   - api

@@ -14,7 +14,6 @@ keywords:
   - dotnet
   - expandoobject
   - dynamic
-  - class
   - idictionary
   - dictionary
   - generics

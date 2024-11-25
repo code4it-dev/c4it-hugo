@@ -16,7 +16,7 @@ keywords:
   - code-coverage
   - coverlet
   - code-quality
-  - visualstudio
+  - visual-studio
   - tests
 images:
   - /blog/code-coverage-vs-2019-coverlet/featuredImage.png

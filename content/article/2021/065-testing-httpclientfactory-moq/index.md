@@ -13,7 +13,7 @@ summary: Mocking IHttpClientFactory is hard, but luckily we can use some advance
 keywords:
   - dotnet
   - csharp
-  - mock
+  - mocking
   - moq
   - httpclientfactory
   - httpclient

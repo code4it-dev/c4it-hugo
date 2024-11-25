@@ -14,7 +14,7 @@ keywords:
   - dotnet
   - priority-queue
   - generics
-  - queue
+  - queues
 images:
   - /blog/intro-priority-queue/featuredImage.png
 ---

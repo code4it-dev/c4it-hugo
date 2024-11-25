@@ -18,6 +18,7 @@ keywords:
   - datetime
   - mocking
   - moq
+  - date
 images:
   - /blog/inject-and-test-datetime-dependency/featuredImage.png
 ---

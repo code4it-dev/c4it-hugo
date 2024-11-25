@@ -18,7 +18,7 @@ keywords:
   - azure-service-bus
   - microservices
   - dead-letters
-  - queue
+  - queues
 images:
   - /blog/azure-service-bus-errors/featuredImage.png
 ---

@@ -14,7 +14,7 @@ summary: Wouldn't it be nice if Visual Studio could autogenerate clients for ext
 keywords:
   - api
   - openapi
-  - visualstudio
+  - visual-studio
   - swagger
   - code-generation
 images:

@@ -16,7 +16,7 @@ keywords:
   - dependency-injection
   - logging
   - configurations
-  - consoleapplication
+  - console-application
   - appsettings
   - ihost
   - serilog

@@ -18,7 +18,7 @@ keywords:
   - configurations
   - feature-flags
   - appsettings
-  - featuremanager
+  - feature-management
   - feature-gate
   - razor
   - feature-filter

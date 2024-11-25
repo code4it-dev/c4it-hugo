@@ -14,7 +14,6 @@ keywords:
   - dotnet
   - csharp
   - logging
-  - logs
   - serilog
   - scope
   - ilogger

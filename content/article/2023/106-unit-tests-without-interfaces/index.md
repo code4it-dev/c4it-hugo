@@ -15,7 +15,7 @@ keywords:
   - dotnet
   - csharp
   - testing
-  - mock
+  - mocking
   - interfaces
   - unit-tests
   - tests

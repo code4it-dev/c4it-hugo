@@ -18,6 +18,7 @@ keywords:
   - culture
   - datetimekind
   - localization
+  - date
 images:
   - /blog/5-things-datetime-timezones-and-formatting/featuredImage.png
 ---

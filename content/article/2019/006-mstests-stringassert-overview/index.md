@@ -13,11 +13,12 @@ summary: The StringAssert class is a hidden feature of the MSStest framework. No
 keywords:
   - dotnet
   - csharp
-  - mstest
+  - mstests
   - tests
   - stringassert
   - assert
   - string
+  - assertions
 images:
   - /blog/mstests-stringassert-overview/featuredImage.png
 ---

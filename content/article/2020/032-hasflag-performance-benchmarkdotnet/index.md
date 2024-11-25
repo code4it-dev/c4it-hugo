@@ -15,7 +15,7 @@ keywords:
   - dotnet
   - csharp
   - benchmarkdotnet
-  - benchmarking
+  - benchmark
   - performance
   - enums
 images:
