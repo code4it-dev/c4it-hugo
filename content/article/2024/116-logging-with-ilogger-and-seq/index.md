@@ -4,24 +4,24 @@ date: 2024-11-19
 url: /blog/logging-with-ilogger-and-seq
 draft: false
 categories:
- - Blog
+  - Blog
 tags:
- - CSharp
- - Dotnet
- - Logging
+  - CSharp
+  - Dotnet
+  - Logging
 toc: true
 summary: "Seq is one of the best Log Sinks out there : it's easy to install and configure, and can be added to an ASP.NET application with just a line of code."
 images:
- - /blog/logging-with-ilogger-and-seq/featuredImage.png
+  - /blog/logging-with-ilogger-and-seq/featuredImage.png
 keywords:
- - dotnet
- - seq
- - logging
- - ilogger
- - aspnet
- - api
- - logs
- - docker
+  - dotnet
+  - seq
+  - logging
+  - ilogger
+  - aspnet
+  - api
+  - logs
+  - docker
 ---
 
 Logging is one of the most essential parts of any application.
@@ -47,7 +47,7 @@ We have two options:
 
 Both ways will give you the same result.
 
-However, if you already have experience with Docker, I suggest you use the second approach. 
+However, if you already have experience with Docker, I suggest you use the second approach.
 
 Once you have Docker installed and running locally, open a terminal.
 
@@ -66,10 +66,10 @@ docker run --name seq -d --restart unless-stopped -e ACCEPT_EULA=Y -p 5341:80 da
 Let's break down the previous command:
 
 - `docker run`: This command is used to create and start a new Docker container.
-- `--name seq`: This option assigns the name *seq* to the container. Naming containers can make them easier to manage.
-- `-d`: This flag runs the container in *detached* mode, meaning it runs in the background.
+- `--name seq`: This option assigns the name _seq_ to the container. Naming containers can make them easier to manage.
+- `-d`: This flag runs the container in _detached_ mode, meaning it runs in the background.
 - `--restart unless-stopped`: This option ensures that the container will always restart unless it is explicitly stopped. This is useful for ensuring that the container remains running even after a reboot or if it crashes.
-- `-e ACCEPT_EULA=Y`: This sets an *environment variable* inside the container. In this case, it sets `ACCEPT_EULA` to `Y`, which likely indicates that you accept the End User License Agreement (EULA) for the software running in the container.
+- `-e ACCEPT_EULA=Y`: This sets an _environment variable_ inside the container. In this case, it sets `ACCEPT_EULA` to `Y`, which likely indicates that you accept the End User License Agreement (EULA) for the software running in the container.
 - `-p 5341:80`: This maps port 5341 on your host machine to port 80 in the container. This allows you to access the service running on port 80 inside the container via port 5341 on your host.
 - `datalust/seq:latest`: This specifies the Docker image to use for the container. `datalust/seq` is the image name, and `latest` is the tag, indicating that you want to use the latest version of this image.
 
@@ -94,7 +94,7 @@ public class BooksController : ControllerBase
 {
     public BooksController()
     {
-            
+
     }
 
     [HttpGet("{id}")]
@@ -150,7 +150,7 @@ First, you have to **install the proper NuGet package**: `Seq.Extensions.Logging
 
 ![The Seq.Extensions.Logging NuGet package](seq_extensions_logging.png)
 
-Then, you have to add it to your `Services`, calling the  `AddSeq()` method:
+Then, you have to add it to your `Services`, calling the `AddSeq()` method:
 
 ```diff
 var builder = WebApplication.CreateBuilder(args);
@@ -200,7 +200,7 @@ public ActionResult<Book> GetBook([FromRoute] int id)
 
 ![Log messages on Seq](log-messages-on-seq.png)
 
-## Using Structured Logging with ILogger and Seq 
+## Using Structured Logging with ILogger and Seq
 
 One of the best things about Seq is that it automatically handles **Structured Logging**.
 
@@ -227,7 +227,7 @@ _logger.LogInformation("Looking if in my collection with {TotalBooksCount} books
  , booksCatalogue.Count, id);
 ```
 
-This line generates a string message, **replaces all the placeholders**, and, on top of that, creates two properties, `SearchedId` and `TotalBooksCount`;  you can now define queries using these values.
+This line generates a string message, **replaces all the placeholders**, and, on top of that, creates two properties, `SearchedId` and `TotalBooksCount`; you can now define queries using these values.
 
 ![Structured Logs in Seq allow you to view additional logging properties](strucutured-log-seq.png)
 
@@ -260,5 +260,3 @@ I hope you enjoyed this article! Let's keep in touch on [LinkedIn](https://www.l
 Happy coding!
 
 🐧
-
- 

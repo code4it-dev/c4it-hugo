@@ -4,24 +4,24 @@ date: 2024-11-05
 url: /architecture-notes/error-management-trio
 draft: false
 categories:
- - Code and Architecture Notes
+  - Code and Architecture Notes
 tags:
- - Software Architecture
+  - Software Architecture
 toc: true
 summary: "When designing a software system, we naturally focus more on the happy flow. But we should carefully plan to handle errors that fall into three categories: Validation, Transient, and Fatal."
 images:
- - /architecture-notes/error-management-trio/featuredImage.png
+  - /architecture-notes/error-management-trio/featuredImage.png
 keywords:
- - software-architecture
- - system-design
- - error-handling
- - validation
- - transient-errors
- - fatal-errors
- - circuit-breaker
- - polly
- - errors
- - adr 
+  - software-architecture
+  - system-design
+  - error-handling
+  - validation
+  - transient-errors
+  - fatal-errors
+  - circuit-breaker
+  - polly
+  - errors
+  - adr
 ---
 
 When designing a new software system, it's easy to focus mainly on the happy flow and forget that you must also handle errors.
@@ -32,10 +32,9 @@ In this article, we'll explore the three main categories of errors that we must 
 
 ## An ideal system with only the happy path
 
-To use a realistic example, let's design a simple system with a single module named *MainApplication*: this module reads data from an external API, manipulates the data, and stores the result on the DB.
+To use a realistic example, let's design a simple system with a single module named _MainApplication_: this module reads data from an external API, manipulates the data, and stores the result on the DB.
 
-The system is called asynchronously, via a Message Queue, by an external service - that we are going to ignore. 
-
+The system is called asynchronously, via a Message Queue, by an external service - that we are going to ignore.
 
 The happy flow is pretty much the following:
 
@@ -73,19 +72,19 @@ Suppose that the messages we receive from the queue are in the following format:
 
 ```json
 {
-    "Username": "mr. captain",
-    "BookId": 154,
-    "Operation": "Add"
+  "Username": "mr. captain",
+  "BookId": 154,
+  "Operation": "Add"
 }
 ```
 
 We definitely need to perform some sort of validation on the message content.
 
 For example:
- 
+
 - The `Username` property must not be empty;
 - The `BookId` property must be a positive number;
-- The `Operation` property must have one of the following values: *Add*, *Remove*, *Refresh*;
+- The `Operation` property must have one of the following values: _Add_, _Remove_, _Refresh_;
 
 How does it impact our design?
 
@@ -98,7 +97,7 @@ We have several choices to deal with an invalid incoming message:
 
 As you can see, even for the simple input validation, the choices we make can have an impact on the structure of the architecture.
 
-Suppose that you choose option #4: you will need to implement a brand new service (let's call it *ValidationFixesManager*), configure a new queue, and keep track of the attempts to fix the message. 
+Suppose that you choose option #4: you will need to implement a brand new service (let's call it _ValidationFixesManager_), configure a new queue, and keep track of the attempts to fix the message.
 
 ![Example of Architecture with ValidationFixesManager component](./with-validationFixesManager.png)
 
@@ -112,7 +111,7 @@ For example, you can:
 - enrich the data from the DB with newer data only when it is actually needed;
 - fine-tune the database consistency level.
 
-We have just demonstrated a simple but important fact: **data validation *looks* trivial**, but depending on the needs of your system, it may impact how you design your system.
+We have just demonstrated a simple but important fact: **data validation _looks_ trivial**, but depending on the needs of your system, it may impact how you design your system.
 
 ## Transient Errors: temporary errors that may randomly occur
 
@@ -130,15 +129,15 @@ Sure, you may **add automatic retries**: for instance, you can use Polly to auto
 
 Again, depending on your application's requirements and the overall structure you started designing, solving this problem may bring you to unexpected paths.
 
-Let's say that the external API is returning a 500 HTTP error: this is a transient error, and it does not depend on the content of the request: the API is down, an you cannot to anything to solve it. 
+Let's say that the external API is returning a 500 HTTP error: this is a transient error, and it does not depend on the content of the request: the API is down, an you cannot to anything to solve it.
 
-What can we do if all the retries fail? 
+What can we do if all the retries fail?
 
 If we can just accept the situation, we can return the error to the caller and move on with the next operation.
 
 But if we need to keep trying until the operation goes well, we have (at least) two choices:
 
-1. consume the message from the Queue, try calling the API, and, if it fails, re-insert the message on the queue (ideally, with some delay); 
+1. consume the message from the Queue, try calling the API, and, if it fails, re-insert the message on the queue (ideally, with some delay);
 2. peek the message from the queue and try calling the API. If it fails, the message stays on the queue (and you need a way to read it again). Otherwise, we consider the message completed and remove it from the queue.
 
 These are just two of the different solutions. But, as you can see, this choice will have, in the long run, a huge effect on the future of the application, both in terms of maintainability and performance.
@@ -165,7 +164,7 @@ This kind of error cannot be directly managed via application code, but you need
 
 For example, to make sure you won't consume all the available RAM, you should plan for autoscaling of your resources. So you have to design the system with autoscaling in mind: this means, for example, that the system must be stateless and the application must run on infrastructure objects that can be configured to automatically manage resources (like Azure Functions, Kubernetes, and Azure App Services). Also: do you need horizontal or vertical scaling?
 
-And, talking about **the integrity of the system**, how do you ensure that operations that were ongoing when the fatal error occurred can be completed? 
+And, talking about **the integrity of the system**, how do you ensure that operations that were ongoing when the fatal error occurred can be completed?
 
 One possible solution is to use a database table to keep track of the status of each operation, so that when the application restarts, it first completes pending operations, and then starts working on new operations.
 
@@ -175,25 +174,25 @@ One possible solution is to use a database table to keep track of the status of 
 
 There are too many errors to manage and too much effort to cover everything!
 
-How can we cover everything? Well, it's impossible: **for every action we take to prevent an error, a new one may occur**. 
+How can we cover everything? Well, it's impossible: **for every action we take to prevent an error, a new one may occur**.
 
-Let's jump back to the example we saw for handling validation errors (using a new service that tries to fix the message). What if the *ValidationFixesManager* service is down or the message queue is unreachable? We tried to solve a problem, but we ended up with two more to be managed!
+Let's jump back to the example we saw for handling validation errors (using a new service that tries to fix the message). What if the _ValidationFixesManager_ service is down or the message queue is unreachable? We tried to solve a problem, but we ended up with two more to be managed!
 
 Let me introduce a practical approach to help you decide what needs to be addressed.
 
-**Step 1: list all the errors you can think of**. Create a table to list all the possible errors that you expect they can happen. 
+**Step 1: list all the errors you can think of**. Create a table to list all the possible errors that you expect they can happen.
 
 You can add a column to describe the category the error falls into, as well as a Probability and Impact on the system column with a value (in this example, Low, Medium and High) that represents the probability that this error occurs and the impact it has on the overall application.
 
-| Problem | Category | Probability | Impact on the system |
-|--|--|--|--|
-| Invalid message from queue | Data Validation | Medium | High |
-| Invalid user data on DB | Data Validation | Low | Medium |
-| Missing user on DB | Data Validation | Low | Low |
-| API not reachable | Transient | High | High |
-| DB not reachable | Transient | Low | High |
-| File system corrupted  | Fatal | Low | High |
-| CPU limit reached  | Fatal | Medium | High |
+| Problem                    | Category        | Probability | Impact on the system |
+| -------------------------- | --------------- | ----------- | -------------------- |
+| Invalid message from queue | Data Validation | Medium      | High                 |
+| Invalid user data on DB    | Data Validation | Low         | Medium               |
+| Missing user on DB         | Data Validation | Low         | Low                  |
+| API not reachable          | Transient       | High        | High                 |
+| DB not reachable           | Transient       | Low         | High                 |
+| File system corrupted      | Fatal           | Low         | High                 |
+| CPU limit reached          | Fatal           | Medium      | High                 |
 
 From here, you can pick the most urgent elements to be addressed.
 
@@ -205,10 +204,9 @@ the positive and negative consequences in terms (also) of quality attributes (ak
 
 **Step 3: use ADRs to describe how (and why) you will handle that specific error**.
 
-Take your time to thoroughly describe, using ADR documents, the problems you are trying to solve, the solutions taken into consideration, and the final choice. 
+Take your time to thoroughly describe, using ADR documents, the problems you are trying to solve, the solutions taken into consideration, and the final choice.
 
 Having everything written down in a shared file is fundamental for ensuring that, in the future, the present choices and necessities are taken into account, before saying "meh, that's garbage!"
- 
 
 ## Further readings
 
@@ -223,7 +221,6 @@ _This article first appeared on [Code4IT 🐧](https://www.code4it.dev/)_
 In this article, we used a Queue to trigger the beginning of the operation. When using Azure services, we have two types of message queues: Queues and Topics. Do you know the difference? Hint: other vendors use the same names to represent different concepts.
 
 🔗 [Azure Service Bus: Queues vs Topics | Code4IT](https://www.code4it.dev/blog/azure-service-bus-queue-vs-topic/)
-
 
 Whichever the way you chose to solve manage an error, always remember to write down the reasons that guided you to use that specific solution. An incredibly helpful way is by using ADRs.
 

@@ -4,26 +4,26 @@ date: 2024-12-03
 url: /csharptips/bogus-data-generation
 draft: false
 categories:
- - CSharp Tips
-tags: 
- - CSharp
+  - CSharp Tips
+tags:
+  - CSharp
 toc: false
 summary: "Bogus is a library that generates realistic values for your data. When populating fake user names, instead of Foo and Bar, you can have John and Sarah. Let's see two ways to define and reuse a Faker definition."
 images:
- - /csharptips/bogus-data-generation/featuredImage.png
+  - /csharptips/bogus-data-generation/featuredImage.png
 keywords:
-    - csharp
-    - dotnet
-    - bogus
-    - data
-    - library
+  - csharp
+  - dotnet
+  - bogus
+  - data
+  - library
 ---
 
 In a previous article, we delved into the creation of realistic data using Bogus, an open-source library that allows you to generate data with plausible values.
 
 Bogus contains several properties and methods that generate realistic data such as names, addresses, birthdays, and so on.
 
-In this article, we will learn two ways to generate data with Bogus: both ways generate the same result; the main change is on the reusability and the modularity. But, in my opinion, it's just a matter of preference: there is no approach *absolutely* better than the other. However, both methods can be preferred in specific cases. 
+In this article, we will learn two ways to generate data with Bogus: both ways generate the same result; the main change is on the reusability and the modularity. But, in my opinion, it's just a matter of preference: there is no approach _absolutely_ better than the other. However, both methods can be preferred in specific cases.
 
 For the sake of this article, we are going to use Bogus to generate instances of the `Book` class, defined like this:
 
@@ -78,6 +78,7 @@ In this way, thanks to the static method, you can simply create a new instance o
 Faker<Book> generator = BogusBookGenerator.CreateFaker();
 var books = generator.Generate(10);
 ```
+
 Clearly, it's not necessary for the class to be marked as `static`: it all depends on what you need to achieve!
 
 ## Expose a subtype of Faker, specific for the data type to be generated
@@ -128,7 +129,7 @@ Or **use the subclass** (the second approach) when you need:
 
 If you want to learn a bit more about Bogus and use it to populate data used by Entity Framework, I recently published an article about this topic:
 
- 🔗[Seeding in-memory Entity Framework with realistic data with Bogus | Code4IT](https://www.code4it.dev/blog/seed-inmemory-entityframework-bogus/)
+🔗[Seeding in-memory Entity Framework with realistic data with Bogus | Code4IT](https://www.code4it.dev/blog/seed-inmemory-entityframework-bogus/)
 
 _This article first appeared on [Code4IT 🐧](https://www.code4it.dev/)_
 
