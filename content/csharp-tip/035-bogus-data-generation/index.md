@@ -59,13 +59,13 @@ public static class BogusBookGenerator
     public static Faker<Book> CreateFaker()
     {
         Faker<Book> bookFaker = new Faker<Book>()
-         .RuleFor(b => b.Id, f => f.Random.Guid())
-         .RuleFor(b => b.Title, f => f.Lorem.Text())
-         .RuleFor(b => b.Genres, f => f.Random.EnumValues<Genre>())
-         .RuleFor(b => b.AuthorFirstName, f => f.Person.FirstName)
-         .RuleFor(b => b.AuthorLastName, f => f.Person.LastName)
-         .RuleFor(nameof(Book.PagesCount), f => f.Random.Number(100, 800))
-         .RuleForType(typeof(DateOnly), f => f.Date.PastDateOnly());
+         .RuleFor(b => b.Id, f => f.Random.Guid())
+         .RuleFor(b => b.Title, f => f.Lorem.Text())
+         .RuleFor(b => b.Genres, f => f.Random.EnumValues<Genre>())
+         .RuleFor(b => b.AuthorFirstName, f => f.Person.FirstName)
+         .RuleFor(b => b.AuthorLastName, f => f.Person.LastName)
+         .RuleFor(nameof(Book.PagesCount), f => f.Random.Number(100, 800))
+         .RuleForType(typeof(DateOnly), f => f.Date.PastDateOnly());
 
         return bookFaker;
     }

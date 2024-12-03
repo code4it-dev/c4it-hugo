@@ -73,16 +73,16 @@ Suppose that the messages we receive from the queue are in the following format:
 
 ```json
 {
-    "Username": "mr. captain",
-    "BookId": 154,
-    "Operation": "Add"
+    "Username": "mr. captain",
+    "BookId": 154,
+    "Operation": "Add"
 }
 ```
 
 We definitely need to perform some sort of validation on the message content.
 
 For example:
- 
+ 
 - The `Username` property must not be empty;
 - The `BookId` property must be a positive number;
 - The `Operation` property must have one of the following values: *Add*, *Remove*, *Refresh*;
@@ -192,8 +192,8 @@ You can add a column to describe the category the error falls into, as well as a
 | Missing user on DB | Data Validation | Low | Low |
 | API not reachable | Transient | High | High |
 | DB not reachable | Transient | Low | High |
-| File system corrupted  | Fatal | Low | High |
-| CPU limit reached  | Fatal | Medium | High |
+| File system corrupted  | Fatal | Low | High |
+| CPU limit reached  | Fatal | Medium | High |
 
 From here, you can pick the most urgent elements to be addressed.
 
