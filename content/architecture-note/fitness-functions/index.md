@@ -24,7 +24,7 @@ Fitness functions are parts of the architecture that allow you to create sort of
 Let's learn more!
 
 
-## What are fitness functions?
+## Fitness functions: because non-functional requirements matter
 
 An architecture is made of two main categories of requirements: functional requirements and non-functional requirements.
 
@@ -32,18 +32,46 @@ Functional requirements are the most easy to define and to test: if one of the r
 
 Non-functional requirements are as important as functional requirements, but are often overlooked or not detailed. "The system must be fast": ok, how fast? What do you mean with "fast"? What is an acceptable value of "fast"?
 
-If we don't have a clear understanding of non-functional requirements, then it's impossible to write such tests.
+If we don't have a clear understanding of non-functional requirements, then it's impossible to measure them.
+
+And once we have defined a way to measure them, how can we ensure that we are meeting our expectations? Here's where fitness functions come in handy.
+
+In fact, fitness functions are specific components that focus on on non-functional requirement, executing some calculations and providing metrics that help architects and developers  ensure that the system's architecture aligns with business goals, technical requirements, and other quality attributes.
+
 
 ## Why are fitness functions crucial for our architecture
 
+Fitness functions play a crucial role in maintaining the health and effectiveness of a software architecture, ensuring that in the long run we are not downgrading the overall quality.
+
+By being related to specific and measurable metrics, Fitness functions provide an objective way to assess the architecture's quality and performance, reducing the reliance on subjective opinions. A metric can be a simple number (like "maximum number of requests per second"), a percentage value (like "percentage of code covered by tests") or other values that are still measurable.
+
+Knowing how the system behaves in regards of these measures allow architect to work on the continuous improvement of the system: teams can identify areas for improvement and make informed decisions to enhance the system. Having a centralized place to view the historical values of a measure helps understanding if you have done progresses or, as time goes by, the quality has degraded. 
+
+Still talking about the historical values of the measures, having a clear understanding of what is the current status of such metrics can help in identifying potential issues early in the development process, allowing teams to address them before they become critical problems. If, by using fitness functions to ensure that the system is able to handle a certain amount of users per second, you can identify which functionalities are less performant and, in case of high traffic, may bring the whole system down.
+
 ## You already use fitness functions, but you didn't know
 
+Fitness Functions sound like complex things to handle. 
 
+Even though you can create your own functions, most probably you are already using them without knowing it. Lots of tools are available out there that cover several metrics, and I'm sure you've already used some of them (or, at least, you've already heard of them).
+
+Tools like [SonarQube](https://docs.sonarsource.com/sonarqube-community-build/) and [NDepend](https://www.ndepend.com/) use fitness functions to evaluate code quality based on metrics such as code complexity, duplication, and adherence to coding standards. Those metrics are calculated based on static analysis of the code, and teams can define thresholds under which a system can be at risk of losing maintainablilty. An example of metric related to code quality is Code Coverage: the higher, the better (even though [100% of code coverage does not guarantee your code is healthy](https://www.code4it.dev/blog/code-coverage-must-not-be-the-target/)).
+
+Tools like JMeter or K6 to measure system performance under various conditions: having a history of load testing results can help ensure that, as you add new functionalities to the system, the performance on some specific modules does not downgrade.
+
+All in all, most of the fitness functions can be set to be part of CI/CD pipelines: for example, you can set a CD pipeline to block the deployment of the code on a specific system if the load testing results of the new code are worse than the previous version. Or you could block a Pull request if the code coverage percentage is getting lower.
 
 ## Further readings
 
+A good way to start experimenting with Load Testing is by running them locally. A nice open-source project is K6: you can install it on your local machine, define the load phases, and analyze the final result.
+
+🔗 [Getting started with Load testing with K6 on Windows 11](https://www.code4it.dev/blog/k6-load-testing/)
+
 _This article first appeared on [Code4IT 🐧](https://www.code4it.dev/)_
 
+But, even if you don't really care about load testing (mabye because your system is not expected to handle lots of users), I'm sure you still care about code quality and their tests. When using .NET, you can collect code coverage reports using Cobertura. Then, if you are using Azure DevOps, you may want to stop a Pull Request if the code coverage percentage has decreased. Here's how to do all of this:
+
+🔗 [Cobertura, YAML, and Code Coverage Protector: how to view Code Coverage report on Azure DevOps](https://www.code4it.dev/blog/code-coverage-on-azure-devops-yaml-pipelines/)
 
 ## Wrapping up
 
