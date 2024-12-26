@@ -10,6 +10,10 @@ tags:
   - CSharp
 toc: true
 summary: LINQPad is one of the tools I use daily. But still, I haven't used it at its full power. And you?
+keywords:
+  - csharp
+  - tools
+  - linqpad
 images:
   - /blog/5-linqpad-tricks/featuredImage.png
 ---

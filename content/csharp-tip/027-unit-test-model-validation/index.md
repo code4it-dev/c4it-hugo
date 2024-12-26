@@ -14,7 +14,7 @@ summary: "As you know, you should always validate input models. Therefore, you s
 keywords:
   - csharp
   - dotnet
-  - testing 
+  - testing
   - code-quality
   - unit-tests
   - design

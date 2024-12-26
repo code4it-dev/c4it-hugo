@@ -10,6 +10,8 @@ tags:
   - MISC
 toc: true
 summary: Revise PowerShell basics with a simple script that opens a browser for each specified URL. We're gonna cover how to declare variables, define arrays, concatenate strings and run CMD commands.
+keywords:
+  - powershell
 images:
   - /blog/powershell-basics-open-multiple-browsers/featuredImage.png
 ---

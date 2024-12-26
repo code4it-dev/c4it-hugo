@@ -11,7 +11,7 @@ toc: true
 summary: "Elasticity and Scalability: two important Architectural attributes, similar but quite different"
 keywords:
   - software-architecture
-  - systemdesign
+  - system-design
   - architecture
   - theory
   - quality-attribute

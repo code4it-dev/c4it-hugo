@@ -9,6 +9,11 @@ tags:
   - CSharp
 toc: true
 summary: We've already seen some of the things you should know about enums in C#. Here we'll dive into Flagged enumerations, serialization and so on.
+keywords:
+  - dotnet
+  - csharp
+  - enums
+  - keyword
 images:
   - /blog/5-more-things-about-enums-csharp/featuredImage.png
 ---

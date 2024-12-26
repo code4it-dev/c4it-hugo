@@ -9,6 +9,9 @@ tags:
   - MISC
 toc: true
 summary: You may need to run Google Chrome with CORS checks disabled. Here's how you can do it on Windows 10.
+keywords:
+  - cors
+  - google-chrome
 images:
   - /blog/run-google-chrome-without-cors/featuredImage.png
 ---

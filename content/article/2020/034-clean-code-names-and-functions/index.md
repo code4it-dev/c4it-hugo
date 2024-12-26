@@ -8,7 +8,10 @@ categories:
 tags:
   - Clean Code
 toc: true
-summary: I don't have to tell you why you need to write clean code. Here you'll see some tips about how to name things and how to structure functions
+summary: I don't have to tell you why you need to write clean code. Here you'll see some tips about how to name things and how to structure functions.
+keywords:
+  - clean-code
+  - code-quality
 images:
   - /blog/clean-code-names-and-functions/featuredImage.png
 ---

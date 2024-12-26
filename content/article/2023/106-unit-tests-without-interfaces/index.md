@@ -11,6 +11,17 @@ tags:
   - Tests
 toc: true
 summary: "C# devs have the bad habit of creating interfaces for every non-DTO class because «we need them for mocking!». Are you sure it's the only way?"
+keywords:
+  - dotnet
+  - csharp
+  - testing
+  - mocking
+  - interfaces
+  - unit-tests
+  - tests
+  - virtual
+  - stub
+  - dependency-injection
 images:
   - /blog/unit-tests-without-interfaces/featuredImage.png
 ---

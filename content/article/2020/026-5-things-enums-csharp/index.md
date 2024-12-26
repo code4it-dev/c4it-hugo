@@ -9,6 +9,11 @@ tags:
   - CSharp
 toc: true
 summary: "Enums are often used with C#. Boring, right? Maybe there is something you didn't know: casting, parsing and flagged enums."
+keywords:
+  - dotnet
+  - csharp
+  - enums
+  - keyword
 images:
   - /blog/5-things-enums-csharp/featuredImage.png
 ---

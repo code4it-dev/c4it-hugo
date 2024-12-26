@@ -12,7 +12,7 @@ toc: true
 summary: "API Gateways are often a component of a microservices architecture. But they are not a silver bullet - they have some downsides to consider!"
 keywords:
   - software-architecture
-  - systemdesign
+  - system-design
   - architecture
   - api
   - api-gateway

@@ -10,6 +10,10 @@ tags:
   - dotnet
 toc: true
 summary: Extension methods in C# are really useful, but there are few rules to follow...
+keywords:
+  - dotnet
+  - csharp
+  - extension-methods
 images:
   - /blog/csharp-extension-methods/featuredImage.png
 ---

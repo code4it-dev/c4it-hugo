@@ -10,6 +10,15 @@ tags:
   - Tests
 toc: true
 summary: DateTime, Guid, and Random values are not under your direct control. You should abstract them to write better code and testing. We'll see 3 ways to inject and test them in .NET Core projects.
+keywords:
+  - dotnet
+  - csharp
+  - testing
+  - unit-tests
+  - datetime
+  - mocking
+  - moq
+  - date
 images:
   - /blog/inject-and-test-datetime-dependency/featuredImage.png
 ---

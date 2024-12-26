@@ -11,6 +11,13 @@ tags:
   - CSharp
 toc: true
 summary: Integration tests are useful to check if multiple components fit together well. How can you test your APIs? And how can you mock dependencies?
+keywords:
+  - dotnet
+  - csharp
+  - testing
+  - integration-tests
+  - dependency-injection
+  - webapplicationfactory
 images:
   - /blog/integration-tests-for-dotnet-api/featuredImage.png
 ---

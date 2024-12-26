@@ -10,6 +10,15 @@ tags:
   - dotnet
 toc: true
 summary: With HttpRepl you can perform HTTP operations as they were local folders, using the CLI. Let's see how to configure it and run GET and POST operations.
+keywords:
+  - httprepl
+  - api
+  - http
+  - rest
+  - curl
+  - swagger
+  - cli
+  - openapi
 images:
   - /blog/httprepl/featuredImage.png
 ---

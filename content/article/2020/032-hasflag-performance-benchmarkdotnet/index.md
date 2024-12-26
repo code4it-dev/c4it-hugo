@@ -11,6 +11,13 @@ tags:
   - Performance
 toc: true
 summary: "BenchmarkDotNet allows you to test the performance on .NET methods. So let's answer a question: is the Enum.HasFlag method really that slow?"
+keywords:
+  - dotnet
+  - csharp
+  - benchmarkdotnet
+  - benchmark
+  - performance
+  - enums
 images:
   - /blog/hasflag-performance-benchmarkdotnet/featuredImage.png
 ---

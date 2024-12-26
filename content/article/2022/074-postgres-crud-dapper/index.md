@@ -12,6 +12,14 @@ tags:
   - PostgreSQL
 toc: true
 summary: Mapping every SQL result to a data type can be a pain. To simplify our life, we can use an ORM like Dapper to automatically map the data.
+keywords:
+  - dotnet
+  - csharp
+  - database
+  - dapper
+  - postgresql
+  - sql
+  - crud
 images:
   - /blog/postgres-crud-dapper/featuredImage.png
 ---

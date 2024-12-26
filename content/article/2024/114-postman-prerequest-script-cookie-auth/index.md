@@ -141,7 +141,7 @@ jar.set(
 
 You can try it now: execute a request, have a look at the console logs, and...
 
-![CookieStore: programmatic access  is denied](programmatic-access-is-denied.png)
+![CookieStore: programmatic access  is denied](programmatic-access-is-denied.png)
 
 We've received a strange error:
 

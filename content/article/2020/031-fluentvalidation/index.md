@@ -10,6 +10,11 @@ tags:
   - dotnet
 toc: true
 summary: Validating inputs is crucial for every application. If you want an easy and versatile way, you can try FluentValidation.
+keywords:
+  - dotnet
+  - csharp
+  - validation
+  - fluentvalidation
 images:
   - /blog/fluentvalidation/featuredImage.png
 ---

@@ -12,6 +12,14 @@ tags:
   - Azure Service Bus
 toc: true
 summary: Queues or Topics? How are they similar and how they are different? We'll see how to use those capabilities in Azure Service Bus with .NET and C#
+keywords:
+  - dotnet
+  - csharp
+  - azure
+  - azure-service-bus
+  - queues
+  - topics
+  - asynchronous-communication
 images:
   - /blog/azure-service-bus-queue-vs-topic/featuredImage.png
 ---

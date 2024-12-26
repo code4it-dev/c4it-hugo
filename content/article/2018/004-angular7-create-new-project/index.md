@@ -9,6 +9,10 @@ tags:
   - Angular
 toc: true
 summary: Are you ready to create a brand new Angular project? The CLI can help you with common settings.
+keywords:
+  - angular
+  - npm
+  - nodejs
 images:
   - /blog/angular7-create-new-project/featuredImage.png
 ---

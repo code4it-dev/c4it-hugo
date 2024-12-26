@@ -9,6 +9,12 @@ tags:
   - dotnet
 toc: true
 summary: It's not a good practice to return the ID of a newly created item in the HTTP Response Body. What to do? You can return it in the HTTP Response Headers, with CreatedAtAction and CreatedAtRoute.
+keywords:
+  - dotnet
+  - csharp
+  - http
+  - api
+  - controllers
 images:
   - /blog/createdAtRoute-createdAtAction/featuredImage.png
 ---
@@ -55,7 +61,7 @@ This endpoint is pretty straightforward: if the game with the specified ID exist
 
 Notice the `[Route("{id}")]` attribute: it means that the ASP.NET engine when parsing the incoming HTTP requests, searches for an Action with the required HTTP method and a route that matches the required path. Then, when it finds the Action, it maps the route parameters (`{id}`) to the parameters of the C# method (`Guid id`).
 
-**Hey! in this section I inserted not-so-correct info: I mean, it is generally right, but not precise. Can you spot it? Drop a comment😉**
+> Hey! in this section I inserted not-so-correct info: I mean, it is generally right, but not precise. Can you spot it? Drop a comment😉
 
 ## What to do when POST-ing a resource?
 

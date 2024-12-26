@@ -10,6 +10,12 @@ tags:
   - dotnet
 toc: true
 summary: C# recently introduced Records, a new way of defining types. In this article, we will see 8 things you probably didn't know about C# Records
+keywords:
+  - dotnet
+  - csharp
+  - keyword
+  - record
+  - equality
 images:
   - /blog/8-things-about-records-csharp/featuredImage.png
 ---

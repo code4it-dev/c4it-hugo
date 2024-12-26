@@ -10,6 +10,15 @@ tags:
   - MISC
 toc: true
 summary: "Learn how to integrate Oh My Posh, a cross-platform tool that lets you create beautiful and informative prompts for PowerShell."
+keywords:
+  - powershell
+  - windows11
+  - ohmyposh
+  - terminal
+  - windows10
+  - font
+  - winget
+  - scoop
 images:
   - /blog/ohmyposh-integrated-terminal-powershell/featuredImage.png
 ---

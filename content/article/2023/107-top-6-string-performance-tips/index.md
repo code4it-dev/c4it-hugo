@@ -13,6 +13,24 @@ toc: true
 summary: "Small changes sometimes make a huge difference. Learn these 6 tips to improve the performance of your application just by handling strings correctly."
 images:
   - /blog/top-6-string-performance-tips/featuredImage.png
+keywords:
+  - csharp
+  - dotnet
+  - string
+  - performance
+  - benchmark
+  - benchmarkdotnet
+  - bogus
+  - stringbuilder
+  - concatenation
+  - isnullorempty
+  - isnullorwhitespace
+  - string-isnullorempty
+  - string-isnullorwhitespace
+  - trim
+  - endswith
+  - tolower
+  - stringcomparison
 ---
 
 **Sometimes, just a minor change makes a huge difference**. Maybe you won't notice it when performing the same operation a few times. Still, the improvement is significant when repeating the operation thousands of times.

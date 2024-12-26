@@ -10,6 +10,14 @@ tags:
   - Tests
 toc: true
 summary: Code coverage is a good indicator of the health of your projects. We'll see how to show Cobertura reports associated to your builds on Azure DevOps and how to display the progress on Dashboard.
+keywords:
+  - dotnet
+  - yaml
+  - cobertura
+  - code-coverage
+  - code-quality
+  - azure-devops
+  - testing
 images:
   - /blog/code-coverage-on-azure-devops-yaml-pipelines/featuredImage.png
 ---

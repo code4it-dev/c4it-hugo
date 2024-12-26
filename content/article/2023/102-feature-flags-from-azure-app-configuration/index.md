@@ -13,6 +13,15 @@ tags:
   - Azure
 toc: true
 summary: Learn how to use Feature Flags in ASP.NET Core apps and read values from Azure App Configuration. Understand how to use filters, like the Percentage filter, to control feature activation, and learn how to take full control of the cache expiration of the values.
+keywords:
+  - dotnet
+  - csharp
+  - feature-flags
+  - feature-management
+  - azure
+  - azure-app-configuration
+  - feature-filter
+  - configurations
 images:
   - /blog/feature-flags-from-azure-app-configuration/featuredImage.png
 ---

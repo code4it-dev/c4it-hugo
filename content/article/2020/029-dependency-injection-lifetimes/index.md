@@ -10,6 +10,14 @@ tags:
   - dotnet
 toc: true
 summary: "Singleton, Scoped and Transient: these are the possible lifetimes for DI with .NET Core. How do they change the way objects are constructed?"
+keywords:
+  - dotnet
+  - csharp
+  - dependency-injection
+  - singleton
+  - scoped
+  - transient
+  - lifetime
 images:
   - /blog/dependency-injection-lifetimes/featuredImage.png
 ---

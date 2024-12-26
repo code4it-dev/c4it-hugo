@@ -12,6 +12,12 @@ tags:
   - Serverless
 toc: true
 summary: "Azure Functions are one of the best examples of serverless applications. By default you can't use Dependency injection: here's how you can configure it by adding the Startup class."
+keywords:
+  - dotnet
+  - csharp
+  - azure-functions
+  - dependency-injection
+  - azure
 images:
   - /blog/azure-functions-startup-class/featuredImage.png
 ---

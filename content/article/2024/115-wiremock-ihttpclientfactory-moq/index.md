@@ -20,8 +20,8 @@ keywords:
   - csharp
   - dotnet
   - testing
-  - unit-test
-  - integration-test
+  - unit-tests
+  - integration-tests
   - wiremock
 ---
 

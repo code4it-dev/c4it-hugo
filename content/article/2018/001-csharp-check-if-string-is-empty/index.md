@@ -9,6 +9,12 @@ tags:
   - CSharp
 toc: true
 summary: "Is a string empty? What if it contains only white spaces? You shouldn't reinvent the wheel, since .NET exposes methods exactly for these cases: String.IsNullOrEmpty and String.IsNullOrWhiteSpace."
+keywords:
+  - dotnet
+  - csharp
+  - string
+  - string-isnullorempty
+  - string-isnullorwhitespace
 images:
   - /blog/csharp-check-if-string-is-empty/featuredImage.png
 ---

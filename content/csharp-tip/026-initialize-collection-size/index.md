@@ -14,7 +14,7 @@ keywords:
   - csharp
   - dotnet
   - generics
-  - collection
+  - collections
   - performance
   - memory
   - allocation

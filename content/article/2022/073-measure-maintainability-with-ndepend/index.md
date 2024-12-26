@@ -9,6 +9,14 @@ tags:
   - dotnet
 toc: true
 summary: Keeping an eye on maintainability is mandatory for every project which should live long. With NDepend, you can measure maintainability for .NET projects.
+keywords:
+  - dotnet
+  - ndepend
+  - code-quality
+  - maintainability
+  - lines-of-code
+  - cyclomatic-complexity
+  - depth-of-inheritance-tree
 images:
   - /blog/measure-maintainability-with-ndepend/featuredImage.png
 ---

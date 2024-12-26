@@ -10,6 +10,13 @@ tags:
   - MongoDB
 toc: true
 summary: MongoDB is a database based on JSON-like documents, but it can be queried using C#. We'll see how to perform CRUD operations and we'll create some advanced queries.
+keywords:
+  - dotnet
+  - csharp
+  - mongodb
+  - database
+  - nosql
+  - crud
 images:
   - /blog/mongodb-introduction-with-csharp/featuredImage.png
 ---

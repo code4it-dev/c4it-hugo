@@ -10,6 +10,10 @@ tags:
   - dotnet
 toc: true
 summary: A suitable constructor for type 'X' could not be located. What a strange error message! Luckily it's easy to solve.
+keywords:
+  - csharp
+  - httpclient
+  - httpclientfactory
 images:
   - /blog/solve-constructor-exception-with-httpclientfactory/featuredImage.png
 ---

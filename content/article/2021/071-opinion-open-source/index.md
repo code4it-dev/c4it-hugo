@@ -9,6 +9,12 @@ tags:
   - MISC
 toc: true
 summary: With Log4J's vulnerability, we've all been reminded that systems are vulnerable, and OSS are not immune too. What should we do now?
+keywords:
+  - security
+  - open-source
+  - opinion
+  - log4j
+  - vulnerability
 images:
   - /blog/opinion-open-source/featuredImage.png
 ---

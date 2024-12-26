@@ -9,6 +9,15 @@ tags:
   - CSharp
 toc: true
 summary: We all need to parse strings as integers. Most of the time, we use int.TryParse(string, out int). But there's a more advanced overload that we can use for complex parsing.
+keywords:
+  - strings
+  - csharp
+  - parsing
+  - tryparse
+  - numbers
+  - data-conversion
+  - culture
+  - cultureinfo
 images:
   - /blog/advanced-int-tryparse/featuredImage.png
 ---

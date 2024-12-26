@@ -14,7 +14,7 @@ keywords:
   - dotnet
   - timer
   - trigger
-  - event
+  - events
 images:
   - /csharptips/timer-to-trigger-synchronous-events/featuredImage.png
 ---

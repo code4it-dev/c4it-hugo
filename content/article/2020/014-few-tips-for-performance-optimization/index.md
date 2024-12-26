@@ -11,6 +11,15 @@ tags:
   - Performance
 toc: true
 summary: More than 50% of mobile users abandon a website if it takes more than 3 seconds to load. Here you'll learn few trick to improve your site performance.
+keywords:
+  - web
+  - performance
+  - network
+  - compression
+  - brotli
+  - minification
+  - kestrel
+  - iis
 images:
   - /blog/few-tips-for-performance-optimization/featuredImage.png
 ---

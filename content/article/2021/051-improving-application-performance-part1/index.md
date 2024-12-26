@@ -11,6 +11,11 @@ tags:
   - CSharp
 toc: true
 summary: Having fast API response is crucial for your applications. In this article you'll see how I managed to improve an API application that took 14 secs each call.
+keywords:
+  - dotnet
+  - csharp
+  - performance
+  - profiling
 images:
   - /blog/improving-application-performance-part1/featuredImage.png
 ---
