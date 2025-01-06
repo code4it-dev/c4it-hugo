@@ -1,6 +1,6 @@
 ---
-title: "Httplogging"
-date: 2024-11-06T14:53:42+01:00
+title: "HttpLogging in ASP.NET: how to log all incoming HTTP requests (and it's consequences!)"
+date: 2024-12-31
 url: /blog/post-slug
 draft: false
 categories:
@@ -27,11 +27,11 @@ Whenever we publish a service, it is important to add proper logging to the appl
 
 We have talked several times about logging. But we mostly focused on the logs written manually.
 
-In this article, we are going to learn how to log incoming HTTP requests to help us understand how our ASP.NET APIs are being used from the outside.
+In this article, we are going to learn how to log incoming HTTP requests to help us understand how our APIs are being used from the outside.
 
-## Descrizione progetto, SEQ, Postman, demo vuota
+## Scaffolding the empty project
 
-To showcase this type of logging, I created an ASP.NET 8 API. It's a very simple application, with CRUD operations on an in-memory collection. 
+To showcase this type of logging, I created an ASP.NET API. It's a very simple application, with CRUD operations on an in-memory collection. 
 
 
 ```cs
@@ -54,7 +54,9 @@ public class BooksController : ControllerBase
 }
 ```
 
-These CRUD operations are exposed via HTTP APIs, following the usual verb-based convention, for example:
+These CRUD operations are exposed via HTTP APIs, following the usual verb-based convention. 
+
+For example:
 
 ```cs
 [HttpGet("{id}")]
@@ -65,6 +67,7 @@ public ActionResult<Book> GetBook([FromRoute] int id)
         , booksCatalogue.Count, id);
 
     Book? book = booksCatalogue.SingleOrDefault(x => x.Id == id);
+    
     return book switch
     {
         null => NotFound(),
@@ -73,13 +76,13 @@ public ActionResult<Book> GetBook([FromRoute] int id)
 }
 ```
 
-As you can see, I have added some custom logs: in the previous method, before searching for the element with the specified ID, I also write a log message such as "Looking if in my collection with 5 books there is one with ID 2". 
+As you can see, I have added some custom logs: before searching for the element with the specified ID, I also write a log message such as "Looking if in my collection with 5 books there is one with ID 2". 
 
 Where can I find the message? Well, on Seq!
 
-Seq is a popular log sink (well, honestly, my favourite one!), that is easy to install and to integrate with .NET. I've thoroughly explained how to use Seq in conjunction with .NET in [this article](https://www.code4it.dev/blog/logging-with-ilogger-and-seq/).
+Seq is a popular log sink (well, as you may know, my favourite one!), that is easy to install and to integrate with .NET. I've thoroughly explained how to use Seq in conjunction with .NET in [this article](https://www.code4it.dev/blog/logging-with-ilogger-and-seq/).
 
-In short the only change in your code is to add Seq as the log sink, like this:
+In short the most important change in your application is to add Seq as the log sink, like this:
 
 ```cs
 builder.Services.AddLogging(lb => {
@@ -87,13 +90,13 @@ builder.Services.AddLogging(lb => {
 });
 ```
 
-Having Seq ready to use in my .NET application, I can see the log messages appear in the log list:
+Now, whenever I call the GET endpoint, I can see the related log messages appear in Seq:
 
 ![Custom log messages](custom-log-messages-on-seq.png)
 
-But sometimes it's not enough. I want more, and I want it automatic!
+But sometimes it's not enough. I want more details, and I want them to be applied everywhere!
 
-## Descrizione HTTP logging
+## How to add Http Logging to an ASP.NET application
 
 HTTP Logging is a way of logging most of the details of the incoming HTTP operations, tracking both the requests and the resposes.
 
@@ -136,33 +139,45 @@ builder.Services.AddLogging(lb => {
 
 We then have all our pieces into place: let's execute the application!
 
-First, you can spin up the API, and see the Swagger page:
+First, you can spin up the API; you should be able to see the Swagger page:
 
-![alt text](image.png)
+![Swagger page for our application's API](api-swagger-page.png)
 
 
-Now I can call the GET endpoint  
+From here, I can call the GET endpoint  
 
-![alt text](image-1.png)
+![Http response of the API call, as seen on Swagger](http-get-response.png)
 
-and see all the logs in Seq:
+I am now able to see all the logs in Seq:
 
-![alt text](image-2.png)
+![Logs list in Seq](logs-list-in-seq.png)
 
-As you can see, I have a log entry for the request, and one for the response.
+As you can see, I have a log entry for the request, and one for the response. Also, of course, I have the custom message I added manually in the C# method.
 
 If we open the log related to the HTTP request, we can see all these values:
 
-![alt text](image-3.png)
-And, of course, we can see some interesting data in the Response log:
+![Details of the HTTP Request](http-request-log-details.png)
 
-![alt text](image-4.png)
+Among these details, we can see properties such as:
+
+- the host name (*localhost:7164*)
+- the method (*GET*)
+- the path (*/books/4*)
+
+and much more. 
+
+Of course, we can see some interesting data in the Response log:
+
+![Details of the HTTP Response](http-response-log-details.png)
+
+Here, among some other properties such as the Host name, we can see the Status Code and the Trace Id (which, as you may notice, is the same as the one in te Request).
 
 ### Analizza Request
 
 -redacted
 lista header
 - no cookie
+
 ### Analizza Response
 
 -no body
