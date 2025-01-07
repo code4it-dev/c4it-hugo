@@ -15,4 +15,4 @@ console.table({
 execSync('git checkout master');
 execSync('git pull');
 execSync('git checkout -b article/'+slug);
-execSync('hugo new --kind article article/2024/'+slug+'/');
+execSync('hugo new --kind article article/2025/'+slug+'/');
