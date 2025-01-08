@@ -212,26 +212,24 @@ and the, we are able to see the data for both request and response in the same l
 
 ![Request and Response combined logs](combined-logs.png)
 
-https://learn.microsoft.com/en-us/aspnet/core/fundamentals/http-logging/?view=aspnetcore-9.0&wt.mc_id=DT-MVP-5005077
+## Why you should not use HTTP Logging
 
-- prova diversi verbi http
-- prova diversi content type
-- prova header
-- prova con body testuale
-- prova con body come file
-- prova con minimal api
+Even though everything looks nice and pretty, adding Http Logging has some serious consequences.
 
+First of all, remember that you are doing some more operations for every incoming HTTP request. Just the act of writing the log can have **downgrade the application performance** - you are using parts of the memories to interpret the HTTP context, create the correct log entry, and store it where needed.
+
+Depending on how your APIs are structured, you may need to **strip out sensitive data**: HTTP logs, by default, log almost everything (except for the parts stored as Redacted). Since you don't want to store as plain text the content of the requests, you may need to create custom logic to redact parts of the request and response you want to hide: you may need to implement a [custom IHttpLoggingInterceptor](https://learn.microsoft.com/en-us/aspnet/core/fundamentals/http-logging/?view=aspnetcore-9.0&wt.mc_id=DT-MVP-5005077#ihttplogginginterceptor).
 
 
-## Warning
-
-- peggioramento performance apps
-- logga dati sensibili
-- maggiori costi su storage di log
-- 
-
+Finally, consider that logging occupies storage, and storage has a cost. The more you log, the higher the cost. You may want to define proper strategies to avoid incurring in excessive storage costs while keep having valuable logs.
 
 ## Further readings
+
+There is a lot more, as always. I tried to focus on the most essential parts, but the road to having proper HTTP logs is still long.
+
+You may want to start from the official documentation, of course!
+
+🔗 [HTTP logging in ASP.NET Core | Microsoft Docs](https://learn.microsoft.com/en-us/aspnet/core/fundamentals/http-logging/?view=aspnetcore-9.0&wt.mc_id=DT-MVP-5005077)
 
 _This article first appeared on [Code4IT 🐧](https://www.code4it.dev/)_
 
