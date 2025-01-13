@@ -1,6 +1,6 @@
 ---
-title: "HttpLogging in ASP.NET: how to log all incoming HTTP requests (and its consequences!)"
-date: 2025-01-10
+title: "HTTP Logging in ASP.NET: how to automatically log all incoming HTTP requests (and its downsides!)"
+date: 2025-01-12
 url: /blog/httplogging-asp-net
 draft: false
 categories:
@@ -24,7 +24,7 @@ keywords:
  - api
 ---
  
-Whenever we publish a service, it is important to add proper logging to the application. Logging helps us understand how the system works and behaves, and it's a fundamental component that allows us to troubleshoot problems that occur during the actual usage of the application.
+Whenever we publish a service, it is important to add proper logging to the application. **Logging helps us understand how the system works and behaves**, and it's a fundamental component that allows us to troubleshoot problems that occur during the actual usage of the application.
 
 In this blog, we have talked several times about logging. However, we mostly focused on the logs that were written manually.
 
@@ -80,7 +80,7 @@ As you can see, I have added some custom logs: before searching for the element 
 
 Where can I find the message? For the sake of this article, I decided to use Seq!
 
-Seq is a popular log sink (well, as you may know, my favourite one!), that is easy to install and to integrate with .NET. I've thoroughly explained how to use Seq in conjunction with .NET in [this article](https://www.code4it.dev/blog/logging-with-ilogger-and-seq/) and in other ones.
+**Seq is a popular log sink** (well, as you may know, my favourite one!), that is easy to install and to integrate with .NET. I've thoroughly explained how to use Seq in conjunction with ASP.NET in [this article](https://www.code4it.dev/blog/logging-with-ilogger-and-seq/) and in other ones.
 
 In short, the most important change in your application is to add Seq as the log sink, like this:
 
@@ -98,7 +98,7 @@ But sometimes it's not enough. I want to see more details, and I want them to be
 
 ## How to add HTTP Logging to an ASP.NET application
 
-HTTP Logging is a way of logging most of the details of the incoming HTTP operations, tracking both the requests and the responses.
+HTTP Logging is a way of logging most of the details of the incoming HTTP operations, **tracking both the requests and the responses**.
 
 With HTTP Logging, you don't need to manually write custom logs to access the details of incoming requests: you just need to add its related middleware, configure it as you want, and have all the required logs available for all your endpoints.
 
@@ -114,9 +114,9 @@ so that you can use it once the `WebApplication` instance is built:
 app.UseHttpLogging();
 ```
 
-There's still a problem, though: all the logs generated via HttpLogging are ignored, as logs coming from their namespace (named `Microsoft.AspNetCore.HttpLogging.HttpLoggingMiddleware`) are at *Information* log level, thus ignored by default. 
+There's still a problem, though: **all the logs generated via HttpLogging are, by default, ignored**, as logs coming from their namespace (named `Microsoft.AspNetCore.HttpLogging.HttpLoggingMiddleware`) are at *Information* log level, thus ignored because of the default configurations. 
 
-You either have to update the `appsetting.json` file to tell the logging system to process such logs:
+You either have to update the `appsetting.json` file to **tell the logging system to process logs from that namespace**:
 
 ```json
 {
@@ -156,7 +156,7 @@ You should now able to see all the logs in Seq:
 
 As you can see from the screenshot above, I have a log entry for the request and one for the response. Also, of course, I have the custom message I added manually in the C# method.
 
-### HTTP Request logs
+### Understanding HTTP Request logs
 
 Let's focus on the data logged for the HTTP request.
 
@@ -172,31 +172,31 @@ Among these details, we can see properties such as:
 
 and much more. 
 
-You can see all the properties as standalone items, but you can also have a high-level view of all the properties by accessing the `HttpLog` element:
+You can see all the properties as standalone items, but you can also have a grouped view of all the properties by accessing the `HttpLog` element:
 
 ![Details of the HTTP Log element](httplog.png)
 
-Notice that for some elements we do not have access to the actual value, as the value is set to `[Redacted]`. This is a default configuration that prevents logging too many things (and undisclosing some values) as well as writing too much content on the log sink (the more you write, the less performant the queries become - and you also pay more!).
+Notice that for some elements we do not have access to the actual value, as **the value is set to `[Redacted]`**. This is a default configuration that prevents logging too many things (and undisclosing some values) as well as writing too much content on the log sink (the more you write, the less performant the queries become - and you also pay more!).
 
 Among other redacted values, you can see that even the Cookie value is not directly available - for the same reasons explained before.
 
-### HTTP Response logs
+### Understanding HTTP Response logs
 
 Of course, we can see some interesting data in the Response log:
 
 ![Details of the HTTP Response](http-response-log-details.png)
 
-Here, among some other properties such as the Host Name, we can see the Status Code and the Trace Id (which, as you may notice, is the same as the one in te Request).
+Here, among some other properties such as the *Host Name*, we can see the *Status Code* and the *Trace Id* (which, as you may notice, is the same as the one in te Request).
 
 As you can see, the log item does not contain the body of the response. 
 
 Also, just as it happens with the Request, we do not have access to the list of HTTP Headers.
 
-## How to save space by combining logs
+## How to save space, storage, and money by combining log entries
 
 For every HTTP operation, we end up with 2 log entries: one for the Request and one for the Response.
 
-However, it would be more practical to have both request and response info stored in the same log item so we can understand more easily what is happening.
+However, it would be more practical to **have both request and response info stored in the same log item** so we can understand more easily what is happening.
 
 Lucky for us, this functionality is already in place. We just need to set the `CombineLogs` property to `true` when we add the HttpLogging functionality:
 
@@ -212,7 +212,7 @@ Then, we are able to see the data for both the request and the related response 
 
 ![Request and Response combined logs](combined-logs.png)
 
-## Why you should not use HTTP Logging
+## The downsides of using HTTP Logging
 
 Even though everything looks nice and pretty, adding HTTP Logging has some serious consequences.
 
@@ -220,7 +220,7 @@ First of all, remember that you are doing some more operations for every incomin
 
 Depending on how your APIs are structured, you may need to **strip out sensitive data**: HTTP Logs, by default, log almost everything (except for the parts stored as Redacted). Since you don't want to store as plain text the content of the requests, you may need to create custom logic to redact parts of the request and response you want to hide: you may need to implement a [custom IHttpLoggingInterceptor](https://learn.microsoft.com/en-us/aspnet/core/fundamentals/http-logging/?view=aspnetcore-9.0&wt.mc_id=DT-MVP-5005077#ihttplogginginterceptor).
 
-Finally, consider that logging occupies storage, and storage has a cost. The more you log, the higher the cost. You should define proper strategies to avoid excessive storage costs while keeping valuable logs.
+Finally, consider that logging occupies storage, and storage has a cost. **The more you log, the higher the cost**. You should define proper strategies to avoid excessive storage costs while keeping valuable logs.
 
 ## Further readings
 
@@ -232,7 +232,7 @@ You may want to start from the official documentation, of course!
 
 _This article first appeared on [Code4IT 🐧](https://www.code4it.dev/)_
 
-All the logs produced for this article were stored on Seq. You can find more info about installing and integrating Seq in .NET in this article:
+All the logs produced for this article were stored on Seq. You can find more info about installing and integrating Seq in ASP.NET Core in this article:
 
 🔗 [Easy logging management with Seq and ILogger in ASP.NET | Code4IT](https://www.code4it.dev/blog/logging-with-ilogger-and-seq/)
 
@@ -246,19 +246,5 @@ Happy coding!
 
 🐧
 
-
-- [ ] Titoli
-- [ ] Frontmatter
 - [ ] Immagine di copertina
 - [ ] Fai resize della immagine di copertina
-- [ ] Metti la giusta OgTitle
-- [ ] Bold/Italics
-- [ ] Nome cartella e slug devono combaciare
-- [ ] Rinomina immagini
-- [ ] Alt Text per immagini
-- [ ] Trim corretto per bordi delle immagini
-- [ ] Rimuovi secrets dalle immagini
-- [ ] Controlla se ASP.NET Core oppure .NET
-- [ ] Pulizia formattazione
-- [ ] Add wt.mc_id=DT-MVP-5005077 to links
-- [ ] HTTP, non Http
