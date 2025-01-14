@@ -1,6 +1,6 @@
 ---
 title: "HTTP Logging in ASP.NET: how to automatically log all incoming HTTP requests (and its downsides!)"
-date: 2025-01-12
+date: 2025-01-14
 url: /blog/httplogging-asp-net
 draft: false
 categories:
@@ -39,17 +39,17 @@ To showcase this type of logging, I created an ASP.NET API. It's a very simple a
 [Route("[controller]")]
 public class BooksController : ControllerBase
 {
- private readonly List<Book> booksCatalogue = Enumerable.Range(1, 5).Select(index => new Book
+    private readonly List<Book> booksCatalogue = Enumerable.Range(1, 5).Select(index => new Book
     {
- Id = index,
- Title = $"Book with ID {index}"
+        Id = index,
+        Title = $"Book with ID {index}"
     }).ToList();
 
- private readonly ILogger<BooksController> _logger;
+    private readonly ILogger<BooksController> _logger;
 
- public BooksController(ILogger<BooksController> logger)
+    public BooksController(ILogger<BooksController> logger)
     {
- _logger = logger;
+        _logger = logger;
     }
 }
 ```
@@ -62,16 +62,15 @@ For example:
 [HttpGet("{id}")]
 public ActionResult<Book> GetBook([FromRoute] int id)
 {
+    _logger.LogInformation("Looking if in my collection with {TotalBooksCount} books there is one with ID {SearchedId}"
+            , booksCatalogue.Count, id);
 
- _logger.LogInformation("Looking if in my collection with {TotalBooksCount} books there is one with ID {SearchedId}"
-        , booksCatalogue.Count, id);
+    Book? book = booksCatalogue.SingleOrDefault(x => x.Id == id);
 
- Book? book = booksCatalogue.SingleOrDefault(x => x.Id == id);
-    
     return book switch
     {
         null => NotFound(),
- _ => Ok(book)
+        _ => Ok(book)
     };
 }
 ```
@@ -86,7 +85,7 @@ In short, the most important change in your application is to add Seq as the log
 
 ```cs
 builder.Services.AddLogging(lb => {
- lb.AddSeq();
+    lb.AddSeq();
 });
 ```
 
@@ -134,7 +133,7 @@ or, alternatively, you need to do the same when setting up the logging system in
 
 ```diff
 builder.Services.AddLogging(lb => {
- lb.AddSeq();
+  lb.AddSeq();
 + lb.AddFilter("Microsoft.AspNetCore.HttpLogging.HttpLoggingMiddleware", LogLevel.Information);
 });
 ```
@@ -202,9 +201,9 @@ Lucky for us, this functionality is already in place. We just need to set the `C
 
 ```diff
 builder.Services.AddHttpLogging(lb =>
- {
-+ lb.CombineLogs = true;
- }
+{
++  lb.CombineLogs = true;
+}
 );
 ```
 
@@ -245,6 +244,3 @@ I hope you enjoyed this article! Let's keep in touch on [LinkedIn](https://www.l
 Happy coding!
 
 🐧
-
-- [ ] Immagine di copertina
-- [ ] Fai resize della immagine di copertina
