@@ -4,18 +4,18 @@ date: 2025-01-21
 url: /csharptips/create-custom-csharp-attributes
 draft: false
 categories:
- - CSharp Tips
-tags: 
- - CSharp
+  - CSharp Tips
+tags:
+  - CSharp
 toc: false
 summary: "Applying custom attributes to C# classes and interfaces can be useful for several reasons. Let's learn how to create Custom Attributes in C#, and let's explore some practical usage!"
 images:
- - /csharptips/create-custom-csharp-attributes/featuredImage.png
+  - /csharptips/create-custom-csharp-attributes/featuredImage.png
 keywords:
-    - csharp
-    - attributes
-    - modularity
-    - utilities
+  - csharp
+  - attributes
+  - modularity
+  - utilities
 ---
 
 In C#, attributes are used to describe the meaning of some elements, such as classes, methods, and interfaces.
@@ -32,7 +32,7 @@ In this article, we will learn how to create custom attributes in C# and some po
 
 ## Create a custom attribute by inheriting from System.Attribute
 
-Creating a custom attribute is pretty straightforward: you just need to create a class that inherits from `System.Attribute`. 
+Creating a custom attribute is pretty straightforward: you just need to create a class that inherits from `System.Attribute`.
 
 ```cs
 [AttributeUsage(AttributeTargets.Interface | AttributeTargets.Class | AttributeTargets.Method, AllowMultiple = true)]
@@ -60,7 +60,6 @@ Ideally, the class name should end with the suffix `-Attribute`: in this way, yo
 Depending on the expected usage, a custom attribute can have one or more constructors and can expose one or more properties. In this example, I created a constructor that accepts an enum.
 I can then use this attribute by calling `[ApplicationModule(Module.Cart)]`.
 
-
 ## Define where a Custom Attribute can be applied
 
 Have a look at the attribute applied to the class definition:
@@ -69,7 +68,7 @@ Have a look at the attribute applied to the class definition:
 [AttributeUsage(AttributeTargets.Interface | AttributeTargets.Class | AttributeTargets.Method, AllowMultiple = true)]
 ```
 
-This attribute tells us that the `ApplicationModule` can be applied to interfaces, classes, and methods. 
+This attribute tells us that the `ApplicationModule` can be applied to interfaces, classes, and methods.
 
 `System.AttributeTargets` is an enum that enlists all the points you can attach to an attribute. The `AttributeTargets` enum is defined as:
 
@@ -131,7 +130,6 @@ public enum Module
 
 This way, whenever I define an interface, I can explicitly tell which components it belongs to:
 
-
 ```cs
 [ApplicationModule(Module.Catalogue)]
 public interface IItemDetails
@@ -150,7 +148,6 @@ public interface IItemDiscounts
 
 Not only that: I can have one single class implement both interfaces and mark it as related to both the Catalogue and the Cart areas.
 
-
 ```cs
 [ApplicationModule(Module.Cart)]
 [ApplicationModule(Module.Catalogue)]
@@ -165,8 +162,6 @@ public class ItemDetailsService : IItemDetails, IItemDiscounts
 ```
 
 Notice that I also explicitly enriched the two inner methods with the related attribute - even if it's not necessary.
-
-
 
 ## Further readings
 
@@ -183,7 +178,7 @@ There are some famous but not-so-obvious examples of attributes that you should 
 
 `DebuggerDisplay` can be useful for improving your debugging sessions.
 
-🔗 [Simplify debugging with DebuggerDisplay attribute dotNET | Code4IT](https://www.code4it.dev/blog/debuggerdisplay-attribute/) 
+🔗 [Simplify debugging with DebuggerDisplay attribute dotNET | Code4IT](https://www.code4it.dev/blog/debuggerdisplay-attribute/)
 
 `IntenalsVisibleTo` can be used to give access to `internal` classes to external projects:;for example, you can use that attribute when writing unit tests.
 
@@ -191,7 +186,7 @@ There are some famous but not-so-obvious examples of attributes that you should 
 
 ## Wrapping up
 
-In this article, I showed you how to create custom attributes in C# to specify which modules a class or a method belongs to. This trick can be useful if you want to speed up the analysis of your repository: if you need to retrieve all the classes that are used for the *Cart* module (for example, because you want to move them to an external library), you can just search for `Module.Cart` across the repository and have a full list of elements.
+In this article, I showed you how to create custom attributes in C# to specify which modules a class or a method belongs to. This trick can be useful if you want to speed up the analysis of your repository: if you need to retrieve all the classes that are used for the _Cart_ module (for example, because you want to move them to an external library), you can just search for `Module.Cart` across the repository and have a full list of elements.
 
 In particular, this approach can be useful for the exposed components, such as API controllers. Knowing that two or more modules use the same Controller can help you understand if a change in the API structure is necessary.
 
@@ -202,4 +197,3 @@ I hope you enjoyed this article! Let's keep in touch on [LinkedIn](https://www.l
 Happy coding!
 
 🐧
-
