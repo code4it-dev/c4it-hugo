@@ -1,23 +1,24 @@
 ---
-title: "C# Tip: Custom Attributes"
-date: 2025-01-14T14:36:50+01:00
+title: "C# Tip: How to create Custom Attributes, and why they are useful"
+date: 2025-01-21
 url: /csharptips/create-custom-csharp-attributes
 draft: false
 categories:
- - CSharp Tips
+ - CSharp Tips
 tags: 
- - CSharp
+ - CSharp
 toc: false
 summary: "Applying custom attributes to C# classes and interfaces can be useful for several reasons. Let's learn how to create Custom Attributes in C#, and let's explore some practical usage!"
 images:
- - /csharptips/create-custom-csharp-attributes/featuredImage.png
+ - /csharptips/create-custom-csharp-attributes/featuredImage.png
 keywords:
- - csharp
-- attributes
-- modularity
+    - csharp
+    - attributes
+    - modularity
+    - utilities
 ---
 
-In C#, attributes are used to describe the meaning of some elements such as classes, methods, and interfaces.
+In C#, attributes are used to describe the meaning of some elements, such as classes, methods, and interfaces.
 
 I'm sure you've already used them before. Examples are:
 
@@ -25,14 +26,13 @@ I'm sure you've already used them before. Examples are:
 - the `[Test]` attribute when creating Unit Tests using NUnit;
 - the `[Get]` and the `[FromBody]` attributes used to define API endpoints.
 
-As you can see, all the attributes do not specify the behaviour, but rather, they express the meaning of a specific element.
+As you can see, all the **attributes do not specify the behaviour, but rather, they express the meaning of a specific element**.
 
 In this article, we will learn how to create custom attributes in C# and some possible interesting usages of such custom attributes.
 
-## A custom attribute class inherits from System.Attribute
+## Create a custom attribute by inheriting from System.Attribute
 
 Creating a custom attribute is pretty straightforward: you just need to create a class that inherits from `System.Attribute`. 
-
 
 ```cs
 [AttributeUsage(AttributeTargets.Interface | AttributeTargets.Class | AttributeTargets.Method, AllowMultiple = true)]
@@ -41,9 +41,9 @@ public class ApplicationModuleAttribute : Attribute
  public Module BelongingModule { get; }
 
  public ApplicationModuleAttribute(Module belongingModule)
-    {
+   {
  BelongingModule = belongingModule;
-    }
+   }
 }
 
 public enum Module
@@ -55,13 +55,13 @@ public enum Module
 }
 ```
 
-Ideally, the class name should end with the suffix `-Attribute`: in this way, you can use the attibute using the short form `[ApplicationModule]` rather than using the whole class name, like `[ApplicationModuleAttribute]`. In fact, C# attributes can be resolved by convention.
+Ideally, the class name should end with the suffix `-Attribute`: in this way, you can use the attribute using the short form `[ApplicationModule]` rather than using the whole class name, like `[ApplicationModuleAttribute]`. In fact, C# attributes can be resolved by convention.
 
 Depending on the expected usage, a custom attribute can have one or more constructors and can expose one or more properties. In this example, I created a constructor that accepts an enum.
 I can then use this attribute by calling `[ApplicationModule(Module.Cart)]`.
 
 
-## Define where a custom attribute can be applied
+## Define where a Custom Attribute can be applied
 
 Have a look at the attribute applied to the class definition:
 
@@ -96,7 +96,7 @@ public enum AttributeTargets
 }
 ```
 
-Have you noticed it? It's actually a Flagged enum, whose values are powers of 2: this trick allows us to join two or more values using the OR operator.
+Have you noticed it? It's actually a **Flagged enum**, whose values are powers of 2: this trick allows us to join two or more values using the OR operator.
 
 There's another property to notice: `AllowMultiple`. When set to `true`, this property tells us that it's possible to use apply more than one attribute of the same type to the same element, like this:
 
@@ -113,7 +113,7 @@ Or, if you want, you can inline them:
 public class ItemDetailsService { }
 ```
 
-## A practical example
+## Practical usage of Custom Attributes
 
 You can use custom attributes to declare which components or business areas an element belongs to.
 
@@ -122,10 +122,10 @@ In the previous example, I defined an enum that enlists all the business modules
 ```cs
 public enum Module
 {
- Authentication,
- Catalogue,
- Cart,
- Payment
+    Authentication,
+    Catalogue,
+    Cart,
+    Payment
 }
 ```
 
@@ -136,15 +136,15 @@ This way, whenever I define an interface, I can explicitly tell which components
 [ApplicationModule(Module.Catalogue)]
 public interface IItemDetails
 {
-    [ApplicationModule(Module.Catalogue)]
-    string ShowItemDetails(string itemId);
+    [ApplicationModule(Module.Catalogue)]
+    string ShowItemDetails(string itemId);
 }
 
 [ApplicationModule(Module.Cart)]
 public interface IItemDiscounts
 {
-    [ApplicationModule(Module.Cart)]
-    bool CanHaveDiscounts(string itemId);
+    [ApplicationModule(Module.Cart)]
+    bool CanHaveDiscounts(string itemId);
 }
 ```
 
@@ -156,11 +156,11 @@ Not only that: I can have one single class implement both interfaces and mark it
 [ApplicationModule(Module.Catalogue)]
 public class ItemDetailsService : IItemDetails, IItemDiscounts
 {
-    [ApplicationModule(Module.Catalogue)]
- public string ShowItemDetails(string itemId) => throw new NotImplementedException();
+    [ApplicationModule(Module.Catalogue)]
+    public string ShowItemDetails(string itemId) => throw new NotImplementedException();
 
-    [ApplicationModule(Module.Cart)]
- public bool CanHaveDiscounts(string itemId) => throw new NotImplementedException();
+    [ApplicationModule(Module.Cart)]
+    public bool CanHaveDiscounts(string itemId) => throw new NotImplementedException();
 }
 ```
 
@@ -170,8 +170,24 @@ Notice that I also explicitly enriched the two inner methods with the related at
 
 ## Further readings
 
+As you noticed, the `AttributeTargets` is a Flagged Enum. Don't you know what they are and how to define them? I've got you covered! I wrote two articles about Enums, and you can find info about Flagged Enums in both articles:
+
+🔗 [5 things you should know about enums in C# | Code4IT](https://www.code4it.dev/blog/5-things-enums-csharp/)
+
+and
+🔗 [5 more things you should know about enums in C# | Code4IT](https://www.code4it.dev/blog/5-more-things-about-enums-csharp/)
+
 _This article first appeared on [Code4IT 🐧](https://www.code4it.dev/)_
 
+There are some famous but not-so-obvious examples of attributes that you should know: `DebuggerDisplay` and `InternalsVisibleTo`.
+
+`DebuggerDisplay` can be useful for improving your debugging sessions.
+
+🔗 [Simplify debugging with DebuggerDisplay attribute dotNET | Code4IT](https://www.code4it.dev/blog/debuggerdisplay-attribute/) 
+
+`IntenalsVisibleTo` can be used to give access to `internal` classes to external projects:;for example, you can use that attribute when writing unit tests.
+
+🔗 [Testing internal members with InternalsVisibleTo | Code4IT](https://www.code4it.dev/blog/testing-internals-with-internalsvisibleto/)
 
 ## Wrapping up
 
@@ -187,11 +203,3 @@ Happy coding!
 
 🐧
 
- 
-- [ ] Titoli
-- [ ] Frontmatter
-- [ ] Immagine di copertina
-- [ ] Fai resize della immagine di copertina
-- [ ] Bold/Italics
-- [ ] Pulizia formattazione
-- [ ] Add wt.mc_id=DT-MVP-5005077 to links
