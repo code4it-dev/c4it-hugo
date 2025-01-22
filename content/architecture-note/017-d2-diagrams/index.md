@@ -55,6 +55,24 @@ For each element, you can simply define its internal name (`service`), a label (
 
 ![alt text](image.png)
 
+Other than that, I love the fact that you can define elements to be displayed as multiple instances: this can be useful when a service has multiple instances of the same type, and you want to express it clearly without the need of manually creating multiple elements.
+
+You can do it by setting the `multiple` property to `true`.
+
+
+```d2
+apiGtw: API Gateway {
+  shape: cloud
+}
+be: BackEnd {
+  style.multiple: true
+}
+
+apiGtw -> be
+```
+
+![alt text](image-3.png)
+
 ### Grouping
 
 Of course, you may want to group elements. You can to that by using an hierarchical structure.
@@ -125,9 +143,46 @@ When referencing items from different containers, you must always include the co
 
 
 
-- connection
-- side descriptions
-- SQL tables
+### SQL Tables
+
+An interesting part of D2 diagram is the possibility to add the description of SQL tables.
+
+Clearly, the structure cannot be validated: the actual syntax depends on the database vendor. However, having the table schema defined in the diagram can be helpful to reason around the dependencies needed to complete a development.
+
+
+```d2
+serv: Products Service
+
+db: Database Schema {
+  direction: right
+  shape: cylinder
+  userTable: dbo.user {
+    shape: sql_table
+    Id: int {constraint: primary_key}
+    FirstName: text
+    LastName: text
+    Birthday: datetime2
+  }
+
+  productsTable: dbo.products {
+    shape: sql_table
+    Id: int {constraint: primary_key}
+    Owner: int {constraint: foreign_key}
+    Description: text
+  }
+
+  productsTable.Owner -> userTable.Id
+}
+
+serv -> db.productsTable: Retrieve products by user id
+
+```
+
+![alt text](image-5.png)
+
+
+### Colors, Layouts, and palette
+ 
 - layout and color
 - 
 
@@ -143,6 +198,9 @@ When referencing items from different containers, you must always include the co
 
 - prima elenca tutti i componenti e poi elenca le connessioni
 - definisci uno stile
+
+
+![alt text](image-4.png)
 
 ## Further readings
 
