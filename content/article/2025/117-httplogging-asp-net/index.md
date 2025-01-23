@@ -4,26 +4,26 @@ date: 2025-01-14
 url: /blog/httplogging-asp-net
 draft: false
 categories:
- - Blog
+  - Blog
 tags:
- - CSharp
- - ASPNET
- - dotNET
- - Logging
+  - CSharp
+  - ASPNET
+  - dotNET
+  - Logging
 toc: true
 summary: "Aren't you tired of adding manual logs to your HTTP APIs to log HTTP requests and responses? By using a built-in middleware in ASP.NET, you will be able to centralize logs management and have a clear view of all the incoming HTTP requests."
 images:
- - /blog/httplogging-asp-net/featuredImage.png
+  - /blog/httplogging-asp-net/featuredImage.png
 keywords:
- - dotnet
- - logging
- - http
- - seq
- - postman
- - aspnet
- - api
+  - dotnet
+  - logging
+  - http
+  - seq
+  - postman
+  - aspnet
+  - api
 ---
- 
+
 Whenever we publish a service, it is important to add proper logging to the application. **Logging helps us understand how the system works and behaves**, and it's a fundamental component that allows us to troubleshoot problems that occur during the actual usage of the application.
 
 In this blog, we have talked several times about logging. However, we mostly focused on the logs that were written manually.
@@ -32,7 +32,7 @@ In this article, we will learn how to log incoming HTTP requests to help us unde
 
 ## Scaffolding the empty project
 
-To showcase this type of logging, I created an ASP.NET API. It's a very simple application with CRUD operations on an in-memory collection. 
+To showcase this type of logging, I created an ASP.NET API. It's a very simple application with CRUD operations on an in-memory collection.
 
 ```cs
 [ApiController]
@@ -54,7 +54,7 @@ public class BooksController : ControllerBase
 }
 ```
 
-These CRUD operations are exposed via HTTP APIs, following the usual verb-based convention. 
+These CRUD operations are exposed via HTTP APIs, following the usual verb-based convention.
 
 For example:
 
@@ -75,7 +75,7 @@ public ActionResult<Book> GetBook([FromRoute] int id)
 }
 ```
 
-As you can see, I have added some custom logs: before searching for the element with the specified ID, I also wrote a log message such as "Looking if in my collection with 5 books there is one with ID 2". 
+As you can see, I have added some custom logs: before searching for the element with the specified ID, I also wrote a log message such as "Looking if in my collection with 5 books there is one with ID 2".
 
 Where can I find the message? For the sake of this article, I decided to use Seq!
 
@@ -113,19 +113,19 @@ so that you can use it once the `WebApplication` instance is built:
 app.UseHttpLogging();
 ```
 
-There's still a problem, though: **all the logs generated via HttpLogging are, by default, ignored**, as logs coming from their namespace (named `Microsoft.AspNetCore.HttpLogging.HttpLoggingMiddleware`) are at *Information* log level, thus ignored because of the default configurations. 
+There's still a problem, though: **all the logs generated via HttpLogging are, by default, ignored**, as logs coming from their namespace (named `Microsoft.AspNetCore.HttpLogging.HttpLoggingMiddleware`) are at _Information_ log level, thus ignored because of the default configurations.
 
 You either have to update the `appsetting.json` file to **tell the logging system to process logs from that namespace**:
 
 ```json
 {
-    "Logging": {
-        "LogLevel": {
-            "Default": "Information",
-            "Microsoft.AspNetCore": "Warning",
-            "Microsoft.AspNetCore.HttpLogging.HttpLoggingMiddleware": "Information"
-        }
+  "Logging": {
+    "LogLevel": {
+      "Default": "Information",
+      "Microsoft.AspNetCore": "Warning",
+      "Microsoft.AspNetCore.HttpLogging.HttpLoggingMiddleware": "Information"
     }
+  }
 }
 ```
 
@@ -144,8 +144,7 @@ First, you can spin up the API; you should be able to see the Swagger page:
 
 ![Swagger page for our application's API](api-swagger-page.png)
 
-
-From here, you can call the GET endpoint:  
+From here, you can call the GET endpoint:
 
 ![Http response of the API call, as seen on Swagger](http-get-response.png)
 
@@ -165,11 +164,11 @@ If we open the log related to the HTTP request, we can see all these values:
 
 Among these details, we can see properties such as:
 
-- the host name (*localhost:7164*)
-- the method (*GET*)
-- the path (*/books/4*)
+- the host name (_localhost:7164_)
+- the method (_GET_)
+- the path (_/books/4_)
 
-and much more. 
+and much more.
 
 You can see all the properties as standalone items, but you can also have a grouped view of all the properties by accessing the `HttpLog` element:
 
@@ -185,9 +184,9 @@ Of course, we can see some interesting data in the Response log:
 
 ![Details of the HTTP Response](http-response-log-details.png)
 
-Here, among some other properties such as the *Host Name*, we can see the *Status Code* and the *Trace Id* (which, as you may notice, is the same as the one in te Request).
+Here, among some other properties such as the _Host Name_, we can see the _Status Code_ and the _Trace Id_ (which, as you may notice, is the same as the one in te Request).
 
-As you can see, the log item does not contain the body of the response. 
+As you can see, the log item does not contain the body of the response.
 
 Also, just as it happens with the Request, we do not have access to the list of HTTP Headers.
 

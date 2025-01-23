@@ -180,14 +180,6 @@ serv -> db.productsTable: Retrieve products by user id
 
 ![alt text](image-5.png)
 
-
-### Colors, Layouts, and palette
- 
-- layout and color
-- 
-
-## D2 vs Mermaid: a comparison
-
 ## Install D2 on Windows
 
 ## Create D2 Diagrams on Visual Studio Code
@@ -201,6 +193,29 @@ serv -> db.productsTable: Retrieve products by user id
 
 
 ![alt text](image-4.png)
+
+## D2 vs Mermaid: a comparison
+
+D2 and Mermaid are similar, but have some key differences.
+
+They both are diagram-as-a-code tools, meaning that the definition of a diagram is expressed as a text file, thus making it available under source control.
+
+Mermaid is already supported by many tools, like Azure DevOps wikis, GitHub pages, and so on.
+On the contrary, D2 must be installed (along with the Go language).
+
+Mermaid is quite a "close" system: even if it allows you do define some basic styles, it's not that flexible.
+
+On the contrary, D2 allows you to choose a [theme](https://d2lang.com/tour/themes) for the whole diagram, as well as choosing different layout engines.
+Also, D2 has some functionalities that are (currently) missing on Mermaid:
+
+- marking a component as multiple (as we saw previously);
+- adding SQL table definitions;
+- adding [markdown descriptions to the diagram](https://d2lang.com/tour/text/#standalone-text-is-markdown);
+- using [variable substitutions](https://d2lang.com/tour/vars) to avoid repeating the same names over and over again.
+
+Mermaid, on the contrary, allows to define more types of diagrams: State Diagrams, Gantt, Mindmaps, and so on. Also, as we saw, it's already supported in many of platforms.
+
+So, my (current) choice is: use D2 for architectural diagrams, use Mermaid for everything else. I haven't tried D2 for Sequence Diagrams yet, so I won't express an opinion on that.
 
 ## Further readings
 
