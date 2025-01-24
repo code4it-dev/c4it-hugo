@@ -1,7 +1,7 @@
 ---
-title: "D2 Diagrams: like Mermaid, but better."
+title: "Textually design diagrams with D2: syntax, installation, and usage tips."
 date: 2025-01-20T14:33:17+01:00
-url: /architecture-notes/post-slug
+url: /architecture-notes/d2-diagrams
 draft: false
 categories:
  - Code and Architecture Notes
@@ -10,7 +10,7 @@ tags:
 toc: true
 summary: "A summary"
 images:
- - /architecture-notes/post-slug/featuredImage.png
+ - /architecture-notes/d2-diagrams/featuredImage.png
 keywords:
  - software-architecture
 ---
@@ -180,11 +180,65 @@ serv -> db.productsTable: Retrieve products by user id
 
 ![alt text](image-5.png)
 
-## Install D2 on Windows
+## How to install and run D2 on Windows and macOs
+
+D2 is a tool written in GO. It's not natively present in every pc, so you have to install it.
+
+But first, you must install Go, of course. You can learn how to install it from [the official page](https://go.dev/doc/install).
+
+Once Go is ready, you can install D2 in several ways. I use Windows 11, so the my preferred installation approach is by using an .msi installer, [as described here](https://github.com/terrastruct/d2/blob/master/docs/INSTALL.md#windows).
+
+If you are on macOs, you can use Homebrew to install it, by running `brew install d2`.
+
+But, in general, you can have Go directly install D2 by running the following command:
+
+```shell
+go install oss.terrastruct.com/d2@latest
+```
+
+There's actually the possiblity to install it via Docker. However, I find this approach quite complex, so I would prefer installing D2 directly.
+
+You can find more information about the installation ways on [the GitHub page of the project](https://github.com/terrastruct/d2/blob/master/docs/INSTALL.md).
+
+To work with D2 diagrams you need to create a file with the `.d2` extension. That file will contain the textual representation of the diagrams, following the syntax we saw before.
+
+Once D2 is installed, and the file is present in the file system (in my case, I named the file `my-diagram.d2`), you can use the console to 
+
+```shell
+d2.exe --watch .\my-diagram.d2
+```
+
+opens the default browser at a random port on localhost and renders the local file. You can now update it locally and see the result appear on the browser without the need to restart the application.
+
+When the diagram is ready, you can export it as a PNG or SVG by running
+
+```shell
+d2.exe .\my-diagram.d2 my-wonderful-design.png
+```
 
 ## Create D2 Diagrams on Visual Studio Code
 
+Another approach is to install the D2 extension on VS Code.
+
+![alt text](image-6.png)
+
+Thanks to this extension, you can open any D2 file and, by using the command palette, see a preview of the final result. You can also format the document to have the diagram definition tidy and well structured.
+
+![alt text](image-7.png)
+
 ## Create D2 Diagrams on Obsidian
+
+Lastly, D2 can be easily integrated with tools like Obsidian. Among the community plugins you can find the official D2 plugin.
+
+![alt text](image-8.png)
+
+As you can imagine, it requires to have Go installed in your machine. 
+And, if necessary, it requires you to explicitly set the path to the `bin` folder of Go. In my case, I had to set it to `C:\Users\BelloneDavide\go\bin\`.
+
+![alt text](image-9.png)
+
+To insert a D2 diagram in a note generated with Obsidian you have to use `d2` as a code fence language.
+
 
 ## Tips for using D2
 
