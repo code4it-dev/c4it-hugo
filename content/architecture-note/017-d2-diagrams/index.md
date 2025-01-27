@@ -1,6 +1,6 @@
 ---
 title: "Textually design diagrams with D2: syntax, installation, and usage tips."
-date: 2025-01-20T14:33:17+01:00
+date: 2025-01-20
 url: /architecture-notes/d2-diagrams
 draft: false
 categories:
@@ -242,9 +242,116 @@ To insert a D2 diagram in a note generated with Obsidian you have to use `d2` as
 
 ## Tips for using D2
 
-- prima elenca tutti i componenti e poi elenca le connessioni
-- definisci uno stile
+D2 is easy to use, once you have a basic understanding on how to create elements and connections. 
 
+However, there are some tips that may be useful to ease the process of creating the diagrams.
+
+
+###  Separate elements and connections definition
+
+A good approach is to declare the structure of the application first, and then list all the connections between elements, unless the elements are within the same components.
+
+```d2
+ecommerce: E-commerce {
+  website: User Website {
+    backend
+    database: DB {
+      shape: cylinder
+    }
+
+    backend -> database: retrieve records {
+      style.stroke: red
+    }
+  }
+
+  job -> website.database: update records
+}
+```
+
+Here, the connections between `backend` and `database` are internal to the `website` element.
+
+But the other connection between the job and the database is cross-element. In the long run, it may bring readability problems.
+
+So, you could update it like this:
+
+```diff
+ecommerce: E-commerce {
+  website: User Website {
+    backend
+    database: DB {
+      shape: cylinder
+    }
+
+    backend -> database: retrieve records {
+      style.stroke: red
+    }
+  }
+
+-  job -> website.database: update records
+}
+
++ ecommerce.job -> ecommerce.website.database: update records
+```
+
+This tip can be extremely useful when you have more than one elements with the same name belonging to different parents.
+
+
+### Use a specific theme
+
+D2 allows you to specify a theme for the diagram. There are some predefined themes (which are a set of color palettes), each with a name and an ID.
+
+To use a theme, you have to specify it in the `vars` element on top of the diagram:
+
+
+```d2
+vars: {
+  d2-config: {
+    theme-id: 103
+  }
+}
+```
+
+103 is theme named "Earth tones", using a brown-based palette that, when applied to the diagram, renders it like this.
+
+![alt text](image-10.png)
+
+However, if you have a color palette, you can use your own colors by overriding the default values:
+
+```d2
+vars: {
+  d2-config: {
+    # Terminal theme code
+    theme-id: 103
+    theme-overrides: {
+      B4: "#C5E1A5"
+    }
+  }
+}
+```
+
+![alt text](image-11.png)
+
+You can read more about themes and customizations [here](https://d2lang.com/tour/themes).
+
+## Choose the right layout engine
+
+You can choose one of the three supported layout engine to render the elements in a different way (more info [here](https://d2lang.com/tour/layouts)).
+
+DAGRE and ELK are open source, but quite basic. TALA is more complete, but it requires a  paid licence.
+
+Here's an example of how the same diagram is rendered using the three different engines.
+
+https://1drv.ms/p/c/FB8217AEBEC67230/ATByxr6uF4IggPt6sgAAAAA?e=lfHisq
+
+You can decide which engine use specifying
+
+```d2
+vars: {
+  d2-config: {
+    layout-engine: tala
+  }
+}
+```
 
 ![alt text](image-4.png)
 
