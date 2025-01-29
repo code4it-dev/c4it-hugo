@@ -8,11 +8,17 @@ categories:
 tags:
  - Software Architecture
 toc: true
-summary: "D2 is an open source tool to design architectural layouts using a declarative syntax. It's a textual format, which can also be stored under source control. Let's see how it works, how you can install it, and some practical usage tips."
+summary: "D2 is an open-source tool to design architectural layouts using a declarative syntax. It's a textual format, which can also be stored under source control. Let's see how it works, how you can install it, and some practical usage tips."
 images:
  - /architecture-notes/d2-diagrams/featuredImage.png
 keywords:
  - software-architecture
+ - d2
+ - mermaid
+ - diagramming
+ - system-design
+ - diagram-as-a-code
+ - tool
 ---
 
 When defining the architecture of a system, I believe in the adage that says that «A picture is worth a thousand words».
@@ -30,9 +36,9 @@ I tried several approaches: both online WYSIWYG tools like Draw.IO and DSL like 
 Then I stumbled upon D2: its rich set of elements makes it my new go-to tool for describing architectures. Let's see how it works!
 
 
-## D2 syntax
+## A quick guide to D2 syntax
 
-Just like the more famous Mermaid, using D2 you have to declare all the elements and connections as textual nodes.
+Just like the more famous Mermaid, when using D2, you have to declare all the elements and connections as textual nodes.
 
 You can generate diagrams online by using the [Playground](https://play.d2lang.com/) section available on the official website, or you can install it locally (as you will see later).
 
@@ -57,7 +63,7 @@ For each element, you can define its internal name (`service`), a label (`user: 
 
 ![A simple diagram with only two unrelated elements](image.png)
 
-Other than that, I love the fact that you can define elements to be displayed as multiple instances: this can be useful when a service has multiple instances of the same type, and you want to express it clearly without the need of manually creating multiple elements.
+Other than that, I love the fact that you can define elements to be displayed as multiple instances: this can be useful when a service has multiple instances of the same type, and you want to express it clearly without the need to manually create multiple elements.
 
 You can do it by setting the `multiple` property to `true`.
 
@@ -182,32 +188,38 @@ Notice how you can also define constraints to an element, like `{constraint: for
 
 ## How to install and run D2 locally
 
-D2 is a tool written in Go. 
+D2 is a tool written in Go.
+
 Go is not natively present in every computer, so you have to install it. You can learn how to install it from [the official page](https://go.dev/doc/install).
 
 Once Go is ready, you can install D2 in several ways. I use Windows 11, so my preferred installation approach is to use a *.msi* installer, [as described here](https://github.com/terrastruct/d2/blob/master/docs/INSTALL.md#windows).
 
-If you are on macOS, you can use Homebrew to install it, by running `brew install d2`.
+If you are on macOS, you can use Homebrew to install it by running:
 
-But, in general, you can have Go directly install D2 by running the following command:
+```shell
+brew install d2`.
+```
+
+Regardless of the Operating System, you can have Go directly install D2 by running the following command:
 
 ```shell
 go install oss.terrastruct.com/d2@latest
 ```
 
-It's even possible to install it via Docker. However, I find this approach quite complex, so I would prefer installing D2 directly.
+It's even possible to install it via Docker. However, this approach is quite complex, so I prefer installing D2 directly with the other methods I explained before.
 
 You can find more information about the several installation approaches on [the GitHub page of the project](https://github.com/terrastruct/d2/blob/master/docs/INSTALL.md).
 
 To work with D2 diagrams, you need to create a file with the `.d2` extension. That file will contain the textual representation of the diagrams, following the syntax we saw before.
 
-Once D2 is installed and the file is present in the file system (in my case, I named the file `my-diagram.d2`), you can use the console to generate the diagram locally.
+Once D2 is installed and the file is present in the file system (in my case, I named the file `my-diagram.d2`), you can use the console to generate the diagram locally - remember, I'm using Windows11, so I need to run the *exe* file:
+
 
 ```shell
 d2.exe --watch .\my-diagram.d2
 ```
 
-opens the default browser at a random port on localhost and renders the local file. You can now update it locally and see the result appear on the browser without the need to restart the application.
+Now you can open your browser, head to the localhost page displayed on the shell, and see how D2 renders the local file. Thanks to the `--watch- flag, you can update the file locally and see the result appear on the browser without the need to restart the application.
 
 When the diagram is ready, you can export it as a PNG or SVG by running
 
@@ -219,36 +231,34 @@ d2.exe .\my-diagram.d2 my-wonderful-design.png
 
 Another approach is to install the D2 extension on VS Code.
 
-![alt text](image-6.png)
+![D2 extension on Visual Studio Code](image-6.png)
 
-Thanks to this extension, you can open any D2 file and, by using the command palette, see a preview of the final result. You can also format the document to have the diagram definition tidy and well structured.
+Thanks to this extension, you can open any D2 file and, by using the command palette, see a preview of the final result. You can also format the document to have the diagram definition tidy and well-structured.
 
-![alt text](image-7.png)
+![D2 extension command palette](image-7.png)
 
-## Create D2 Diagrams on Obsidian
+## Hot to install and use D2 Diagrams on Obsidian
 
-Lastly, D2 can be easily integrated with tools like Obsidian. Among the community plugins you can find the official D2 plugin.
+Lastly, D2 can be easily integrated with tools like Obsidian. Among the community plugins, you can find the official D2 plugin.
 
-![alt text](image-8.png)
+![D2 plugin for Obsidian](image-8.png)
 
-As you can imagine, it requires to have Go installed in your machine. 
-And, if necessary, it requires you to explicitly set the path to the `bin` folder of Go. In my case, I had to set it to `C:\Users\BelloneDavide\go\bin\`.
+As you can imagine, Go is required on your machine. 
+And, if necessary, you are required to explicitly set the path to the `bin` folder of Go. In my case, I had to set it to `C:\Users\BelloneDavide\go\bin\`.
 
-![alt text](image-9.png)
+![D2 plugin settings for Obsidian](image-9.png)
 
-To insert a D2 diagram in a note generated with Obsidian you have to use `d2` as a code fence language.
+To insert a D2 diagram in a note generated with Obsidian, you have to use `d2` as a code fence language.
 
+## Practical tips for using D2
 
-## Tips for using D2
+D2 is easy to use once you have a basic understanding of how to create elements and connections. 
 
-D2 is easy to use, once you have a basic understanding on how to create elements and connections. 
+However, some tips may be useful to ease the process of creating the diagrams. Or, at least, these tips helped me write and maintain my diagrams.
 
-However, there are some tips that may be useful to ease the process of creating the diagrams.
+### Tip 1: Separate elements and connections definition
 
-
-### Separate elements and connections definition
-
-A good approach is to declare the structure of the application first, and then list all the connections between elements, unless the elements are within the same components.
+A good approach is to declare the application's structure first, and then list all the connections between elements unless the elements are within the same components and are not expected to change.
 
 ```d2
 ecommerce: E-commerce {
@@ -267,9 +277,9 @@ ecommerce: E-commerce {
 }
 ```
 
-Here, the connections between `backend` and `database` are internal to the `website` element.
+Here, the connection between `backend` and `database` is internal to the `website` element, so it makes sense to declare it directly within the `website` element.
 
-But the other connection between the job and the database is cross-element. In the long run, it may bring readability problems.
+However, the other connection between the job and the database is cross-element. In the long run, it may bring readability problems.
 
 So, you could update it like this:
 
@@ -292,12 +302,13 @@ ecommerce: E-commerce {
 + ecommerce.job -> ecommerce.website.database: update records
 ```
 
-This tip can be extremely useful when you have more than one elements with the same name belonging to different parents.
+This tip can be extremely useful when you have more than one element with the same name belonging to different parents.
 
+Needless to say, since the order of the connection declarations does not affect the final rendering, write them in an organized way that best fits your needs. In general, I prefer creating sections (using *comments* to declare the area), and grouping connections by the outbound module.
 
-### Use a specific theme
+### Pick a colour theme
 
-D2 allows you to specify a theme for the diagram. There are some predefined themes (which are a set of color palettes), each with a name and an ID.
+D2 allows you to specify a theme for the diagram. There are some predefined themes (which are a set of colour palettes), each with a name and an ID.
 
 To use a theme, you have to specify it in the `vars` element on top of the diagram:
 
@@ -310,11 +321,11 @@ vars: {
 }
 ```
 
-103 is theme named "Earth tones", using a brown-based palette that, when applied to the diagram, renders it like this.
+103 is the theme named "Earth tones", using a brown-based palette that, when applied to the diagram, renders it like this.
 
-![alt text](image-10.png)
+![Diagram using the 103 colour palette](image-10.png)
 
-However, if you have a color palette, you can use your own colors by overriding the default values:
+However, if you have a preferred colour palette, you can use your own colours by overriding the default values:
 
 ```d2
 vars: {
@@ -328,21 +339,24 @@ vars: {
 }
 ```
 
-![alt text](image-11.png)
+![Diagram with a colour overridden](image-11.png)
 
 You can read more about themes and customizations [here](https://d2lang.com/tour/themes).
 
-## Choose the right layout engine
+What is that `B4` key overridden in the previous example? Unfortunately, I don't know: you must try all the variables to understand how the diagram is rendered.
 
-You can choose one of the three supported layout engine to render the elements in a different way (more info [here](https://d2lang.com/tour/layouts)).
+## Tip 3: Choose the right layout engine
 
-DAGRE and ELK are open source, but quite basic. TALA is more complete, but it requires a  paid licence.
+You can choose one of the three supported layout engines to render the elements in a different way (more info [here](https://d2lang.com/tour/layouts)).
+
+DAGRE and ELK are open source, but quite basic. TALA is more sophisticated, but it requires a paid licence.
 
 Here's an example of how the same diagram is rendered using the three different engines.
 
+**TODO: add diagram here!!**
 https://1drv.ms/p/c/FB8217AEBEC67230/ATByxr6uF4IggPt6sgAAAAA?e=lfHisq
 
-You can decide which engine use specifying
+You can decide which engine to use by declaring it in the `layout-engine` element:
 
 ```d2
 vars: {
@@ -354,18 +368,18 @@ vars: {
 
 Choosing the right layout engine can be beneficial because sometimes some elements are not rendered correctly: here's a weird rendering with the DAGRE engine. 
 
-![alt text](image-4.png)
+![DAGRE engine with a weird rendering](image-4.png)
 
 ## D2 vs Mermaid: a comparison
 
-D2 and Mermaid are similar, but have some key differences.
+D2 and Mermaid are similar but have some key differences.
 
 They both are diagram-as-a-code tools, meaning that the definition of a diagram is expressed as a text file, thus making it available under source control.
 
 Mermaid is already supported by many tools, like Azure DevOps wikis, GitHub pages, and so on.
 On the contrary, D2 must be installed (along with the Go language).
 
-Mermaid is quite a "close" system: even if it allows you do define some basic styles, it's not that flexible.
+Mermaid is quite a "close" system: even if it allows you to define some basic styles, it's not that flexible.
 
 On the contrary, D2 allows you to choose a [theme](https://d2lang.com/tour/themes) for the whole diagram, as well as choosing different layout engines.
 Also, D2 has some functionalities that are (currently) missing on Mermaid:
@@ -375,15 +389,37 @@ Also, D2 has some functionalities that are (currently) missing on Mermaid:
 - adding [markdown descriptions to the diagram](https://d2lang.com/tour/text/#standalone-text-is-markdown);
 - using [variable substitutions](https://d2lang.com/tour/vars) to avoid repeating the same names over and over again.
 
-Mermaid, on the contrary, allows to define more types of diagrams: State Diagrams, Gantt, Mindmaps, and so on. Also, as we saw, it's already supported in many of platforms.
+Mermaid, on the contrary, allows us to define more types of diagrams: State Diagrams, Gantt, Mindmaps, and so on. Also, as we saw, it's already supported on many platforms.
 
-So, my (current) choice is: use D2 for architectural diagrams, use Mermaid for everything else. I haven't tried D2 for Sequence Diagrams yet, so I won't express an opinion on that.
+So, my (current) choice is: use D2 for architectural diagrams, and use Mermaid for everything else. 
+
+I haven't tried D2 for Sequence Diagrams yet, so I won't express an opinion on that.
 
 ## Further readings
 
+D2 is available online with a playground you can use to try things out in a sandboxed environment.
+
+🔗 [D2 Playground](https://play.d2lang.com/)
+
+All the documentation can be found on GitHub or on the official website:
+
+🔗 [D2 documentation](https://d2lang.com/tour/intro/)
+
+And, if you want, you can use icons to create better diagrams: D2 exposes a set of SVG icons that can be easily integrated into your diagrams. You can find them here:
+
+🔗 [D2 predefined icons](https://icons.terrastruct.com/)
+
 _This article first appeared on [Code4IT 🐧](https://www.code4it.dev/)_
 
-https://play.d2lang.com/
+This article is all about how to create diagrams, but not about why (and how to structure them).
+
+A good way to document your architectural choices is to define ADRs (Architecture Decision Records), as explained here:
+
+🔗 [Tracking decision with Architecture Decision Records (ADRs) | Code4IT](https://www.code4it.dev/architecture-notes/architecture-decision-records/)
+
+And, of course, just the architectural diagram is not enough: you should also describe the dependencies, the constraints, the deployment strategies, and so on. Arc42 is a template that can guide you to proper system documentation:
+
+🔗 [Arc42 Documentation, for a comprehensive description of your project | Code4IT](https://www.code4it.dev/architecture-notes/arc42-documentation/)
 
 
 ## Wrapping up
