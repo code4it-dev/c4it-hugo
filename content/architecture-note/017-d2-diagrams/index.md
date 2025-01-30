@@ -1,24 +1,26 @@
 ---
-title: "D2: like Mermaid, but better. Syntax, installation, and practical usage tips."
+title: "D2: like Mermaid, but better. Syntax, installation, and practical usage tips"
 date: 2025-01-20
 url: /architecture-notes/d2-diagrams
 draft: false
 categories:
- - Code and Architecture Notes
+ - Code and Architecture Notes
 tags:
- - Software Architecture
+ - Software Architecture
+ - Tools
+ - D2
 toc: true
 summary: "D2 is an open-source tool to design architectural layouts using a declarative syntax. It's a textual format, which can also be stored under source control. Let's see how it works, how you can install it, and some practical usage tips."
 images:
- - /architecture-notes/d2-diagrams/featuredImage.png
+ - /architecture-notes/d2-diagrams/featuredImage.png
 keywords:
- - software-architecture
- - d2
- - mermaid
- - diagramming
- - system-design
- - diagram-as-a-code
- - tool
+ - software-architecture
+ - d2
+ - mermaid
+ - diagramming
+ - system-design
+ - diagram-as-a-code
+ - tool
 ---
 
 When defining the architecture of a system, I believe in the adage that says that «A picture is worth a thousand words».
@@ -27,14 +29,13 @@ Proper diagramming helps in understanding how the architecture is structured, th
 
 A clear architectural diagram can also be useful for planning. Once you have a general idea of the components, you can structure the planning according to the module dependencies and the priorities.
 
-A lack of diagramming leads to a "just words" definition: how many times have you heard people talk about modules that do not exist or do not work as they were imagining? 
+A lack of diagramming leads to a "just words" definition: how many times have you heard people talk about modules that do not exist or do not work as they were imagining?
 
 The whole team can benefit from having a common language: a clear diagram brings clear thoughts, helping all the stakeholders (developers, architects, managers) understand the parts that compose a system.
 
 I tried several approaches: both online WYSIWYG tools like Draw.IO and DSL like Structurizr and Mermaid. For different reasons, I wasn't happy with any of them.
 
 Then I stumbled upon D2: its rich set of elements makes it my new go-to tool for describing architectures. Let's see how it works!
-
 
 ## A quick guide to D2 syntax
 
@@ -54,14 +55,13 @@ service
 user: Application User
 
 job: {
-  shape: hexagon
+  shape: hexagon
 }
 ```
 
 For each element, you can define its internal name (`service`), a label (`user: Application User`) and a shape (`shape: hexagon`).
 
-
-![A simple diagram with only two unrelated elements](image.png)
+![A simple diagram with only two unrelated elements](01-unrelated-elements.png)
 
 Other than that, I love the fact that you can define elements to be displayed as multiple instances: this can be useful when a service has multiple instances of the same type, and you want to express it clearly without the need to manually create multiple elements.
 
@@ -69,16 +69,16 @@ You can do it by setting the `multiple` property to `true`.
 
 ```d2
 apiGtw: API Gateway {
-  shape: cloud
+  shape: cloud
 }
 be: BackEnd {
-  style.multiple: true
+  style.multiple: true
 }
 
 apiGtw -> be
 ```
 
-![Simple diagram with multiple backends](image-3.png)
+![Simple diagram with multiple backends](02-elements-as-multiple-instances.png)
 
 ### Grouping: nesting elements hierarchically
 
@@ -86,28 +86,27 @@ You may want to group elements. You can do that by using a hierarchical structur
 
 In the following example, the main container represents my e-commerce application, composed of a website and a background job. The website is composed of a frontend, a backend, and a database.
 
-
 ```d2
 ecommerce: E-commerce {
-  website: User Website {
-    frontend
-    backend
-    database: DB {
-      shape: cylinder
-    }
-  }
+  website: User Website {
+    frontend
+    backend
+    database: DB {
+      shape: cylinder
+    }
+  }
 
-  job: {
-    shape: hexagon
-  }
+  job: {
+    shape: hexagon
+  }
 }
 ```
 
 As you can see from the diagram definition, elements can be nested in a hierarchical structure using the `{}` symbols. Of course, you can still define styles and labels to nested elements.
 
-![Diagram with nested elements](image-1.png)
+![Diagram with nested elements](03-nested-unrelated-elements.png)
 
-### Connections
+### Connections: making elements communicate
 
 An architectural diagram is helpful only if it can express connections between elements.
 
@@ -115,25 +114,25 @@ To connect two elements, you must use the `--`, the `->` or the `<-` connector. 
 
 ```d2
 ecommerce: E-commerce {
-    website: User Website {
-        frontend
-    backend
-    database: DB {
-        shape: cylinder
-    }
-    frontend -> backend
-    backend -> database: retrieve records {
-        style.stroke: red
-    }
-  }
+    website: User Website {
+        frontend
+    backend
+    database: DB {
+        shape: cylinder
+    }
+    frontend -> backend
+    backend -> database: retrieve records {
+        style.stroke: red
+    }
+  }
 
-  job: {
-      shape: hexagon
-  }
-  job -> website.database: update records
+  job: {
+      shape: hexagon
+  }
+  job -> website.database: update records
 }
 ```
-      
+
 The previous example contains some interesting points.
 
 - Elements within the same container can be referenced directly using their ID: `frontend -> backend`.
@@ -141,16 +140,15 @@ The previous example contains some interesting points.
 - You can apply styles to a connection, like choosing the arrow colour with `style.stroke: red`.
 - You can create connections between elements from different containers: `job -> website.database`.
 
-
-![Connections between elements from different containers](image-2.png)
+![Connections between elements from different containers](04-connections-of-elements-from-separate-containers.png)
 
 When referencing items from different containers, you must always include the container ID: `job -> website.database` works, but `job -> database` doesn't because `database` is not defined (so it gets created from scratch).
 
-### SQL Tables
+### SQL Tables: represent the table schema
 
 An interesting part of D2 diagrams is the possibility of adding the description of SQL tables.
 
-Obviously, the structure cannot be validated: the actual syntax depends on the database vendor. 
+Obviously, the structure cannot be validated: the actual syntax depends on the database vendor.
 
 However, having the table schema defined in the diagram can be helpful in reasoning around the dependencies needed to complete a development.
 
@@ -158,31 +156,31 @@ However, having the table schema defined in the diagram can be helpful in reason
 serv: Products Service
 
 db: Database Schema {
-  direction: right
-  shape: cylinder
-  userTable: dbo.user {
-    shape: sql_table
-    Id: int {constraint: primary_key}
-    FirstName: text
-    LastName: text
-    Birthday: datetime2
-  }
+  direction: right
+  shape: cylinder
+  userTable: dbo.user {
+    shape: sql_table
+    Id: int {constraint: primary_key}
+    FirstName: text
+    LastName: text
+    Birthday: datetime2
+  }
 
-  productsTable: dbo.products {
-    shape: sql_table
-    Id: int {constraint: primary_key}
-    Owner: int {constraint: foreign_key}
-    Description: text
-  }
+  productsTable: dbo.products {
+    shape: sql_table
+    Id: int {constraint: primary_key}
+    Owner: int {constraint: foreign_key}
+    Description: text
+  }
 
-  productsTable.Owner -> userTable.Id
+  productsTable.Owner -> userTable.Id
 }
 
 serv -> db.productsTable: Retrieve products by user id
 
 ```
 
-![Diagram with database tables](image-5.png)
+![Diagram with database tables](05-database-schema-definition.png)
 
 Notice how you can also define constraints to an element, like `{constraint: foreign_key}`, and specify the references from one table to another.
 
@@ -210,10 +208,11 @@ It's even possible to install it via Docker. However, this approach is quite com
 
 You can find more information about the several installation approaches on [the GitHub page of the project](https://github.com/terrastruct/d2/blob/master/docs/INSTALL.md).
 
+### Use D2 via command line
+
 To work with D2 diagrams, you need to create a file with the `.d2` extension. That file will contain the textual representation of the diagrams, following the syntax we saw before.
 
 Once D2 is installed and the file is present in the file system (in my case, I named the file `my-diagram.d2`), you can use the console to generate the diagram locally - remember, I'm using Windows11, so I need to run the *exe* file:
-
 
 ```shell
 d2.exe --watch .\my-diagram.d2
@@ -227,53 +226,53 @@ When the diagram is ready, you can export it as a PNG or SVG by running
 d2.exe .\my-diagram.d2 my-wonderful-design.png
 ```
 
-## Create D2 Diagrams on Visual Studio Code
+### Create D2 Diagrams on Visual Studio Code
 
 Another approach is to install the D2 extension on VS Code.
 
-![D2 extension on Visual Studio Code](image-6.png)
+![D2 extension on Visual Studio Code](06-d2-plugin-vscode.png)
 
 Thanks to this extension, you can open any D2 file and, by using the command palette, see a preview of the final result. You can also format the document to have the diagram definition tidy and well-structured.
 
-![D2 extension command palette](image-7.png)
+![D2 extension command palette](07-d2-command-palette-vscode.png)
 
-## Hot to install and use D2 Diagrams on Obsidian
+### How to install and use D2 Diagrams on Obsidian
 
 Lastly, D2 can be easily integrated with tools like Obsidian. Among the community plugins, you can find the official D2 plugin.
 
-![D2 plugin for Obsidian](image-8.png)
+![D2 plugin for Obsidian](08-d2-plugin-obsidian.png)
 
-As you can imagine, Go is required on your machine. 
+As you can imagine, Go is required on your machine.
 And, if necessary, you are required to explicitly set the path to the `bin` folder of Go. In my case, I had to set it to `C:\Users\BelloneDavide\go\bin\`.
 
-![D2 plugin settings for Obsidian](image-9.png)
+![D2 plugin settings for Obsidian](09-d2-plugin-obsidian-settings.png)
 
 To insert a D2 diagram in a note generated with Obsidian, you have to use `d2` as a code fence language.
 
 ## Practical tips for using D2
 
-D2 is easy to use once you have a basic understanding of how to create elements and connections. 
+D2 is easy to use once you have a basic understanding of how to create elements and connections.
 
 However, some tips may be useful to ease the process of creating the diagrams. Or, at least, these tips helped me write and maintain my diagrams.
 
-### Tip 1: Separate elements and connections definition
+### Separate elements and connections definition
 
 A good approach is to declare the application's structure first, and then list all the connections between elements unless the elements are within the same components and are not expected to change.
 
 ```d2
 ecommerce: E-commerce {
-  website: User Website {
-    backend
-    database: DB {
-      shape: cylinder
-    }
+  website: User Website {
+    backend
+    database: DB {
+      shape: cylinder
+    }
 
-    backend -> database: retrieve records {
-      style.stroke: red
-    }
-  }
+    backend -> database: retrieve records {
+      style.stroke: red
+    }
+  }
 
-  job -> website.database: update records
+  job -> website.database: update records
 }
 ```
 
@@ -306,46 +305,45 @@ This tip can be extremely useful when you have more than one element with the sa
 
 Needless to say, since the order of the connection declarations does not affect the final rendering, write them in an organized way that best fits your needs. In general, I prefer creating sections (using *comments* to declare the area), and grouping connections by the outbound module.
 
-### Pick a colour theme
+### Pick a colour theme (and customize it, if you want!)
 
 D2 allows you to specify a theme for the diagram. There are some predefined themes (which are a set of colour palettes), each with a name and an ID.
 
 To use a theme, you have to specify it in the `vars` element on top of the diagram:
 
-
 ```d2
 vars: {
-  d2-config: {
-    theme-id: 103
-  }
+  d2-config: {
+    theme-id: 103
+  }
 }
 ```
 
 103 is the theme named "Earth tones", using a brown-based palette that, when applied to the diagram, renders it like this.
 
-![Diagram using the 103 colour palette](image-10.png)
+![Diagram using the 103 colour palette](10-diagram-earth-tones.png)
 
 However, if you have a preferred colour palette, you can use your own colours by overriding the default values:
 
 ```d2
 vars: {
-  d2-config: {
-    # Terminal theme code
-    theme-id: 103
-    theme-overrides: {
-      B4: "#C5E1A5"
-    }
-  }
+  d2-config: {
+    # Terminal theme code
+    theme-id: 103
+    theme-overrides: {
+      B4: "#C5E1A5"
+    }
+  }
 }
 ```
 
-![Diagram with a colour overridden](image-11.png)
+![Diagram with a colour overridden](11-diagram-earth-tones-overrides.png)
 
 You can read more about themes and customizations [here](https://d2lang.com/tour/themes).
 
 What is that `B4` key overridden in the previous example? Unfortunately, I don't know: you must try all the variables to understand how the diagram is rendered.
 
-## Tip 3: Choose the right layout engine
+### Choose the right layout engine
 
 You can choose one of the three supported layout engines to render the elements in a different way (more info [here](https://d2lang.com/tour/layouts)).
 
@@ -354,21 +352,50 @@ DAGRE and ELK are open source, but quite basic. TALA is more sophisticated, but 
 Here's an example of how the same diagram is rendered using the three different engines.
 
 **TODO: add diagram here!!**
-https://1drv.ms/p/c/FB8217AEBEC67230/ATByxr6uF4IggPt6sgAAAAA?e=lfHisq
+<https://1drv.ms/p/c/FB8217AEBEC67230/ATByxr6uF4IggPt6sgAAAAA?e=lfHisq>
 
 You can decide which engine to use by declaring it in the `layout-engine` element:
 
 ```d2
 vars: {
-  d2-config: {
-    layout-engine: tala
-  }
+  d2-config: {
+    layout-engine: tala
+  }
 }
 ```
 
-Choosing the right layout engine can be beneficial because sometimes some elements are not rendered correctly: here's a weird rendering with the DAGRE engine. 
+Choosing the right layout engine can be beneficial because sometimes some elements are not rendered correctly: here's a weird rendering with the DAGRE engine.
 
-![DAGRE engine with a weird rendering](image-4.png)
+![DAGRE engine with a weird rendering](12-dagre-bad-rendering.png)
+
+### Use variables to simplify future changes
+
+D2 allows you to define variables in a single place and have the same value repeated everywhere it's needed.
+
+So, for example, instead of having
+
+```d2
+mySystem: {
+  reader: Magazine Reader
+  writer: Magazine Writer
+}
+```
+
+With the word "Magazine" repeated, you can move it to a variable, so that it can change in the future:
+
+
+```d2
+vars: {
+  entityName: Magazine
+}
+
+mySystem: {
+  reader: ${entityName} Reader
+  writer: ${entityName} Writer
+}
+```
+
+If in the future you'll have to handle not only Magazines but also other media types, you can simply replace the value of `entityName` in one place and have it updated all over the diagram.
 
 ## D2 vs Mermaid: a comparison
 
@@ -391,7 +418,7 @@ Also, D2 has some functionalities that are (currently) missing on Mermaid:
 
 Mermaid, on the contrary, allows us to define more types of diagrams: State Diagrams, Gantt, Mindmaps, and so on. Also, as we saw, it's already supported on many platforms.
 
-So, my (current) choice is: use D2 for architectural diagrams, and use Mermaid for everything else. 
+So, my (current) choice is: use D2 for architectural diagrams, and use Mermaid for everything else.
 
 I haven't tried D2 for Sequence Diagrams yet, so I won't express an opinion on that.
 
@@ -409,9 +436,9 @@ And, if you want, you can use icons to create better diagrams: D2 exposes a set 
 
 🔗 [D2 predefined icons](https://icons.terrastruct.com/)
 
-_This article first appeared on [Code4IT 🐧](https://www.code4it.dev/)_
+*This article first appeared on [Code4IT 🐧](https://www.code4it.dev/)*
 
-This article is all about how to create diagrams, but not about why (and how to structure them).
+Ok, but diagrams have to live in a context. How can you create useful and maintainable documentation for your future self?
 
 A good way to document your architectural choices is to define ADRs (Architecture Decision Records), as explained here:
 
@@ -421,27 +448,16 @@ And, of course, just the architectural diagram is not enough: you should also de
 
 🔗 [Arc42 Documentation, for a comprehensive description of your project | Code4IT](https://www.code4it.dev/architecture-notes/arc42-documentation/)
 
-
 ## Wrapping up
 
-
-I hope you enjoyed this article! Let's keep in touch on [LinkedIn](https://www.linkedin.com/in/BelloneDavide/), [Twitter](https://twitter.com/BelloneDavide) or [BlueSky](https://bsky.app/profile/bellonedavide.bsky.social)! 🤜🤛  
+I hope you enjoyed this article! Let's keep in touch on [LinkedIn](https://www.linkedin.com/in/BelloneDavide/), [Twitter](https://twitter.com/BelloneDavide) or [BlueSky](https://bsky.app/profile/bellonedavide.bsky.social)! 🤜🤛  
 
 Happy coding!
 
 🐧
 
-- [ ] Grammatica
-- [ ] Titoli+
-- [ ] Frontmatter
-- [ ] Immagine di copertina
-- [ ] Fai resize della immagine di copertina
-- [ ] Metti la giusta OgTitle
 - [ ] Bold/Italics
-- [ ] Nome cartella e slug devono combaciare
-- [ ] Rinomina immagini
 - [ ] Trim corretto per bordi delle immagini
 - [ ] Alt Text per immagini
-- [ ] Rimuovi secrets dalle immagini 
 - [ ] Pulizia formattazione
-- [ ] Add wt.mc_id=DT-MVP-5005077 to links
+- [ ] Metti schema da OneDrive
