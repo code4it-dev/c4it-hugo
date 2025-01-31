@@ -1,6 +1,6 @@
 ---
 title: "D2: like Mermaid, but better. Syntax, installation, and practical usage tips"
-date: 2025-01-20
+date: 2025-02-04
 url: /architecture-notes/d2-diagrams
 draft: false
 categories:
@@ -27,11 +27,11 @@ When defining the architecture of a system, I believe in the adage that says tha
 
 Proper diagramming helps in understanding how the architecture is structured, the dependencies between components, how the different components communicate, and their responsibilities.
 
-A clear architectural diagram can also be useful for planning. Once you have a general idea of the components, you can structure the planning according to the module dependencies and the priorities.
+**A clear architectural diagram can also be useful for planning**. Once you have a general idea of the components, you can structure the planning according to the module dependencies and the priorities.
 
 A lack of diagramming leads to a "just words" definition: how many times have you heard people talk about modules that do not exist or do not work as they were imagining?
 
-The whole team can benefit from having a common language: a clear diagram brings clear thoughts, helping all the stakeholders (developers, architects, managers) understand the parts that compose a system.
+The whole team can benefit from having a common language: **a clear diagram brings clear thoughts**, helping all the stakeholders (developers, architects, managers) understand the parts that compose a system.
 
 I tried several approaches: both online WYSIWYG tools like Draw.IO and DSL like Structurizr and Mermaid. For different reasons, I wasn't happy with any of them.
 
@@ -63,7 +63,7 @@ For each element, you can define its internal name (`service`), a label (`user: 
 
 ![A simple diagram with only two unrelated elements](01-unrelated-elements.png)
 
-Other than that, I love the fact that you can define elements to be displayed as multiple instances: this can be useful when a service has multiple instances of the same type, and you want to express it clearly without the need to manually create multiple elements.
+Other than that, I love the fact that **you can define elements to be displayed as multiple instances**: this can be useful when a service has multiple instances of the same type, and you want to express it clearly without the need to manually create multiple elements.
 
 You can do it by setting the `multiple` property to `true`.
 
@@ -110,7 +110,7 @@ As you can see from the diagram definition, elements can be nested in a hierarch
 
 An architectural diagram is helpful only if it can express connections between elements.
 
-To connect two elements, you must use the `--`, the `->` or the `<-` connector. You have to link their IDs, not their labels.
+To connect two elements, you must use the `--`, the `->` or the `<-` connector. **You have to link their IDs, not their labels**.
 
 ```d2
 ecommerce: E-commerce {
@@ -148,7 +148,7 @@ When referencing items from different containers, you must always include the co
 
 An interesting part of D2 diagrams is the possibility of adding the description of SQL tables.
 
-Obviously, the structure cannot be validated: the actual syntax depends on the database vendor.
+Obviously, **the structure cannot be validated**: the actual syntax depends on the database vendor.
 
 However, having the table schema defined in the diagram can be helpful in reasoning around the dependencies needed to complete a development.
 
@@ -210,7 +210,7 @@ You can find more information about the several installation approaches on [the 
 
 ### Use D2 via command line
 
-To work with D2 diagrams, you need to create a file with the `.d2` extension. That file will contain the textual representation of the diagrams, following the syntax we saw before.
+To work with D2 diagrams, you need to **create a file with the `.d2` extension**. That file will contain the textual representation of the diagrams, following the syntax we saw before.
 
 Once D2 is installed and the file is present in the file system (in my case, I named the file `my-diagram.d2`), you can use the console to generate the diagram locally - remember, I'm using Windows11, so I need to run the *exe* file:
 
@@ -218,7 +218,7 @@ Once D2 is installed and the file is present in the file system (in my case, I n
 d2.exe --watch .\my-diagram.d2
 ```
 
-Now you can open your browser, head to the localhost page displayed on the shell, and see how D2 renders the local file. Thanks to the `--watch- flag, you can update the file locally and see the result appear on the browser without the need to restart the application.
+Now you can open your browser, head to the localhost page displayed on the shell, and see how D2 renders the local file. Thanks to the `--watch` flag, you can update the file locally and see the result appear on the browser without the need to restart the application.
 
 When the diagram is ready, you can export it as a PNG or SVG by running
 
@@ -243,7 +243,7 @@ Lastly, D2 can be easily integrated with tools like Obsidian. Among the communit
 ![D2 plugin for Obsidian](08-d2-plugin-obsidian.png)
 
 As you can imagine, Go is required on your machine.
-And, if necessary, you are required to explicitly set the path to the `bin` folder of Go. In my case, I had to set it to `C:\Users\BelloneDavide\go\bin\`.
+And, if necessary, you are required to **explicitly set the path to the `bin` folder of Go**. In my case, I had to set it to `C:\Users\BelloneDavide\go\bin\`.
 
 ![D2 plugin settings for Obsidian](09-d2-plugin-obsidian-settings.png)
 
@@ -341,7 +341,7 @@ vars: {
 
 You can read more about themes and customizations [here](https://d2lang.com/tour/themes).
 
-What is that `B4` key overridden in the previous example? Unfortunately, I don't know: you must try all the variables to understand how the diagram is rendered.
+What is that `B4` key overridden in the previous example? **Unfortunately, I don't know**: you must try all the variables to understand how the diagram is rendered.
 
 ### Choose the right layout engine
 
@@ -351,8 +351,8 @@ DAGRE and ELK are open source, but quite basic. TALA is more sophisticated, but 
 
 Here's an example of how the same diagram is rendered using the three different engines.
 
-**TODO: add diagram here!!**
-<https://1drv.ms/p/c/FB8217AEBEC67230/ATByxr6uF4IggPt6sgAAAAA?e=lfHisq>
+ 
+![A comparison betweel DAGRE, ELK and TALA layout engines](013-layout-engines-comparison.jpg)
 
 You can decide which engine to use by declaring it in the `layout-engine` element:
 
@@ -455,9 +455,3 @@ I hope you enjoyed this article! Let's keep in touch on [LinkedIn](https://www.l
 Happy coding!
 
 🐧
-
-- [ ] Bold/Italics
-- [ ] Trim corretto per bordi delle immagini
-- [ ] Alt Text per immagini
-- [ ] Pulizia formattazione
-- [ ] Metti schema da OneDrive
