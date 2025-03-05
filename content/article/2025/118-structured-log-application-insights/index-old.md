@@ -31,11 +31,11 @@ Once you have an instance ready, all you need to do is to get the value of the c
 
 You can retrieve it in two ways: by looking at the Connection String property in the resource overview panel:
 
-![alt text](image.png)
+![alt text](azure-application-insights-overview.png)
 
 Or, alternatively, by navigating to the Configure > Properties page, and locating the Connection String field.
 
-![alt text](image-1.png)
+![alt text](azure-application-insights-connection-properties.png)
 
 Either ways are fine.
 
@@ -107,7 +107,7 @@ You first have to run the application - duh! - and what for a 2 or 3 minutes to 
 
 Then, you can access the logs panel and run access the logs stored in the `traces` table.
 
-![alt text](image-2.png)
+![alt text](log-levels-on-application-insights.png)
 
 As you can see, the messages appear in the query result.
 

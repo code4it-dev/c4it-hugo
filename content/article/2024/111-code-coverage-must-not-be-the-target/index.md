@@ -7,7 +7,7 @@ categories:
   - Blog
 tags:
   - CSharp
-  - Test
+  - Tests
 toc: true
 summary: "Average teams aim at 100% Code Coverage just to reach the number. Great teams don't. Why?"
 images:
