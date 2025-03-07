@@ -4,20 +4,20 @@ date: 2025-03-04
 url: /blog/azure-application-insights-ilogger-aspnetcore
 draft: false
 categories:
- - Blog
+  - Blog
 tags:
- - CSharp
- - Logging
+  - CSharp
+  - Logging
 toc: true
 summary: "Application Insights is a great tool for handling high volumes of logs. How can you configure an ASP.NET application to send logs to Azure Application Insights?"
 images:
- - /blog/azure-application-insights-ilogger-aspnetcore/featuredImage.png
+  - /blog/azure-application-insights-ilogger-aspnetcore/featuredImage.png
 keywords:
- - dotnet
- - csharp
- - logging
- - ilogger
- - application-insights
+  - dotnet
+  - csharp
+  - logging
+  - ilogger
+  - application-insights
 ---
 
 Logging is crucial for any application. However, generating logs is not enough: you must store them somewhere to access them.
@@ -30,18 +30,20 @@ For the sake of this article, I'm working on an API project with HTTP Controller
 
 ## How to retrieve the Azure Application Insights connection string
 
-Azure Application Insights can be accessed via any browser by using the Azure Portal. 
+Azure Application Insights can be accessed via any browser by using the Azure Portal.
 
 Once you have an instance ready, you can simply get the value of the connection string for that resource.
 
-You can retrieve it in two ways: by looking at the Connection String property in the resource overview panel:
+You can retrieve it in two ways.
+
+You can get the connection string by looking at the Connection String property in the *resource overview panel*:
 
 ![Azure Application Insights overview panel](azure-application-insights-overview.png)
 
-The alternative is to navigate to the _Configure > Properties_ page and locate the Connection String field.
+The alternative is to navigate to the *Configure > Properties* page and locate the Connection String field.
 
 ![Azure Application Insights connection string panel](azure-application-insights-connection-properties.png)
- 
+
 ## How to add Azure Application Insights to an ASP.NET Core application
 
 Now that you have the connection string, you can place it in the configuration file or, in general, store it in a place that is accessible from your application.
@@ -49,7 +51,6 @@ Now that you have the connection string, you can place it in the configuration f
 To configure ASP.NET Core to use Application Insights, you must first install the `Microsoft.Extensions.Logging.ApplicationInsights` NuGet package.
 
 Now you can add a new configuration to the Program class (or wherever you configure your services and the ASP.NET core pipeline):
-
 
 ```cs
 builder.Logging.AddApplicationInsights(
@@ -104,9 +105,9 @@ public async Task<IActionResult> Get()
 }
 ```
 
-These are just plain messages. Let's search for them in Application Insights! 
+These are just plain messages. Let's search for them in Application Insights!
 
-You first have to run the application - duh! - and wait for a couple of minutes for the logs to be ready on Azure. So, remember not to close the application immediately: you have to give it a few seconds to send the log messages to Application Insights.
+You first have to run the application - duh! - and **wait for a couple of minutes for the logs to be ready on Azure**. So, remember not to close the application immediately: you have to give it a few seconds to send the log messages to Application Insights.
 
 Then, you can open the logs panel and access the logs stored in the `traces` table.
 
@@ -114,18 +115,18 @@ Then, you can open the logs panel and access the logs stored in the `traces` tab
 
 As you can see, the messages appear in the query result.
 
-There are three important things to notice: 
+There are three important things to notice:
 
-- in .NET, the log level is called "Log Level", while on Application Insights it's called "severity level"; 
-- the log levels lower than Information are ignored by default (in fact, you cannot see them in the query result);
+- in .NET, the log level is called "Log Level", while on Application Insights it's called "severity level";
+- **the log levels lower than Information are ignored by default** (in fact, you cannot see them in the query result);
 - the Log Levels are exposed as numbers in the severityLevel column: the higher the value, the higher the log level.
- 
+
 So, if you want to update the query to show only the log messages that are at least Warnings, you can do something like this:
 
 ```kql
 traces
 | where severityLevel >= 2
-| order  by timestamp desc 
+| order  by timestamp desc
 | project timestamp, message, severityLevel
 ```
 
@@ -137,7 +138,7 @@ In the previous example, we logged errors like this:
 _logger.LogError("An error log");
 ```
 
-Fortunately, `ILogger` exposes an overload that accepts an exception in input and logs all the details.
+Fortunately, **`ILogger` exposes an overload that accepts an exception in input** and logs all the details.
 
 Let's try it by throwing an exception (I chose `AbandonedMutexException` because it's totally nonsense in this simple context, so it's easy to spot).
 
@@ -164,14 +165,13 @@ private void SomethingWithException(int number)
 
 So, when calling it, we expect to see 4 log entries, one of which contains the details of the `AbandonedMutexException` exception.
 
-
 ![The Exception message in Application Insights](application-insights-no-exception.png)
 
 Hey, where is the exception message??
 
 It turns out that `ILogger`, when creating log entries like `_logger.LogError("An error log");`, generates objects of type `TraceTelemetry`. However, the overload that accepts as a first parameter an exception (`_logger.LogError(ex, "Unable to complete the operation");`) is internally handled as an `ExceptionTelemetry` object. Since internally, it's a different type of Telemetry object, and it gets ignored by default.
 
-To enable logging exceptions, you have to update the way you add Application Insights to your application by setting the `TrackExceptionsAsExceptionTelemetry` property to `false`:
+To enable logging exceptions, you have to update the way you add Application Insights to your application by **setting the `TrackExceptionsAsExceptionTelemetry` property to `false`**:
 
 ```cs
 builder.Logging.AddApplicationInsights(
@@ -180,7 +180,7 @@ configureTelemetryConfiguration: (config) =>
  configureApplicationInsightsLoggerOptions: (options) => options.TrackExceptionsAsExceptionTelemetry = false);
 ```
 
-This way, ExceptionsTelemetry objects are treated as TraceTelemetry logs, making them available in Application Insights logs:
+This way, *ExceptionsTelemetry* objects are treated as *TraceTelemetry* logs, making them available in Application Insights logs:
 
 ![The Exception log appears in Application Insights](exception-log-in-application-insights.png)
 
@@ -189,7 +189,6 @@ Then, to access the details of the exception like the message and the stack trac
 ![Details of the Exception log](log-exception-details.png)
 
 Even though this change is necessary to have exception logging work, it is [barely described in the official documentation](https://learn.microsoft.com/en-us/azure/azure-monitor/app/ilogger#what-application-insights-telemetry-type-is-produced-from-ilogger-logs-where-can-i-see-ilogger-logs-in-application-insights?wt.mc_id=DT-MVP-5005077).
-
 
 ## Further readings
 
@@ -209,7 +208,6 @@ You can read the official documentation here (even though I find it not much com
 
 🔗 [Application Insights logging with .NET | Microsoft docs](https://learn.microsoft.com/en-us/azure/azure-monitor/app/ilogger#aspnet-core-applications?wt.mc_id=DT-MVP-5005077)
 
-
 ## Wrapping up
 
 This article taught us how to set up Azure Application Insights in an ASP.NET application.
@@ -221,13 +219,5 @@ Happy coding!
 
 🐧
 
-
-- [ ] Titoli
 - [ ] Immagine di copertina
 - [ ] Fai resize della immagine di copertina
-- [ ] Metti la giusta OgTitle
-- [ ] Bold/Italics
-- [ ] Nome cartella e slug devono combaciare
-- [ ] Trim corretto per bordi delle immagini
-- [ ] Rimuovi secrets dalle immagini
-- [ ] Pulizia formattazione

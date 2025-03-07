@@ -4,15 +4,15 @@ date: 2025-02-04T14:46:17+01:00
 url: /blog/post-slug
 draft: true
 categories:
- - Blog
+  - Blog
 tags:
- - CSharp
+  - CSharp
 toc: true
 summary: "A summary"
 images:
- - /blog/post-slug/featuredImage.png
+  - /blog/post-slug/featuredImage.png
 keywords:
- - dotnet
+  - dotnet
 ---
 
 Logging is crucial for any application. However, generating logs is not enough: you also have to store them somewhere in order to access them.
@@ -25,7 +25,7 @@ For the sake of this article, I'm working on an API project with HTTP Controller
 
 ## How to retrieve the Azure Application Insights connection string
 
-Azure Application Insights can be accessed via browser by using the Azure Portal. 
+Azure Application Insights can be accessed via browser by using the Azure Portal.
 
 Once you have an instance ready, all you need to do is to get the value of the connection string to that resource.
 
@@ -46,7 +46,6 @@ Now that you have the connection string, you can place it in the configuration f
 To configure ASP.NET Core to use Application Insights, you first have to install the `Microsoft.Extensions.Logging.ApplicationInsights` NuGet package.
 
 Now you can add a new configuration to the Program class (or wherever you configure your services and the ASP.NET core pipeline):
-
 
 ```cs
 builder.Logging.AddApplicationInsights(
@@ -101,7 +100,7 @@ public async Task<IActionResult> Get()
 }
 ```
 
-These are just plain messages. Let's search for them in Application Insights! 
+These are just plain messages. Let's search for them in Application Insights!
 
 You first have to run the application - duh! - and what for a 2 or 3 minutes to have the logs ready on Azure.
 
@@ -111,13 +110,12 @@ Then, you can access the logs panel and run access the logs stored in the `trace
 
 As you can see, the messages appear in the query result.
 
-There are two important things to notice: 
+There are two important things to notice:
 
 - the log levels before Information are ignored by defaul (in fact, you cannot see them in the query result)
 - the Log Levels are exposed as numbers in the severityLevel column: the higher the value, the higher the level of the log.
 
 ## Structured Logging
-
 
 ```cs
 [HttpGet]
@@ -131,21 +129,17 @@ public async Task<IActionResult> Get()
 }
 ```
 
-
 ## Further readings
 
 _This article first appeared on [Code4IT 🐧](https://www.code4it.dev/)_
 
-
 ## Wrapping up
-
 
 I hope you enjoyed this article! Let's keep in touch on [LinkedIn](https://www.linkedin.com/in/BelloneDavide/), [Twitter](https://twitter.com/BelloneDavide) or [BlueSky](https://bsky.app/profile/bellonedavide.bsky.social)! 🤜🤛
 
 Happy coding!
 
 🐧
-
 
 - [ ] Grammatica
 - [ ] Titoli
@@ -170,7 +164,7 @@ https://learn.microsoft.com/en-us/azure/azure-monitor/app/ilogger#aspnet-core-ap
 ### Installazione
 
 connection strring application insights
-add  Microsoft.Extensions.Logging.ApplicationInsights
+add Microsoft.Extensions.Logging.ApplicationInsights
 
 ```cs
 
@@ -181,9 +175,6 @@ configureTelemetryConfiguration: (config) =>
 );
 
 ```
-
-
-
 
 ### log normali
 
@@ -230,7 +221,7 @@ I valori si trovano in `customDimensions`
 ### Eccezioni
 
 ```cs
-private async Task SomethingWithException(int number) 
+private async Task SomethingWithException(int number)
 {
     try
     {
@@ -245,7 +236,6 @@ private async Task SomethingWithException(int number)
 
 Solo cosí il log dell'eccezione non compare!
 https://github.com/Azure/Azure-Functions/issues/1762
-
 
 ### Scopes
 
