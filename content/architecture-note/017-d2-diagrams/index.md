@@ -4,23 +4,23 @@ date: 2025-02-04
 url: /architecture-notes/d2-diagrams
 draft: false
 categories:
- - Code and Architecture Notes
+  - Code and Architecture Notes
 tags:
- - Software Architecture
- - Tools
- - D2
+  - Software Architecture
+  - Tools
+  - D2
 toc: true
 summary: "D2 is an open-source tool to design architectural layouts using a declarative syntax. It's a textual format, which can also be stored under source control. Let's see how it works, how you can install it, and some practical usage tips."
 images:
- - /architecture-notes/d2-diagrams/featuredImage.png
+  - /architecture-notes/d2-diagrams/featuredImage.png
 keywords:
- - software-architecture
- - d2
- - mermaid
- - diagramming
- - system-design
- - diagram-as-a-code
- - tool
+  - software-architecture
+  - d2
+  - mermaid
+  - diagramming
+  - system-design
+  - diagram-as-a-code
+  - tool
 ---
 
 When defining the architecture of a system, I believe in the adage that says that «A picture is worth a thousand words».
@@ -190,7 +190,7 @@ D2 is a tool written in Go.
 
 Go is not natively present in every computer, so you have to install it. You can learn how to install it from [the official page](https://go.dev/doc/install).
 
-Once Go is ready, you can install D2 in several ways. I use Windows 11, so my preferred installation approach is to use a *.msi* installer, [as described here](https://github.com/terrastruct/d2/blob/master/docs/INSTALL.md#windows).
+Once Go is ready, you can install D2 in several ways. I use Windows 11, so my preferred installation approach is to use a _.msi_ installer, [as described here](https://github.com/terrastruct/d2/blob/master/docs/INSTALL.md#windows).
 
 If you are on macOS, you can use Homebrew to install it by running:
 
@@ -212,7 +212,7 @@ You can find more information about the several installation approaches on [the 
 
 To work with D2 diagrams, you need to **create a file with the `.d2` extension**. That file will contain the textual representation of the diagrams, following the syntax we saw before.
 
-Once D2 is installed and the file is present in the file system (in my case, I named the file `my-diagram.d2`), you can use the console to generate the diagram locally - remember, I'm using Windows11, so I need to run the *exe* file:
+Once D2 is installed and the file is present in the file system (in my case, I named the file `my-diagram.d2`), you can use the console to generate the diagram locally - remember, I'm using Windows11, so I need to run the _exe_ file:
 
 ```shell
 d2.exe --watch .\my-diagram.d2
@@ -303,7 +303,7 @@ ecommerce: E-commerce {
 
 This tip can be extremely useful when you have more than one element with the same name belonging to different parents.
 
-Needless to say, since the order of the connection declarations does not affect the final rendering, write them in an organized way that best fits your needs. In general, I prefer creating sections (using *comments* to declare the area), and grouping connections by the outbound module.
+Needless to say, since the order of the connection declarations does not affect the final rendering, write them in an organized way that best fits your needs. In general, I prefer creating sections (using _comments_ to declare the area), and grouping connections by the outbound module.
 
 ### Pick a colour theme (and customize it, if you want!)
 
@@ -351,7 +351,6 @@ DAGRE and ELK are open source, but quite basic. TALA is more sophisticated, but 
 
 Here's an example of how the same diagram is rendered using the three different engines.
 
- 
 ![A comparison betweel DAGRE, ELK and TALA layout engines](013-layout-engines-comparison.jpg)
 
 You can decide which engine to use by declaring it in the `layout-engine` element:
@@ -382,7 +381,6 @@ mySystem: {
 ```
 
 With the word "Magazine" repeated, you can move it to a variable, so that it can change in the future:
-
 
 ```d2
 vars: {
@@ -436,7 +434,7 @@ And, if you want, you can use icons to create better diagrams: D2 exposes a set 
 
 🔗 [D2 predefined icons](https://icons.terrastruct.com/)
 
-*This article first appeared on [Code4IT 🐧](https://www.code4it.dev/)*
+_This article first appeared on [Code4IT 🐧](https://www.code4it.dev/)_
 
 Ok, but diagrams have to live in a context. How can you create useful and maintainable documentation for your future self?
 
@@ -450,7 +448,7 @@ And, of course, just the architectural diagram is not enough: you should also de
 
 ## Wrapping up
 
-I hope you enjoyed this article! Let's keep in touch on [LinkedIn](https://www.linkedin.com/in/BelloneDavide/), [Twitter](https://twitter.com/BelloneDavide) or [BlueSky](https://bsky.app/profile/bellonedavide.bsky.social)! 🤜🤛  
+I hope you enjoyed this article! Let's keep in touch on [LinkedIn](https://www.linkedin.com/in/BelloneDavide/), [Twitter](https://twitter.com/BelloneDavide) or [BlueSky](https://bsky.app/profile/bellonedavide.bsky.social)! 🤜🤛
 
 Happy coding!
 
