@@ -1,6 +1,6 @@
 ---
 title: "How to log to Azure Application Insights using ILogger in ASP.NET Core"
-date: 2025-03-04
+date: 2025-03-18
 url: /blog/azure-application-insights-ilogger-aspnetcore
 draft: false
 categories:
@@ -9,7 +9,7 @@ tags:
   - CSharp
   - Logging
 toc: true
-summary: "Application Insights is a great tool for handling high volumes of logs. How can you configure an ASP.NET application to send logs to Azure Application Insights?"
+summary: "Application Insights is a great tool for handling high volumes of logs. How can you configure an ASP.NET application to send logs to Azure Application Insights? What can I do to have Application Insights log my exceptions?"
 images:
   - /blog/azure-application-insights-ilogger-aspnetcore/featuredImage.png
 keywords:
@@ -218,6 +218,3 @@ I hope you enjoyed this article! Let's keep in touch on [LinkedIn](https://www.l
 Happy coding!
 
 🐧
-
-- [ ] Immagine di copertina
-- [ ] Fai resize della immagine di copertina
