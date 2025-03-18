@@ -15,7 +15,7 @@ Ciao, I'm **Davide Bellone**!
 
 I'm a software developer with more than 10 years of professional experience.
 
-I'm currently employed as a **senior backend developer** in Turin, **Italy**.
+I'm currently employed as a **Principal backend developer** in Italy.
 
 I've been working with Microsoft platforms and frameworks since 2014: I started as a SharePoint developer, then I moved to ASP.NET MVC 5, .NET API, Angular 6, and finally I became a full backend developer.
 
